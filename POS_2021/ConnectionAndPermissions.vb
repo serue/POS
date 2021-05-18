@@ -4,7 +4,7 @@ Imports System.Text
 
 Public Class ConnectionAndPermissions
     ' Private connection As SqlConnection = New SqlConnection("Data Source=192.168.43.223,1433;Network Library=DBMSSOCN;Initial Catalog=crime;User ID=sa;Password=2556b11j;")
-    Dim con As New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=crime; Integrated Security=True;")
+    Dim con As New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
 
 
     ' password harshing using md5

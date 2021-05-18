@@ -15,6 +15,7 @@ Public Class inventory_list
                     list_grid.DataSource = table
                 End If
             End Using
+            HeaderText()
             connection.Close()
         Catch ex As Exception
             connection.Close()
@@ -40,7 +41,7 @@ Public Class inventory_list
 
         list_grid.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         list_grid.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
-        list_grid.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        list_grid.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         list_grid.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         list_grid.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         list_grid.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -48,17 +49,18 @@ Public Class inventory_list
 
 
         ''text align
-        'list_grid.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        'list_grid.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(7).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        'list_grid.Columns(8).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(9).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'list_grid.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        list_grid.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        list_grid.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        list_grid.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+
+    End Sub
+
+    Private Sub refresh_button_Click(sender As Object, e As EventArgs) Handles refresh_button.Click
 
     End Sub
 End Class

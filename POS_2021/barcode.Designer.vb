@@ -29,10 +29,10 @@ Partial Class barcode
         Me.l = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.pic = New System.Windows.Forms.PictureBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.encode_button = New System.Windows.Forms.Button()
         Me.txtInput = New System.Windows.Forms.TextBox()
-        Me.pic = New System.Windows.Forms.PictureBox()
         Me.Panel2.SuspendLayout()
         CType(Me.pic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -42,7 +42,7 @@ Partial Class barcode
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(205, Byte), Integer), CType(CType(205, Byte), Integer), CType(CType(205, Byte), Integer))
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(649, 6)
         Me.Panel1.TabIndex = 8
@@ -61,7 +61,7 @@ Partial Class barcode
         Me.Panel2.Controls.Add(Me.txtInput)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 6)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(649, 433)
         Me.Panel2.TabIndex = 9
@@ -70,7 +70,7 @@ Partial Class barcode
         '
         Me.Button5.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.Location = New System.Drawing.Point(255, 330)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(141, 28)
         Me.Button5.TabIndex = 21
@@ -81,7 +81,7 @@ Partial Class barcode
         '
         Me.clear_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clear_button.Location = New System.Drawing.Point(371, 366)
-        Me.clear_button.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.clear_button.Margin = New System.Windows.Forms.Padding(4)
         Me.clear_button.Name = "clear_button"
         Me.clear_button.Size = New System.Drawing.Size(216, 28)
         Me.clear_button.TabIndex = 18
@@ -92,7 +92,7 @@ Partial Class barcode
         '
         Me.l.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.l.Location = New System.Drawing.Point(55, 366)
-        Me.l.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.l.Margin = New System.Windows.Forms.Padding(4)
         Me.l.Name = "l"
         Me.l.Size = New System.Drawing.Size(216, 28)
         Me.l.TabIndex = 17
@@ -121,11 +121,20 @@ Partial Class barcode
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "Input the text"
         '
+        'pic
+        '
+        Me.pic.Location = New System.Drawing.Point(55, 46)
+        Me.pic.Margin = New System.Windows.Forms.Padding(4)
+        Me.pic.Name = "pic"
+        Me.pic.Size = New System.Drawing.Size(532, 204)
+        Me.pic.TabIndex = 11
+        Me.pic.TabStop = False
+        '
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(445, 330)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(141, 28)
         Me.Button2.TabIndex = 10
@@ -136,7 +145,7 @@ Partial Class barcode
         '
         Me.encode_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.encode_button.Location = New System.Drawing.Point(55, 330)
-        Me.encode_button.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.encode_button.Margin = New System.Windows.Forms.Padding(4)
         Me.encode_button.Name = "encode_button"
         Me.encode_button.Size = New System.Drawing.Size(136, 28)
         Me.encode_button.TabIndex = 9
@@ -147,19 +156,10 @@ Partial Class barcode
         '
         Me.txtInput.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtInput.Location = New System.Drawing.Point(55, 293)
-        Me.txtInput.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtInput.Margin = New System.Windows.Forms.Padding(4)
         Me.txtInput.Name = "txtInput"
         Me.txtInput.Size = New System.Drawing.Size(531, 28)
         Me.txtInput.TabIndex = 8
-        '
-        'pic
-        '
-        Me.pic.Location = New System.Drawing.Point(55, 46)
-        Me.pic.Margin = New System.Windows.Forms.Padding(4)
-        Me.pic.Name = "pic"
-        Me.pic.Size = New System.Drawing.Size(532, 204)
-        Me.pic.TabIndex = 11
-        Me.pic.TabStop = False
         '
         'barcode
         '
@@ -170,7 +170,7 @@ Partial Class barcode
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "barcode"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Generate Your Organisational Barcodes"
