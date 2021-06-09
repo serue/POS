@@ -266,4 +266,15 @@ Public Class menu_form
     Private Sub logout_button_Click(sender As Object, e As EventArgs) Handles logout_button.Click
         Design.activeMainButton(logout_button)
     End Sub
+
+    Private Sub stock_valuation_Click(sender As Object, e As EventArgs) Handles stock_valuation.Click
+        Design.OpenChildSmall(Me.mainPanel, New inventory_list)
+        Design.activeButton(stock_valuation)
+        subPanel.Visible = False
+        dashboard_label.Text = "INVENTORY LIST".ToUpper
+    End Sub
+
+    Private Sub Category_button_Click(sender As Object, e As EventArgs) Handles Category_button.Click
+        categories.Show()
+    End Sub
 End Class

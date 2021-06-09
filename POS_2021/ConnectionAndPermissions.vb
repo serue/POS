@@ -3,7 +3,7 @@ Imports System.Security.Cryptography
 Imports System.Text
 
 Public Class ConnectionAndPermissions
-    ' Private connection As SqlConnection = New SqlConnection("Data Source=192.168.43.223,1433;Network Library=DBMSSOCN;Initial Catalog=crime;User ID=sa;Password=2556b11j;")
+    Private connection As SqlConnection = New SqlConnection("Data Source=192.168.43.223,1433;Network Library=DBMSSOCN;Initial Catalog=POS_DATABASE;User ID=sa;Password=2556b11j;")
     Dim con As New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
 
 
@@ -42,7 +42,7 @@ Public Class ConnectionAndPermissions
             Using command As New SqlCommand("select name from users where username=@username and password=@password", conn)
                 With command.Parameters
                     .Add("@username", SqlDbType.VarChar).Value = username
-                    .Add("@password", SqlDbType.VarChar).Value = Encrypt(password, "abc")
+                    .Add("@password", SqlDbType.VarChar).Value = Encrypt(password, "Abc")
                 End With
                 Dim adapter As New SqlDataAdapter(command)
                 Dim table As New DataTable

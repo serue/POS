@@ -28,7 +28,6 @@ Partial Class user_registration
         Me.id_number = New MetroFramework.Controls.MetroTextBox()
         Me.address = New MetroFramework.Controls.MetroTextBox()
         Me.age = New MetroFramework.Controls.MetroTextBox()
-        Me.email = New MetroFramework.Controls.MetroTextBox()
         Me.phone = New MetroFramework.Controls.MetroTextBox()
         Me.username = New MetroFramework.Controls.MetroTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -41,7 +40,6 @@ Partial Class user_registration
         Me.IconPictureBox7 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox5 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox3 = New FontAwesome.Sharp.IconPictureBox()
-        Me.IconPictureBox6 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox4 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox2 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
@@ -54,7 +52,6 @@ Partial Class user_registration
         CType(Me.IconPictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.IconPictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -221,40 +218,6 @@ Partial Class user_registration
         Me.age.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.age.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
         '
-        'email
-        '
-        '
-        '
-        '
-        Me.email.CustomButton.Image = Nothing
-        Me.email.CustomButton.Location = New System.Drawing.Point(469, 2)
-        Me.email.CustomButton.Name = ""
-        Me.email.CustomButton.Size = New System.Drawing.Size(27, 27)
-        Me.email.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
-        Me.email.CustomButton.TabIndex = 1
-        Me.email.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
-        Me.email.CustomButton.UseSelectable = True
-        Me.email.CustomButton.Visible = False
-        Me.email.FontSize = MetroFramework.MetroTextBoxSize.Tall
-        Me.email.Lines = New String(-1) {}
-        Me.email.Location = New System.Drawing.Point(78, 307)
-        Me.email.MaxLength = 32767
-        Me.email.Multiline = True
-        Me.email.Name = "email"
-        Me.email.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.email.PromptText = "Enter your email address"
-        Me.email.ScrollBars = System.Windows.Forms.ScrollBars.None
-        Me.email.SelectedText = ""
-        Me.email.SelectionLength = 0
-        Me.email.SelectionStart = 0
-        Me.email.ShortcutsEnabled = True
-        Me.email.Size = New System.Drawing.Size(499, 32)
-        Me.email.TabIndex = 11
-        Me.email.UseSelectable = True
-        Me.email.WaterMark = "Enter your email address"
-        Me.email.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.email.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
-        '
         'phone
         '
         '
@@ -305,7 +268,7 @@ Partial Class user_registration
         Me.username.CustomButton.Visible = False
         Me.username.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.username.Lines = New String(-1) {}
-        Me.username.Location = New System.Drawing.Point(78, 345)
+        Me.username.Location = New System.Drawing.Point(78, 307)
         Me.username.MaxLength = 32767
         Me.username.Multiline = True
         Me.username.Name = "username"
@@ -327,7 +290,7 @@ Partial Class user_registration
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(74, 467)
+        Me.Label1.Location = New System.Drawing.Point(74, 407)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(208, 23)
         Me.Label1.TabIndex = 13
@@ -339,7 +302,7 @@ Partial Class user_registration
         Me.LinkLabel1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.LinkLabel1.Location = New System.Drawing.Point(284, 465)
+        Me.LinkLabel1.Location = New System.Drawing.Point(284, 405)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(98, 25)
         Me.LinkLabel1.TabIndex = 12
@@ -363,7 +326,7 @@ Partial Class user_registration
         Me.password.CustomButton.Visible = False
         Me.password.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.password.Lines = New String(-1) {}
-        Me.password.Location = New System.Drawing.Point(78, 383)
+        Me.password.Location = New System.Drawing.Point(78, 345)
         Me.password.MaxLength = 32767
         Me.password.Multiline = True
         Me.password.Name = "password"
@@ -400,7 +363,7 @@ Partial Class user_registration
         Me.IconPictureBox9.IconChar = FontAwesome.Sharp.IconChar.Key
         Me.IconPictureBox9.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox9.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox9.Location = New System.Drawing.Point(40, 384)
+        Me.IconPictureBox9.Location = New System.Drawing.Point(40, 346)
         Me.IconPictureBox9.Name = "IconPictureBox9"
         Me.IconPictureBox9.Size = New System.Drawing.Size(32, 32)
         Me.IconPictureBox9.TabIndex = 4
@@ -413,7 +376,7 @@ Partial Class user_registration
         Me.IconPictureBox8.IconChar = FontAwesome.Sharp.IconChar.UserLock
         Me.IconPictureBox8.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox8.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox8.Location = New System.Drawing.Point(40, 346)
+        Me.IconPictureBox8.Location = New System.Drawing.Point(40, 308)
         Me.IconPictureBox8.Name = "IconPictureBox8"
         Me.IconPictureBox8.Size = New System.Drawing.Size(32, 32)
         Me.IconPictureBox8.TabIndex = 4
@@ -471,19 +434,6 @@ Partial Class user_registration
         Me.IconPictureBox3.TabIndex = 4
         Me.IconPictureBox3.TabStop = False
         '
-        'IconPictureBox6
-        '
-        Me.IconPictureBox6.BackColor = System.Drawing.SystemColors.Control
-        Me.IconPictureBox6.ForeColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.At
-        Me.IconPictureBox6.IconColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox6.Location = New System.Drawing.Point(40, 308)
-        Me.IconPictureBox6.Name = "IconPictureBox6"
-        Me.IconPictureBox6.Size = New System.Drawing.Size(32, 32)
-        Me.IconPictureBox6.TabIndex = 4
-        Me.IconPictureBox6.TabStop = False
-        '
         'IconPictureBox4
         '
         Me.IconPictureBox4.BackColor = System.Drawing.SystemColors.Control
@@ -532,7 +482,7 @@ Partial Class user_registration
         Me.save_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.save_button.IconSize = 25
         Me.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_button.Location = New System.Drawing.Point(89, 530)
+        Me.save_button.Location = New System.Drawing.Point(89, 470)
         Me.save_button.Name = "save_button"
         Me.save_button.Size = New System.Drawing.Size(161, 41)
         Me.save_button.TabIndex = 16
@@ -548,7 +498,7 @@ Partial Class user_registration
         Me.update_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.update_button.IconSize = 25
         Me.update_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.update_button.Location = New System.Drawing.Point(278, 530)
+        Me.update_button.Location = New System.Drawing.Point(278, 470)
         Me.update_button.Name = "update_button"
         Me.update_button.Size = New System.Drawing.Size(161, 41)
         Me.update_button.TabIndex = 17
@@ -564,7 +514,7 @@ Partial Class user_registration
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.clear_button.IconSize = 25
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(463, 530)
+        Me.clear_button.Location = New System.Drawing.Point(463, 470)
         Me.clear_button.Name = "clear_button"
         Me.clear_button.Size = New System.Drawing.Size(114, 41)
         Me.clear_button.TabIndex = 18
@@ -576,7 +526,7 @@ Partial Class user_registration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(627, 609)
+        Me.ClientSize = New System.Drawing.Size(627, 538)
         Me.Controls.Add(Me.clear_button)
         Me.Controls.Add(Me.update_button)
         Me.Controls.Add(Me.save_button)
@@ -593,9 +543,7 @@ Partial Class user_registration
         Me.Controls.Add(Me.IconPictureBox10)
         Me.Controls.Add(Me.IconPictureBox7)
         Me.Controls.Add(Me.IconPictureBox5)
-        Me.Controls.Add(Me.email)
         Me.Controls.Add(Me.IconPictureBox3)
-        Me.Controls.Add(Me.IconPictureBox6)
         Me.Controls.Add(Me.address)
         Me.Controls.Add(Me.IconPictureBox4)
         Me.Controls.Add(Me.name_textbox)
@@ -615,7 +563,6 @@ Partial Class user_registration
         CType(Me.IconPictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.IconPictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -635,8 +582,6 @@ Partial Class user_registration
     Friend WithEvents address As MetroFramework.Controls.MetroTextBox
     Friend WithEvents IconPictureBox5 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents age As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents IconPictureBox6 As FontAwesome.Sharp.IconPictureBox
-    Friend WithEvents email As MetroFramework.Controls.MetroTextBox
     Friend WithEvents IconPictureBox7 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents IconPictureBox8 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents phone As MetroFramework.Controls.MetroTextBox

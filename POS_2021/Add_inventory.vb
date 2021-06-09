@@ -16,11 +16,48 @@ Public Class Add_inventory
             productID = value
         End Set
     End Property
+
+    Private Sub loadCategories()
+
+        Using command As New SqlCommand("SELECT CATEGORY FROM CATEGORY ", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+            category_combo.Items.Clear()
+            If table.Rows.Count > 0 Then
+                    For Each cat As DataRow In table.Rows
+                    category_combo.Items.Add(cat(0).ToString)
+                Next
+                End If
+            End Using
+            connection.Close()
+
+    End Sub
+    Private Sub LoadData()
+        Using Command As New SqlCommand("SELECT ID,BARCODE,NAME,QUANTITY,SALE_QTY,MARGIN,PRICE FROM INVENTORY WHERE PRODUCT_STATUS='1'", connection)
+            Dim adapter As New SqlDataAdapter(Command)
+            Dim table As New DataTable
+            adapter.Fill(table)
+            list_grid.DataSource = table
+            If table.Rows.Count > 0 Then
+
+
+            Else
+                MessageBox.Show("No Product found ACTIVE Products", "SEARCHING PRODUCTS", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        End Using
+
+    End Sub
     Private Sub Add_inventory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             connection = myPermissions.getConnection()
+            connection.Open()
+            LoadData()
+            loadCategories()
+            connection.Close()
         Catch ex As Exception
-
+            connection.Close()
+            MessageBox.Show(ex.Message, "Error while retrieving data for Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
 
@@ -39,8 +76,11 @@ Public Class Add_inventory
     Private Sub margin_textbox_LostFocus(sender As Object, e As EventArgs) Handles margin_textbox.LostFocus
         If margin_textbox.Text <> "" Then
             Try
+                Dim cost As Decimal = cost_textbox.Text
                 Dim number As Decimal = (margin_textbox.Text / 100)
                 margin_textbox.Text = number
+                selling_textbox.Text = (number * cost) + cost
+
             Catch ex As Exception
                 MessageBox.Show("Margin is empty or in wrong format", "Margin calculation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End Try
@@ -101,7 +141,7 @@ Public Class Add_inventory
                 command.CommandText = "INSERT_INVENTORY"
                 command.CommandType = CommandType.StoredProcedure
                 With command.Parameters
-
+                    .Add("@DATE", SqlDbType.Date).Value = Now
                     .Add("@CATEGORY", SqlDbType.VarChar).Value = category_combo.Text
                     .Add("@BARCODE", SqlDbType.VarChar).Value = barcode_textbox.Text
                     .Add("@NAME", SqlDbType.VarChar).Value = name_textbox.Text
@@ -112,15 +152,18 @@ Public Class Add_inventory
                     .Add("@PRICE", SqlDbType.Decimal).Value = selling_textbox.Text
                     .Add("@MARGIN", SqlDbType.Decimal).Value = margin_textbox.Text
                     .Add("@VENDOR_CODE", SqlDbType.VarChar).Value = vendorCode_textbox.Text
+                    .Add("@PRODUCT_STATUS", SqlDbType.Int).Value = 1
                     .Add("@SKU", SqlDbType.VarChar).Value = sku_textbox.Text
 
                 End With
                 command.ExecuteNonQuery()
             End Using
             MessageBox.Show("Connection opened !!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            LoadData()
             connection.Close()
 
         Catch ex As Exception
+            connection.Close()
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -214,5 +257,23 @@ Public Class Add_inventory
         vendorCode_textbox.Clear()
         sku_textbox.Clear()
         category_combo.Focus()
-        End SUB
+        End Sub
+
+    Private Sub quantity_textbox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles quantity_textbox.KeyPress
+        If (Asc(e.KeyChar) < 48 And Asc(e.KeyChar) > 57) Then
+            e.Handled = True
+            MsgBox("numbers only")
+        Else
+            e.Handled = False
+
+        End If
+    End Sub
+
+    Private Sub margin_textbox_Leave(sender As Object, e As EventArgs) Handles margin_textbox.Leave
+        Try
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

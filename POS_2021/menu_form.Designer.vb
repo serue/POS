@@ -51,10 +51,6 @@ Partial Class menu_form
         Me.maximise_button = New FontAwesome.Sharp.IconButton()
         Me.close_button = New FontAwesome.Sharp.IconButton()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.SideMenu_panel = New System.Windows.Forms.Panel()
         Me.Panel10 = New System.Windows.Forms.Panel()
@@ -85,6 +81,8 @@ Partial Class menu_form
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Category_button = New FontAwesome.Sharp.IconButton()
         Panel8 = New System.Windows.Forms.Panel()
         Panel8.SuspendLayout()
         Me.mainPanel.SuspendLayout()
@@ -106,6 +104,7 @@ Partial Class menu_form
         Me.reports_panel.SuspendLayout()
         Me.sales_panel.SuspendLayout()
         Me.Home_panel.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel8
@@ -404,7 +403,7 @@ Partial Class menu_form
         Me.stock_valuation.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
         Me.stock_valuation.Size = New System.Drawing.Size(263, 40)
         Me.stock_valuation.TabIndex = 3
-        Me.stock_valuation.Text = "Inventory Valuation"
+        Me.stock_valuation.Text = "Inventory List"
         Me.stock_valuation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.stock_valuation.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.stock_valuation.UseVisualStyleBackColor = False
@@ -484,10 +483,6 @@ Partial Class menu_form
         Me.Panel1.Controls.Add(Me.maximise_button)
         Me.Panel1.Controls.Add(Me.close_button)
         Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.Panel4)
-        Me.Panel1.Controls.Add(Me.Panel3)
-        Me.Panel1.Controls.Add(Me.Panel5)
-        Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -564,38 +559,6 @@ Partial Class menu_form
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "Shopwise Inventory Management and  Point Sale System"
         '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.Color.Aqua
-        Me.Panel4.Location = New System.Drawing.Point(855, 29)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(15, 15)
-        Me.Panel4.TabIndex = 10
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.MediumOrchid
-        Me.Panel3.Location = New System.Drawing.Point(837, 29)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(15, 15)
-        Me.Panel3.TabIndex = 8
-        '
-        'Panel5
-        '
-        Me.Panel5.BackColor = System.Drawing.Color.LemonChiffon
-        Me.Panel5.Location = New System.Drawing.Point(855, 12)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(15, 15)
-        Me.Panel5.TabIndex = 9
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.Panel2.Location = New System.Drawing.Point(837, 12)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(15, 15)
-        Me.Panel2.TabIndex = 7
-        '
         'Panel6
         '
         Me.Panel6.Controls.Add(Panel8)
@@ -620,6 +583,7 @@ Partial Class menu_form
         Me.Panel10.AutoScroll = True
         Me.Panel10.AutoSize = True
         Me.Panel10.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.Panel10.Controls.Add(Me.Panel2)
         Me.Panel10.Controls.Add(Me.database_panel)
         Me.Panel10.Controls.Add(Me.Panel12)
         Me.Panel10.Controls.Add(Me.Panel7)
@@ -1080,6 +1044,35 @@ Partial Class menu_form
         'Timer4
         '
         '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Category_button)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 441)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(284, 55)
+        Me.Panel2.TabIndex = 1
+        '
+        'Category_button
+        '
+        Me.Category_button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Category_button.FlatAppearance.BorderSize = 0
+        Me.Category_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Category_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Category_button.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Category_button.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.Category_button.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.Category_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.Category_button.IconSize = 35
+        Me.Category_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Category_button.Location = New System.Drawing.Point(0, 0)
+        Me.Category_button.Name = "Category_button"
+        Me.Category_button.Size = New System.Drawing.Size(284, 55)
+        Me.Category_button.TabIndex = 2
+        Me.Category_button.Text = "Categories"
+        Me.Category_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Category_button.UseVisualStyleBackColor = True
+        '
         'menu_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1116,6 +1109,7 @@ Partial Class menu_form
         Me.reports_panel.ResumeLayout(False)
         Me.sales_panel.ResumeLayout(False)
         Me.Home_panel.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1126,10 +1120,6 @@ Partial Class menu_form
     Friend WithEvents maximise_button As FontAwesome.Sharp.IconButton
     Friend WithEvents close_button As FontAwesome.Sharp.IconButton
     Friend WithEvents Label6 As Label
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel6 As Panel
     Friend WithEvents SideMenu_panel As Panel
     Friend WithEvents Panel9 As Panel
@@ -1181,4 +1171,6 @@ Partial Class menu_form
     Friend WithEvents Backup_button As FontAwesome.Sharp.IconButton
     Friend WithEvents database_button As FontAwesome.Sharp.IconButton
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Category_button As FontAwesome.Sharp.IconButton
 End Class

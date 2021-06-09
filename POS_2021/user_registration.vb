@@ -49,7 +49,7 @@ Public Class user_registration
         address.Clear()
         age.Clear()
         phone.Clear()
-        email.Clear()
+
         username.Clear()
         password.Clear()
         name_textbox.Focus()
@@ -63,21 +63,21 @@ Public Class user_registration
         Try
             connection = myPermissions.getConnection()
             connection.Open()
-            Dim query As String = "insert into users(name,id_no,address,age,gender,contact,username,password) values(@name,@id_no,@address,@age ,@gender,@CONTACT,@username,@password) "
-            Using command As New SqlCommand(query, connection)
 
+            Using command As New SqlCommand()
+                command.Connection = connection
+                command.CommandText = "INSERT_USERS"
+                command.CommandType = CommandType.StoredProcedure
                 With command.Parameters
 
-                    .Add("@name", SqlDbType.VarChar).Value = name_textbox.Text
-                    .Add("@id_no", SqlDbType.VarChar).Value = id_number.Text
-                    .Add("@age", SqlDbType.Int).Value = age.Text
-                    .Add("@address", SqlDbType.VarChar).Value = address.Text
+                    .Add("@NAME", SqlDbType.VarChar).Value = name_textbox.Text
+                    .Add("@ID_NO ", SqlDbType.VarChar).Value = id_number.Text
+                    .Add("@AGE", SqlDbType.Int).Value = age.Text
+                    .Add("@ADDRESS", SqlDbType.VarChar).Value = address.Text
                     .Add("@CONTACT", SqlDbType.VarChar).Value = phone.Text
-                    .Add("@gender", SqlDbType.VarChar).Value = gender.Text
-                    .Add("@username", SqlDbType.VarChar).Value = username.Text
-                    .Add("@password", SqlDbType.VarChar).Value = Encrypt(password.Text, "abc")
-
-
+                    .Add("@GENDER", SqlDbType.VarChar).Value = gender.Text
+                    .Add("@USERNAME", SqlDbType.VarChar).Value = username.Text
+                    .Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "Abc")
                 End With
 
                 command.ExecuteNonQuery()
@@ -130,5 +130,10 @@ Public Class user_registration
 
             connection.Close()
         End Try
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        sign_in.Show()
+        Me.Close()
     End Sub
 End Class

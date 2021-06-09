@@ -80,7 +80,14 @@ Public Class test
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        menu_form.nyuwani = Add_inventory
-        menu_form.Show()
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            MsgBox("Done my man")
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

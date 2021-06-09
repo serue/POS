@@ -11,7 +11,7 @@ Public Class sign_in
 
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -26,6 +26,7 @@ Public Class sign_in
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         user_registration.Show()
+        Me.Close()
     End Sub
 
     Private Sub login_button_Click(sender As Object, e As EventArgs) Handles login_button.Click
