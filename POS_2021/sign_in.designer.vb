@@ -203,6 +203,7 @@ Partial Class sign_in
         '
         'sign_in
         '
+        Me.AcceptButton = Me.login_button
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(530, 187)

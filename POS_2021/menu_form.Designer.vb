@@ -54,6 +54,8 @@ Partial Class menu_form
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.SideMenu_panel = New System.Windows.Forms.Panel()
         Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Category_button = New FontAwesome.Sharp.IconButton()
         Me.database_panel = New System.Windows.Forms.Panel()
         Me.restore_button = New FontAwesome.Sharp.IconButton()
         Me.Backup_button = New FontAwesome.Sharp.IconButton()
@@ -81,8 +83,6 @@ Partial Class menu_form
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Category_button = New FontAwesome.Sharp.IconButton()
         Panel8 = New System.Windows.Forms.Panel()
         Panel8.SuspendLayout()
         Me.mainPanel.SuspendLayout()
@@ -98,13 +98,13 @@ Partial Class menu_form
         Me.Panel6.SuspendLayout()
         Me.SideMenu_panel.SuspendLayout()
         Me.Panel10.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.database_panel.SuspendLayout()
         Me.Panel12.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.reports_panel.SuspendLayout()
         Me.sales_panel.SuspendLayout()
         Me.Home_panel.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel8
@@ -599,6 +599,35 @@ Partial Class menu_form
         Me.Panel10.Size = New System.Drawing.Size(284, 822)
         Me.Panel10.TabIndex = 3
         '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Category_button)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 441)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(284, 55)
+        Me.Panel2.TabIndex = 1
+        '
+        'Category_button
+        '
+        Me.Category_button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Category_button.FlatAppearance.BorderSize = 0
+        Me.Category_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Category_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Category_button.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Category_button.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.Category_button.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.Category_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.Category_button.IconSize = 35
+        Me.Category_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Category_button.Location = New System.Drawing.Point(0, 0)
+        Me.Category_button.Name = "Category_button"
+        Me.Category_button.Size = New System.Drawing.Size(284, 55)
+        Me.Category_button.TabIndex = 2
+        Me.Category_button.Text = "Categories"
+        Me.Category_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Category_button.UseVisualStyleBackColor = True
+        '
         'database_panel
         '
         Me.database_panel.Controls.Add(Me.restore_button)
@@ -1044,35 +1073,6 @@ Partial Class menu_form
         'Timer4
         '
         '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.Category_button)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 441)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(284, 55)
-        Me.Panel2.TabIndex = 1
-        '
-        'Category_button
-        '
-        Me.Category_button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Category_button.FlatAppearance.BorderSize = 0
-        Me.Category_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Category_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Category_button.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Category_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.Category_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.Category_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.Category_button.IconSize = 35
-        Me.Category_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Category_button.Location = New System.Drawing.Point(0, 0)
-        Me.Category_button.Name = "Category_button"
-        Me.Category_button.Size = New System.Drawing.Size(284, 55)
-        Me.Category_button.TabIndex = 2
-        Me.Category_button.Text = "Categories"
-        Me.Category_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Category_button.UseVisualStyleBackColor = True
-        '
         'menu_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1103,13 +1103,13 @@ Partial Class menu_form
         Me.SideMenu_panel.ResumeLayout(False)
         Me.SideMenu_panel.PerformLayout()
         Me.Panel10.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
         Me.database_panel.ResumeLayout(False)
         Me.Panel12.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.reports_panel.ResumeLayout(False)
         Me.sales_panel.ResumeLayout(False)
         Me.Home_panel.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

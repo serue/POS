@@ -40,8 +40,6 @@ Public Class Add_inventory
             adapter.Fill(table)
             list_grid.DataSource = table
             If table.Rows.Count > 0 Then
-
-
             Else
                 MessageBox.Show("No Product found ACTIVE Products", "SEARCHING PRODUCTS", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
@@ -54,6 +52,7 @@ Public Class Add_inventory
             connection.Open()
             LoadData()
             loadCategories()
+            HeaderText()
             connection.Close()
         Catch ex As Exception
             connection.Close()
@@ -158,7 +157,7 @@ Public Class Add_inventory
                 End With
                 command.ExecuteNonQuery()
             End Using
-            MessageBox.Show("Connection opened !!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Product has been added successfully !!", "Adding new  Product", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData()
             connection.Close()
 
@@ -191,7 +190,8 @@ Public Class Add_inventory
                     End With
                     command.ExecuteNonQuery()
                 End Using
-                MessageBox.Show("Connection opened !!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Quantity and Price has been updated successflly !!", "Updating Quantity and  Price", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LoadData()
                 connection.Close()
 
             Catch ex As Exception
@@ -229,10 +229,12 @@ Public Class Add_inventory
                     End With
                     command.ExecuteNonQuery()
                 End Using
-                MessageBox.Show("Connection opened !!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LoadData()
+                MessageBox.Show("Product has been updated suuccessfully !!", "Updating Product", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 connection.Close()
 
             Catch ex As Exception
+                connection.Close()
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
@@ -274,6 +276,145 @@ Public Class Add_inventory
 
         Catch ex As Exception
 
+        End Try
+    End Sub
+
+    Private Sub list_grid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles list_grid.CellClick
+        Try
+            PRODUCT_ID_LABEL.Text = list_grid.CurrentRow.Cells(0).Value.ToString
+            Using cmd As New SqlCommand("SELECT CATEGORY,RE_ORDER,COST,VENDOR_CODE,SKU FROM INVENTORY WHERE ID=@ID", connection)
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
+                Dim table As New DataTable
+                Dim adapter As New SqlDataAdapter(cmd)
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    category_combo.SelectedItem = table(0)(0).ToString
+                    barcode_textbox.Text = list_grid.CurrentRow.Cells(1).Value.ToString
+                    name_textbox.Text = list_grid.CurrentRow.Cells(2).Value.ToString
+                    quantity_textbox.Text = list_grid.CurrentRow.Cells(3).Value.ToString
+                    re_order_textbox.Text = table(0)(1).ToString
+                    sale_qty_textbox.Text = list_grid.CurrentRow.Cells(4).Value.ToString
+                    cost_textbox.Text = table(0)(2).ToString
+                    selling_textbox.Text = list_grid.CurrentRow.Cells(6).Value.ToString
+                    margin_textbox.Text = list_grid.CurrentRow.Cells(5).Value.ToString
+                    vendorCode_textbox.Text = table(0)(3).ToString
+                    sku_textbox.Text = table(0)(4).ToString
+                Else
+                    MessageBox.Show("Product has no Category", "Product Categories")
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub NEW_STOCK_Click(sender As Object, e As EventArgs) Handles NEW_STOCK.Click
+        Try
+            connection.Open()
+            Using cmd As New SqlCommand("select quantity from INVENTORY where ID=@ID", connection)
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
+                Dim table As New DataTable
+                Dim adapter As New SqlDataAdapter(cmd)
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    Dim quantity As Decimal = table(0)(0).ToString
+                    Using Command As New SqlCommand("UPDATE INVENTORY SET QUANTITY=@QUANTITY WHERE ID=@ID", connection)
+                        With Command.Parameters
+                            .Add("@QUANTITY", SqlDbType.Decimal).Value = quantity_textbox.Text + quantity
+                            .Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
+                        End With
+                        Command.ExecuteNonQuery()
+                        MessageBox.Show("New Product quantity has  been Updated  successfully", "Updating  Quantity", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End Using
+                Else
+                    MessageBox.Show("No product was fount", "Searching Products", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End Using
+            LoadData()
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "Adding New Stock", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+    End Sub
+
+    Private Sub Delete_button_Click(sender As Object, e As EventArgs) Handles Delete_button.Click
+        Try
+            connection = myPermissions.getConnection()
+            connection.Open()
+            If MessageBox.Show("Are you sure you want to delete this prouduct", "Deleting Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Using command As New SqlCommand("DELETE FROM INVENTORY WHERE ID=@ID", connection)
+                    command.Parameters.Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Product was deleted successfuly", "Deleting Product", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    LoadData()
+                End Using
+                connection.Close()
+                CLEAR()
+            End If
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "Deleting product", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Try
+    End Sub
+    Private Sub HeaderText()
+
+        '  id, product_code, description, receipt_name, current_stock, selling_price
+
+        list_grid.Columns(0).HeaderText = "ID"
+        list_grid.Columns(1).HeaderText = "BARCODE"
+        list_grid.Columns(2).HeaderText = "NAME"
+        list_grid.Columns(3).HeaderText = "QUANTITY"
+        list_grid.Columns(4).HeaderText = "STD SALE"
+        list_grid.Columns(5).HeaderText = "MARGIN"
+        list_grid.Columns(6).HeaderText = "PRICE"
+
+        'For Each col In list_grid.Columns
+        '    MsgBox(col.Name)
+        'Next
+
+        ''styling rows from the datagridview
+
+        list_grid.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        list_grid.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        list_grid.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        list_grid.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        list_grid.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        list_grid.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        list_grid.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
+
+
+        ''text align
+        list_grid.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        list_grid.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        list_grid.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        list_grid.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+    End Sub
+
+    Private Sub SEARCH_BOX_TextChanged(sender As Object, e As EventArgs) Handles SEARCH_BOX.TextChanged
+        Try
+            connection = myPermissions.getConnection()
+            connection.Open()
+            Using Command As New SqlCommand("SELECT ID,BARCODE,NAME,QUANTITY,SALE_QTY,MARGIN,PRICE FROM INVENTORY WHERE PRODUCT_STATUS='1' AND BARCODE LIKE '%" & SEARCH_BOX.Text & "%' OR NAME LIKE '%" & SEARCH_BOX.Text & "%'", connection)
+                Command.Parameters.Add("@CODE", SqlDbType.VarChar).Value = SEARCH_BOX.Text
+                Dim adapter As New SqlDataAdapter(Command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                list_grid.DataSource = table
+                If table.Rows.Count > 0 Then
+                Else
+                    MessageBox.Show("No Product found ACTIVE Products", "SEARCHING PRODUCTS", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "Error On Search", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class
