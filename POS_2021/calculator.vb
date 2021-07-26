@@ -4,23 +4,32 @@
     Dim result As Decimal
     Dim operation As String
     Dim design As New IntefaceDesign
+    Dim isClicked As Boolean = False
 
     Private Sub Numbers_Click(sender As Object, e As EventArgs) Handles two.Click, three.Click, six.Click, seven.Click, one.Click, nine.Click, four.Click, five.Click, eight.Click
-        Try
-            Dim b As Button = sender
-            If solution_box.Text = 0 Then
-                If (solution_box.Text.Contains(".")) Then
-                    solution_box.Text = solution_box.Text & b.Text
-                Else
-                    solution_box.Text = b.Text
-                End If
+        Dim b As Button = sender
+        If isClicked = False Then
 
-            Else
-                solution_box.Text = solution_box.Text & b.Text
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+            Try
+
+                If solution_box.Text = 0 Then
+                    If (solution_box.Text.Contains(".")) Then
+                        solution_box.Text = solution_box.Text & b.Text
+                    Else
+                        solution_box.Text = b.Text
+                    End If
+
+                Else
+                    solution_box.Text = solution_box.Text & b.Text
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+            isClicked = False
+            solution_box.Text = b.Text
+        End If
+
 
     End Sub
 
@@ -105,6 +114,7 @@
                 result = (num1 / 100) * num2
                 solution_box.Text = result
             End If
+            isClicked = True
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -199,6 +209,6 @@
     End Sub
 
     Private Sub calculator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        menu_form.Show()
+
     End Sub
 End Class

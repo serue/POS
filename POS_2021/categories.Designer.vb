@@ -78,6 +78,7 @@ Partial Class categories
         Me.save_item.BackColor = System.Drawing.Color.SeaGreen
         Me.save_item.FlatAppearance.BorderSize = 0
         Me.save_item.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.save_item.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.save_item.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.save_item.ForeColor = System.Drawing.Color.Gainsboro
         Me.save_item.IconChar = FontAwesome.Sharp.IconChar.Plus
@@ -87,6 +88,7 @@ Partial Class categories
         Me.save_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.save_item.Location = New System.Drawing.Point(16, 220)
         Me.save_item.Name = "save_item"
+        Me.save_item.Rotation = 0R
         Me.save_item.Size = New System.Drawing.Size(226, 34)
         Me.save_item.TabIndex = 24
         Me.save_item.Text = "Save New Category"
@@ -98,6 +100,7 @@ Partial Class categories
         Me.edit_details.BackColor = System.Drawing.Color.Olive
         Me.edit_details.FlatAppearance.BorderSize = 0
         Me.edit_details.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.edit_details.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.edit_details.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.edit_details.ForeColor = System.Drawing.Color.Gainsboro
         Me.edit_details.IconChar = FontAwesome.Sharp.IconChar.Edit
@@ -107,6 +110,7 @@ Partial Class categories
         Me.edit_details.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.edit_details.Location = New System.Drawing.Point(248, 220)
         Me.edit_details.Name = "edit_details"
+        Me.edit_details.Rotation = 0R
         Me.edit_details.Size = New System.Drawing.Size(207, 34)
         Me.edit_details.TabIndex = 25
         Me.edit_details.Text = "Edit Category"
@@ -118,6 +122,7 @@ Partial Class categories
         Me.clear_button.BackColor = System.Drawing.Color.DarkRed
         Me.clear_button.FlatAppearance.BorderSize = 0
         Me.clear_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.clear_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.clear_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clear_button.ForeColor = System.Drawing.Color.Gainsboro
         Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
@@ -127,6 +132,7 @@ Partial Class categories
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.clear_button.Location = New System.Drawing.Point(461, 220)
         Me.clear_button.Name = "clear_button"
+        Me.clear_button.Rotation = 0R
         Me.clear_button.Size = New System.Drawing.Size(145, 34)
         Me.clear_button.TabIndex = 27
         Me.clear_button.Text = "Clear"

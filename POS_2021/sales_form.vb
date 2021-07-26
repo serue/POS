@@ -689,4 +689,29 @@ Public Class sales_form
     Private Sub enquiry_button_Click(sender As Object, e As EventArgs) Handles enquiry_button.Click
         lookupPanel.Visible = True
     End Sub
+
+
+    Private Sub Enquiry(ValToSearch As String)
+        Try
+            connection = myPermissions.getConnection()
+            connection.Open()
+            Using command As New SqlCommand("SELECT BARCODE,NAME,QUANTITY,PRICE FORM INVENTORY WHERE BARCODE LIKE '%" & ValToSearch & "' OR NAME LIKE '%" & ValToSearch & "'")
+                Dim table As New DataTable
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+
+                Else
+                    MessageBox.Show("There is no related product in the inventory!!", "Lookup Results", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "The system encountered the following error while perfoming a stock lookup", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            connection.Close()
+        End Try
+    End Sub
+    Private Sub searchbar_TextChanged(sender As Object, e As EventArgs) Handles searchbar.TextChanged
+        Enquiry(searchbar.Text)
+    End Sub
 End Class

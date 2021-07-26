@@ -56,4 +56,8 @@ Public Class categories
     Private Sub categories_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadCategories()
     End Sub
+
+    Private Sub edit_details_Click(sender As Object, e As EventArgs) Handles edit_details.Click
+
+    End Sub
 End Class
