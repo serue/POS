@@ -23,8 +23,9 @@ Public Class categories
                 MessageBox.Show("New Category was inserted successfully", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 clear()
             End Using
+            connection.Close()
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show(ex.Message, "An error occured while saving the data into the databse", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             connection.Close()
         End Try
