@@ -39,4 +39,8 @@ Public Class settings
         txtTillNumber.Clear()
         currency_name.Focus()
     End Sub
+
+    Private Sub save_item_Click(sender As Object, e As EventArgs) Handles save_item.Click
+
+    End Sub
 End Class

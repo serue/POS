@@ -104,14 +104,6 @@ Partial Class sales_form
         Me.btn3 = New System.Windows.Forms.Button()
         Me.btn9 = New System.Windows.Forms.Button()
         Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.lookupPanel = New System.Windows.Forms.Panel()
-        Me.lookPan = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.searchbar = New MetroFramework.Controls.MetroTextBox()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.OtherPaymentsPanel = New System.Windows.Forms.Panel()
         Me.CancelTransactionButton = New System.Windows.Forms.Button()
         Me.ProcessTrsactionButton = New System.Windows.Forms.Button()
@@ -125,6 +117,14 @@ Partial Class sales_form
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.lookupPanel = New System.Windows.Forms.Panel()
+        Me.lookPan = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.searchbar = New MetroFramework.Controls.MetroTextBox()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.list_grid = New MetroFramework.Controls.MetroGrid()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -143,10 +143,10 @@ Partial Class sales_form
         Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
-        Me.lookupPanel.SuspendLayout()
-        Me.Panel4.SuspendLayout()
         Me.OtherPaymentsPanel.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.lookupPanel.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -384,6 +384,7 @@ Partial Class sales_form
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel6.Controls.Add(Me.OtherPaymentsPanel)
         Me.Panel6.Controls.Add(Me.qty_paid_textbox)
         Me.Panel6.Controls.Add(Me.Label4)
         Me.Panel6.Controls.Add(Me.quantity_textbox)
@@ -1239,125 +1240,12 @@ Partial Class sales_form
         'Panel8
         '
         Me.Panel8.Controls.Add(Me.lookupPanel)
-        Me.Panel8.Controls.Add(Me.OtherPaymentsPanel)
         Me.Panel8.Controls.Add(Me.list_grid)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel8.Location = New System.Drawing.Point(0, 108)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(1107, 742)
         Me.Panel8.TabIndex = 7
-        '
-        'lookupPanel
-        '
-        Me.lookupPanel.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lookupPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lookupPanel.Controls.Add(Me.lookPan)
-        Me.lookupPanel.Controls.Add(Me.Panel4)
-        Me.lookupPanel.Location = New System.Drawing.Point(40, 67)
-        Me.lookupPanel.Name = "lookupPanel"
-        Me.lookupPanel.Size = New System.Drawing.Size(1061, 602)
-        Me.lookupPanel.TabIndex = 3
-        Me.lookupPanel.Visible = False
-        '
-        'lookPan
-        '
-        Me.lookPan.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lookPan.Location = New System.Drawing.Point(0, 41)
-        Me.lookPan.Name = "lookPan"
-        Me.lookPan.Size = New System.Drawing.Size(1057, 224)
-        Me.lookPan.TabIndex = 4
-        '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.Button1)
-        Me.Panel4.Controls.Add(Me.searchbar)
-        Me.Panel4.Controls.Add(Me.Panel5)
-        Me.Panel4.Controls.Add(Me.Panel2)
-        Me.Panel4.Controls.Add(Me.Label17)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1057, 41)
-        Me.Panel4.TabIndex = 3
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(889, 3)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(117, 33)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Search"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'searchbar
-        '
-        '
-        '
-        '
-        Me.searchbar.CustomButton.Image = Nothing
-        Me.searchbar.CustomButton.Location = New System.Drawing.Point(637, 2)
-        Me.searchbar.CustomButton.Name = ""
-        Me.searchbar.CustomButton.Size = New System.Drawing.Size(27, 27)
-        Me.searchbar.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
-        Me.searchbar.CustomButton.TabIndex = 1
-        Me.searchbar.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
-        Me.searchbar.CustomButton.UseSelectable = True
-        Me.searchbar.CustomButton.Visible = False
-        Me.searchbar.DisplayIcon = True
-        Me.searchbar.FontSize = MetroFramework.MetroTextBoxSize.Tall
-        Me.searchbar.FontWeight = MetroFramework.MetroTextBoxWeight.Bold
-        Me.searchbar.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.searchbar.Icon = Global.POS_2021.My.Resources.Resources.Company_Logo
-        Me.searchbar.Lines = New String() {"Mom"}
-        Me.searchbar.Location = New System.Drawing.Point(202, 2)
-        Me.searchbar.MaxLength = 32767
-        Me.searchbar.Multiline = True
-        Me.searchbar.Name = "searchbar"
-        Me.searchbar.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.searchbar.PromptText = "Search"
-        Me.searchbar.ScrollBars = System.Windows.Forms.ScrollBars.None
-        Me.searchbar.SelectedText = ""
-        Me.searchbar.SelectionLength = 0
-        Me.searchbar.SelectionStart = 0
-        Me.searchbar.ShortcutsEnabled = True
-        Me.searchbar.Size = New System.Drawing.Size(667, 32)
-        Me.searchbar.TabIndex = 5
-        Me.searchbar.Text = "Mom"
-        Me.searchbar.UseCustomForeColor = True
-        Me.searchbar.UseSelectable = True
-        Me.searchbar.WaterMark = "Search"
-        Me.searchbar.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.searchbar.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
-        '
-        'Panel5
-        '
-        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel5.Location = New System.Drawing.Point(181, 0)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(4, 39)
-        Me.Panel5.TabIndex = 4
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.IndianRed
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 37)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1057, 4)
-        Me.Panel2.TabIndex = 1
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Sienna
-        Me.Label17.Location = New System.Drawing.Point(3, 2)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(167, 32)
-        Me.Label17.TabIndex = 0
-        Me.Label17.Text = "Stock Look Up"
         '
         'OtherPaymentsPanel
         '
@@ -1374,9 +1262,9 @@ Partial Class sales_form
         Me.OtherPaymentsPanel.Controls.Add(Me.Label14)
         Me.OtherPaymentsPanel.Controls.Add(Me.Label13)
         Me.OtherPaymentsPanel.Controls.Add(Me.Panel3)
-        Me.OtherPaymentsPanel.Location = New System.Drawing.Point(553, 169)
+        Me.OtherPaymentsPanel.Location = New System.Drawing.Point(1580, 29)
         Me.OtherPaymentsPanel.Name = "OtherPaymentsPanel"
-        Me.OtherPaymentsPanel.Size = New System.Drawing.Size(426, 328)
+        Me.OtherPaymentsPanel.Size = New System.Drawing.Size(71, 50)
         Me.OtherPaymentsPanel.TabIndex = 2
         Me.OtherPaymentsPanel.Visible = False
         '
@@ -1504,7 +1392,7 @@ Partial Class sales_form
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(424, 50)
+        Me.Panel3.Size = New System.Drawing.Size(69, 34)
         Me.Panel3.TabIndex = 0
         '
         'Label9
@@ -1518,6 +1406,117 @@ Partial Class sales_form
         Me.Label9.Size = New System.Drawing.Size(227, 26)
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Other Payment Methods"
+        '
+        'lookupPanel
+        '
+        Me.lookupPanel.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lookupPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lookupPanel.Controls.Add(Me.lookPan)
+        Me.lookupPanel.Controls.Add(Me.Panel4)
+        Me.lookupPanel.Location = New System.Drawing.Point(40, 67)
+        Me.lookupPanel.Name = "lookupPanel"
+        Me.lookupPanel.Size = New System.Drawing.Size(1061, 280)
+        Me.lookupPanel.TabIndex = 3
+        Me.lookupPanel.Visible = False
+        '
+        'lookPan
+        '
+        Me.lookPan.Dock = System.Windows.Forms.DockStyle.Top
+        Me.lookPan.Location = New System.Drawing.Point(0, 41)
+        Me.lookPan.Name = "lookPan"
+        Me.lookPan.Size = New System.Drawing.Size(1057, 224)
+        Me.lookPan.TabIndex = 4
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.Button1)
+        Me.Panel4.Controls.Add(Me.searchbar)
+        Me.Panel4.Controls.Add(Me.Panel5)
+        Me.Panel4.Controls.Add(Me.Panel2)
+        Me.Panel4.Controls.Add(Me.Label17)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(1057, 41)
+        Me.Panel4.TabIndex = 3
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(889, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(117, 33)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Search"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'searchbar
+        '
+        '
+        '
+        '
+        Me.searchbar.CustomButton.Image = Nothing
+        Me.searchbar.CustomButton.Location = New System.Drawing.Point(637, 2)
+        Me.searchbar.CustomButton.Name = ""
+        Me.searchbar.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.searchbar.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
+        Me.searchbar.CustomButton.TabIndex = 1
+        Me.searchbar.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
+        Me.searchbar.CustomButton.UseSelectable = True
+        Me.searchbar.CustomButton.Visible = False
+        Me.searchbar.DisplayIcon = True
+        Me.searchbar.FontSize = MetroFramework.MetroTextBoxSize.Tall
+        Me.searchbar.FontWeight = MetroFramework.MetroTextBoxWeight.Bold
+        Me.searchbar.ForeColor = System.Drawing.Color.SaddleBrown
+        Me.searchbar.Icon = Global.POS_2021.My.Resources.Resources.Company_Logo
+        Me.searchbar.Lines = New String(-1) {}
+        Me.searchbar.Location = New System.Drawing.Point(202, 2)
+        Me.searchbar.MaxLength = 32767
+        Me.searchbar.Multiline = True
+        Me.searchbar.Name = "searchbar"
+        Me.searchbar.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.searchbar.PromptText = "Search"
+        Me.searchbar.ScrollBars = System.Windows.Forms.ScrollBars.None
+        Me.searchbar.SelectedText = ""
+        Me.searchbar.SelectionLength = 0
+        Me.searchbar.SelectionStart = 0
+        Me.searchbar.ShortcutsEnabled = True
+        Me.searchbar.Size = New System.Drawing.Size(667, 32)
+        Me.searchbar.TabIndex = 5
+        Me.searchbar.UseCustomForeColor = True
+        Me.searchbar.UseSelectable = True
+        Me.searchbar.WaterMark = "Search"
+        Me.searchbar.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.searchbar.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
+        '
+        'Panel5
+        '
+        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel5.Location = New System.Drawing.Point(181, 0)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(4, 39)
+        Me.Panel5.TabIndex = 4
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.IndianRed
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(0, 37)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(1057, 4)
+        Me.Panel2.TabIndex = 1
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Sienna
+        Me.Label17.Location = New System.Drawing.Point(3, 2)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(167, 32)
+        Me.Label17.TabIndex = 0
+        Me.Label17.Text = "Stock Look Up"
         '
         'list_grid
         '
@@ -1657,13 +1656,13 @@ Partial Class sales_form
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
-        Me.lookupPanel.ResumeLayout(False)
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
         Me.OtherPaymentsPanel.ResumeLayout(False)
         Me.OtherPaymentsPanel.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.lookupPanel.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

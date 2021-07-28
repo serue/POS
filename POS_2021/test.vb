@@ -7,6 +7,22 @@ Public Class test
 
     Private Sub test_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Admin.CheckState = status
+        Try
+            connection = myPermissions.getConnection()
+            connection.Open()
+            Using Command As New SqlCommand("select * from INVENTORY_VIEW", connection)
+                Dim table As New DataTable
+                Dim adapter As New SqlDataAdapter(Command)
+                adapter.Fill(table)
+
+                DataGridView1.DataSource = table
+            End Using
+
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub save()
         connection = myPermissions.getConnection()
