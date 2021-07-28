@@ -262,7 +262,6 @@ Partial Class menu_form
         Me.change_password_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.change_password_button.FlatAppearance.BorderSize = 0
         Me.change_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.change_password_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.change_password_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.change_password_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.change_password_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -273,7 +272,6 @@ Partial Class menu_form
         Me.change_password_button.Location = New System.Drawing.Point(0, 135)
         Me.change_password_button.Name = "change_password_button"
         Me.change_password_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.change_password_button.Rotation = 0R
         Me.change_password_button.Size = New System.Drawing.Size(263, 40)
         Me.change_password_button.TabIndex = 3
         Me.change_password_button.Text = "Change Password"
@@ -287,7 +285,6 @@ Partial Class menu_form
         Me.updateUser_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.updateUser_button.FlatAppearance.BorderSize = 0
         Me.updateUser_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.updateUser_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.updateUser_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.updateUser_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.updateUser_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -298,7 +295,6 @@ Partial Class menu_form
         Me.updateUser_button.Location = New System.Drawing.Point(0, 95)
         Me.updateUser_button.Name = "updateUser_button"
         Me.updateUser_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.updateUser_button.Rotation = 0R
         Me.updateUser_button.Size = New System.Drawing.Size(263, 40)
         Me.updateUser_button.TabIndex = 2
         Me.updateUser_button.Text = "Update users"
@@ -312,7 +308,6 @@ Partial Class menu_form
         Me.registerUser_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.registerUser_button.FlatAppearance.BorderSize = 0
         Me.registerUser_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.registerUser_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.registerUser_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.registerUser_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.registerUser_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -323,7 +318,6 @@ Partial Class menu_form
         Me.registerUser_button.Location = New System.Drawing.Point(0, 55)
         Me.registerUser_button.Name = "registerUser_button"
         Me.registerUser_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.registerUser_button.Rotation = 0R
         Me.registerUser_button.Size = New System.Drawing.Size(263, 40)
         Me.registerUser_button.TabIndex = 1
         Me.registerUser_button.Text = "Register New user"
@@ -336,7 +330,6 @@ Partial Class menu_form
         Me.IconButton4.Dock = System.Windows.Forms.DockStyle.Top
         Me.IconButton4.FlatAppearance.BorderSize = 0
         Me.IconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.IconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.IconButton4.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IconButton4.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.IconButton4.IconChar = FontAwesome.Sharp.IconChar.AngleRight
@@ -346,7 +339,6 @@ Partial Class menu_form
         Me.IconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.IconButton4.Location = New System.Drawing.Point(0, 0)
         Me.IconButton4.Name = "IconButton4"
-        Me.IconButton4.Rotation = 0R
         Me.IconButton4.Size = New System.Drawing.Size(263, 55)
         Me.IconButton4.TabIndex = 0
         Me.IconButton4.Text = "Users"
@@ -376,7 +368,6 @@ Partial Class menu_form
         Me.update_price_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.update_price_button.FlatAppearance.BorderSize = 0
         Me.update_price_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.update_price_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.update_price_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.update_price_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.update_price_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -387,7 +378,6 @@ Partial Class menu_form
         Me.update_price_button.Location = New System.Drawing.Point(0, 175)
         Me.update_price_button.Name = "update_price_button"
         Me.update_price_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.update_price_button.Rotation = 0R
         Me.update_price_button.Size = New System.Drawing.Size(263, 40)
         Me.update_price_button.TabIndex = 4
         Me.update_price_button.Text = "Update Price and Quantity"
@@ -401,7 +391,6 @@ Partial Class menu_form
         Me.stock_valuation.Dock = System.Windows.Forms.DockStyle.Top
         Me.stock_valuation.FlatAppearance.BorderSize = 0
         Me.stock_valuation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.stock_valuation.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.stock_valuation.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.stock_valuation.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.stock_valuation.IconChar = FontAwesome.Sharp.IconChar.None
@@ -412,7 +401,6 @@ Partial Class menu_form
         Me.stock_valuation.Location = New System.Drawing.Point(0, 135)
         Me.stock_valuation.Name = "stock_valuation"
         Me.stock_valuation.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.stock_valuation.Rotation = 0R
         Me.stock_valuation.Size = New System.Drawing.Size(263, 40)
         Me.stock_valuation.TabIndex = 3
         Me.stock_valuation.Text = "Inventory List"
@@ -426,7 +414,6 @@ Partial Class menu_form
         Me.update_inventory_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.update_inventory_button.FlatAppearance.BorderSize = 0
         Me.update_inventory_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.update_inventory_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.update_inventory_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.update_inventory_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.update_inventory_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -437,7 +424,6 @@ Partial Class menu_form
         Me.update_inventory_button.Location = New System.Drawing.Point(0, 95)
         Me.update_inventory_button.Name = "update_inventory_button"
         Me.update_inventory_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.update_inventory_button.Rotation = 0R
         Me.update_inventory_button.Size = New System.Drawing.Size(263, 40)
         Me.update_inventory_button.TabIndex = 2
         Me.update_inventory_button.Text = "Update Inventory Details"
@@ -451,7 +437,6 @@ Partial Class menu_form
         Me.add_inventory.Dock = System.Windows.Forms.DockStyle.Top
         Me.add_inventory.FlatAppearance.BorderSize = 0
         Me.add_inventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.add_inventory.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.add_inventory.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.add_inventory.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.add_inventory.IconChar = FontAwesome.Sharp.IconChar.None
@@ -462,7 +447,6 @@ Partial Class menu_form
         Me.add_inventory.Location = New System.Drawing.Point(0, 55)
         Me.add_inventory.Name = "add_inventory"
         Me.add_inventory.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.add_inventory.Rotation = 0R
         Me.add_inventory.Size = New System.Drawing.Size(263, 40)
         Me.add_inventory.TabIndex = 1
         Me.add_inventory.Text = "Add New Inventory"
@@ -475,7 +459,6 @@ Partial Class menu_form
         Me.Inventory_menu.Dock = System.Windows.Forms.DockStyle.Top
         Me.Inventory_menu.FlatAppearance.BorderSize = 0
         Me.Inventory_menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Inventory_menu.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.Inventory_menu.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Inventory_menu.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.Inventory_menu.IconChar = FontAwesome.Sharp.IconChar.AngleRight
@@ -485,7 +468,6 @@ Partial Class menu_form
         Me.Inventory_menu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Inventory_menu.Location = New System.Drawing.Point(0, 0)
         Me.Inventory_menu.Name = "Inventory_menu"
-        Me.Inventory_menu.Rotation = 0R
         Me.Inventory_menu.Size = New System.Drawing.Size(263, 55)
         Me.Inventory_menu.TabIndex = 0
         Me.Inventory_menu.Text = "Inventory"
@@ -522,7 +504,6 @@ Partial Class menu_form
         Me.minimise_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.minimise_button.FlatAppearance.BorderSize = 0
         Me.minimise_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.minimise_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.minimise_button.ForeColor = System.Drawing.SystemColors.ControlText
         Me.minimise_button.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize
         Me.minimise_button.IconColor = System.Drawing.Color.WhiteSmoke
@@ -531,7 +512,6 @@ Partial Class menu_form
         Me.minimise_button.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.minimise_button.Location = New System.Drawing.Point(1610, 9)
         Me.minimise_button.Name = "minimise_button"
-        Me.minimise_button.Rotation = 0R
         Me.minimise_button.Size = New System.Drawing.Size(30, 30)
         Me.minimise_button.TabIndex = 12
         Me.minimise_button.UseVisualStyleBackColor = True
@@ -541,7 +521,6 @@ Partial Class menu_form
         Me.maximise_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.maximise_button.FlatAppearance.BorderSize = 0
         Me.maximise_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.maximise_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.maximise_button.ForeColor = System.Drawing.SystemColors.ControlText
         Me.maximise_button.IconChar = FontAwesome.Sharp.IconChar.WindowRestore
         Me.maximise_button.IconColor = System.Drawing.Color.WhiteSmoke
@@ -549,7 +528,6 @@ Partial Class menu_form
         Me.maximise_button.IconSize = 35
         Me.maximise_button.Location = New System.Drawing.Point(1646, 9)
         Me.maximise_button.Name = "maximise_button"
-        Me.maximise_button.Rotation = 0R
         Me.maximise_button.Size = New System.Drawing.Size(30, 30)
         Me.maximise_button.TabIndex = 12
         Me.maximise_button.UseVisualStyleBackColor = True
@@ -559,7 +537,6 @@ Partial Class menu_form
         Me.close_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.close_button.FlatAppearance.BorderSize = 0
         Me.close_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.close_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.close_button.ForeColor = System.Drawing.SystemColors.ControlText
         Me.close_button.IconChar = FontAwesome.Sharp.IconChar.WindowClose
         Me.close_button.IconColor = System.Drawing.Color.Snow
@@ -567,7 +544,6 @@ Partial Class menu_form
         Me.close_button.IconSize = 35
         Me.close_button.Location = New System.Drawing.Point(1682, 9)
         Me.close_button.Name = "close_button"
-        Me.close_button.Rotation = 0R
         Me.close_button.Size = New System.Drawing.Size(30, 30)
         Me.close_button.TabIndex = 12
         Me.close_button.UseVisualStyleBackColor = True
@@ -637,7 +613,6 @@ Partial Class menu_form
         Me.Category_button.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Category_button.FlatAppearance.BorderSize = 0
         Me.Category_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Category_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.Category_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Category_button.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Category_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -647,7 +622,6 @@ Partial Class menu_form
         Me.Category_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Category_button.Location = New System.Drawing.Point(0, 0)
         Me.Category_button.Name = "Category_button"
-        Me.Category_button.Rotation = 0R
         Me.Category_button.Size = New System.Drawing.Size(284, 55)
         Me.Category_button.TabIndex = 2
         Me.Category_button.Text = "Categories"
@@ -673,7 +647,6 @@ Partial Class menu_form
         Me.restore_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.restore_button.FlatAppearance.BorderSize = 0
         Me.restore_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.restore_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.restore_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.restore_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.restore_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -684,7 +657,6 @@ Partial Class menu_form
         Me.restore_button.Location = New System.Drawing.Point(0, 95)
         Me.restore_button.Name = "restore_button"
         Me.restore_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.restore_button.Rotation = 0R
         Me.restore_button.Size = New System.Drawing.Size(284, 40)
         Me.restore_button.TabIndex = 3
         Me.restore_button.Text = "Restore Data"
@@ -698,7 +670,6 @@ Partial Class menu_form
         Me.Backup_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.Backup_button.FlatAppearance.BorderSize = 0
         Me.Backup_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Backup_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.Backup_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Backup_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.Backup_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -709,7 +680,6 @@ Partial Class menu_form
         Me.Backup_button.Location = New System.Drawing.Point(0, 55)
         Me.Backup_button.Name = "Backup_button"
         Me.Backup_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.Backup_button.Rotation = 0R
         Me.Backup_button.Size = New System.Drawing.Size(284, 40)
         Me.Backup_button.TabIndex = 2
         Me.Backup_button.Text = "Backup Data"
@@ -722,7 +692,6 @@ Partial Class menu_form
         Me.database_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.database_button.FlatAppearance.BorderSize = 0
         Me.database_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.database_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.database_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.database_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.database_button.IconChar = FontAwesome.Sharp.IconChar.AngleRight
@@ -732,7 +701,6 @@ Partial Class menu_form
         Me.database_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.database_button.Location = New System.Drawing.Point(0, 0)
         Me.database_button.Name = "database_button"
-        Me.database_button.Rotation = 0R
         Me.database_button.Size = New System.Drawing.Size(284, 55)
         Me.database_button.TabIndex = 1
         Me.database_button.Text = "Database Options"
@@ -754,7 +722,6 @@ Partial Class menu_form
         Me.btnPermissions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.btnPermissions.FlatAppearance.BorderSize = 0
         Me.btnPermissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPermissions.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.btnPermissions.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPermissions.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnPermissions.IconChar = FontAwesome.Sharp.IconChar.Cog
@@ -764,7 +731,6 @@ Partial Class menu_form
         Me.btnPermissions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPermissions.Location = New System.Drawing.Point(0, 0)
         Me.btnPermissions.Name = "btnPermissions"
-        Me.btnPermissions.Rotation = 0R
         Me.btnPermissions.Size = New System.Drawing.Size(284, 55)
         Me.btnPermissions.TabIndex = 1
         Me.btnPermissions.Text = "Permissions"
@@ -786,7 +752,6 @@ Partial Class menu_form
         Me.settings_button.Dock = System.Windows.Forms.DockStyle.Fill
         Me.settings_button.FlatAppearance.BorderSize = 0
         Me.settings_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.settings_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.settings_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.settings_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.settings_button.IconChar = FontAwesome.Sharp.IconChar.Tools
@@ -795,7 +760,6 @@ Partial Class menu_form
         Me.settings_button.IconSize = 30
         Me.settings_button.Location = New System.Drawing.Point(140, 0)
         Me.settings_button.Name = "settings_button"
-        Me.settings_button.Rotation = 0R
         Me.settings_button.Size = New System.Drawing.Size(144, 55)
         Me.settings_button.TabIndex = 2
         Me.settings_button.Text = "Settings"
@@ -807,7 +771,6 @@ Partial Class menu_form
         Me.logout_button.Dock = System.Windows.Forms.DockStyle.Left
         Me.logout_button.FlatAppearance.BorderSize = 0
         Me.logout_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.logout_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.logout_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.logout_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.logout_button.IconChar = FontAwesome.Sharp.IconChar.PowerOff
@@ -817,7 +780,6 @@ Partial Class menu_form
         Me.logout_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.logout_button.Location = New System.Drawing.Point(0, 0)
         Me.logout_button.Name = "logout_button"
-        Me.logout_button.Rotation = 0R
         Me.logout_button.Size = New System.Drawing.Size(140, 55)
         Me.logout_button.TabIndex = 1
         Me.logout_button.Text = "Logout"
@@ -845,7 +807,6 @@ Partial Class menu_form
         Me.stock_reports_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.stock_reports_button.FlatAppearance.BorderSize = 0
         Me.stock_reports_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.stock_reports_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.stock_reports_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.stock_reports_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.stock_reports_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -856,7 +817,6 @@ Partial Class menu_form
         Me.stock_reports_button.Location = New System.Drawing.Point(0, 135)
         Me.stock_reports_button.Name = "stock_reports_button"
         Me.stock_reports_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.stock_reports_button.Rotation = 0R
         Me.stock_reports_button.Size = New System.Drawing.Size(263, 40)
         Me.stock_reports_button.TabIndex = 3
         Me.stock_reports_button.Text = "Stock Reports"
@@ -870,7 +830,6 @@ Partial Class menu_form
         Me.scheduled_report_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.scheduled_report_button.FlatAppearance.BorderSize = 0
         Me.scheduled_report_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.scheduled_report_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.scheduled_report_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.scheduled_report_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.scheduled_report_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -881,7 +840,6 @@ Partial Class menu_form
         Me.scheduled_report_button.Location = New System.Drawing.Point(0, 95)
         Me.scheduled_report_button.Name = "scheduled_report_button"
         Me.scheduled_report_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.scheduled_report_button.Rotation = 0R
         Me.scheduled_report_button.Size = New System.Drawing.Size(263, 40)
         Me.scheduled_report_button.TabIndex = 2
         Me.scheduled_report_button.Text = "Scheduled Sales Reports"
@@ -895,7 +853,6 @@ Partial Class menu_form
         Me.DayEnd_reports_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.DayEnd_reports_button.FlatAppearance.BorderSize = 0
         Me.DayEnd_reports_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DayEnd_reports_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.DayEnd_reports_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DayEnd_reports_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.DayEnd_reports_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -906,7 +863,6 @@ Partial Class menu_form
         Me.DayEnd_reports_button.Location = New System.Drawing.Point(0, 55)
         Me.DayEnd_reports_button.Name = "DayEnd_reports_button"
         Me.DayEnd_reports_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.DayEnd_reports_button.Rotation = 0R
         Me.DayEnd_reports_button.Size = New System.Drawing.Size(263, 40)
         Me.DayEnd_reports_button.TabIndex = 1
         Me.DayEnd_reports_button.Text = "Day End Sales"
@@ -919,7 +875,6 @@ Partial Class menu_form
         Me.reports_menu.Dock = System.Windows.Forms.DockStyle.Top
         Me.reports_menu.FlatAppearance.BorderSize = 0
         Me.reports_menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.reports_menu.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.reports_menu.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.reports_menu.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.reports_menu.IconChar = FontAwesome.Sharp.IconChar.AngleRight
@@ -929,7 +884,6 @@ Partial Class menu_form
         Me.reports_menu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.reports_menu.Location = New System.Drawing.Point(0, 0)
         Me.reports_menu.Name = "reports_menu"
-        Me.reports_menu.Rotation = 0R
         Me.reports_menu.Size = New System.Drawing.Size(263, 55)
         Me.reports_menu.TabIndex = 0
         Me.reports_menu.Text = "Reports"
@@ -959,7 +913,6 @@ Partial Class menu_form
         Me.IconButton1.Dock = System.Windows.Forms.DockStyle.Top
         Me.IconButton1.FlatAppearance.BorderSize = 0
         Me.IconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.IconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.IconButton1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IconButton1.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.None
@@ -970,7 +923,6 @@ Partial Class menu_form
         Me.IconButton1.Location = New System.Drawing.Point(0, 175)
         Me.IconButton1.Name = "IconButton1"
         Me.IconButton1.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.IconButton1.Rotation = 0R
         Me.IconButton1.Size = New System.Drawing.Size(263, 40)
         Me.IconButton1.TabIndex = 4
         Me.IconButton1.Text = "Reprint Last Trans"
@@ -984,7 +936,6 @@ Partial Class menu_form
         Me.IconButton2.Dock = System.Windows.Forms.DockStyle.Top
         Me.IconButton2.FlatAppearance.BorderSize = 0
         Me.IconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.IconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.IconButton2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IconButton2.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.IconButton2.IconChar = FontAwesome.Sharp.IconChar.None
@@ -995,7 +946,6 @@ Partial Class menu_form
         Me.IconButton2.Location = New System.Drawing.Point(0, 135)
         Me.IconButton2.Name = "IconButton2"
         Me.IconButton2.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.IconButton2.Rotation = 0R
         Me.IconButton2.Size = New System.Drawing.Size(263, 40)
         Me.IconButton2.TabIndex = 3
         Me.IconButton2.Text = "Transaction Log"
@@ -1009,7 +959,6 @@ Partial Class menu_form
         Me.returns_button.Dock = System.Windows.Forms.DockStyle.Top
         Me.returns_button.FlatAppearance.BorderSize = 0
         Me.returns_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.returns_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.returns_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.returns_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.returns_button.IconChar = FontAwesome.Sharp.IconChar.None
@@ -1020,7 +969,6 @@ Partial Class menu_form
         Me.returns_button.Location = New System.Drawing.Point(0, 95)
         Me.returns_button.Name = "returns_button"
         Me.returns_button.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.returns_button.Rotation = 0R
         Me.returns_button.Size = New System.Drawing.Size(263, 40)
         Me.returns_button.TabIndex = 2
         Me.returns_button.Text = "Sales Returns"
@@ -1034,7 +982,6 @@ Partial Class menu_form
         Me.dayEnd_sales.Dock = System.Windows.Forms.DockStyle.Top
         Me.dayEnd_sales.FlatAppearance.BorderSize = 0
         Me.dayEnd_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.dayEnd_sales.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.dayEnd_sales.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dayEnd_sales.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.dayEnd_sales.IconChar = FontAwesome.Sharp.IconChar.None
@@ -1045,7 +992,6 @@ Partial Class menu_form
         Me.dayEnd_sales.Location = New System.Drawing.Point(0, 55)
         Me.dayEnd_sales.Name = "dayEnd_sales"
         Me.dayEnd_sales.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.dayEnd_sales.Rotation = 0R
         Me.dayEnd_sales.Size = New System.Drawing.Size(263, 40)
         Me.dayEnd_sales.TabIndex = 1
         Me.dayEnd_sales.Text = "Day End Sales"
@@ -1058,7 +1004,6 @@ Partial Class menu_form
         Me.sales_menu.Dock = System.Windows.Forms.DockStyle.Top
         Me.sales_menu.FlatAppearance.BorderSize = 0
         Me.sales_menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.sales_menu.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.sales_menu.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.sales_menu.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.sales_menu.IconChar = FontAwesome.Sharp.IconChar.AngleRight
@@ -1068,7 +1013,6 @@ Partial Class menu_form
         Me.sales_menu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.sales_menu.Location = New System.Drawing.Point(0, 0)
         Me.sales_menu.Name = "sales_menu"
-        Me.sales_menu.Rotation = 0R
         Me.sales_menu.Size = New System.Drawing.Size(263, 55)
         Me.sales_menu.TabIndex = 0
         Me.sales_menu.Text = "Sales"
@@ -1090,7 +1034,6 @@ Partial Class menu_form
         Me.home_button.Dock = System.Windows.Forms.DockStyle.Fill
         Me.home_button.FlatAppearance.BorderSize = 0
         Me.home_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.home_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.home_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.home_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.home_button.IconChar = FontAwesome.Sharp.IconChar.Home
@@ -1100,7 +1043,6 @@ Partial Class menu_form
         Me.home_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.home_button.Location = New System.Drawing.Point(0, 0)
         Me.home_button.Name = "home_button"
-        Me.home_button.Rotation = 0R
         Me.home_button.Size = New System.Drawing.Size(284, 55)
         Me.home_button.TabIndex = 3
         Me.home_button.Text = "Home"
