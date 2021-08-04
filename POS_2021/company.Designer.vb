@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class company
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class company
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -41,10 +41,6 @@ Partial Class company
         Me.Label1 = New System.Windows.Forms.Label()
         Me.name_textbox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtvat_no = New System.Windows.Forms.TextBox()
-        Me.txtvat = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -78,6 +74,7 @@ Partial Class company
         Me.minimise_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.minimise_button.FlatAppearance.BorderSize = 0
         Me.minimise_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.minimise_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.minimise_button.ForeColor = System.Drawing.SystemColors.ControlText
         Me.minimise_button.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize
         Me.minimise_button.IconColor = System.Drawing.Color.WhiteSmoke
@@ -86,6 +83,7 @@ Partial Class company
         Me.minimise_button.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.minimise_button.Location = New System.Drawing.Point(796, 9)
         Me.minimise_button.Name = "minimise_button"
+        Me.minimise_button.Rotation = 0R
         Me.minimise_button.Size = New System.Drawing.Size(30, 30)
         Me.minimise_button.TabIndex = 12
         Me.minimise_button.UseVisualStyleBackColor = True
@@ -95,6 +93,7 @@ Partial Class company
         Me.close_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.close_button.FlatAppearance.BorderSize = 0
         Me.close_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.close_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.close_button.ForeColor = System.Drawing.SystemColors.ControlText
         Me.close_button.IconChar = FontAwesome.Sharp.IconChar.WindowClose
         Me.close_button.IconColor = System.Drawing.Color.Snow
@@ -102,6 +101,7 @@ Partial Class company
         Me.close_button.IconSize = 35
         Me.close_button.Location = New System.Drawing.Point(840, 9)
         Me.close_button.Name = "close_button"
+        Me.close_button.Rotation = 0R
         Me.close_button.Size = New System.Drawing.Size(30, 30)
         Me.close_button.TabIndex = 12
         Me.close_button.UseVisualStyleBackColor = True
@@ -119,10 +119,6 @@ Partial Class company
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.txtvat)
-        Me.Panel2.Controls.Add(Me.txtvat_no)
-        Me.Panel2.Controls.Add(Me.Label8)
-        Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.clear_button)
         Me.Panel2.Controls.Add(Me.edit_details)
         Me.Panel2.Controls.Add(Me.save_item)
@@ -139,7 +135,7 @@ Partial Class company
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 55)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(881, 663)
+        Me.Panel2.Size = New System.Drawing.Size(881, 486)
         Me.Panel2.TabIndex = 3
         '
         'clear_button
@@ -147,6 +143,7 @@ Partial Class company
         Me.clear_button.BackColor = System.Drawing.Color.SteelBlue
         Me.clear_button.FlatAppearance.BorderSize = 0
         Me.clear_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.clear_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.clear_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clear_button.ForeColor = System.Drawing.Color.Gainsboro
         Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
@@ -154,8 +151,9 @@ Partial Class company
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.clear_button.IconSize = 30
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(655, 593)
+        Me.clear_button.Location = New System.Drawing.Point(655, 418)
         Me.clear_button.Name = "clear_button"
+        Me.clear_button.Rotation = 0R
         Me.clear_button.Size = New System.Drawing.Size(174, 45)
         Me.clear_button.TabIndex = 7
         Me.clear_button.Text = "CLEAR TEXT"
@@ -167,6 +165,7 @@ Partial Class company
         Me.edit_details.BackColor = System.Drawing.Color.Olive
         Me.edit_details.FlatAppearance.BorderSize = 0
         Me.edit_details.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.edit_details.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.edit_details.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.edit_details.ForeColor = System.Drawing.Color.Gainsboro
         Me.edit_details.IconChar = FontAwesome.Sharp.IconChar.Edit
@@ -174,8 +173,9 @@ Partial Class company
         Me.edit_details.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.edit_details.IconSize = 30
         Me.edit_details.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.edit_details.Location = New System.Drawing.Point(446, 593)
+        Me.edit_details.Location = New System.Drawing.Point(446, 418)
         Me.edit_details.Name = "edit_details"
+        Me.edit_details.Rotation = 0R
         Me.edit_details.Size = New System.Drawing.Size(174, 45)
         Me.edit_details.TabIndex = 6
         Me.edit_details.Text = "EDIT DETAILS"
@@ -187,6 +187,7 @@ Partial Class company
         Me.save_item.BackColor = System.Drawing.Color.SeaGreen
         Me.save_item.FlatAppearance.BorderSize = 0
         Me.save_item.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.save_item.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.save_item.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.save_item.ForeColor = System.Drawing.Color.Gainsboro
         Me.save_item.IconChar = FontAwesome.Sharp.IconChar.Plus
@@ -194,8 +195,9 @@ Partial Class company
         Me.save_item.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.save_item.IconSize = 30
         Me.save_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_item.Location = New System.Drawing.Point(249, 593)
+        Me.save_item.Location = New System.Drawing.Point(249, 418)
         Me.save_item.Name = "save_item"
+        Me.save_item.Rotation = 0R
         Me.save_item.Size = New System.Drawing.Size(174, 45)
         Me.save_item.TabIndex = 5
         Me.save_item.Text = "SAVE INFO"
@@ -306,51 +308,11 @@ Partial Class company
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "COMPANY NAME:"
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Label7.Location = New System.Drawing.Point(113, 429)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(129, 21)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "VAT NUMBER:"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Label8.Location = New System.Drawing.Point(181, 503)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(49, 21)
-        Me.Label8.TabIndex = 16
-        Me.Label8.Text = "VAT:"
-        '
-        'txtvat_no
-        '
-        Me.txtvat_no.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtvat_no.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.txtvat_no.Location = New System.Drawing.Point(249, 423)
-        Me.txtvat_no.Name = "txtvat_no"
-        Me.txtvat_no.Size = New System.Drawing.Size(580, 35)
-        Me.txtvat_no.TabIndex = 17
-        '
-        'txtvat
-        '
-        Me.txtvat.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtvat.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.txtvat.Location = New System.Drawing.Point(249, 499)
-        Me.txtvat.Name = "txtvat"
-        Me.txtvat.Size = New System.Drawing.Size(580, 35)
-        Me.txtvat.TabIndex = 18
-        '
         'company
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(881, 718)
+        Me.ClientSize = New System.Drawing.Size(881, 541)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -385,8 +347,4 @@ Partial Class company
     Friend WithEvents clear_button As FontAwesome.Sharp.IconButton
     Friend WithEvents edit_details As FontAwesome.Sharp.IconButton
     Friend WithEvents save_item As FontAwesome.Sharp.IconButton
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents txtvat As TextBox
-    Friend WithEvents txtvat_no As TextBox
 End Class

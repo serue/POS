@@ -37,6 +37,8 @@ Partial Class settings
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.vatNotes_textbox = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.vat_number = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.vat_textbox = New System.Windows.Forms.TextBox()
@@ -55,6 +57,7 @@ Partial Class settings
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.IconButton1 = New FontAwesome.Sharp.IconButton()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.FOREX_SYMBOL = New System.Windows.Forms.TextBox()
@@ -96,7 +99,7 @@ Partial Class settings
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(678, 485)
+        Me.Panel2.Size = New System.Drawing.Size(678, 580)
         Me.Panel2.TabIndex = 1
         '
         'Panel3
@@ -105,7 +108,7 @@ Partial Class settings
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(678, 483)
+        Me.Panel3.Size = New System.Drawing.Size(678, 578)
         Me.Panel3.TabIndex = 1
         '
         'MetroTabControl1
@@ -120,8 +123,8 @@ Partial Class settings
         Me.MetroTabControl1.ItemSize = New System.Drawing.Size(150, 40)
         Me.MetroTabControl1.Location = New System.Drawing.Point(0, 0)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
-        Me.MetroTabControl1.Size = New System.Drawing.Size(678, 483)
+        Me.MetroTabControl1.SelectedIndex = 2
+        Me.MetroTabControl1.Size = New System.Drawing.Size(678, 578)
         Me.MetroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.MetroTabControl1.TabIndex = 0
         Me.MetroTabControl1.UseSelectable = True
@@ -131,7 +134,7 @@ Partial Class settings
         Me.TabPage1.Controls.Add(Me.Panel5)
         Me.TabPage1.Location = New System.Drawing.Point(4, 44)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(670, 435)
+        Me.TabPage1.Size = New System.Drawing.Size(670, 530)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "General Settings"
         '
@@ -145,7 +148,7 @@ Partial Class settings
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(670, 435)
+        Me.Panel5.Size = New System.Drawing.Size(670, 530)
         Me.Panel5.TabIndex = 0
         '
         'clear_button
@@ -161,7 +164,7 @@ Partial Class settings
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.clear_button.IconSize = 30
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(454, 354)
+        Me.clear_button.Location = New System.Drawing.Point(454, 431)
         Me.clear_button.Name = "clear_button"
         Me.clear_button.Rotation = 0R
         Me.clear_button.Size = New System.Drawing.Size(167, 33)
@@ -183,7 +186,7 @@ Partial Class settings
         Me.edit_details.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.edit_details.IconSize = 30
         Me.edit_details.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.edit_details.Location = New System.Drawing.Point(281, 354)
+        Me.edit_details.Location = New System.Drawing.Point(281, 431)
         Me.edit_details.Name = "edit_details"
         Me.edit_details.Rotation = 0R
         Me.edit_details.Size = New System.Drawing.Size(167, 33)
@@ -205,7 +208,7 @@ Partial Class settings
         Me.save_item.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.save_item.IconSize = 30
         Me.save_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_item.Location = New System.Drawing.Point(108, 354)
+        Me.save_item.Location = New System.Drawing.Point(108, 431)
         Me.save_item.Name = "save_item"
         Me.save_item.Rotation = 0R
         Me.save_item.Size = New System.Drawing.Size(167, 33)
@@ -222,7 +225,7 @@ Partial Class settings
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Maroon
-        Me.GroupBox2.Location = New System.Drawing.Point(8, 217)
+        Me.GroupBox2.Location = New System.Drawing.Point(8, 294)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(631, 120)
         Me.GroupBox2.TabIndex = 28
@@ -269,6 +272,8 @@ Partial Class settings
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.vatNotes_textbox)
+        Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.vat_number)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.vat_textbox)
@@ -281,10 +286,28 @@ Partial Class settings
         Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
         Me.GroupBox1.Location = New System.Drawing.Point(8, 14)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(631, 196)
+        Me.GroupBox1.Size = New System.Drawing.Size(631, 255)
         Me.GroupBox1.TabIndex = 27
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Currency and Tax"
+        '
+        'vatNotes_textbox
+        '
+        Me.vatNotes_textbox.Location = New System.Drawing.Point(244, 182)
+        Me.vatNotes_textbox.Multiline = True
+        Me.vatNotes_textbox.Name = "vatNotes_textbox"
+        Me.vatNotes_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.vatNotes_textbox.Size = New System.Drawing.Size(295, 57)
+        Me.vatNotes_textbox.TabIndex = 8
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(96, 195)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(109, 21)
+        Me.Label13.TabIndex = 7
+        Me.Label13.Text = "VAT NOTES :"
         '
         'vat_number
         '
@@ -308,6 +331,7 @@ Partial Class settings
         Me.vat_textbox.Name = "vat_textbox"
         Me.vat_textbox.Size = New System.Drawing.Size(185, 28)
         Me.vat_textbox.TabIndex = 6
+        Me.vat_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'currency_symbol
         '
@@ -355,7 +379,7 @@ Partial Class settings
         Me.TabPage2.Controls.Add(Me.GroupBox3)
         Me.TabPage2.Location = New System.Drawing.Point(4, 44)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(670, 435)
+        Me.TabPage2.Size = New System.Drawing.Size(670, 530)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Printer Settings"
         '
@@ -468,19 +492,42 @@ Partial Class settings
         Me.TabPage3.Controls.Add(Me.Panel4)
         Me.TabPage3.Location = New System.Drawing.Point(4, 44)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(670, 435)
+        Me.TabPage3.Size = New System.Drawing.Size(670, 530)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Forex Rate Settings"
         '
         'Panel4
         '
+        Me.Panel4.Controls.Add(Me.IconButton1)
         Me.Panel4.Controls.Add(Me.GroupBox5)
         Me.Panel4.Controls.Add(Me.GroupBox4)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(670, 435)
+        Me.Panel4.Size = New System.Drawing.Size(670, 530)
         Me.Panel4.TabIndex = 0
+        '
+        'IconButton1
+        '
+        Me.IconButton1.BackColor = System.Drawing.Color.SeaGreen
+        Me.IconButton1.FlatAppearance.BorderSize = 0
+        Me.IconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.IconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.IconButton1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.IconButton1.ForeColor = System.Drawing.Color.Gainsboro
+        Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowRight
+        Me.IconButton1.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.IconButton1.IconSize = 30
+        Me.IconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.IconButton1.Location = New System.Drawing.Point(317, 457)
+        Me.IconButton1.Name = "IconButton1"
+        Me.IconButton1.Rotation = 0R
+        Me.IconButton1.Size = New System.Drawing.Size(227, 33)
+        Me.IconButton1.TabIndex = 33
+        Me.IconButton1.Text = "Proceed To Menu"
+        Me.IconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.IconButton1.UseVisualStyleBackColor = False
         '
         'GroupBox5
         '
@@ -625,10 +672,12 @@ Partial Class settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(678, 485)
+        Me.ClientSize = New System.Drawing.Size(678, 580)
         Me.Controls.Add(Me.Panel2)
+        Me.MaximizeBox = False
         Me.Name = "settings"
         Me.Text = "settings"
+        Me.TopMost = True
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.MetroTabControl1.ResumeLayout(False)
@@ -693,4 +742,7 @@ Partial Class settings
     Friend WithEvents UPDATE_FOREX As FontAwesome.Sharp.IconButton
     Friend WithEvents FOREX_SYMBOL As TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents vatNotes_textbox As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
 End Class

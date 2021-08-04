@@ -6,13 +6,24 @@ Public Class company
     Public Const HT_CAPTION As Integer = &H2
     Dim connection As SqlConnection
     Dim myPermissions As New ConnectionAndPermissions
-    Dim COMPANY_ID As Integer
+    Dim COMPANY_ID As Integer = 0
+    Private user As String
+
+    Public Property ActiveUser() As String
+        Get
+            Return user
+        End Get
+        Set(ByVal value As String)
+            user = value
+        End Set
+    End Property
+
     Private Sub company_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             connection = myPermissions.getConnection()
             connection.Open()
             Using command As New SqlCommand("SELECT * FROM COMPANY ", connection)
-                Dim adapter As New SqlDataAdapter
+                Dim adapter As New SqlDataAdapter(command)
                 Dim table As New DataTable
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
@@ -25,8 +36,7 @@ Public Class company
                     address_textbox.Text = table(0)(3).ToString
                     description_textbox.Text = table(0)(4).ToString
                     contact_textbox.Text = table(0)(5).ToString
-                    txtvat_no.Text = table(0)(5).ToString
-                    txtvat.Text = table(0)(7).ToString
+
                 End If
             End Using
             connection.Close()
@@ -64,7 +74,7 @@ Public Class company
         End If
     End Sub
 
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+    Private Sub Label8_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -72,19 +82,27 @@ Public Class company
         Try
             connection = myPermissions.getConnection()
             connection.Open()
-            Using command As New SqlCommand("INSERT INTO COMPANY VALUES(@NAME,@TRADENAME,@ADDRESS,@DESCRIPTION,@CONTACTS,@VAT_NO,@VAT)", connection)
+            Using command As New SqlCommand("INSERT INTO COMPANY(NAME,TRADENAME,ADDRESS,DESCRIPTION,CONTACT) VALUES(@NAME,@TRADENAME,@ADDRESS,@DESCRIPTION,@CONTACTS)", connection)
                 With command.Parameters
                     .Add("@NAME", SqlDbType.VarChar).Value = name_textbox.Text
                     .Add("@TRADENAME", SqlDbType.VarChar).Value = TRADE_TEXTBOX.Text
                     .Add("@ADDRESS", SqlDbType.VarChar).Value = address_textbox.Text
                     .Add("@DESCRIPTION", SqlDbType.VarChar).Value = description_textbox.Text
                     .Add("@CONTACTS", SqlDbType.VarChar).Value = contact_textbox.Text
-                    .Add("@VAT_NO", SqlDbType.VarChar).Value = txtvat_no.Text
-                    .Add("@VAT", SqlDbType.Decimal).Value = txtvat.Text
-
                 End With
                 command.ExecuteNonQuery()
-                MessageBox.Show("The Company was registerd successfully!!", "Company Registration", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.save_item.Enabled = False
+                If MessageBox.Show("The Company was registerd successfully, Do you want to proceed with other settings", "Company Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    settings.ActiveUser = user
+                    settings.Show()
+                    Me.Close()
+                Else
+
+                    menu_form.ActiveUser = user
+                    menu_form.Show()
+
+                End If
+
             End Using
             connection.Close()
 
@@ -93,21 +111,30 @@ Public Class company
             MessageBox.Show(ex.Message, "An Error occured while savingCompany Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub selectComapny()
+        Using cmd As New SqlCommand("SELECT ID FROM COMPANY", connection)
+            Dim table As New DataTable
+            Dim adapter As New SqlDataAdapter(cmd)
+            adapter.Fill(table)
+            If table.Rows.Count > 0 Then
+                COMPANY_ID = table(0)(0)
+
+            End If
+        End Using
+    End Sub
 
     Private Sub edit_details_Click(sender As Object, e As EventArgs) Handles edit_details.Click
         Try
-            If Not IsDBNull(COMPANY_ID) Then
+            If COMPANY_ID <> 0 Then
                 connection = myPermissions.getConnection()
                 connection.Open()
-                Using command As New SqlCommand("INSERT INTO COMPANY VALUES(@NAME,@TRADENAME,@ADDRESS,@DESCRIPTION,@CONTACTS,@VAT_NO,@VAT) WHERE ID=@ID", connection)
+                Using command As New SqlCommand("UPDATE COMPANY SET NAME=@NAME,TRADENAME=@TRADENAME,ADDRESS=@ADDRESS,DESCRIPTION=@DESCRIPTION,CONTACT=@CONTACTS WHERE ID=@ID", connection)
                     With command.Parameters
                         .Add("@NAME", SqlDbType.VarChar).Value = name_textbox.Text
                         .Add("@TRADENAME", SqlDbType.VarChar).Value = TRADE_TEXTBOX.Text
                         .Add("@ADDRESS", SqlDbType.VarChar).Value = address_textbox.Text
                         .Add("@DESCRIPTION", SqlDbType.VarChar).Value = description_textbox.Text
                         .Add("@CONTACTS", SqlDbType.VarChar).Value = contact_textbox.Text
-                        .Add("@VAT_NO", SqlDbType.VarChar).Value = txtvat_no.Text
-                        .Add("@VAT", SqlDbType.Decimal).Value = txtvat.Text
 
                     End With
                     command.ExecuteNonQuery()

@@ -50,10 +50,24 @@ Public Class ConnectionAndPermissions
                 adapter.Fill(table)
 
                 If table.Rows.Count > 0 Then
-                    Full_name = table(0)(0)
-                    menu_form.ActiveUser = Full_name
-                    menu_form.Show()
-                    sign_in.Close()
+                    Using cmd As New SqlCommand("SELECT * FROM COMPANY", conn)
+                        Dim COMPANYTABLE As New DataTable
+                        Dim ADAPTER1 As New SqlDataAdapter(cmd)
+                        ADAPTER1.Fill(COMPANYTABLE)
+                        If COMPANYTABLE.Rows.Count > 0 Then
+                            Full_name = table(0)(0)
+                            menu_form.ActiveUser = Full_name
+                            menu_form.Show()
+                            sign_in.Close()
+                        Else
+                            MessageBox.Show("Some critical settings has not been done, user is taken to set it up now", "Setting Pop up", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            Full_name = table(0)(0)
+                            company.ActiveUser = Full_name
+                            company.Show()
+                            sign_in.Close()
+                        End If
+                    End Using
+
                 Else
                     MessageBox.Show("login failed, wrong username or password", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If

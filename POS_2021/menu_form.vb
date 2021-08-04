@@ -261,6 +261,8 @@ Public Class menu_form
 
     Private Sub settings_button_Click(sender As Object, e As EventArgs) Handles settings_button.Click
         Design.activeMainButton(settings_button)
+        settings.ActiveUser = ActiveUser
+        settings.Show()
     End Sub
 
     Private Sub logout_button_Click(sender As Object, e As EventArgs) Handles logout_button.Click
