@@ -7,6 +7,13 @@ Public Class settings
     Dim company As String = ""
     Private user As String
 
+    'data variables
+
+    Dim currency_id As Integer = 0
+    Dim till_id As Integer = 0
+    Dim tax_id As Integer = 0
+    Dim forex_id As Integer = 0
+
     Public Property ActiveUser() As String
         Get
             Return user
@@ -35,7 +42,8 @@ Public Class settings
             End If
             connection.Close()
         Catch ex As Exception
-
+            connection.Close()
+            MessageBox.Show(ex.Message, "An Error Occured when loading settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -141,7 +149,8 @@ Public Class settings
 
             connection.Close()
         Catch ex As Exception
-
+            connection.Close()
+            MessageBox.Show(ex.Message, "An Eroor occured while Setting up the System", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -166,15 +175,24 @@ Public Class settings
         Try
             connection = myPermissions.getConnection
             connection.Open()
-            Using command As New SqlCommand("INSERT INTO CURRENCIES(CURRENCY,SYMBOL,RATE) VALUES(@CURRENCY,@SYMBOL,@RATE)", connection)
-                With command.Parameters
-                    .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
-                    .Add("@SYMBOL", SqlDbType.VarChar).Value = FOREX_SYMBOL.Text
-                    .Add("@RATE", SqlDbType.Decimal).Value = rate_textbox.Text
-                End With
-                command.ExecuteNonQuery()
+            Using cmd As New SqlCommand("SELECT * FROM CURENCIES", connection)
+                Dim table As New DataTable
+                Dim adapter As New SqlDataAdapter(cmd)
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    MessageBox.Show("The forex was already saved Please you can only edit it", "Seting foreign currency for the system", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    Using command As New SqlCommand("INSERT INTO CURRENCIES(CURRENCY,SYMBOL,RATE) VALUES(@CURRENCY,@SYMBOL,@RATE)", connection)
+                        With command.Parameters
+                            .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
+                            .Add("@SYMBOL", SqlDbType.VarChar).Value = FOREX_SYMBOL.Text
+                            .Add("@RATE", SqlDbType.Decimal).Value = rate_textbox.Text
+                        End With
+                        command.ExecuteNonQuery()
+                    End Using
+                End If
             End Using
-            MessageBox.Show("CURRENCY ADDED SUCCESSFULLY!!", "ADDING CURRENCY", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("CURRENCY ADDED SUCCESSFULLY!!", "ADDING CURRENCY SETTING", MessageBoxButtons.OK, MessageBoxIcon.Information)
             connection.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "FOLLOWING ERROR ENCOUNTERED DURNG THE ADDITION OF CURRENCY", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -185,62 +203,165 @@ Public Class settings
         Try
             connection = myPermissions.getConnection
             connection.Open()
+
             'load base currency
-            Using command As New SqlCommand("SELECT CURRENCY,SYMBOL FROM BASE_CURRENCY", connection)
+            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL FROM BASE_CURRENCY", connection)
                 Dim TABLE As New DataTable
                 Dim adapters As New SqlDataAdapter(command)
                 adapters.Fill(TABLE)
                 If TABLE.Rows.Count > 0 Then
-                    currency_name.Text = TABLE(0)(0)
-                    currency_symbol.Text = TABLE(0)(1)
+                    currency_id = TABLE(0)(0)
+                    currency_name.Text = TABLE(0)(1)
+                    currency_symbol.Text = TABLE(0)(2)
 
                 End If
             End Using
 
             'loading tills
-            Using command As New SqlCommand("SELECT TILL_NAME,TILL_NUMBER FROM TILLS", connection)
+
+            Using command As New SqlCommand("SELECT ID,TILL_NAME,TILL_NUMBER FROM TILLS", connection)
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
-                    txtTillName.Text = table(0)(0)
-                    txtTillNumber.Text = table(0)(1)
+                    till_id = table(0)(0)
+                    txtTillName.Text = table(0)(1)
+                    txtTillNumber.Text = table(0)(2)
                 End If
 
             End Using
 
             'load tax
-            Using command As New SqlCommand("SELECT VAT_NO,VAT,NOTES FROM TAX", connection)
+
+            Using command As New SqlCommand("SELECT ID,VAT_NO,VAT,NOTES FROM TAX", connection)
                 Dim TABLE As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(TABLE)
                 If TABLE.Rows.Count > 0 Then
-
-                    vat_number.Text = TABLE(0)(0)
-                    vat_textbox.Text = TABLE(0)(1)
-                    vatNotes_textbox.Text = TABLE(0)(2)
+                    tax_id = TABLE(0)(0)
+                    vat_number.Text = TABLE(0)(1)
+                    vat_textbox.Text = TABLE(0)(2)
+                    vatNotes_textbox.Text = TABLE(0)(3)
 
                 End If
             End Using
 
             'load forex
+
             Using command As New SqlCommand("SELECT CURRENCY,SYMBOL,RATE FROM CURRENCIES", connection)
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
-                    currency_combo.Text = table(0)(0)
-                    FOREX_SYMBOL.Text = table(0)(1)
-                    rate_textbox.Text = table(0)(2)
+                    forex_id = table(0)(0)
+                    currency_combo.Text = table(0)(1)
+                    FOREX_SYMBOL.Text = table(0)(2)
+                    rate_textbox.Text = table(0)(3)
 
                 End If
-
-
             End Using
             connection.Close()
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "AN ERROR OCCURED LOADING SETTINGS", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub UPDATE_FOREX_Click(sender As Object, e As EventArgs) Handles UPDATE_FOREX.Click
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            If forex_id > 0 Then
+                Using command As New SqlCommand("UPDATE CURRENCIES SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL,RATE=@RATE WHERE ID=@ID", connection)
+                    With command.Parameters
+                        .Add("@ID", SqlDbType.VarChar).Value = currency_combo.Text
+                        .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
+                        .Add("@SYMBOL", SqlDbType.VarChar).Value = FOREX_SYMBOL.Text
+                        .Add("@RATE", SqlDbType.Decimal).Value = rate_textbox.Text
+                    End With
+                    command.ExecuteNonQuery()
+                End Using
+                MessageBox.Show("Forex was edited successfully", "Edit settings", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("There is no selected item", "Edit settings", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An error  occured while editing the settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub edit_details_Click(sender As Object, e As EventArgs) Handles edit_details.Click
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using CMD As New SqlCommand("SELECT ID FROM BASE_CURRENCY", connection)
+                Dim TABLE As New DataTable
+                Dim ADAPTER As New SqlDataAdapter(CMD)
+                ADAPTER.Fill(TABLE)
+                If TABLE.Rows.Count > 0 Then
+                    MyID = TABLE(0)(0)
+                    Using command As New SqlCommand("UPDATE BASE_CURRENCY SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL WHERE ID=@ID", connection)
+                        With command.Parameters
+                            .Add("@ID", SqlDbType.Int).Value = currency_id
+                            .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_name.Text
+                            .Add("@SYMBOL", SqlDbType.VarChar).Value = currency_symbol.Text
+                        End With
+                        command.ExecuteNonQuery()
+                    End Using
+                    MessageBox.Show("Currency has been set successfully", "Setting Currency", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("CANNOT SAVE UPDATE CURRENCY, IT DOES NOT EXIST", "CURRENCY", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                End If
+            End Using
+
+            Using CMD As New SqlCommand("SELECT ID FROM TILLS", connection)
+                Dim TABLE As New DataTable
+                Dim ADAPTER As New SqlDataAdapter(CMD)
+                ADAPTER.Fill(TABLE)
+                If TABLE.Rows.Count > 0 Then
+                    Using command As New SqlCommand("UPDATE TILLS SET TILL_NAME=@TILL_NAME,TILL_NUMBER=@TILL_NUMBER HWERE ID=@ID", connection)
+                        With command.Parameters
+                            .Add("@ID", SqlDbType.Int).Value = till_id
+                            .Add("@TILL_NAME", SqlDbType.VarChar).Value = txtTillName.Text
+                            .Add("@TILL_NUMBER", SqlDbType.VarChar).Value = txtTillNumber.Text
+                        End With
+                        command.ExecuteNonQuery()
+                    End Using
+                    MessageBox.Show("Till has been updated", "Setting Tills", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("CANNOT SAVE THE TILL, SEEMS IT IS ALREADY SAVED, YOU CAN UPDATE IT ONLY", "TILL", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End Using
+            SelectCompany()
+            If company <> "" Then
+                Using CMD As New SqlCommand("SELECT ID FROM TAX", connection)
+                    Dim TABLE As New DataTable
+                    Dim ADAPTER As New SqlDataAdapter(CMD)
+                    ADAPTER.Fill(TABLE)
+                    If TABLE.Rows.Count > 0 Then
+                        Using command As New SqlCommand("UPDATE TAX SET COMPANY=@COMPANY,VAT_NO=@VAT_NO,VAT=@VAT,NOTES=@NOTES WHERE ID=@ID", connection)
+                            With command.Parameters
+                                .Add("@ID", SqlDbType.Int).Value = tax_id
+                                .Add("@COMPANY", SqlDbType.VarChar).Value = company
+                                .Add("@VAT_NO", SqlDbType.VarChar).Value = vat_number.Text
+                                .Add("@VAT", SqlDbType.VarChar).Value = vat_textbox.Text
+                                .Add("@NOTES", SqlDbType.VarChar).Value = vatNotes_textbox.Text
+                            End With
+                            command.ExecuteNonQuery()
+                        End Using
+                        MessageBox.Show("Till has been set successfully", "Setting Currency", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("The item does not exist", "Updating Error")
+                    End If
+                End Using
+            End If
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An error occured while editing settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class
