@@ -23,12 +23,14 @@ Partial Class sales_form
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.active_account_label = New System.Windows.Forms.Label()
         Me.minimise_button = New FontAwesome.Sharp.IconButton()
@@ -38,6 +40,7 @@ Partial Class sales_form
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.method_label = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel12 = New System.Windows.Forms.Panel()
@@ -48,8 +51,6 @@ Partial Class sales_form
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.qty_paid_textbox = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.quantity_textbox = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.till_label = New System.Windows.Forms.Label()
@@ -63,6 +64,8 @@ Partial Class sales_form
         Me.Label8 = New System.Windows.Forms.Label()
         Me.barcode_textbox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.qty_paid_textbox = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.OtherPaymentButton = New System.Windows.Forms.Button()
@@ -104,6 +107,8 @@ Partial Class sales_form
         Me.btn3 = New System.Windows.Forms.Button()
         Me.btn9 = New System.Windows.Forms.Button()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.AmtPanel = New System.Windows.Forms.Panel()
+        Me.FinaliseTransaction = New System.Windows.Forms.Button()
         Me.lookupPanel = New System.Windows.Forms.Panel()
         Me.lookPan = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -134,6 +139,7 @@ Partial Class sales_form
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
+        CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel9.SuspendLayout()
         Me.Panel11.SuspendLayout()
@@ -143,6 +149,7 @@ Partial Class sales_form
         Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
+        Me.AmtPanel.SuspendLayout()
         Me.lookupPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.OtherPaymentsPanel.SuspendLayout()
@@ -153,6 +160,8 @@ Partial Class sales_form
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(118, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(160, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.IconPictureBox1)
+        Me.Panel1.Controls.Add(Me.Label18)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.active_account_label)
         Me.Panel1.Controls.Add(Me.minimise_button)
@@ -164,6 +173,32 @@ Partial Class sales_form
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1771, 55)
         Me.Panel1.TabIndex = 1
+        '
+        'IconPictureBox1
+        '
+        Me.IconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.IconPictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(117, Byte), Integer))
+        Me.IconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.UserCircle
+        Me.IconPictureBox1.IconColor = System.Drawing.Color.White
+        Me.IconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.IconPictureBox1.IconSize = 44
+        Me.IconPictureBox1.Location = New System.Drawing.Point(922, 3)
+        Me.IconPictureBox1.Name = "IconPictureBox1"
+        Me.IconPictureBox1.Size = New System.Drawing.Size(44, 46)
+        Me.IconPictureBox1.TabIndex = 15
+        Me.IconPictureBox1.TabStop = False
+        '
+        'Label18
+        '
+        Me.Label18.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.PaleTurquoise
+        Me.Label18.Location = New System.Drawing.Point(973, 4)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(101, 21)
+        Me.Label18.TabIndex = 14
+        Me.Label18.Text = "Active User:"
         '
         'PictureBox1
         '
@@ -179,12 +214,12 @@ Partial Class sales_form
         '
         Me.active_account_label.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.active_account_label.AutoSize = True
-        Me.active_account_label.BackColor = System.Drawing.Color.White
-        Me.active_account_label.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.active_account_label.ForeColor = System.Drawing.Color.DarkBlue
-        Me.active_account_label.Location = New System.Drawing.Point(996, 12)
+        Me.active_account_label.BackColor = System.Drawing.Color.FromArgb(CType(CType(118, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(160, Byte), Integer))
+        Me.active_account_label.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.active_account_label.ForeColor = System.Drawing.Color.PowderBlue
+        Me.active_account_label.Location = New System.Drawing.Point(972, 26)
         Me.active_account_label.Name = "active_account_label"
-        Me.active_account_label.Size = New System.Drawing.Size(147, 24)
+        Me.active_account_label.Size = New System.Drawing.Size(123, 21)
         Me.active_account_label.TabIndex = 1
         Me.active_account_label.Text = "Collen Serudzai"
         '
@@ -276,6 +311,7 @@ Partial Class sales_form
         '
         'Panel13
         '
+        Me.Panel13.Controls.Add(Me.Label19)
         Me.Panel13.Controls.Add(Me.method_label)
         Me.Panel13.Controls.Add(Me.Label7)
         Me.Panel13.Dock = System.Windows.Forms.DockStyle.Fill
@@ -284,16 +320,26 @@ Partial Class sales_form
         Me.Panel13.Size = New System.Drawing.Size(1080, 49)
         Me.Panel13.TabIndex = 1
         '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.SaddleBrown
+        Me.Label19.Location = New System.Drawing.Point(74, 18)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(164, 23)
+        Me.Label19.TabIndex = 54
+        Me.Label19.Text = "Payment Method :"
+        '
         'method_label
         '
         Me.method_label.AutoSize = True
         Me.method_label.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.method_label.ForeColor = System.Drawing.Color.Sienna
-        Me.method_label.Location = New System.Drawing.Point(163, 15)
+        Me.method_label.Location = New System.Drawing.Point(244, 15)
         Me.method_label.Name = "method_label"
-        Me.method_label.Size = New System.Drawing.Size(105, 24)
+        Me.method_label.Size = New System.Drawing.Size(0, 24)
         Me.method_label.TabIndex = 0
-        Me.method_label.Text = "ECOCASH"
         '
         'Label7
         '
@@ -323,18 +369,18 @@ Partial Class sales_form
         Me.total_label.AutoSize = True
         Me.total_label.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.total_label.ForeColor = System.Drawing.Color.Indigo
-        Me.total_label.Location = New System.Drawing.Point(88, 15)
+        Me.total_label.Location = New System.Drawing.Point(112, 16)
         Me.total_label.Name = "total_label"
-        Me.total_label.Size = New System.Drawing.Size(148, 29)
+        Me.total_label.Size = New System.Drawing.Size(28, 29)
         Me.total_label.TabIndex = 1
-        Me.total_label.Text = "123456789"
+        Me.total_label.Text = "0"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Indigo
-        Me.Label2.Location = New System.Drawing.Point(6, 18)
+        Me.Label2.Location = New System.Drawing.Point(21, 18)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(79, 24)
         Me.Label2.TabIndex = 0
@@ -355,11 +401,11 @@ Partial Class sales_form
         Me.cost_label.AutoSize = True
         Me.cost_label.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cost_label.ForeColor = System.Drawing.Color.Indigo
-        Me.cost_label.Location = New System.Drawing.Point(83, 15)
+        Me.cost_label.Location = New System.Drawing.Point(90, 16)
         Me.cost_label.Name = "cost_label"
-        Me.cost_label.Size = New System.Drawing.Size(148, 29)
+        Me.cost_label.Size = New System.Drawing.Size(28, 29)
         Me.cost_label.TabIndex = 1
-        Me.cost_label.Text = "123456789"
+        Me.cost_label.Text = "0"
         '
         'Label3
         '
@@ -384,8 +430,6 @@ Partial Class sales_form
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel6.Controls.Add(Me.qty_paid_textbox)
-        Me.Panel6.Controls.Add(Me.Label4)
         Me.Panel6.Controls.Add(Me.quantity_textbox)
         Me.Panel6.Controls.Add(Me.Label12)
         Me.Panel6.Controls.Add(Me.till_label)
@@ -404,28 +448,6 @@ Partial Class sales_form
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(1771, 110)
         Me.Panel6.TabIndex = 4
-        '
-        'qty_paid_textbox
-        '
-        Me.qty_paid_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.qty_paid_textbox.ForeColor = System.Drawing.Color.Indigo
-        Me.qty_paid_textbox.Location = New System.Drawing.Point(623, 62)
-        Me.qty_paid_textbox.Margin = New System.Windows.Forms.Padding(3, 3, 8, 3)
-        Me.qty_paid_textbox.Name = "qty_paid_textbox"
-        Me.qty_paid_textbox.Size = New System.Drawing.Size(223, 35)
-        Me.qty_paid_textbox.TabIndex = 12
-        Me.qty_paid_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Indigo
-        Me.Label4.Location = New System.Drawing.Point(428, 65)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(189, 29)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Amaount Paid:"
         '
         'quantity_textbox
         '
@@ -571,6 +593,28 @@ Partial Class sales_form
         Me.Label1.Size = New System.Drawing.Size(222, 34)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Product Code :"
+        '
+        'qty_paid_textbox
+        '
+        Me.qty_paid_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qty_paid_textbox.ForeColor = System.Drawing.Color.Indigo
+        Me.qty_paid_textbox.Location = New System.Drawing.Point(61, 68)
+        Me.qty_paid_textbox.Margin = New System.Windows.Forms.Padding(3, 3, 8, 3)
+        Me.qty_paid_textbox.Name = "qty_paid_textbox"
+        Me.qty_paid_textbox.Size = New System.Drawing.Size(223, 35)
+        Me.qty_paid_textbox.TabIndex = 12
+        Me.qty_paid_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Indigo
+        Me.Label4.Location = New System.Drawing.Point(72, 27)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(189, 29)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Amaount Paid:"
         '
         'Panel15
         '
@@ -1008,7 +1052,7 @@ Partial Class sales_form
         Me.RTGS_button.Name = "RTGS_button"
         Me.RTGS_button.Size = New System.Drawing.Size(196, 75)
         Me.RTGS_button.TabIndex = 34
-        Me.RTGS_button.Text = "SWIPE"
+        Me.RTGS_button.Text = "CARD"
         Me.RTGS_button.UseVisualStyleBackColor = False
         '
         'cash_button
@@ -1238,6 +1282,7 @@ Partial Class sales_form
         '
         'Panel8
         '
+        Me.Panel8.Controls.Add(Me.AmtPanel)
         Me.Panel8.Controls.Add(Me.lookupPanel)
         Me.Panel8.Controls.Add(Me.OtherPaymentsPanel)
         Me.Panel8.Controls.Add(Me.list_grid)
@@ -1247,6 +1292,28 @@ Partial Class sales_form
         Me.Panel8.Size = New System.Drawing.Size(1107, 742)
         Me.Panel8.TabIndex = 7
         '
+        'AmtPanel
+        '
+        Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
+        Me.AmtPanel.Controls.Add(Me.qty_paid_textbox)
+        Me.AmtPanel.Controls.Add(Me.Label4)
+        Me.AmtPanel.Location = New System.Drawing.Point(505, 367)
+        Me.AmtPanel.Name = "AmtPanel"
+        Me.AmtPanel.Size = New System.Drawing.Size(368, 177)
+        Me.AmtPanel.TabIndex = 4
+        Me.AmtPanel.Visible = False
+        '
+        'FinaliseTransaction
+        '
+        Me.FinaliseTransaction.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FinaliseTransaction.ForeColor = System.Drawing.Color.Indigo
+        Me.FinaliseTransaction.Location = New System.Drawing.Point(61, 122)
+        Me.FinaliseTransaction.Name = "FinaliseTransaction"
+        Me.FinaliseTransaction.Size = New System.Drawing.Size(223, 43)
+        Me.FinaliseTransaction.TabIndex = 13
+        Me.FinaliseTransaction.Text = "Accept Payment"
+        Me.FinaliseTransaction.UseVisualStyleBackColor = True
+        '
         'lookupPanel
         '
         Me.lookupPanel.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -1255,7 +1322,7 @@ Partial Class sales_form
         Me.lookupPanel.Controls.Add(Me.Panel4)
         Me.lookupPanel.Location = New System.Drawing.Point(40, 67)
         Me.lookupPanel.Name = "lookupPanel"
-        Me.lookupPanel.Size = New System.Drawing.Size(1061, 602)
+        Me.lookupPanel.Size = New System.Drawing.Size(1061, 291)
         Me.lookupPanel.TabIndex = 3
         Me.lookupPanel.Visible = False
         '
@@ -1375,7 +1442,7 @@ Partial Class sales_form
         Me.OtherPaymentsPanel.Controls.Add(Me.Panel3)
         Me.OtherPaymentsPanel.Location = New System.Drawing.Point(553, 169)
         Me.OtherPaymentsPanel.Name = "OtherPaymentsPanel"
-        Me.OtherPaymentsPanel.Size = New System.Drawing.Size(426, 328)
+        Me.OtherPaymentsPanel.Size = New System.Drawing.Size(426, 80)
         Me.OtherPaymentsPanel.TabIndex = 2
         Me.OtherPaymentsPanel.Visible = False
         '
@@ -1527,24 +1594,24 @@ Partial Class sales_form
         Me.list_grid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.list_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
         Me.list_grid.ColumnHeadersHeight = 40
         Me.list_grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle19
         Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.list_grid.EnableHeadersVisualStyles = False
         Me.list_grid.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
@@ -1552,14 +1619,14 @@ Partial Class sales_form
         Me.list_grid.Location = New System.Drawing.Point(0, 0)
         Me.list_grid.Name = "list_grid"
         Me.list_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle20
         Me.list_grid.RowHeadersWidth = 10
         Me.list_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.list_grid.RowTemplate.Height = 30
@@ -1593,8 +1660,8 @@ Partial Class sales_form
         'Column4
         '
         Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle17
         Me.Column4.HeaderText = "Qty"
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
@@ -1611,8 +1678,8 @@ Partial Class sales_form
         'Column6
         '
         Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle18
         Me.Column6.HeaderText = "Amount"
         Me.Column6.MinimumWidth = 6
         Me.Column6.Name = "Column6"
@@ -1642,6 +1709,7 @@ Partial Class sales_form
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel9.ResumeLayout(False)
         Me.Panel11.ResumeLayout(False)
@@ -1656,6 +1724,8 @@ Partial Class sales_form
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
+        Me.AmtPanel.ResumeLayout(False)
+        Me.AmtPanel.PerformLayout()
         Me.lookupPanel.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
@@ -1773,4 +1843,9 @@ Partial Class sales_form
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label17 As Label
     Friend WithEvents lookPan As Panel
+    Friend WithEvents AmtPanel As Panel
+    Friend WithEvents FinaliseTransaction As Button
+    Friend WithEvents Label18 As Label
+    Friend WithEvents IconPictureBox1 As FontAwesome.Sharp.IconPictureBox
+    Friend WithEvents Label19 As Label
 End Class

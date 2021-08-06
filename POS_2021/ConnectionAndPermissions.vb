@@ -56,13 +56,15 @@ Public Class ConnectionAndPermissions
                         ADAPTER1.Fill(COMPANYTABLE)
                         If COMPANYTABLE.Rows.Count > 0 Then
                             Full_name = table(0)(0)
-                            menu_form.ActiveUser = Full_name
-                            menu_form.Show()
+                            sales_form.ActiveUser = Full_name
+                            sales_form.ActiveUsername = username
+                            sales_form.Show()
                             sign_in.Close()
                         Else
                             MessageBox.Show("Some critical settings has not been done, user is taken to set it up now", "Setting Pop up", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             Full_name = table(0)(0)
                             company.ActiveUser = Full_name
+                            company.ActiveUsername = username
                             company.Show()
                             sign_in.Close()
                         End If

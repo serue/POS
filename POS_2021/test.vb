@@ -90,4 +90,27 @@ Public Class test
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim transaction As SqlTransaction
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            transaction = connection.BeginTransaction
+            Using command As New SqlCommand("insert into test_name(name) values(@name)", connection, transaction)
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = TextBox5.Text
+                command.ExecuteNonQuery()
+            End Using
+            Using command As New SqlCommand("insert into test_surname(surnam) values(@name)", connection, transaction)
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = TextBox6.Text
+                command.ExecuteNonQuery()
+            End Using
+            transaction.Commit()
+            MsgBox("successfull")
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class

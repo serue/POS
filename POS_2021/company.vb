@@ -18,6 +18,17 @@ Public Class company
         End Set
     End Property
 
+    Private username As String
+    Public Property ActiveUsername() As String
+        Get
+            Return username
+        End Get
+        Set(ByVal value As String)
+            username = value
+        End Set
+    End Property
+
+
     Private Sub company_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             connection = myPermissions.getConnection()
@@ -94,11 +105,13 @@ Public Class company
                 Me.save_item.Enabled = False
                 If MessageBox.Show("The Company was registerd successfully, Do you want to proceed with other settings", "Company Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     settings.ActiveUser = user
+                    settings.ActiveUsername = username
                     settings.Show()
                     Me.Close()
                 Else
 
                     menu_form.ActiveUser = user
+                    menu_form.ActiveUsername = username
                     menu_form.Show()
 
                 End If

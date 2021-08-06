@@ -22,6 +22,16 @@ Public Class settings
             user = value
         End Set
     End Property
+
+    Private username As String
+    Public Property ActiveUsername() As String
+        Get
+            Return username
+        End Get
+        Set(ByVal value As String)
+            username = value
+        End Set
+    End Property
     Private Sub settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim name As String = Dns.GetHostName
         txtTillName.Text = name
@@ -167,6 +177,7 @@ Public Class settings
 
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
         menu_form.ActiveUser = user
+        menu_form.ActiveUsername = username
         menu_form.Show()
         Me.Close()
     End Sub
@@ -175,7 +186,7 @@ Public Class settings
         Try
             connection = myPermissions.getConnection
             connection.Open()
-            Using cmd As New SqlCommand("SELECT * FROM CURENCIES", connection)
+            Using cmd As New SqlCommand("SELECT * FROM CURRENCIES", connection)
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(cmd)
                 adapter.Fill(table)
@@ -364,4 +375,5 @@ Public Class settings
             MessageBox.Show(ex.Message, "An error occured while editing settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 End Class

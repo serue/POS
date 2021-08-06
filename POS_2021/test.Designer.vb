@@ -33,6 +33,11 @@ Partial Class test
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Admin
@@ -133,11 +138,45 @@ Partial Class test
         Me.Button4.Text = "Button4"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.Button5)
+        Me.Panel1.Controls.Add(Me.TextBox6)
+        Me.Panel1.Controls.Add(Me.TextBox5)
+        Me.Panel1.Location = New System.Drawing.Point(6, 3)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(508, 420)
+        Me.Panel1.TabIndex = 11
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(97, 44)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(318, 22)
+        Me.TextBox5.TabIndex = 0
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(97, 88)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(318, 22)
+        Me.TextBox6.TabIndex = 1
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(340, 159)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 2
+        Me.Button5.Text = "Save"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'test
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(500, 412)
+        Me.ClientSize = New System.Drawing.Size(1603, 659)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -151,6 +190,8 @@ Partial Class test
         Me.Controls.Add(Me.Admin)
         Me.Name = "test"
         Me.Text = "test"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -167,4 +208,8 @@ Partial Class test
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Button5 As Button
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBox5 As TextBox
 End Class

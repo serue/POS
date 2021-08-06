@@ -167,6 +167,7 @@ Partial Class categories
         Me.Name = "categories"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Products Categories Options"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

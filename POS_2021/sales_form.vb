@@ -20,11 +20,32 @@ Public Class sales_form
     Dim Register_Transaction As String    ' inherited in receipt
     Dim taxcode As String
     Dim cost As Decimal
-    Dim profit As Decimal
+    Dim profit As Decimal = 0
 
     Dim position As Integer = 1
 
     Dim check As CheckBox
+
+    Private user As String
+    Public Property ActiveUser() As String
+        Get
+            Return user
+        End Get
+        Set(ByVal value As String)
+            user = value
+        End Set
+    End Property
+
+    Private username As String
+    Public Property ActiveUsername() As String
+        Get
+            Return username
+        End Get
+        Set(ByVal value As String)
+            username = value
+        End Set
+    End Property
+
 
     Private Sub maximise_button_Click(sender As Object, e As EventArgs) Handles maximise_button.Click
         If Me.WindowState = FormWindowState.Maximized Then
@@ -49,9 +70,30 @@ Public Class sales_form
     End Sub
 
     Private Sub sales_form_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Timer1.Start()
 
-        lookupPanel.Height = lookPan.Height + Panel4.Height + 5
+        Try
+            Timer1.Start()
+            active_account_label.Text = ActiveUser
+            lookupPanel.Height = lookPan.Height + Panel4.Height + 5
+            barcode_textbox.Focus()
+            total_label.Text = 0
+            method_label.Text = "."
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT SYMBOL FROM BASE_CURRENCY", connection)
+                Dim table As New DataTable
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    Label2.Text = Label2.Text & " " & table(0)(0)
+                    Label3.Text = Label3.Text & " " & table(0)(0)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "Error while loading currency to system", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -166,11 +208,10 @@ Public Class sales_form
         'YOU NEED TO USE THE TAX VALUE ON CALCULATING THE PRICE OF THE PRODUCT ON INVONTORY ADDITION FORM
         'ON THIS FORM ADD THE LABEL TO DISPAY THE TOTAL TAX FOR THE SALE
         AddProductToGrid()
+        barcode_textbox.Clear()
+        barcode_textbox.Focus()
     End Sub
 
-    Private Sub cash_button_Click(sender As Object, e As EventArgs) Handles cash_button.Click
-
-    End Sub
     Private Sub getTax()
         Try
             connection = myPermissions.getConnection
@@ -181,6 +222,7 @@ Public Class sales_form
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
                     TAX = table(0)(0) * total_label.Text
+                    TAX = TAX.ToString(" ###,###,###.00")
                 Else
                     MessageBox.Show("There is no VAT set for the organisation", "Retrieving VAT", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If
@@ -196,23 +238,24 @@ Public Class sales_form
         Try
             connection = myPermissions.getConnection()
             connection.Open()
+            Dim transaction As SqlTransaction = connection.BeginTransaction
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
                 Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,TRANS_TIME,AMOUNT,PAID,CHANGE,TAX,PAYMENT,CASHIER,TILL) Values(@TRANS_DATE,@TRANS_TIME,@TRANSACTION_ID,@AMOUNT,@PAID,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL)"
 
-                Using regcommand As New SqlCommand(RegisterTransactionQuery, connection)
+                Using regcommand As New SqlCommand(RegisterTransactionQuery, connection, transaction)
                     With regcommand.Parameters
                         .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.Date.ToShortDateString
-                        .Add("@TRANS_TIME", SqlDbType.VarChar).Value = TimeOfDay
+                        .Add("@TRANS_DATE", SqlDbType.DateTime).Value = Now.Date
+                        .Add("@TRANS_TIME", SqlDbType.Time).Value = Now.TimeOfDay
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = total_label.Text
                         .Add("@PAID", SqlDbType.Decimal).Value = qty_paid_textbox.Text
                         .Add("@CHANGE", SqlDbType.Decimal).Value = chasnge_label.Text
                         .Add("@TAX", SqlDbType.Decimal).Value = TAX
                         .Add("@PAYMENT", SqlDbType.VarChar).Value = Transaction_type
-                        .Add("@CASHIER", SqlDbType.VarChar).Value = active_account_label.Text
-                        .Add("@TILL", SqlDbType.Decimal).Value = till_label.Text
+                        .Add("@CASHIER", SqlDbType.VarChar).Value = username
+                        .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
                     End With
                     regcommand.ExecuteNonQuery()
                 End Using
@@ -222,7 +265,7 @@ Public Class sales_form
 
                 For Each row As DataGridViewRow In list_grid.Rows           ' looping the datagridview
 
-                    Using selectcommand As New SqlCommand("SELECT QUANTITY,COST FROM INVENTORY WHERE BARCODE=@code", connection) 'selecting the current quantity 
+                    Using selectcommand As New SqlCommand("SELECT QUANTITY,COST FROM INVENTORY WHERE BARCODE=@code", connection, transaction) 'selecting the current quantity 
                         selectcommand.Parameters.Add("@code", SqlDbType.VarChar).Value = row.Cells(1).Value
                         Dim selectAdapter As New SqlDataAdapter(selectcommand)        'selection adapter
                         Dim selectTable As New DataTable
@@ -230,11 +273,11 @@ Public Class sales_form
                         quantity = CInt(selectTable(0)(0))
                         cost = CDec(selectTable(0)(1))
                         profit = CDec(row.Cells(4).Value - cost)
-                        profit *= row.Cells(3).Value
+                        profit *= row.Cells(3).Value        'this is the profit to be written to the database just use the variable
                         UpdatedQuantity = CInt((quantity - row.Cells(3).Value))
 
                         'REDIUCING THE QUANTITY OF PRODUCTS IN A TABLE BASING ON THE DEDUCTED QUANTITY
-                        Using redCommand As New SqlCommand("UPDATE INVENTORY SET QUANITY=@quantity WHERE BARCODE=@barcode", connection)  '  reducing the quantity
+                        Using redCommand As New SqlCommand("UPDATE INVENTORY SET QUANTITY=@quantity WHERE BARCODE=@barcode", connection, transaction)  '  reducing the quantity
                             redCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = UpdatedQuantity
                             redCommand.Parameters.Add("@barcode", SqlDbType.VarChar).Value = row.Cells(1).Value
                             redCommand.ExecuteNonQuery()
@@ -242,15 +285,15 @@ Public Class sales_form
 
                     End Using
 
-                    ' inserting transaction details into the database table
+                    'inserting transaction details into the database table
 
-                    Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection)
+                    Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection, transaction)
 
                         With TransactionDetailCommand.Parameters
                             .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                             .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
-                            .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(4).Value
+                            .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
 
                         End With
                         list_grid.AllowUserToAddRows = False
@@ -262,12 +305,12 @@ Public Class sales_form
                     Dim updateProfit As Decimal
 
                     'SELECT SALE FROM TH
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT FROM SALES WHERE BARCODE=@BARCODE and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SALES WHERE BARCODE=@BARCODE and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
 
                         With saleSelectCommand.Parameters
 
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                            .Add("@trans_date", SqlDbType.VarChar).Value = Now.ToShortDateString
+                            .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
                             .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
 
                         End With
@@ -280,34 +323,37 @@ Public Class sales_form
                         If saleSelectTable.Rows.Count > 0 Then
 
                             'set quantity and profit
-
+                            Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
                             updateQuantity = updateQuantity + row.Cells(3).Value
                             updateProfit = updateProfit + profit
 
                             'updating a sale in db SALE_TYPE
-                            Using saleUpdateCommand As New SqlCommand("UPDATE SALES SET QUANTITY=@quantity,PROFIT=@profit WHERE BARCODE=@product_code and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection)
+                            Using saleUpdateCommand As New SqlCommand("UPDATE SALES SET QUANTITY=@quantity,PROFIT=@profit,AMOUNT=@AMOUNT WHERE BARCODE=@product_code and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
 
                                 With saleUpdateCommand.Parameters
                                     .Add("@quantity", SqlDbType.Int).Value = updateQuantity
                                     .Add("@profit", SqlDbType.Decimal).Value = updateProfit
                                     .Add("@product_code", SqlDbType.VarChar).Value = row.Cells(1).Value
-                                    .Add("@trans_date", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                    .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
+                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + total_label.Text
+                                    .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
                             End Using
                         Else
                             'registering a sale into the db
 
-                            Using salecommand As New SqlCommand("INSERT INTO SALES(TRANS_DATE,BARCODE,QUANTITY,AMOUNT,PROFIT) Values(@TRANS_DATE,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT)", connection)
+                            Using salecommand As New SqlCommand("INSERT INTO SALES(TRANS_DATE,BARCODE,QUANTITY,AMOUNT,PROFIT,SALE_TYPE) Values(@TRANS_DATE,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@SALE_TYPE)", connection, transaction)
 
                                 With salecommand.Parameters
-                                    .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                    .Add("@TRANS_DATE", SqlDbType.Date).Value = Now.ToShortDateString
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                     .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
-                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = cost
+                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(4).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
+                                    .Add("@SALE_TYPE", SqlDbType.VarChar).Value = Transaction_type
                                 End With
                                 salecommand.ExecuteNonQuery()
                             End Using
@@ -315,10 +361,10 @@ Public Class sales_form
                     End Using
                     month = MonthName(Now.Date.Month(), False)
 
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND TRANS_DATE=@TRANS_DATE", connection)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_DATE", connection, transaction)
                         With saleSelectCommand.Parameters
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                            .Add("@TRANS_DATE", SqlDbType.VarChar).Value = month
+                            .Add("@TRANS_DATE", SqlDbType.VarChar).Value = month & " " & Now.Year
                         End With
 
                         Dim saleSelectAdapter As New SqlDataAdapter(saleSelectCommand)
@@ -326,33 +372,34 @@ Public Class sales_form
                         saleSelectAdapter.Fill(saleSelectTable)
                         If saleSelectTable.Rows.Count > 0 Then
                             'set quantity and profit
-
+                            Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
                             updateQuantity = updateQuantity + row.Cells(3).Value
                             updateProfit = updateProfit + profit
                             'updating a sale in db
-                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT WHERE BARCODE=@BARCODE AND TRANS_DATE=@TRANSDATE", connection)
+                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT,AMOUNT=@AMOUNT WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANSDATE", connection, transaction)
 
                                 With saleUpdateCommand.Parameters
                                     .Add("@QUANTITY", SqlDbType.Int).Value = updateQuantity
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = updateProfit
+                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + total_label.Text
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                                    .Add("@TRANSDATE", SqlDbType.VarChar).Value = month
+                                    .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
                             End Using
                         Else
                             'registering a summar sale into the db
-                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(TRANS_DATE,BARCODE,QUANTITY,AMOUNT,PROFIT) Values(@TRANS_DATE,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT)", connection)
+                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,BARCODE,QUANTITY,AMOUNT,PROFIT) Values(@SALE_MONTH,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT)", connection, transaction)
                                 With salecommand.Parameters
-                                    .Add("@TRANS_DATE", SqlDbType.VarChar).Value = month
+                                    .Add("@SALE_MONTH", SqlDbType.VarChar).Value = month & " " & Now.Year
                                     ' .Add("@trans_id", sqldbtype.VarChar).Value = Register_Transaction
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                     '.Add("@destion", SqlDbType.VarChar).Value = row.Cells(2).Value
                                     .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
                                     '.Add("@cost_price", sqldbtype.decimal).Value = cost
-                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(4).Value
+                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
                                     '.Add("@sale_type", sqldbtype.VarChar).Value = PayMethod.Text
                                 End With
@@ -361,7 +408,7 @@ Public Class sales_form
                         End If
                     End Using
                 Next
-                ' MessageBox.Show("Transaction is complete !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information) CONTINUE WITH THIS COMMENT
+                MessageBox.Show("Transaction is complete !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("No Products has been found on the list !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
@@ -369,6 +416,7 @@ Public Class sales_form
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Operation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MsgBox(ex.StackTrace)
         End Try
         barcode_textbox.Focus()
 
@@ -669,9 +717,21 @@ Public Class sales_form
     End Sub
 
     Private Sub Assign_Methods(sender As Object, e As EventArgs) Handles RTGS_button.Click, OtherPaymentButton.Click, forex_button.Click, ecocash_button.Click, cash_button.Click
-        Dim btn As Button = sender
-        Transaction_type = btn.Text
-        MsgBox(btn.Text)
+        Try
+            If total_label.Text <= 0 Or total_label.Text = "" Then
+                MessageBox.Show("You cannot proceed to payment since there is no product in the lis", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Dim btn As Button = sender
+                Transaction_type = btn.Text
+                Me.AcceptButton = Me.FinaliseTransaction
+                AmtPanel.Visible = True
+                qty_paid_textbox.Focus()
+                method_label.Text = btn.Text
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "System Encountered the following error on Payments", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub backoffice_button_Click(sender As Object, e As EventArgs) Handles backoffice_button.Click
@@ -717,14 +777,14 @@ Public Class sales_form
         'find the maximum transaction id from the database and save from there 
         Try
             connection.Open()
-            Using Command As New SqlCommand("select * from  transactions", connection)
+            Using Command As New SqlCommand("SELECT * FROM TRANSACTIONS", connection)
                 Dim adapter As New SqlDataAdapter(Command)
                 Dim table As New DataTable
 
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
 
-                    Using cmd As New SqlCommand("select max(id) from transactions", connection)
+                    Using cmd As New SqlCommand("SELECT MAX(ID) FROM TRANSACTIONS", connection)
 
                         Dim Trans_id As New SqlDataAdapter(cmd)
 
@@ -746,5 +806,16 @@ Public Class sales_form
             MessageBox.Show(ex.Message, "Operation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End Try
+    End Sub
+
+    Private Sub FinaliseTransaction_Click(sender As Object, e As EventArgs) Handles FinaliseTransaction.Click
+        If qty_paid_textbox.Text <> "" Or qty_paid_textbox.Text >= total_label.Text Then
+            getTax()
+            FindMaxID()
+            RegisterTransaction()
+            AmtPanel.Visible = False
+            Me.AcceptButton = Me.ok_button
+        End If
+
     End Sub
 End Class

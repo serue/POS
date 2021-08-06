@@ -213,8 +213,9 @@
       <HintPath>..\packages\Bunifu.UI.WinForms.5.0.1\lib\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.1\lib\net45\FontAwesome.Sharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
@@ -457,6 +458,7 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="sqls\POS_DATABASE.bak" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Company Logo.jpg" />
@@ -472,6 +474,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sqls\POS_DATABASES.sql" />
+    <Content Include="sqls\STORED PROCEDURE.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

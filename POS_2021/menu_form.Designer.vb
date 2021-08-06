@@ -143,7 +143,7 @@ Partial Class menu_form
         Me.time_label.AutoSize = True
         Me.time_label.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.time_label.ForeColor = System.Drawing.Color.DarkMagenta
-        Me.time_label.Location = New System.Drawing.Point(544, 228)
+        Me.time_label.Location = New System.Drawing.Point(482, 219)
         Me.time_label.Name = "time_label"
         Me.time_label.Size = New System.Drawing.Size(95, 34)
         Me.time_label.TabIndex = 2
@@ -155,7 +155,7 @@ Partial Class menu_form
         Me.date_label.AutoSize = True
         Me.date_label.Font = New System.Drawing.Font("Tahoma", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.date_label.ForeColor = System.Drawing.Color.DarkMagenta
-        Me.date_label.Location = New System.Drawing.Point(444, 187)
+        Me.date_label.Location = New System.Drawing.Point(481, 179)
         Me.date_label.Name = "date_label"
         Me.date_label.Size = New System.Drawing.Size(111, 40)
         Me.date_label.TabIndex = 1

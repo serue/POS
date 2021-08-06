@@ -21,6 +21,16 @@ Public Class menu_form
         End Set
     End Property
 
+    Private username As String
+    Public Property ActiveUsername() As String
+        Get
+            Return username
+        End Get
+        Set(ByVal value As String)
+            username = value
+        End Set
+    End Property
+
     Private Sub openPanel(ByVal op As Panel, ByVal but As IconButton)
         If oPanel Is Nothing Then
             oPanel = op
