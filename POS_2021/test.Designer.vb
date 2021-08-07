@@ -34,9 +34,11 @@ Partial Class test
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -148,20 +150,6 @@ Partial Class test
         Me.Panel1.Size = New System.Drawing.Size(508, 420)
         Me.Panel1.TabIndex = 11
         '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(97, 44)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(318, 22)
-        Me.TextBox5.TabIndex = 0
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(97, 88)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(318, 22)
-        Me.TextBox6.TabIndex = 1
-        '
         'Button5
         '
         Me.Button5.Location = New System.Drawing.Point(340, 159)
@@ -171,11 +159,43 @@ Partial Class test
         Me.Button5.Text = "Save"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(97, 88)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(318, 22)
+        Me.TextBox6.TabIndex = 1
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(97, 44)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(318, 22)
+        Me.TextBox5.TabIndex = 0
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(871, 196)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(134, 23)
+        Me.Button6.TabIndex = 12
+        Me.Button6.Text = "Button6"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(850, 283)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 22)
+        Me.DateTimePicker1.TabIndex = 13
+        '
         'test
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1603, 659)
+        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -212,4 +232,6 @@ Partial Class test
     Friend WithEvents Button5 As Button
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Button6 As Button
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class

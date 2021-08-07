@@ -1,4 +1,6 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
+Imports System.Net
 
 Public Class sales_form
     Private HWND As Message
@@ -80,6 +82,15 @@ Public Class sales_form
             method_label.Text = "."
             connection = myPermissions.getConnection
             connection.Open()
+            Using command As New SqlCommand("SELECT TILL_NUMBER FROM TILLS WHERE TILL_NAME=@NAME", connection)
+                command.Parameters.Add("@NAME", SqlDbType.VarChar).Value = Dns.GetHostName
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    till_label.Text = table(0)(0)
+                End If
+            End Using
             Using command As New SqlCommand("SELECT SYMBOL FROM BASE_CURRENCY", connection)
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
@@ -87,9 +98,12 @@ Public Class sales_form
                 If table.Rows.Count > 0 Then
                     Label2.Text = Label2.Text & " " & table(0)(0)
                     Label3.Text = Label3.Text & " " & table(0)(0)
+                    Label8.Text = Label8.Text & " " & table(0)(0)
+
                 End If
             End Using
             connection.Close()
+            Control.CheckForIllegalCrossThreadCalls = False
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Error while loading currency to system", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -251,7 +265,7 @@ Public Class sales_form
                         .Add("@TRANS_TIME", SqlDbType.Time).Value = Now.TimeOfDay
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = total_label.Text
                         .Add("@PAID", SqlDbType.Decimal).Value = qty_paid_textbox.Text
-                        .Add("@CHANGE", SqlDbType.Decimal).Value = chasnge_label.Text
+                        .Add("@CHANGE", SqlDbType.Decimal).Value = CDec(change_label.Text)
                         .Add("@TAX", SqlDbType.Decimal).Value = TAX
                         .Add("@PAYMENT", SqlDbType.VarChar).Value = Transaction_type
                         .Add("@CASHIER", SqlDbType.VarChar).Value = username
@@ -287,18 +301,18 @@ Public Class sales_form
 
                     'inserting transaction details into the database table
 
-                    Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection, transaction)
+                    'Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection, transaction)
 
-                        With TransactionDetailCommand.Parameters
-                            .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                            .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                            .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
-                            .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
+                    '    With TransactionDetailCommand.Parameters
+                    '        .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
+                    '        .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                    '        .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
+                    '        .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
 
-                        End With
-                        list_grid.AllowUserToAddRows = False
-                        TransactionDetailCommand.ExecuteNonQuery()
-                    End Using
+                    '    End With
+                    '    list_grid.AllowUserToAddRows = False
+                    '    TransactionDetailCommand.ExecuteNonQuery()
+                    'End Using
 
                     'check if the product has a sale for the day
                     Dim updateQuantity As Integer
@@ -408,17 +422,18 @@ Public Class sales_form
                         End If
                     End Using
                 Next
-                MessageBox.Show("Transaction is complete !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                ' MessageBox.Show("Transaction is complete !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("No Products has been found on the list !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
+            barcode_textbox.Focus()
             connection.Close()
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Operation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             MsgBox(ex.StackTrace)
         End Try
-        barcode_textbox.Focus()
+
 
     End Sub
     Private Sub saveAllSales(Row As DataGridViewRow)
@@ -535,7 +550,7 @@ Public Class sales_form
                 .Add("@TRANS_TIME", SqlDbType.VarChar).Value = TimeOfDay
                 .Add("@AMOUNT", SqlDbType.Decimal).Value = total_label.Text
                 .Add("@PAID", SqlDbType.Decimal).Value = qty_paid_textbox.Text
-                .Add("@CHANGE", SqlDbType.Decimal).Value = chasnge_label.Text
+                .Add("@CHANGE", SqlDbType.Decimal).Value = change_label.Text
                 .Add("@TAX", SqlDbType.Decimal).Value = TAX
                 .Add("@PAYMENT", SqlDbType.VarChar).Value = Transaction_type
                 .Add("@CASHIER", SqlDbType.VarChar).Value = active_account_label.Text
@@ -809,13 +824,77 @@ Public Class sales_form
     End Sub
 
     Private Sub FinaliseTransaction_Click(sender As Object, e As EventArgs) Handles FinaliseTransaction.Click
-        If qty_paid_textbox.Text <> "" Or qty_paid_textbox.Text >= total_label.Text Then
-            getTax()
-            FindMaxID()
-            RegisterTransaction()
+        Form_Thread.RunWorkerAsync()
+
+    End Sub
+
+    Private Sub sales_Form_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+
+
+        If e.KeyCode = Keys.F1 Then
+            Transaction_type = "CASH"
+            AmtPanel.Visible = True
+            method_label.Text = "CASH"
+        ElseIf e.KeyCode = Keys.F3 Then
+            Transaction_type = "CARD"
+            AmtPanel.Visible = True
+            method_label.Text = "CARD"
+        ElseIf e.KeyCode = Keys.F4 Then
+            Transaction_type = "ECOCASH"
+            AmtPanel.Visible = True
+            method_label.Text = "ECOCASH"
+        ElseIf e.KeyCode = Keys.F5 Then
+            Transaction_type = "FOREX"
+            method_label.Text = "FOREX"
+            AmtPanel.Visible = True
+        ElseIf e.KeyCode = Keys.F6 Then
+            lookupPanel.Visible = True
             AmtPanel.Visible = False
-            Me.AcceptButton = Me.ok_button
+
+        ElseIf e.KeyCode = Keys.Add Then
+            MsgBox("Add")
+        ElseIf e.KeyCode = Keys.Multiply Then
+            MsgBox("multiply")
+
+            ' MsgBox(e.KeyCode)
+
         End If
 
+    End Sub
+
+    Private Sub Form_Thread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles Form_Thread.DoWork
+        If qty_paid_textbox.Text <> "" And qty_paid_textbox.Text >= total_label.Text And Transaction_type = "cash".ToUpper Then
+            Dim change As Decimal = (qty_paid_textbox.Text - total_label.Text)
+
+            getTax()
+            MsgBox(TAX)
+            FindMaxID()
+            RegisterTransaction()
+            If ask_radio.Checked = True Then
+                If MessageBox.Show("Do yo want to Print a Receipt for this transaction", "Receipt Printing", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    Dim ReceiptForm As New receipt_form
+                    ReceiptForm.Transaction = Register_Transaction
+                    ReceiptForm.Show()
+                End If
+            ElseIf yes_radio.Checked = True Then
+                Dim ReceiptForm As New receipt_form
+                'ReceiptForm.Transaction = Register_Transaction
+                settings.Show()
+            End If
+
+
+            AmtPanel.Visible = False
+            Me.AcceptButton = Me.ok_button
+            qty_paid_textbox.Clear()
+            barcode_textbox.Focus()
+        ElseIf qty_paid_textbox.Text = "" Then
+            MessageBox.Show("You did not supply the amount paid by the customer, Please check if the amount is correct", "Error of the Payment amount", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        ElseIf qty_paid_textbox.Text < total_label.Text Then
+            MessageBox.Show("The amount paid by the customer is less than than the cost of products", "Supplying less amount than the cost", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub Form_Thread_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles Form_Thread.RunWorkerCompleted
+        MessageBox.Show("Transaction was successful", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

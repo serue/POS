@@ -113,4 +113,14 @@ Public Class test
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim a As Date = Now
+        If a.ToShortDateString > DateTimePicker1.Text Then
+            MsgBox(a.ToShortDateString)
+        Else
+            MsgBox(DateTimePicker1.Text)
+        End If
+
+    End Sub
 End Class

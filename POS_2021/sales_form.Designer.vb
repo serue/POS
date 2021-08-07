@@ -23,11 +23,11 @@ Partial Class sales_form
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -60,13 +60,14 @@ Partial Class sales_form
         Me.yes_radio = New System.Windows.Forms.RadioButton()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.date_label = New System.Windows.Forms.Label()
-        Me.chasnge_label = New System.Windows.Forms.Label()
+        Me.change_label = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.barcode_textbox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.qty_paid_textbox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.Panel16 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.OtherPaymentButton = New System.Windows.Forms.Button()
         Me.IconButton1 = New FontAwesome.Sharp.IconButton()
@@ -138,6 +139,7 @@ Partial Class sales_form
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Form_Thread = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,6 +149,7 @@ Partial Class sales_form
         Me.Panel12.SuspendLayout()
         Me.Panel10.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.Panel15.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.AmtPanel.SuspendLayout()
@@ -439,7 +442,7 @@ Partial Class sales_form
         Me.Panel6.Controls.Add(Me.yes_radio)
         Me.Panel6.Controls.Add(Me.Label10)
         Me.Panel6.Controls.Add(Me.date_label)
-        Me.Panel6.Controls.Add(Me.chasnge_label)
+        Me.Panel6.Controls.Add(Me.change_label)
         Me.Panel6.Controls.Add(Me.Label8)
         Me.Panel6.Controls.Add(Me.barcode_textbox)
         Me.Panel6.Controls.Add(Me.Label1)
@@ -472,24 +475,24 @@ Partial Class sales_form
         'till_label
         '
         Me.till_label.AutoSize = True
-        Me.till_label.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.till_label.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.till_label.ForeColor = System.Drawing.Color.SeaGreen
-        Me.till_label.Location = New System.Drawing.Point(1383, 55)
+        Me.till_label.Location = New System.Drawing.Point(1474, 53)
         Me.till_label.Name = "till_label"
-        Me.till_label.Size = New System.Drawing.Size(23, 24)
+        Me.till_label.Size = New System.Drawing.Size(21, 29)
         Me.till_label.TabIndex = 8
-        Me.till_label.Text = "1"
+        Me.till_label.Text = "."
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.SeaGreen
         Me.Label11.Location = New System.Drawing.Point(1333, 55)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(44, 24)
+        Me.Label11.Size = New System.Drawing.Size(134, 24)
         Me.Label11.TabIndex = 7
-        Me.Label11.Text = "Till:"
+        Me.Label11.Text = "Till Number:"
         '
         'ask_radio
         '
@@ -500,7 +503,6 @@ Partial Class sales_form
         Me.ask_radio.Name = "ask_radio"
         Me.ask_radio.Size = New System.Drawing.Size(58, 25)
         Me.ask_radio.TabIndex = 6
-        Me.ask_radio.TabStop = True
         Me.ask_radio.Text = "Ask"
         Me.ask_radio.UseVisualStyleBackColor = True
         '
@@ -513,13 +515,13 @@ Partial Class sales_form
         Me.no_radio.Name = "no_radio"
         Me.no_radio.Size = New System.Drawing.Size(51, 25)
         Me.no_radio.TabIndex = 6
-        Me.no_radio.TabStop = True
         Me.no_radio.Text = "No"
         Me.no_radio.UseVisualStyleBackColor = True
         '
         'yes_radio
         '
         Me.yes_radio.AutoSize = True
+        Me.yes_radio.Checked = True
         Me.yes_radio.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.yes_radio.ForeColor = System.Drawing.Color.SaddleBrown
         Me.yes_radio.Location = New System.Drawing.Point(1009, 56)
@@ -552,16 +554,16 @@ Partial Class sales_form
         Me.date_label.TabIndex = 4
         Me.date_label.Text = "Label10"
         '
-        'chasnge_label
+        'change_label
         '
-        Me.chasnge_label.AutoSize = True
-        Me.chasnge_label.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chasnge_label.ForeColor = System.Drawing.Color.DarkRed
-        Me.chasnge_label.Location = New System.Drawing.Point(983, 17)
-        Me.chasnge_label.Name = "chasnge_label"
-        Me.chasnge_label.Size = New System.Drawing.Size(148, 29)
-        Me.chasnge_label.TabIndex = 3
-        Me.chasnge_label.Text = "123456789"
+        Me.change_label.AutoSize = True
+        Me.change_label.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.change_label.ForeColor = System.Drawing.Color.DarkRed
+        Me.change_label.Location = New System.Drawing.Point(994, 21)
+        Me.change_label.Name = "change_label"
+        Me.change_label.Size = New System.Drawing.Size(28, 29)
+        Me.change_label.TabIndex = 3
+        Me.change_label.Text = "0"
         '
         'Label8
         '
@@ -619,11 +621,19 @@ Partial Class sales_form
         'Panel15
         '
         Me.Panel15.BackColor = System.Drawing.Color.DarkSalmon
+        Me.Panel15.Controls.Add(Me.Panel16)
         Me.Panel15.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel15.Location = New System.Drawing.Point(0, 850)
         Me.Panel15.Name = "Panel15"
         Me.Panel15.Size = New System.Drawing.Size(1771, 3)
         Me.Panel15.TabIndex = 5
+        '
+        'Panel16
+        '
+        Me.Panel16.Location = New System.Drawing.Point(1525, 3)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(243, 107)
+        Me.Panel16.TabIndex = 11
         '
         'Panel7
         '
@@ -1594,24 +1604,24 @@ Partial Class sales_form
         Me.list_grid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.list_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.list_grid.ColumnHeadersHeight = 40
         Me.list_grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle4
         Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.list_grid.EnableHeadersVisualStyles = False
         Me.list_grid.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
@@ -1619,14 +1629,14 @@ Partial Class sales_form
         Me.list_grid.Location = New System.Drawing.Point(0, 0)
         Me.list_grid.Name = "list_grid"
         Me.list_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.list_grid.RowHeadersWidth = 10
         Me.list_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.list_grid.RowTemplate.Height = 30
@@ -1660,8 +1670,8 @@ Partial Class sales_form
         'Column4
         '
         Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column4.HeaderText = "Qty"
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
@@ -1678,14 +1688,17 @@ Partial Class sales_form
         'Column6
         '
         Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column6.HeaderText = "Amount"
         Me.Column6.MinimumWidth = 6
         Me.Column6.Name = "Column6"
         Me.Column6.Width = 115
         '
         'Timer1
+        '
+        '
+        'Form_Thread
         '
         '
         'sales_form
@@ -1721,6 +1734,7 @@ Partial Class sales_form
         Me.Panel10.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        Me.Panel15.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
@@ -1765,7 +1779,7 @@ Partial Class sales_form
     Friend WithEvents yes_radio As RadioButton
     Friend WithEvents Label10 As Label
     Friend WithEvents date_label As Label
-    Friend WithEvents chasnge_label As Label
+    Friend WithEvents change_label As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents barcode_textbox As TextBox
     Friend WithEvents Label1 As Label
@@ -1848,4 +1862,6 @@ Partial Class sales_form
     Friend WithEvents Label18 As Label
     Friend WithEvents IconPictureBox1 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents Label19 As Label
+    Friend WithEvents Panel16 As Panel
+    Friend WithEvents Form_Thread As System.ComponentModel.BackgroundWorker
 End Class

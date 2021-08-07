@@ -323,6 +323,12 @@
     <Compile Include="Permissions.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="receipt_form.Designer.vb">
+      <DependentUpon>receipt_form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="receipt_form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="sales.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Permissions.resx">
       <DependentUpon>Permissions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="receipt_form.resx">
+      <DependentUpon>receipt_form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sales.resx">
       <DependentUpon>sales.vb</DependentUpon>
