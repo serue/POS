@@ -51,8 +51,6 @@ Partial Class sales_form
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel14 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.quantity_textbox = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.till_label = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.ask_radio = New System.Windows.Forms.RadioButton()
@@ -64,8 +62,10 @@ Partial Class sales_form
         Me.Label8 = New System.Windows.Forms.Label()
         Me.barcode_textbox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.quantity_textbox = New System.Windows.Forms.TextBox()
+        Me.qty_viewLabel = New System.Windows.Forms.Label()
         Me.qty_paid_textbox = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.View_AmtPaid_Label = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
         Me.Panel16 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
@@ -110,6 +110,8 @@ Partial Class sales_form
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.AmtPanel = New System.Windows.Forms.Panel()
         Me.FinaliseTransaction = New System.Windows.Forms.Button()
+        Me.Accept_Quantity = New System.Windows.Forms.Button()
+        Me.Cancel_Payment = New System.Windows.Forms.Button()
         Me.lookupPanel = New System.Windows.Forms.Panel()
         Me.lookPan = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -433,8 +435,6 @@ Partial Class sales_form
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel6.Controls.Add(Me.quantity_textbox)
-        Me.Panel6.Controls.Add(Me.Label12)
         Me.Panel6.Controls.Add(Me.till_label)
         Me.Panel6.Controls.Add(Me.Label11)
         Me.Panel6.Controls.Add(Me.ask_radio)
@@ -451,26 +451,6 @@ Partial Class sales_form
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(1771, 110)
         Me.Panel6.TabIndex = 4
-        '
-        'quantity_textbox
-        '
-        Me.quantity_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.quantity_textbox.ForeColor = System.Drawing.Color.Indigo
-        Me.quantity_textbox.Location = New System.Drawing.Point(231, 60)
-        Me.quantity_textbox.Name = "quantity_textbox"
-        Me.quantity_textbox.Size = New System.Drawing.Size(171, 35)
-        Me.quantity_textbox.TabIndex = 10
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.Indigo
-        Me.Label12.Location = New System.Drawing.Point(93, 61)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(132, 29)
-        Me.Label12.TabIndex = 9
-        Me.Label12.Text = "Quantity :"
         '
         'till_label
         '
@@ -497,12 +477,14 @@ Partial Class sales_form
         'ask_radio
         '
         Me.ask_radio.AutoSize = True
+        Me.ask_radio.Checked = True
         Me.ask_radio.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ask_radio.ForeColor = System.Drawing.Color.SaddleBrown
         Me.ask_radio.Location = New System.Drawing.Point(1138, 56)
         Me.ask_radio.Name = "ask_radio"
         Me.ask_radio.Size = New System.Drawing.Size(58, 25)
         Me.ask_radio.TabIndex = 6
+        Me.ask_radio.TabStop = True
         Me.ask_radio.Text = "Ask"
         Me.ask_radio.UseVisualStyleBackColor = True
         '
@@ -521,14 +503,12 @@ Partial Class sales_form
         'yes_radio
         '
         Me.yes_radio.AutoSize = True
-        Me.yes_radio.Checked = True
         Me.yes_radio.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.yes_radio.ForeColor = System.Drawing.Color.SaddleBrown
         Me.yes_radio.Location = New System.Drawing.Point(1009, 56)
         Me.yes_radio.Name = "yes_radio"
         Me.yes_radio.Size = New System.Drawing.Size(58, 25)
         Me.yes_radio.TabIndex = 6
-        Me.yes_radio.TabStop = True
         Me.yes_radio.Text = "Yes"
         Me.yes_radio.UseVisualStyleBackColor = True
         '
@@ -580,7 +560,7 @@ Partial Class sales_form
         '
         Me.barcode_textbox.Font = New System.Drawing.Font("Tahoma", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte), True)
         Me.barcode_textbox.ForeColor = System.Drawing.Color.Indigo
-        Me.barcode_textbox.Location = New System.Drawing.Point(231, 14)
+        Me.barcode_textbox.Location = New System.Drawing.Point(231, 36)
         Me.barcode_textbox.Name = "barcode_textbox"
         Me.barcode_textbox.Size = New System.Drawing.Size(615, 40)
         Me.barcode_textbox.TabIndex = 1
@@ -590,33 +570,55 @@ Partial Class sales_form
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Indigo
-        Me.Label1.Location = New System.Drawing.Point(3, 14)
+        Me.Label1.Location = New System.Drawing.Point(3, 36)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(222, 34)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Product Code :"
         '
+        'quantity_textbox
+        '
+        Me.quantity_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.quantity_textbox.ForeColor = System.Drawing.Color.Indigo
+        Me.quantity_textbox.Location = New System.Drawing.Point(225, 33)
+        Me.quantity_textbox.Name = "quantity_textbox"
+        Me.quantity_textbox.Size = New System.Drawing.Size(264, 35)
+        Me.quantity_textbox.TabIndex = 10
+        Me.quantity_textbox.Visible = False
+        '
+        'qty_viewLabel
+        '
+        Me.qty_viewLabel.AutoSize = True
+        Me.qty_viewLabel.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.qty_viewLabel.ForeColor = System.Drawing.Color.Indigo
+        Me.qty_viewLabel.Location = New System.Drawing.Point(16, 39)
+        Me.qty_viewLabel.Name = "qty_viewLabel"
+        Me.qty_viewLabel.Size = New System.Drawing.Size(203, 29)
+        Me.qty_viewLabel.TabIndex = 9
+        Me.qty_viewLabel.Text = "Enter Quantity :"
+        Me.qty_viewLabel.Visible = False
+        '
         'qty_paid_textbox
         '
         Me.qty_paid_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.qty_paid_textbox.ForeColor = System.Drawing.Color.Indigo
-        Me.qty_paid_textbox.Location = New System.Drawing.Point(61, 68)
+        Me.qty_paid_textbox.Location = New System.Drawing.Point(225, 34)
         Me.qty_paid_textbox.Margin = New System.Windows.Forms.Padding(3, 3, 8, 3)
         Me.qty_paid_textbox.Name = "qty_paid_textbox"
-        Me.qty_paid_textbox.Size = New System.Drawing.Size(223, 35)
+        Me.qty_paid_textbox.Size = New System.Drawing.Size(264, 35)
         Me.qty_paid_textbox.TabIndex = 12
         Me.qty_paid_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Label4
+        'View_AmtPaid_Label
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Indigo
-        Me.Label4.Location = New System.Drawing.Point(72, 27)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(189, 29)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Amaount Paid:"
+        Me.View_AmtPaid_Label.AutoSize = True
+        Me.View_AmtPaid_Label.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.View_AmtPaid_Label.ForeColor = System.Drawing.Color.Indigo
+        Me.View_AmtPaid_Label.Location = New System.Drawing.Point(30, 37)
+        Me.View_AmtPaid_Label.Name = "View_AmtPaid_Label"
+        Me.View_AmtPaid_Label.Size = New System.Drawing.Size(189, 29)
+        Me.View_AmtPaid_Label.TabIndex = 11
+        Me.View_AmtPaid_Label.Text = "Amaount Paid:"
         '
         'Panel15
         '
@@ -1304,12 +1306,17 @@ Partial Class sales_form
         '
         'AmtPanel
         '
-        Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
+        Me.AmtPanel.BackColor = System.Drawing.Color.White
         Me.AmtPanel.Controls.Add(Me.qty_paid_textbox)
-        Me.AmtPanel.Controls.Add(Me.Label4)
-        Me.AmtPanel.Location = New System.Drawing.Point(505, 367)
+        Me.AmtPanel.Controls.Add(Me.View_AmtPaid_Label)
+        Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
+        Me.AmtPanel.Controls.Add(Me.Accept_Quantity)
+        Me.AmtPanel.Controls.Add(Me.quantity_textbox)
+        Me.AmtPanel.Controls.Add(Me.Cancel_Payment)
+        Me.AmtPanel.Controls.Add(Me.qty_viewLabel)
+        Me.AmtPanel.Location = New System.Drawing.Point(503, 339)
         Me.AmtPanel.Name = "AmtPanel"
-        Me.AmtPanel.Size = New System.Drawing.Size(368, 177)
+        Me.AmtPanel.Size = New System.Drawing.Size(500, 134)
         Me.AmtPanel.TabIndex = 4
         Me.AmtPanel.Visible = False
         '
@@ -1317,12 +1324,35 @@ Partial Class sales_form
         '
         Me.FinaliseTransaction.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FinaliseTransaction.ForeColor = System.Drawing.Color.Indigo
-        Me.FinaliseTransaction.Location = New System.Drawing.Point(61, 122)
+        Me.FinaliseTransaction.Location = New System.Drawing.Point(223, 73)
         Me.FinaliseTransaction.Name = "FinaliseTransaction"
-        Me.FinaliseTransaction.Size = New System.Drawing.Size(223, 43)
+        Me.FinaliseTransaction.Size = New System.Drawing.Size(171, 43)
         Me.FinaliseTransaction.TabIndex = 13
         Me.FinaliseTransaction.Text = "Accept Payment"
         Me.FinaliseTransaction.UseVisualStyleBackColor = True
+        '
+        'Accept_Quantity
+        '
+        Me.Accept_Quantity.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Accept_Quantity.ForeColor = System.Drawing.Color.Indigo
+        Me.Accept_Quantity.Location = New System.Drawing.Point(224, 73)
+        Me.Accept_Quantity.Name = "Accept_Quantity"
+        Me.Accept_Quantity.Size = New System.Drawing.Size(171, 43)
+        Me.Accept_Quantity.TabIndex = 15
+        Me.Accept_Quantity.Text = "Accept Quantity"
+        Me.Accept_Quantity.UseVisualStyleBackColor = True
+        Me.Accept_Quantity.Visible = False
+        '
+        'Cancel_Payment
+        '
+        Me.Cancel_Payment.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel_Payment.ForeColor = System.Drawing.Color.Indigo
+        Me.Cancel_Payment.Location = New System.Drawing.Point(402, 73)
+        Me.Cancel_Payment.Name = "Cancel_Payment"
+        Me.Cancel_Payment.Size = New System.Drawing.Size(87, 43)
+        Me.Cancel_Payment.TabIndex = 14
+        Me.Cancel_Payment.Text = "Cancel"
+        Me.Cancel_Payment.UseVisualStyleBackColor = True
         '
         'lookupPanel
         '
@@ -1332,7 +1362,7 @@ Partial Class sales_form
         Me.lookupPanel.Controls.Add(Me.Panel4)
         Me.lookupPanel.Location = New System.Drawing.Point(40, 67)
         Me.lookupPanel.Name = "lookupPanel"
-        Me.lookupPanel.Size = New System.Drawing.Size(1061, 291)
+        Me.lookupPanel.Size = New System.Drawing.Size(1061, 270)
         Me.lookupPanel.TabIndex = 3
         Me.lookupPanel.Visible = False
         '
@@ -1771,7 +1801,7 @@ Partial Class sales_form
     Friend WithEvents Panel14 As Panel
     Friend WithEvents Panel6 As Panel
     Friend WithEvents quantity_textbox As TextBox
-    Friend WithEvents Label12 As Label
+    Friend WithEvents qty_viewLabel As Label
     Friend WithEvents till_label As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents ask_radio As RadioButton
@@ -1828,7 +1858,7 @@ Partial Class sales_form
     Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents qty_paid_textbox As TextBox
-    Friend WithEvents Label4 As Label
+    Friend WithEvents View_AmtPaid_Label As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -1864,4 +1894,6 @@ Partial Class sales_form
     Friend WithEvents Label19 As Label
     Friend WithEvents Panel16 As Panel
     Friend WithEvents Form_Thread As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Cancel_Payment As Button
+    Friend WithEvents Accept_Quantity As Button
 End Class

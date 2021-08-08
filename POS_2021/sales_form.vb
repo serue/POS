@@ -16,16 +16,16 @@ Public Class sales_form
     Dim CurrentBarcode As String
     Dim DataIndex As Integer = 0
     Dim table1 As New DataTable("Table1")
-    Dim RowIndex As Integer
+    Dim iRowIndex As Integer
     Dim Transaction_id As Integer = 0
     Dim temp As String = "TN001R-"
     Dim Register_Transaction As String    ' inherited in receipt
     Dim taxcode As String
     Dim cost As Decimal
     Dim profit As Decimal = 0
-
+    Dim remainingStock As Decimal
     Dim position As Integer = 1
-
+    Dim hasValuePassed As Boolean = False
     Dim check As CheckBox
 
     Private user As String
@@ -174,13 +174,14 @@ Public Class sales_form
                 Dim table1 As New DataTable
                 ada.Fill(table1)
                 If table1.Rows.Count > 0 Then
+                    remainingStock = table1(0)(0)
                     Dim qua As Integer = table1(0)(4)
                     If qua > 1 Then
                         For Each row As DataGridViewRow In list_grid.Rows
                             If row.Cells(1).Value = barcode_textbox.Text Then
                                 Index = row.Cells(3).Value + 1 'THIS IS THE PRODUCT QUANTITY BEING ADDED TO THE GRID
                                 row.Cells(3).Value = Index  'THIS IS THE PRODUCT QUANTITY BEING ADDED TO THE GRID
-                                row.Cells(5).Value = row.Cells(3).Value * table1(0)(3)
+                                row.Cells(5).Value = (row.Cells(3).Value * table1(0)(3))
                                 ' Label1.Text = table1(0)(0) & vbNewLine & vbNewLine & " X " & row.Cells(3).Value & vbNewLine & vbNewLine & "@  $" & table1(0)(2) & vbNewLine & vbNewLine & " Cost   $ " & CDec(row.Cells(4).Value * row.Cells(3).Value)
                                 '   Label2.Text = " Cost   $ " & CDec(table(0)(2))
                                 found = True
@@ -194,7 +195,7 @@ Public Class sales_form
                             list_grid.Rows.Item(rNum).Cells(2).Value = table1(0)(1)
                             list_grid.Rows.Item(rNum).Cells(3).Value = table1(0)(2)
                             list_grid.Rows.Item(rNum).Cells(4).Value = table1(0)(3)
-                            list_grid.Rows.Item(rNum).Cells(5).Value = (CDec(table1(0)(3)) * CDec(table1(0)(2))).ToString(" ###,###,###.00")
+                            list_grid.Rows.Item(rNum).Cells(5).Value = (CDec(table1(0)(3)) * CDec(table1(0)(2))).ToString("###,###,###.00")
                         End If
                         totalsum = 0
                         For row As Integer = 0 To list_grid.Rows.Count - 1
@@ -221,9 +222,18 @@ Public Class sales_form
     Private Sub ok_button_Click(sender As Object, e As EventArgs) Handles ok_button.Click
         'YOU NEED TO USE THE TAX VALUE ON CALCULATING THE PRICE OF THE PRODUCT ON INVONTORY ADDITION FORM
         'ON THIS FORM ADD THE LABEL TO DISPAY THE TOTAL TAX FOR THE SALE
-        AddProductToGrid()
-        barcode_textbox.Clear()
-        barcode_textbox.Focus()
+        Try
+            AddProductToGrid()
+            barcode_textbox.Clear()
+            barcode_textbox.Focus()
+            iRowIndex = list_grid.RowCount
+            'list_grid.Rows( iRowIndex).Cells(3).Value = quantity_textbox.Text
+            list_grid.ClearSelection()
+            list_grid.Rows(iRowIndex - 1).Selected = True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "An Erro was was encountered", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Try
+
     End Sub
 
     Private Sub getTax()
@@ -831,28 +841,70 @@ Public Class sales_form
     Private Sub sales_Form_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
 
 
-        If e.KeyCode = Keys.F1 Then
+        If e.KeyCode = Keys.F2 Then
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = False
+            quantity_textbox.Visible = False
+            Accept_Quantity.Visible = False
+            HideQuantityInputs()
+            Me.AcceptButton = Me.FinaliseTransaction
             Transaction_type = "CASH"
             AmtPanel.Visible = True
             method_label.Text = "CASH"
+            qty_paid_textbox.ReadOnly = False
+            qty_paid_textbox.Focus()
+
         ElseIf e.KeyCode = Keys.F3 Then
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = False
+            quantity_textbox.Visible = False
+            Accept_Quantity.Visible = False
+            HideQuantityInputs()
+            Me.AcceptButton = Me.FinaliseTransaction
             Transaction_type = "CARD"
             AmtPanel.Visible = True
             method_label.Text = "CARD"
+            qty_paid_textbox.Text = total_label.Text
+            qty_paid_textbox.ReadOnly = True
+
         ElseIf e.KeyCode = Keys.F4 Then
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = False
+            quantity_textbox.Visible = False
+            Accept_Quantity.Visible = False
+            HideQuantityInputs()
+            Me.AcceptButton = Me.FinaliseTransaction
             Transaction_type = "ECOCASH"
             AmtPanel.Visible = True
             method_label.Text = "ECOCASH"
+            qty_paid_textbox.Text = total_label.Text
+            qty_paid_textbox.ReadOnly = True
         ElseIf e.KeyCode = Keys.F5 Then
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = False
+            quantity_textbox.Visible = False
+            Accept_Quantity.Visible = False
+            HideQuantityInputs()
+            Me.AcceptButton = Me.FinaliseTransaction
             Transaction_type = "FOREX"
             method_label.Text = "FOREX"
             AmtPanel.Visible = True
+            qty_paid_textbox.ReadOnly = False
+            qty_paid_textbox.Focus()
         ElseIf e.KeyCode = Keys.F6 Then
             lookupPanel.Visible = True
             AmtPanel.Visible = False
 
         ElseIf e.KeyCode = Keys.Add Then
-            MsgBox("Add")
+            barcode_textbox.Clear()
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = True
+            quantity_textbox.Visible = True
+            Accept_Quantity.Visible = True
+            HideQuantityInputs()
+            Me.AcceptButton = Me.Accept_Quantity
+            quantity_textbox.TextAlign = HorizontalAlignment.Right
+            quantity_textbox.Focus()
         ElseIf e.KeyCode = Keys.Multiply Then
             MsgBox("multiply")
 
@@ -863,38 +915,129 @@ Public Class sales_form
     End Sub
 
     Private Sub Form_Thread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles Form_Thread.DoWork
-        If qty_paid_textbox.Text <> "" And qty_paid_textbox.Text >= total_label.Text And Transaction_type = "cash".ToUpper Then
+        If Not qty_paid_textbox.Text Is Nothing And CDec(qty_paid_textbox.Text) >= CDec(total_label.Text) Then
             Dim change As Decimal = (qty_paid_textbox.Text - total_label.Text)
+            If change > 0 Then
+                change_label.Text = change
+            End If
 
             getTax()
             MsgBox(TAX)
             FindMaxID()
             RegisterTransaction()
-            If ask_radio.Checked = True Then
-                If MessageBox.Show("Do yo want to Print a Receipt for this transaction", "Receipt Printing", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                    Dim ReceiptForm As New receipt_form
-                    ReceiptForm.Transaction = Register_Transaction
-                    ReceiptForm.Show()
-                End If
-            ElseIf yes_radio.Checked = True Then
-                Dim ReceiptForm As New receipt_form
-                'ReceiptForm.Transaction = Register_Transaction
-                settings.Show()
-            End If
-
-
             AmtPanel.Visible = False
             Me.AcceptButton = Me.ok_button
             qty_paid_textbox.Clear()
             barcode_textbox.Focus()
+            hasValuePassed = True
+
         ElseIf qty_paid_textbox.Text = "" Then
             MessageBox.Show("You did not supply the amount paid by the customer, Please check if the amount is correct", "Error of the Payment amount", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        ElseIf qty_paid_textbox.Text < total_label.Text Then
+            hasValuePassed = False
+        ElseIf CDec(qty_paid_textbox.Text) < CDec(total_label.Text) Then
             MessageBox.Show("The amount paid by the customer is less than than the cost of products", "Supplying less amount than the cost", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
     Private Sub Form_Thread_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles Form_Thread.RunWorkerCompleted
-        MessageBox.Show("Transaction was successful", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If e.Error IsNot Nothing Then
+            MessageBox.Show(e.Error.ToString)
+        ElseIf e.Cancelled Then
+            MsgBox("cancelled")
+        ElseIf hasValuePassed = False Then
+            MessageBox.Show("Transaction Failed Please enter the amount paid correctly or cancel the transaction if the user paid insufficient amaount. Please note, the trasaction is not going to be processed if the amount paid is less than the amount charged for the products", "Paying Less Amount Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Else
+            If ask_radio.Checked = True Then
+                If MessageBox.Show("Do yo want to Print a Receipt for this transaction", "Receipt Printing", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    Dim ReceiptForm As New receipt_form
+                    ReceiptForm.Transaction = 12
+                    ReceiptForm.Show()
+                End If
+            ElseIf yes_radio.Checked = True Then
+                Dim ReceiptForm As New receipt_form
+                ReceiptForm.Transaction = 234
+                ReceiptForm.Show()
+            End If
+            AmtPanel.Visible = False
+            MessageBox.Show("Transaction was successful,Printing Receipt now", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            list_grid.Rows.Clear()
+            barcode_textbox.Clear()
+            barcode_textbox.Focus()
+            change_label.Text = 0
+            total_label.Text = 0
+            cost_label.Text = 0
+            method_label.Text = "."
+        End If
+
+    End Sub
+
+    Private Sub Cancel_Payment_Click(sender As Object, e As EventArgs) Handles Cancel_Payment.Click
+        AmtPanel.Visible = False
+        quantity_textbox.Clear()
+        qty_paid_textbox.Clear()
+        barcode_textbox.Clear()
+        barcode_textbox.Focus()
+        Me.AcceptButton = Me.ok_button
+    End Sub
+    Private Sub HideQuantityInputs()
+        If qty_viewLabel.Visible = False Then
+            View_AmtPaid_Label.Visible = True
+        Else
+            View_AmtPaid_Label.Visible = False
+
+        End If
+        If quantity_textbox.Visible = False Then
+            qty_paid_textbox.Visible = True
+        Else
+            qty_paid_textbox.Visible = False
+        End If
+        If Accept_Quantity.Visible = False Then
+            FinaliseTransaction.Visible = True
+
+        Else
+            FinaliseTransaction.Visible = False
+        End If
+    End Sub
+
+    Private Sub Accept_Quantity_Click(sender As Object, e As EventArgs) Handles Accept_Quantity.Click
+        Try
+            If remainingStock > quantity_textbox.Text Then
+                list_grid.Rows(iRowIndex - 1).Cells(3).Value = quantity_textbox.Text
+                list_grid.Rows(iRowIndex - 1).Cells(5).Value = list_grid.Rows(iRowIndex - 1).Cells(3).Value * list_grid.Rows(iRowIndex - 1).Cells(4).Value
+                totalsum = 0
+                For row As Integer = 0 To list_grid.Rows.Count - 1
+                    totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                Next
+                total_label.Text = totalsum.ToString("###,###,###.00")
+                quantity_textbox.Clear()
+                barcode_textbox.Clear()
+                barcode_textbox.Focus()
+                AmtPanel.Visible = False
+                Me.AcceptButton = Me.ok_button
+            Else
+                MessageBox.Show("You out of stock, The remaining stock is " & remainingStock, "Stock level Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "An error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MsgBox(ex.StackTrace)
+            quantity_textbox.Clear()
+            barcode_textbox.Clear()
+            barcode_textbox.Focus()
+        End Try
+
+    End Sub
+
+    Private Sub list_grid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles list_grid.CellClick
+        Try
+            iRowIndex = list_grid.CurrentRow.Index + 1
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "An Error happened", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub list_grid_Click(sender As Object, e As EventArgs) Handles list_grid.Click
+        lookupPanel.Visible = False
+        AmtPanel.Visible = False
     End Sub
 End Class
