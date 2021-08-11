@@ -289,4 +289,6 @@ Public Class menu_form
     Private Sub Category_button_Click(sender As Object, e As EventArgs) Handles Category_button.Click
         categories.Show()
     End Sub
+
+
 End Class

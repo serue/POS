@@ -63,9 +63,10 @@ Partial Class user_registration
         Me.MetroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall
         Me.MetroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold
         Me.MetroLabel1.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.MetroLabel1.Location = New System.Drawing.Point(67, 18)
+        Me.MetroLabel1.Location = New System.Drawing.Point(50, 15)
+        Me.MetroLabel1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.MetroLabel1.Name = "MetroLabel1"
-        Me.MetroLabel1.Size = New System.Drawing.Size(350, 25)
+        Me.MetroLabel1.Size = New System.Drawing.Size(336, 25)
         Me.MetroLabel1.TabIndex = 2
         Me.MetroLabel1.Text = "Administration App  User Registration"
         Me.MetroLabel1.UseCustomBackColor = True
@@ -75,10 +76,11 @@ Partial Class user_registration
         '
         Me.MaterialDivider1.BackColor = System.Drawing.Color.Red
         Me.MaterialDivider1.Depth = 0
-        Me.MaterialDivider1.Location = New System.Drawing.Point(5, 60)
+        Me.MaterialDivider1.Location = New System.Drawing.Point(4, 49)
+        Me.MaterialDivider1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaterialDivider1.MouseState = MaterialSkin.MouseState.HOVER
         Me.MaterialDivider1.Name = "MaterialDivider1"
-        Me.MaterialDivider1.Size = New System.Drawing.Size(613, 3)
+        Me.MaterialDivider1.Size = New System.Drawing.Size(460, 2)
         Me.MaterialDivider1.TabIndex = 3
         Me.MaterialDivider1.Text = "MaterialDivider1"
         '
@@ -88,9 +90,10 @@ Partial Class user_registration
         '
         '
         Me.name_textbox.CustomButton.Image = Nothing
-        Me.name_textbox.CustomButton.Location = New System.Drawing.Point(469, 2)
+        Me.name_textbox.CustomButton.Location = New System.Drawing.Point(262, 2)
+        Me.name_textbox.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.name_textbox.CustomButton.Name = ""
-        Me.name_textbox.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.name_textbox.CustomButton.Size = New System.Drawing.Size(16, 17)
         Me.name_textbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.name_textbox.CustomButton.TabIndex = 1
         Me.name_textbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
@@ -98,7 +101,8 @@ Partial Class user_registration
         Me.name_textbox.CustomButton.Visible = False
         Me.name_textbox.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.name_textbox.Lines = New String(-1) {}
-        Me.name_textbox.Location = New System.Drawing.Point(78, 79)
+        Me.name_textbox.Location = New System.Drawing.Point(58, 64)
+        Me.name_textbox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.name_textbox.MaxLength = 32767
         Me.name_textbox.Multiline = True
         Me.name_textbox.Name = "name_textbox"
@@ -109,7 +113,7 @@ Partial Class user_registration
         Me.name_textbox.SelectionLength = 0
         Me.name_textbox.SelectionStart = 0
         Me.name_textbox.ShortcutsEnabled = True
-        Me.name_textbox.Size = New System.Drawing.Size(499, 32)
+        Me.name_textbox.Size = New System.Drawing.Size(374, 26)
         Me.name_textbox.TabIndex = 5
         Me.name_textbox.UseSelectable = True
         Me.name_textbox.WaterMark = "Enter your full name"
@@ -122,9 +126,10 @@ Partial Class user_registration
         '
         '
         Me.id_number.CustomButton.Image = Nothing
-        Me.id_number.CustomButton.Location = New System.Drawing.Point(469, 2)
+        Me.id_number.CustomButton.Location = New System.Drawing.Point(262, 2)
+        Me.id_number.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.id_number.CustomButton.Name = ""
-        Me.id_number.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.id_number.CustomButton.Size = New System.Drawing.Size(16, 17)
         Me.id_number.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.id_number.CustomButton.TabIndex = 1
         Me.id_number.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
@@ -132,7 +137,8 @@ Partial Class user_registration
         Me.id_number.CustomButton.Visible = False
         Me.id_number.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.id_number.Lines = New String(-1) {}
-        Me.id_number.Location = New System.Drawing.Point(78, 117)
+        Me.id_number.Location = New System.Drawing.Point(58, 95)
+        Me.id_number.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.id_number.MaxLength = 32767
         Me.id_number.Multiline = True
         Me.id_number.Name = "id_number"
@@ -143,7 +149,7 @@ Partial Class user_registration
         Me.id_number.SelectionLength = 0
         Me.id_number.SelectionStart = 0
         Me.id_number.ShortcutsEnabled = True
-        Me.id_number.Size = New System.Drawing.Size(499, 32)
+        Me.id_number.Size = New System.Drawing.Size(374, 26)
         Me.id_number.TabIndex = 6
         Me.id_number.UseSelectable = True
         Me.id_number.WaterMark = "Enter your national id number"
@@ -156,9 +162,10 @@ Partial Class user_registration
         '
         '
         Me.address.CustomButton.Image = Nothing
-        Me.address.CustomButton.Location = New System.Drawing.Point(469, 2)
+        Me.address.CustomButton.Location = New System.Drawing.Point(262, 2)
+        Me.address.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.address.CustomButton.Name = ""
-        Me.address.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.address.CustomButton.Size = New System.Drawing.Size(16, 17)
         Me.address.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.address.CustomButton.TabIndex = 1
         Me.address.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
@@ -166,7 +173,8 @@ Partial Class user_registration
         Me.address.CustomButton.Visible = False
         Me.address.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.address.Lines = New String(-1) {}
-        Me.address.Location = New System.Drawing.Point(78, 155)
+        Me.address.Location = New System.Drawing.Point(58, 126)
+        Me.address.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.address.MaxLength = 32767
         Me.address.Multiline = True
         Me.address.Name = "address"
@@ -177,7 +185,7 @@ Partial Class user_registration
         Me.address.SelectionLength = 0
         Me.address.SelectionStart = 0
         Me.address.ShortcutsEnabled = True
-        Me.address.Size = New System.Drawing.Size(499, 32)
+        Me.address.Size = New System.Drawing.Size(374, 26)
         Me.address.TabIndex = 7
         Me.address.UseSelectable = True
         Me.address.WaterMark = "Enter your address"
@@ -190,9 +198,10 @@ Partial Class user_registration
         '
         '
         Me.age.CustomButton.Image = Nothing
-        Me.age.CustomButton.Location = New System.Drawing.Point(469, 2)
+        Me.age.CustomButton.Location = New System.Drawing.Point(262, 2)
+        Me.age.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.age.CustomButton.Name = ""
-        Me.age.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.age.CustomButton.Size = New System.Drawing.Size(16, 17)
         Me.age.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.age.CustomButton.TabIndex = 1
         Me.age.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
@@ -200,7 +209,8 @@ Partial Class user_registration
         Me.age.CustomButton.Visible = False
         Me.age.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.age.Lines = New String(-1) {}
-        Me.age.Location = New System.Drawing.Point(78, 193)
+        Me.age.Location = New System.Drawing.Point(58, 157)
+        Me.age.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.age.MaxLength = 32767
         Me.age.Multiline = True
         Me.age.Name = "age"
@@ -211,7 +221,7 @@ Partial Class user_registration
         Me.age.SelectionLength = 0
         Me.age.SelectionStart = 0
         Me.age.ShortcutsEnabled = True
-        Me.age.Size = New System.Drawing.Size(499, 32)
+        Me.age.Size = New System.Drawing.Size(374, 26)
         Me.age.TabIndex = 8
         Me.age.UseSelectable = True
         Me.age.WaterMark = "Enter your age"
@@ -224,9 +234,10 @@ Partial Class user_registration
         '
         '
         Me.phone.CustomButton.Image = Nothing
-        Me.phone.CustomButton.Location = New System.Drawing.Point(469, 2)
+        Me.phone.CustomButton.Location = New System.Drawing.Point(262, 2)
+        Me.phone.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.phone.CustomButton.Name = ""
-        Me.phone.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.phone.CustomButton.Size = New System.Drawing.Size(16, 17)
         Me.phone.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.phone.CustomButton.TabIndex = 1
         Me.phone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
@@ -234,7 +245,8 @@ Partial Class user_registration
         Me.phone.CustomButton.Visible = False
         Me.phone.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.phone.Lines = New String(-1) {}
-        Me.phone.Location = New System.Drawing.Point(78, 269)
+        Me.phone.Location = New System.Drawing.Point(58, 219)
+        Me.phone.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.phone.MaxLength = 32767
         Me.phone.Multiline = True
         Me.phone.Name = "phone"
@@ -245,7 +257,7 @@ Partial Class user_registration
         Me.phone.SelectionLength = 0
         Me.phone.SelectionStart = 0
         Me.phone.ShortcutsEnabled = True
-        Me.phone.Size = New System.Drawing.Size(499, 32)
+        Me.phone.Size = New System.Drawing.Size(374, 26)
         Me.phone.TabIndex = 10
         Me.phone.UseSelectable = True
         Me.phone.WaterMark = "Enter your phone number"
@@ -258,9 +270,10 @@ Partial Class user_registration
         '
         '
         Me.username.CustomButton.Image = Nothing
-        Me.username.CustomButton.Location = New System.Drawing.Point(469, 2)
+        Me.username.CustomButton.Location = New System.Drawing.Point(262, 2)
+        Me.username.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.username.CustomButton.Name = ""
-        Me.username.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.username.CustomButton.Size = New System.Drawing.Size(16, 17)
         Me.username.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.username.CustomButton.TabIndex = 1
         Me.username.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
@@ -268,7 +281,8 @@ Partial Class user_registration
         Me.username.CustomButton.Visible = False
         Me.username.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.username.Lines = New String(-1) {}
-        Me.username.Location = New System.Drawing.Point(78, 307)
+        Me.username.Location = New System.Drawing.Point(58, 249)
+        Me.username.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.username.MaxLength = 32767
         Me.username.Multiline = True
         Me.username.Name = "username"
@@ -279,7 +293,7 @@ Partial Class user_registration
         Me.username.SelectionLength = 0
         Me.username.SelectionStart = 0
         Me.username.ShortcutsEnabled = True
-        Me.username.Size = New System.Drawing.Size(499, 32)
+        Me.username.Size = New System.Drawing.Size(374, 26)
         Me.username.TabIndex = 12
         Me.username.UseSelectable = True
         Me.username.WaterMark = "Enter your username"
@@ -290,9 +304,10 @@ Partial Class user_registration
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(74, 407)
+        Me.Label1.Location = New System.Drawing.Point(56, 331)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(208, 23)
+        Me.Label1.Size = New System.Drawing.Size(167, 19)
         Me.Label1.TabIndex = 13
         Me.Label1.Text = "Already have an Account?"
         '
@@ -302,9 +317,10 @@ Partial Class user_registration
         Me.LinkLabel1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.LinkLabel1.Location = New System.Drawing.Point(284, 405)
+        Me.LinkLabel1.Location = New System.Drawing.Point(227, 330)
+        Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(98, 25)
+        Me.LinkLabel1.Size = New System.Drawing.Size(76, 20)
         Me.LinkLabel1.TabIndex = 12
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "login here"
@@ -316,9 +332,10 @@ Partial Class user_registration
         '
         '
         Me.password.CustomButton.Image = Nothing
-        Me.password.CustomButton.Location = New System.Drawing.Point(469, 2)
+        Me.password.CustomButton.Location = New System.Drawing.Point(262, 2)
+        Me.password.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.password.CustomButton.Name = ""
-        Me.password.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.password.CustomButton.Size = New System.Drawing.Size(16, 17)
         Me.password.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.password.CustomButton.TabIndex = 1
         Me.password.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
@@ -326,7 +343,8 @@ Partial Class user_registration
         Me.password.CustomButton.Visible = False
         Me.password.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.password.Lines = New String(-1) {}
-        Me.password.Location = New System.Drawing.Point(78, 345)
+        Me.password.Location = New System.Drawing.Point(58, 280)
+        Me.password.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.password.MaxLength = 32767
         Me.password.Multiline = True
         Me.password.Name = "password"
@@ -337,7 +355,7 @@ Partial Class user_registration
         Me.password.SelectionLength = 0
         Me.password.SelectionStart = 0
         Me.password.ShortcutsEnabled = True
-        Me.password.Size = New System.Drawing.Size(499, 32)
+        Me.password.Size = New System.Drawing.Size(374, 26)
         Me.password.TabIndex = 13
         Me.password.UseSelectable = True
         Me.password.WaterMark = "Enter your password"
@@ -347,12 +365,13 @@ Partial Class user_registration
         'gender
         '
         Me.gender.FormattingEnabled = True
-        Me.gender.ItemHeight = 24
+        Me.gender.ItemHeight = 23
         Me.gender.Items.AddRange(New Object() {"Male", "Female"})
-        Me.gender.Location = New System.Drawing.Point(78, 231)
+        Me.gender.Location = New System.Drawing.Point(58, 188)
+        Me.gender.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.gender.Name = "gender"
         Me.gender.PromptText = "Select Gender"
-        Me.gender.Size = New System.Drawing.Size(499, 30)
+        Me.gender.Size = New System.Drawing.Size(375, 29)
         Me.gender.TabIndex = 9
         Me.gender.UseSelectable = True
         '
@@ -363,9 +382,11 @@ Partial Class user_registration
         Me.IconPictureBox9.IconChar = FontAwesome.Sharp.IconChar.Key
         Me.IconPictureBox9.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox9.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox9.Location = New System.Drawing.Point(40, 346)
+        Me.IconPictureBox9.IconSize = 24
+        Me.IconPictureBox9.Location = New System.Drawing.Point(30, 281)
+        Me.IconPictureBox9.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox9.Name = "IconPictureBox9"
-        Me.IconPictureBox9.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox9.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox9.TabIndex = 4
         Me.IconPictureBox9.TabStop = False
         '
@@ -376,9 +397,11 @@ Partial Class user_registration
         Me.IconPictureBox8.IconChar = FontAwesome.Sharp.IconChar.UserLock
         Me.IconPictureBox8.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox8.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox8.Location = New System.Drawing.Point(40, 308)
+        Me.IconPictureBox8.IconSize = 24
+        Me.IconPictureBox8.Location = New System.Drawing.Point(30, 250)
+        Me.IconPictureBox8.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox8.Name = "IconPictureBox8"
-        Me.IconPictureBox8.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox8.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox8.TabIndex = 4
         Me.IconPictureBox8.TabStop = False
         '
@@ -389,9 +412,11 @@ Partial Class user_registration
         Me.IconPictureBox10.IconChar = FontAwesome.Sharp.IconChar.Male
         Me.IconPictureBox10.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox10.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox10.Location = New System.Drawing.Point(40, 232)
+        Me.IconPictureBox10.IconSize = 24
+        Me.IconPictureBox10.Location = New System.Drawing.Point(30, 188)
+        Me.IconPictureBox10.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox10.Name = "IconPictureBox10"
-        Me.IconPictureBox10.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox10.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox10.TabIndex = 4
         Me.IconPictureBox10.TabStop = False
         '
@@ -402,9 +427,11 @@ Partial Class user_registration
         Me.IconPictureBox7.IconChar = FontAwesome.Sharp.IconChar.Phone
         Me.IconPictureBox7.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox7.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox7.Location = New System.Drawing.Point(40, 270)
+        Me.IconPictureBox7.IconSize = 24
+        Me.IconPictureBox7.Location = New System.Drawing.Point(30, 219)
+        Me.IconPictureBox7.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox7.Name = "IconPictureBox7"
-        Me.IconPictureBox7.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox7.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox7.TabIndex = 4
         Me.IconPictureBox7.TabStop = False
         '
@@ -415,9 +442,11 @@ Partial Class user_registration
         Me.IconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Info
         Me.IconPictureBox5.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox5.Location = New System.Drawing.Point(40, 194)
+        Me.IconPictureBox5.IconSize = 24
+        Me.IconPictureBox5.Location = New System.Drawing.Point(30, 158)
+        Me.IconPictureBox5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox5.Name = "IconPictureBox5"
-        Me.IconPictureBox5.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox5.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox5.TabIndex = 4
         Me.IconPictureBox5.TabStop = False
         '
@@ -428,9 +457,11 @@ Partial Class user_registration
         Me.IconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.IdCard
         Me.IconPictureBox3.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox3.Location = New System.Drawing.Point(40, 118)
+        Me.IconPictureBox3.IconSize = 24
+        Me.IconPictureBox3.Location = New System.Drawing.Point(30, 96)
+        Me.IconPictureBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox3.Name = "IconPictureBox3"
-        Me.IconPictureBox3.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox3.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox3.TabIndex = 4
         Me.IconPictureBox3.TabStop = False
         '
@@ -441,9 +472,11 @@ Partial Class user_registration
         Me.IconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.AddressBook
         Me.IconPictureBox4.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox4.Location = New System.Drawing.Point(40, 156)
+        Me.IconPictureBox4.IconSize = 24
+        Me.IconPictureBox4.Location = New System.Drawing.Point(30, 127)
+        Me.IconPictureBox4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox4.Name = "IconPictureBox4"
-        Me.IconPictureBox4.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox4.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox4.TabIndex = 4
         Me.IconPictureBox4.TabStop = False
         '
@@ -454,9 +487,11 @@ Partial Class user_registration
         Me.IconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.User
         Me.IconPictureBox2.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox2.Location = New System.Drawing.Point(40, 80)
+        Me.IconPictureBox2.IconSize = 24
+        Me.IconPictureBox2.Location = New System.Drawing.Point(30, 65)
+        Me.IconPictureBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox2.Name = "IconPictureBox2"
-        Me.IconPictureBox2.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox2.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox2.TabIndex = 4
         Me.IconPictureBox2.TabStop = False
         '
@@ -467,24 +502,27 @@ Partial Class user_registration
         Me.IconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.BookOpen
         Me.IconPictureBox1.IconColor = System.Drawing.Color.MediumVioletRed
         Me.IconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox1.IconSize = 39
-        Me.IconPictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.IconPictureBox1.Location = New System.Drawing.Point(9, 10)
+        Me.IconPictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox1.Name = "IconPictureBox1"
-        Me.IconPictureBox1.Size = New System.Drawing.Size(49, 39)
+        Me.IconPictureBox1.Size = New System.Drawing.Size(37, 32)
         Me.IconPictureBox1.TabIndex = 0
         Me.IconPictureBox1.TabStop = False
         '
         'save_button
         '
-        Me.save_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.save_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.save_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.save_button.IconChar = FontAwesome.Sharp.IconChar.Plus
         Me.save_button.IconColor = System.Drawing.Color.DarkSlateBlue
         Me.save_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.save_button.IconSize = 25
         Me.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_button.Location = New System.Drawing.Point(89, 470)
+        Me.save_button.Location = New System.Drawing.Point(67, 382)
+        Me.save_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.save_button.Name = "save_button"
-        Me.save_button.Size = New System.Drawing.Size(161, 41)
+        Me.save_button.Rotation = 0R
+        Me.save_button.Size = New System.Drawing.Size(121, 33)
         Me.save_button.TabIndex = 16
         Me.save_button.Text = "Add New User"
         Me.save_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -492,15 +530,18 @@ Partial Class user_registration
         '
         'update_button
         '
-        Me.update_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.update_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.update_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.update_button.IconChar = FontAwesome.Sharp.IconChar.Edit
         Me.update_button.IconColor = System.Drawing.Color.Navy
         Me.update_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.update_button.IconSize = 25
         Me.update_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.update_button.Location = New System.Drawing.Point(278, 470)
+        Me.update_button.Location = New System.Drawing.Point(208, 382)
+        Me.update_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.update_button.Name = "update_button"
-        Me.update_button.Size = New System.Drawing.Size(161, 41)
+        Me.update_button.Rotation = 0R
+        Me.update_button.Size = New System.Drawing.Size(121, 33)
         Me.update_button.TabIndex = 17
         Me.update_button.Text = "Update User"
         Me.update_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -508,15 +549,18 @@ Partial Class user_registration
         '
         'clear_button
         '
-        Me.clear_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.clear_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.clear_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
         Me.clear_button.IconColor = System.Drawing.Color.DarkRed
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.clear_button.IconSize = 25
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(463, 470)
+        Me.clear_button.Location = New System.Drawing.Point(347, 382)
+        Me.clear_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.clear_button.Name = "clear_button"
-        Me.clear_button.Size = New System.Drawing.Size(114, 41)
+        Me.clear_button.Rotation = 0R
+        Me.clear_button.Size = New System.Drawing.Size(86, 33)
         Me.clear_button.TabIndex = 18
         Me.clear_button.Text = "Clear"
         Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -524,9 +568,9 @@ Partial Class user_registration
         '
         'user_registration
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(627, 538)
+        Me.ClientSize = New System.Drawing.Size(470, 437)
         Me.Controls.Add(Me.clear_button)
         Me.Controls.Add(Me.update_button)
         Me.Controls.Add(Me.save_button)
@@ -552,6 +596,7 @@ Partial Class user_registration
         Me.Controls.Add(Me.MetroLabel1)
         Me.Controls.Add(Me.IconPictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "user_registration"

@@ -37,8 +37,9 @@ Partial Class categories
         Me.Panel1.BackColor = System.Drawing.Color.IndianRed
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(629, 4)
+        Me.Panel1.Size = New System.Drawing.Size(472, 3)
         Me.Panel1.TabIndex = 0
         '
         'Label1
@@ -46,9 +47,10 @@ Partial Class categories
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Label1.Location = New System.Drawing.Point(12, 7)
+        Me.Label1.Location = New System.Drawing.Point(9, 6)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 21)
+        Me.Label1.Size = New System.Drawing.Size(82, 17)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "CATEGORY:"
         '
@@ -57,20 +59,22 @@ Partial Class categories
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Label2.Location = New System.Drawing.Point(12, 78)
+        Me.Label2.Location = New System.Drawing.Point(9, 63)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(158, 21)
+        Me.Label2.Size = New System.Drawing.Size(129, 17)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "CATEGORY NOTES:"
         '
         'notes_textbox
         '
-        Me.notes_textbox.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.notes_textbox.Location = New System.Drawing.Point(16, 103)
+        Me.notes_textbox.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.notes_textbox.Location = New System.Drawing.Point(12, 84)
+        Me.notes_textbox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.notes_textbox.Multiline = True
         Me.notes_textbox.Name = "notes_textbox"
         Me.notes_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.notes_textbox.Size = New System.Drawing.Size(590, 94)
+        Me.notes_textbox.Size = New System.Drawing.Size(444, 61)
         Me.notes_textbox.TabIndex = 4
         '
         'save_item
@@ -84,12 +88,13 @@ Partial Class categories
         Me.save_item.IconChar = FontAwesome.Sharp.IconChar.Plus
         Me.save_item.IconColor = System.Drawing.SystemColors.ControlLight
         Me.save_item.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.save_item.IconSize = 30
+        Me.save_item.IconSize = 25
         Me.save_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_item.Location = New System.Drawing.Point(16, 220)
+        Me.save_item.Location = New System.Drawing.Point(12, 179)
+        Me.save_item.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.save_item.Name = "save_item"
         Me.save_item.Rotation = 0R
-        Me.save_item.Size = New System.Drawing.Size(226, 34)
+        Me.save_item.Size = New System.Drawing.Size(170, 28)
         Me.save_item.TabIndex = 24
         Me.save_item.Text = "Save New Category"
         Me.save_item.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -106,12 +111,13 @@ Partial Class categories
         Me.edit_details.IconChar = FontAwesome.Sharp.IconChar.Edit
         Me.edit_details.IconColor = System.Drawing.SystemColors.ControlLight
         Me.edit_details.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.edit_details.IconSize = 30
+        Me.edit_details.IconSize = 25
         Me.edit_details.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.edit_details.Location = New System.Drawing.Point(248, 220)
+        Me.edit_details.Location = New System.Drawing.Point(186, 179)
+        Me.edit_details.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.edit_details.Name = "edit_details"
         Me.edit_details.Rotation = 0R
-        Me.edit_details.Size = New System.Drawing.Size(207, 34)
+        Me.edit_details.Size = New System.Drawing.Size(155, 28)
         Me.edit_details.TabIndex = 25
         Me.edit_details.Text = "Edit Category"
         Me.edit_details.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -128,12 +134,13 @@ Partial Class categories
         Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
         Me.clear_button.IconColor = System.Drawing.SystemColors.ControlLight
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.clear_button.IconSize = 30
+        Me.clear_button.IconSize = 25
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(461, 220)
+        Me.clear_button.Location = New System.Drawing.Point(346, 179)
+        Me.clear_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.clear_button.Name = "clear_button"
         Me.clear_button.Rotation = 0R
-        Me.clear_button.Size = New System.Drawing.Size(145, 34)
+        Me.clear_button.Size = New System.Drawing.Size(109, 28)
         Me.clear_button.TabIndex = 27
         Me.clear_button.Text = "Clear"
         Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -141,18 +148,19 @@ Partial Class categories
         '
         'cmb_category
         '
-        Me.cmb_category.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmb_category.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmb_category.FormattingEnabled = True
-        Me.cmb_category.Location = New System.Drawing.Point(12, 33)
+        Me.cmb_category.Location = New System.Drawing.Point(9, 27)
+        Me.cmb_category.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmb_category.Name = "cmb_category"
-        Me.cmb_category.Size = New System.Drawing.Size(594, 29)
+        Me.cmb_category.Size = New System.Drawing.Size(446, 24)
         Me.cmb_category.TabIndex = 28
         '
         'categories
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(629, 268)
+        Me.ClientSize = New System.Drawing.Size(472, 218)
         Me.Controls.Add(Me.cmb_category)
         Me.Controls.Add(Me.clear_button)
         Me.Controls.Add(Me.edit_details)
@@ -162,6 +170,7 @@ Partial Class categories
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "categories"

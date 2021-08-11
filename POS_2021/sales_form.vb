@@ -10,23 +10,21 @@ Public Class sales_form
     Dim Index As Integer
     Dim totalsum As Decimal = 0
     Dim TAX As Decimal
-    Dim sale_tax As Decimal = 0
+    Dim CurrencyRate As Decimal = 0
     Dim Transaction_type As String      ' gets the transaction type to save to the database
     Dim month As String
-    Dim CurrentBarcode As String
-    Dim DataIndex As Integer = 0
     Dim table1 As New DataTable("Table1")
     Dim iRowIndex As Integer
     Dim Transaction_id As Integer = 0
     Dim temp As String = "TN001R-"
     Dim Register_Transaction As String    ' inherited in receipt
-    Dim taxcode As String
     Dim cost As Decimal
     Dim profit As Decimal = 0
     Dim remainingStock As Decimal
     Dim position As Integer = 1
     Dim hasValuePassed As Boolean = False
     Dim check As CheckBox
+    Private isButchery = False
 
     Private user As String
     Public Property ActiveUser() As String
@@ -168,7 +166,7 @@ Public Class sales_form
                 End If
 
             End Using
-            Using command As New SqlCommand("SELECT BARCODE,NAME,SALE_QTY,PRICE,QUANTITY FROM INVENTORY WHERE BARCODE=@id", connection)
+            Using command As New SqlCommand("SELECT BARCODE,NAME,SALE_QTY,PRICE,QUANTITY,CATEGORY FROM INVENTORY WHERE BARCODE=@id", connection)
                 command.Parameters.Add("@id", SqlDbType.VarChar).Value = barcode_textbox.Text
                 Dim ada As New SqlDataAdapter(command)
                 Dim table1 As New DataTable
@@ -176,6 +174,10 @@ Public Class sales_form
                 If table1.Rows.Count > 0 Then
                     remainingStock = table1(0)(0)
                     Dim qua As Integer = table1(0)(4)
+                    If table1(0)(5) = "butchery".ToUpper Then
+                        isButchery = True
+                    End If
+
                     If qua > 1 Then
                         For Each row As DataGridViewRow In list_grid.Rows
                             If row.Cells(1).Value = barcode_textbox.Text Then
@@ -204,9 +206,13 @@ Public Class sales_form
                         cost_label.Text = CDec(table1(0)(3)).ToString(" ###,###,###.00")
                         total_label.Text = totalsum.ToString(" ###,###,###.00")
 
-                        'If Not IsDBNull(TAX) Then
-                        '    sale_tax = TAX * total_label.Text
-                        'End If
+                        If isButchery Then
+                            AmtPanel.Visible = True
+                            quantity_textbox.Visible = True
+                            qty_viewLabel.Visible = True
+                            Accept_Quantity.Visible = True
+                            Me.AcceptButton = Accept_Quantity
+                        End If
                     Else
                         MsgBox("out of stock")
                     End If
@@ -741,17 +747,83 @@ Public Class sales_form
         End If
     End Sub
 
-    Private Sub Assign_Methods(sender As Object, e As EventArgs) Handles RTGS_button.Click, OtherPaymentButton.Click, forex_button.Click, ecocash_button.Click, cash_button.Click
+    Private Sub Assign_Methods(sender As Object, e As EventArgs) Handles RTGS_button.Click, forex_button.Click, ecocash_button.Click, cash_button.Click
         Try
             If total_label.Text <= 0 Or total_label.Text = "" Then
-                MessageBox.Show("You cannot proceed to payment since there is no product in the lis", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
                 Dim btn As Button = sender
                 Transaction_type = btn.Text
                 Me.AcceptButton = Me.FinaliseTransaction
-                AmtPanel.Visible = True
-                qty_paid_textbox.Focus()
-                method_label.Text = btn.Text
+                Dim localMethod As String
+                localMethod = method_label.Text
+
+                If Transaction_type = "FOREX" Then
+                    If localMethod = "CARD" Or localMethod = "CASH" Or localMethod = "ECOCASH" Then
+                        Try
+                            connection = myPermissions.getConnection
+                            connection.Open()
+                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                                Dim currencyTable As New DataTable
+                                Dim adapter As New SqlDataAdapter(command)
+                                adapter.Fill(currencyTable)
+                                CurrencyRate = currencyTable(0)(0)
+                                Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
+                                total_label.Text = Math.Round(temporaryValue, 2)
+                            End Using
+                            connection.Close()
+                        Catch ex As Exception
+                            connection.Close()
+                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
+                        End Try
+                    End If
+
+                    AmtPanel.Visible = True
+                    qty_viewLabel.Visible = False
+                    quantity_textbox.Visible = False
+                    Accept_Quantity.Visible = False
+                    HideQuantityInputs()
+                    Me.AcceptButton = Me.FinaliseTransaction
+                    method_label.Text = btn.Text
+                    AmtPanel.Visible = True
+                    qty_paid_textbox.ReadOnly = False
+                    qty_paid_textbox.Focus()
+
+                ElseIf Transaction_type = "CASH" Or Transaction_type = "ECOCASH" Or Transaction_type = "CARD" Then
+                    If localMethod = "FOREX" Then
+                        Try
+                            connection = myPermissions.getConnection
+                            connection.Open()
+                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                                Dim currencyTable As New DataTable
+                                Dim adapter As New SqlDataAdapter(command)
+                                adapter.Fill(currencyTable)
+                                CurrencyRate = currencyTable(0)(0)
+                                Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                                total_label.Text = Math.Round(temporaryValue, 2)
+                            End Using
+                            connection.Close()
+                        Catch ex As Exception
+                            connection.Close()
+                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+                        End Try
+                    Else
+                        AmtPanel.Visible = True
+                        qty_viewLabel.Visible = False
+                        quantity_textbox.Visible = False
+                        Accept_Quantity.Visible = False
+                        HideQuantityInputs()
+                        Me.AcceptButton = Me.FinaliseTransaction
+                        AmtPanel.Visible = True
+                        method_label.Text = btn.Text
+                        qty_paid_textbox.ReadOnly = False
+                        qty_paid_textbox.Focus()
+                    End If
+                End If
+                If btn.Text = "CARD" Or btn.Text = "ECOCASH" Then
+                    qty_paid_textbox.ReadOnly = True
+                    qty_paid_textbox.Text = total_label.Text
+                End If
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "System Encountered the following error on Payments", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -842,55 +914,151 @@ Public Class sales_form
 
 
         If e.KeyCode = Keys.F2 Then
-            AmtPanel.Visible = True
-            qty_viewLabel.Visible = False
-            quantity_textbox.Visible = False
-            Accept_Quantity.Visible = False
-            HideQuantityInputs()
-            Me.AcceptButton = Me.FinaliseTransaction
-            Transaction_type = "CASH"
-            AmtPanel.Visible = True
-            method_label.Text = "CASH"
-            qty_paid_textbox.ReadOnly = False
-            qty_paid_textbox.Focus()
+            If total_label.Text <= 0 Or total_label.Text = "" Then
+                MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                If method_label.Text = "FOREX" Then
 
+                    Try
+                        connection = myPermissions.getConnection
+                        connection.Open()
+                        Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                            Dim currencyTable As New DataTable
+                            Dim adapter As New SqlDataAdapter(command)
+                            adapter.Fill(currencyTable)
+                            CurrencyRate = currencyTable(0)(0)
+                            Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                            total_label.Text = temporaryValue
+                        End Using
+                        connection.Close()
+                    Catch ex As Exception
+                        connection.Close()
+                        MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+                    End Try
+                Else
+                    AmtPanel.Visible = True
+                    qty_viewLabel.Visible = False
+                    quantity_textbox.Visible = False
+                    Accept_Quantity.Visible = False
+                    HideQuantityInputs()
+                    Me.AcceptButton = Me.FinaliseTransaction
+                    Transaction_type = "CASH"
+                    AmtPanel.Visible = True
+                    method_label.Text = "CASH"
+                    qty_paid_textbox.ReadOnly = False
+                    qty_paid_textbox.Focus()
+
+                End If
+            End If
         ElseIf e.KeyCode = Keys.F3 Then
-            AmtPanel.Visible = True
-            qty_viewLabel.Visible = False
-            quantity_textbox.Visible = False
-            Accept_Quantity.Visible = False
-            HideQuantityInputs()
-            Me.AcceptButton = Me.FinaliseTransaction
-            Transaction_type = "CARD"
-            AmtPanel.Visible = True
-            method_label.Text = "CARD"
-            qty_paid_textbox.Text = total_label.Text
-            qty_paid_textbox.ReadOnly = True
+            If total_label.Text <= 0 Or total_label.Text = "" Then
+                MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                If method_label.Text = "FOREX" Then
+
+                    Try
+                        connection = myPermissions.getConnection
+                        connection.Open()
+                        Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                            Dim currencyTable As New DataTable
+                            Dim adapter As New SqlDataAdapter(command)
+                            adapter.Fill(currencyTable)
+                            CurrencyRate = currencyTable(0)(0)
+                            Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                            total_label.Text = temporaryValue
+                        End Using
+                        connection.Close()
+                    Catch ex As Exception
+                        connection.Close()
+                        MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+                    End Try
+                Else
+                    AmtPanel.Visible = True
+                    qty_viewLabel.Visible = False
+                    quantity_textbox.Visible = False
+                    Accept_Quantity.Visible = False
+                    HideQuantityInputs()
+                    Me.AcceptButton = Me.FinaliseTransaction
+                    Transaction_type = "CARD"
+                    AmtPanel.Visible = True
+                    method_label.Text = "CARD"
+                    qty_paid_textbox.Text = total_label.Text
+                    qty_paid_textbox.ReadOnly = True
+                End If
+            End If
 
         ElseIf e.KeyCode = Keys.F4 Then
-            AmtPanel.Visible = True
-            qty_viewLabel.Visible = False
-            quantity_textbox.Visible = False
-            Accept_Quantity.Visible = False
-            HideQuantityInputs()
-            Me.AcceptButton = Me.FinaliseTransaction
-            Transaction_type = "ECOCASH"
-            AmtPanel.Visible = True
-            method_label.Text = "ECOCASH"
-            qty_paid_textbox.Text = total_label.Text
-            qty_paid_textbox.ReadOnly = True
+            If total_label.Text <= 0 Or total_label.Text = "" Then
+                MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                If method_label.Text = "FOREX" Then
+
+                    Try
+                        connection = myPermissions.getConnection
+                        connection.Open()
+                        Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                            Dim currencyTable As New DataTable
+                            Dim adapter As New SqlDataAdapter(command)
+                            adapter.Fill(currencyTable)
+                            CurrencyRate = currencyTable(0)(0)
+                            Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                            total_label.Text = temporaryValue
+                        End Using
+                        connection.Close()
+                    Catch ex As Exception
+                        connection.Close()
+                        MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+                    End Try
+                Else
+                    AmtPanel.Visible = True
+                    qty_viewLabel.Visible = False
+                    quantity_textbox.Visible = False
+                    Accept_Quantity.Visible = False
+                    HideQuantityInputs()
+                    Me.AcceptButton = Me.FinaliseTransaction
+                    Transaction_type = "ECOCASH"
+                    AmtPanel.Visible = True
+                    method_label.Text = "ECOCASH"
+                    qty_paid_textbox.Text = total_label.Text
+                    qty_paid_textbox.ReadOnly = True
+                End If
+            End If
         ElseIf e.KeyCode = Keys.F5 Then
-            AmtPanel.Visible = True
-            qty_viewLabel.Visible = False
-            quantity_textbox.Visible = False
-            Accept_Quantity.Visible = False
-            HideQuantityInputs()
-            Me.AcceptButton = Me.FinaliseTransaction
-            Transaction_type = "FOREX"
-            method_label.Text = "FOREX"
-            AmtPanel.Visible = True
-            qty_paid_textbox.ReadOnly = False
-            qty_paid_textbox.Focus()
+            If total_label.Text <= 0 Or total_label.Text = "" Then
+                MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                If method_label.Text = "CASH" Or method_label.Text = "CARD" Or method_label.Text = "ECOCASH" Then
+
+                    Try
+                        connection = myPermissions.getConnection
+                        connection.Open()
+                        Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                            Dim currencyTable As New DataTable
+                            Dim adapter As New SqlDataAdapter(command)
+                            adapter.Fill(currencyTable)
+                            CurrencyRate = currencyTable(0)(0)
+                            Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
+                            total_label.Text = temporaryValue
+                        End Using
+                        connection.Close()
+                    Catch ex As Exception
+                        connection.Close()
+                        MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
+                    End Try
+                Else
+                    AmtPanel.Visible = True
+                    qty_viewLabel.Visible = False
+                    quantity_textbox.Visible = False
+                    Accept_Quantity.Visible = False
+                    HideQuantityInputs()
+                    Me.AcceptButton = Me.FinaliseTransaction
+                    Transaction_type = "FOREX"
+                    method_label.Text = "FOREX"
+                    AmtPanel.Visible = True
+                    qty_paid_textbox.ReadOnly = False
+                    qty_paid_textbox.Focus()
+                End If
+            End If
         ElseIf e.KeyCode = Keys.F6 Then
             lookupPanel.Visible = True
             AmtPanel.Visible = False
@@ -905,38 +1073,44 @@ Public Class sales_form
             Me.AcceptButton = Me.Accept_Quantity
             quantity_textbox.TextAlign = HorizontalAlignment.Right
             quantity_textbox.Focus()
-        ElseIf e.KeyCode = Keys.Multiply Then
-            MsgBox("multiply")
-
-            ' MsgBox(e.KeyCode)
+        ElseIf e.KeyCode = Keys.Escape Then
+            If MessageBox.Show("Confirm Exit ", " Exit Appplication", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Application.Exit()
+            Else
+            End If
 
         End If
 
     End Sub
 
     Private Sub Form_Thread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles Form_Thread.DoWork
-        If Not qty_paid_textbox.Text Is Nothing And CDec(qty_paid_textbox.Text) >= CDec(total_label.Text) Then
-            Dim change As Decimal = (qty_paid_textbox.Text - total_label.Text)
-            If change > 0 Then
-                change_label.Text = change
+        Try
+            If Not qty_paid_textbox.Text Is Nothing And CDec(qty_paid_textbox.Text) >= CDec(total_label.Text) Then
+                Dim change As Decimal = (qty_paid_textbox.Text - total_label.Text)
+                If change > 0 Then
+                    change_label.Text = change
+                End If
+
+                getTax()
+                MsgBox(TAX)
+                FindMaxID()
+                RegisterTransaction()
+                AmtPanel.Visible = False
+                Me.AcceptButton = Me.ok_button
+                qty_paid_textbox.Clear()
+                barcode_textbox.Focus()
+                hasValuePassed = True
+
+            ElseIf qty_paid_textbox.Text = "" Then
+                MessageBox.Show("You did not supply the amount paid by the customer, Please check if the amount is correct", "Error of the Payment amount", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                hasValuePassed = False
+            ElseIf CDec(qty_paid_textbox.Text) < CDec(total_label.Text) Then
+                MessageBox.Show("The amount paid by the customer is less than than the cost of products", "Supplying less amount than the cost", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "An error occure while processing the final transaction", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
-            getTax()
-            MsgBox(TAX)
-            FindMaxID()
-            RegisterTransaction()
-            AmtPanel.Visible = False
-            Me.AcceptButton = Me.ok_button
-            qty_paid_textbox.Clear()
-            barcode_textbox.Focus()
-            hasValuePassed = True
-
-        ElseIf qty_paid_textbox.Text = "" Then
-            MessageBox.Show("You did not supply the amount paid by the customer, Please check if the amount is correct", "Error of the Payment amount", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            hasValuePassed = False
-        ElseIf CDec(qty_paid_textbox.Text) < CDec(total_label.Text) Then
-            MessageBox.Show("The amount paid by the customer is less than than the cost of products", "Supplying less amount than the cost", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
     End Sub
 
     Private Sub Form_Thread_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles Form_Thread.RunWorkerCompleted
@@ -1014,6 +1188,7 @@ Public Class sales_form
                 barcode_textbox.Focus()
                 AmtPanel.Visible = False
                 Me.AcceptButton = Me.ok_button
+                isButchery = False
             Else
                 MessageBox.Show("You out of stock, The remaining stock is " & remainingStock, "Stock level Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
@@ -1037,7 +1212,211 @@ Public Class sales_form
     End Sub
 
     Private Sub list_grid_Click(sender As Object, e As EventArgs) Handles list_grid.Click
-        lookupPanel.Visible = False
+        If isButchery Then
+        Else
+            lookupPanel.Visible = False
+            AmtPanel.Visible = False
+        End If
+    End Sub
+
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+
+    End Sub
+    Private Sub escape_button_Click(sender As Object, e As EventArgs) Handles escape_button.Click
+        Try
+            If MessageBox.Show("Confirm Exit ", " Exit Appplication", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Application.Exit()
+            Else
+
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "An Error occured on Exit", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+
+    End Sub
+
+    Private Sub f2_button_Click(sender As Object, e As EventArgs) Handles f2_button.Click
+        If method_label.Text = "FOREX" Then
+
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                    Dim currencyTable As New DataTable
+                    Dim adapter As New SqlDataAdapter(command)
+                    adapter.Fill(currencyTable)
+                    CurrencyRate = currencyTable(0)(0)
+                    Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                    total_label.Text = temporaryValue
+                End Using
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+            End Try
+        Else
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = False
+            quantity_textbox.Visible = False
+            Accept_Quantity.Visible = False
+            HideQuantityInputs()
+            Me.AcceptButton = Me.FinaliseTransaction
+            Transaction_type = "CASH"
+            AmtPanel.Visible = True
+            method_label.Text = "CASH"
+            qty_paid_textbox.ReadOnly = False
+            qty_paid_textbox.Focus()
+
+        End If
+    End Sub
+
+    Private Sub f3_button_Click(sender As Object, e As EventArgs) Handles f3_button.Click
+        If method_label.Text = "FOREX" Then
+
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                    Dim currencyTable As New DataTable
+                    Dim adapter As New SqlDataAdapter(command)
+                    adapter.Fill(currencyTable)
+                    CurrencyRate = currencyTable(0)(0)
+                    Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                    total_label.Text = temporaryValue
+                End Using
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+            End Try
+        Else
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = False
+            quantity_textbox.Visible = False
+            Accept_Quantity.Visible = False
+            HideQuantityInputs()
+            Me.AcceptButton = Me.FinaliseTransaction
+            Transaction_type = "ECOCASH"
+            AmtPanel.Visible = True
+            method_label.Text = "ECOCASH"
+            qty_paid_textbox.Text = total_label.Text
+            qty_paid_textbox.ReadOnly = True
+        End If
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles f5_button.Click
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                Dim currencyTable As New DataTable
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(currencyTable)
+                CurrencyRate = currencyTable(0)(0)
+                Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
+                total_label.Text = temporaryValue
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
+        End Try
+        AmtPanel.Visible = True
+        qty_viewLabel.Visible = False
+        quantity_textbox.Visible = False
+        Accept_Quantity.Visible = False
+        HideQuantityInputs()
+        Me.AcceptButton = Me.FinaliseTransaction
+        Transaction_type = "FOREX"
+        method_label.Text = "FOREX"
+        AmtPanel.Visible = True
+        qty_paid_textbox.ReadOnly = False
+        qty_paid_textbox.Focus()
+    End Sub
+
+    Private Sub f4_button_Click(sender As Object, e As EventArgs) Handles f4_button.Click
+        If method_label.Text = "FOREX" Then
+
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                    Dim currencyTable As New DataTable
+                    Dim adapter As New SqlDataAdapter(command)
+                    adapter.Fill(currencyTable)
+                    CurrencyRate = currencyTable(0)(0)
+                    Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                    total_label.Text = temporaryValue
+                End Using
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+            End Try
+        Else
+            AmtPanel.Visible = True
+            qty_viewLabel.Visible = False
+            quantity_textbox.Visible = False
+            Accept_Quantity.Visible = False
+            HideQuantityInputs()
+            Me.AcceptButton = Me.FinaliseTransaction
+            Transaction_type = "CARD"
+            AmtPanel.Visible = True
+            method_label.Text = "CARD"
+            qty_paid_textbox.Text = total_label.Text
+            qty_paid_textbox.ReadOnly = True
+        End If
+    End Sub
+
+    Private Sub f6_button_Click(sender As Object, e As EventArgs) Handles f6_button.Click
+        lookupPanel.Visible = True
         AmtPanel.Visible = False
+    End Sub
+
+    Private Sub f7_button_Click(sender As Object, e As EventArgs) Handles f7_button.Click
+
+    End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles fast_other_button.Click
+        MsgBox("This facility is not available")
+    End Sub
+
+    Private Sub Button15_Click(sender As Object, e As EventArgs) Handles addition_button.Click
+        Try
+            If list_grid.RowCount < 1 Then
+                MessageBox.Show("There is no product on the purchase list", "No Products to increase quantity", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                barcode_textbox.Clear()
+                AmtPanel.Visible = True
+                qty_viewLabel.Visible = True
+                quantity_textbox.Visible = True
+                Accept_Quantity.Visible = True
+                HideQuantityInputs()
+                Me.AcceptButton = Me.Accept_Quantity
+                quantity_textbox.TextAlign = HorizontalAlignment.Right
+                quantity_textbox.Focus()
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "An Error happened while trying to increase quantity", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Try
+
+
+    End Sub
+
+    Private Sub f11_button_Click(sender As Object, e As EventArgs) Handles f11_button.Click
+
+    End Sub
+
+    Private Sub f10_button_Click(sender As Object, e As EventArgs) Handles f10_button.Click
+
+    End Sub
+
+    Private Sub f9_button_Click(sender As Object, e As EventArgs) Handles f9_button.Click
+
+    End Sub
+
+    Private Sub f8_button_Click(sender As Object, e As EventArgs) Handles f8_button.Click
+
     End Sub
 End Class

@@ -417,4 +417,6 @@ Public Class Add_inventory
             MessageBox.Show(ex.Message, "Error On Search", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
 End Class

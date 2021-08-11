@@ -42,17 +42,19 @@ Partial Class sign_in
         '
         '
         Me.username_textbox.CustomButton.Image = Nothing
-        Me.username_textbox.CustomButton.Location = New System.Drawing.Point(335, 2)
+        Me.username_textbox.CustomButton.Location = New System.Drawing.Point(250, 2)
+        Me.username_textbox.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.username_textbox.CustomButton.Name = ""
-        Me.username_textbox.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.username_textbox.CustomButton.Size = New System.Drawing.Size(21, 21)
         Me.username_textbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.username_textbox.CustomButton.TabIndex = 1
         Me.username_textbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
         Me.username_textbox.CustomButton.UseSelectable = True
         Me.username_textbox.CustomButton.Visible = False
-        Me.username_textbox.FontSize = MetroFramework.MetroTextBoxSize.Tall
+        Me.username_textbox.FontSize = MetroFramework.MetroTextBoxSize.Medium
         Me.username_textbox.Lines = New String(-1) {}
-        Me.username_textbox.Location = New System.Drawing.Point(144, 12)
+        Me.username_textbox.Location = New System.Drawing.Point(124, 10)
+        Me.username_textbox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.username_textbox.MaxLength = 32767
         Me.username_textbox.Multiline = True
         Me.username_textbox.Name = "username_textbox"
@@ -64,7 +66,7 @@ Partial Class sign_in
         Me.username_textbox.SelectionStart = 0
         Me.username_textbox.ShortcutsEnabled = True
         Me.username_textbox.ShowClearButton = True
-        Me.username_textbox.Size = New System.Drawing.Size(365, 32)
+        Me.username_textbox.Size = New System.Drawing.Size(274, 26)
         Me.username_textbox.TabIndex = 6
         Me.username_textbox.UseSelectable = True
         Me.username_textbox.WaterMark = "Username"
@@ -78,17 +80,19 @@ Partial Class sign_in
         '
         '
         Me.password_textbox.CustomButton.Image = Nothing
-        Me.password_textbox.CustomButton.Location = New System.Drawing.Point(335, 2)
+        Me.password_textbox.CustomButton.Location = New System.Drawing.Point(250, 2)
+        Me.password_textbox.CustomButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.password_textbox.CustomButton.Name = ""
-        Me.password_textbox.CustomButton.Size = New System.Drawing.Size(27, 27)
+        Me.password_textbox.CustomButton.Size = New System.Drawing.Size(21, 21)
         Me.password_textbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.password_textbox.CustomButton.TabIndex = 1
         Me.password_textbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
         Me.password_textbox.CustomButton.UseSelectable = True
         Me.password_textbox.CustomButton.Visible = False
-        Me.password_textbox.FontSize = MetroFramework.MetroTextBoxSize.Tall
+        Me.password_textbox.FontSize = MetroFramework.MetroTextBoxSize.Medium
         Me.password_textbox.Lines = New String(-1) {}
-        Me.password_textbox.Location = New System.Drawing.Point(142, 67)
+        Me.password_textbox.Location = New System.Drawing.Point(122, 54)
+        Me.password_textbox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.password_textbox.MaxLength = 32767
         Me.password_textbox.Multiline = True
         Me.password_textbox.Name = "password_textbox"
@@ -100,7 +104,7 @@ Partial Class sign_in
         Me.password_textbox.SelectionStart = 0
         Me.password_textbox.ShortcutsEnabled = True
         Me.password_textbox.ShowClearButton = True
-        Me.password_textbox.Size = New System.Drawing.Size(365, 32)
+        Me.password_textbox.Size = New System.Drawing.Size(274, 26)
         Me.password_textbox.TabIndex = 7
         Me.password_textbox.UseSelectable = True
         Me.password_textbox.WaterMark = "Password"
@@ -112,9 +116,10 @@ Partial Class sign_in
         '
         Me.login_button.FontSize = MetroFramework.MetroButtonSize.Tall
         Me.login_button.FontWeight = MetroFramework.MetroButtonWeight.Regular
-        Me.login_button.Location = New System.Drawing.Point(142, 140)
+        Me.login_button.Location = New System.Drawing.Point(132, 114)
+        Me.login_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.login_button.Name = "login_button"
-        Me.login_button.Size = New System.Drawing.Size(168, 34)
+        Me.login_button.Size = New System.Drawing.Size(126, 28)
         Me.login_button.TabIndex = 8
         Me.login_button.Text = "Login"
         Me.login_button.UseSelectable = True
@@ -123,9 +128,10 @@ Partial Class sign_in
         '
         Me.Clear_button.FontSize = MetroFramework.MetroButtonSize.Tall
         Me.Clear_button.FontWeight = MetroFramework.MetroButtonWeight.Regular
-        Me.Clear_button.Location = New System.Drawing.Point(326, 140)
+        Me.Clear_button.Location = New System.Drawing.Point(270, 114)
+        Me.Clear_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Clear_button.Name = "Clear_button"
-        Me.Clear_button.Size = New System.Drawing.Size(168, 34)
+        Me.Clear_button.Size = New System.Drawing.Size(126, 28)
         Me.Clear_button.TabIndex = 9
         Me.Clear_button.Text = "Clear"
         Me.Clear_button.UseSelectable = True
@@ -136,9 +142,10 @@ Partial Class sign_in
         Me.LinkLabel1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.LinkLabel1.Location = New System.Drawing.Point(349, 112)
+        Me.LinkLabel1.Location = New System.Drawing.Point(286, 91)
+        Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(138, 25)
+        Me.LinkLabel1.Size = New System.Drawing.Size(108, 20)
         Me.LinkLabel1.TabIndex = 10
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "create Account"
@@ -148,9 +155,10 @@ Partial Class sign_in
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(139, 114)
+        Me.Label1.Location = New System.Drawing.Point(124, 93)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(204, 23)
+        Me.Label1.Size = New System.Drawing.Size(164, 19)
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "Do not have an Account?"
         '
@@ -161,9 +169,11 @@ Partial Class sign_in
         Me.IconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Lock
         Me.IconPictureBox3.IconColor = System.Drawing.Color.Gray
         Me.IconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox3.Location = New System.Drawing.Point(110, 67)
+        Me.IconPictureBox3.IconSize = 24
+        Me.IconPictureBox3.Location = New System.Drawing.Point(94, 54)
+        Me.IconPictureBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox3.Name = "IconPictureBox3"
-        Me.IconPictureBox3.Size = New System.Drawing.Size(32, 32)
+        Me.IconPictureBox3.Size = New System.Drawing.Size(24, 26)
         Me.IconPictureBox3.TabIndex = 5
         Me.IconPictureBox3.TabStop = False
         '
@@ -174,10 +184,11 @@ Partial Class sign_in
         Me.IconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.User
         Me.IconPictureBox2.IconColor = System.Drawing.SystemColors.ControlDarkDark
         Me.IconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox2.IconSize = 30
-        Me.IconPictureBox2.Location = New System.Drawing.Point(114, 12)
+        Me.IconPictureBox2.IconSize = 22
+        Me.IconPictureBox2.Location = New System.Drawing.Point(98, 10)
+        Me.IconPictureBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.IconPictureBox2.Name = "IconPictureBox2"
-        Me.IconPictureBox2.Size = New System.Drawing.Size(30, 32)
+        Me.IconPictureBox2.Size = New System.Drawing.Size(22, 26)
         Me.IconPictureBox2.TabIndex = 4
         Me.IconPictureBox2.TabStop = False
         '
@@ -185,9 +196,10 @@ Partial Class sign_in
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 15)
+        Me.Label2.Location = New System.Drawing.Point(8, 12)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(96, 21)
+        Me.Label2.Size = New System.Drawing.Size(77, 17)
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "USERNAME"
         '
@@ -195,18 +207,19 @@ Partial Class sign_in
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(10, 70)
+        Me.Label3.Location = New System.Drawing.Point(8, 57)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(98, 21)
+        Me.Label3.Size = New System.Drawing.Size(83, 17)
         Me.Label3.TabIndex = 12
         Me.Label3.Text = "PASSWORD"
         '
         'sign_in
         '
         Me.AcceptButton = Me.login_button
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(530, 187)
+        Me.ClientSize = New System.Drawing.Size(410, 152)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -218,6 +231,7 @@ Partial Class sign_in
         Me.Controls.Add(Me.IconPictureBox3)
         Me.Controls.Add(Me.IconPictureBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "sign_in"

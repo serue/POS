@@ -88,17 +88,19 @@ Partial Class calculator
         Me.Panel1.Controls.Add(Me.IconButton1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(752, 805)
+        Me.Panel1.Size = New System.Drawing.Size(607, 652)
         Me.Panel1.TabIndex = 0
         '
         'holder_label
         '
         Me.holder_label.Font = New System.Drawing.Font("Trebuchet MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.holder_label.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.holder_label.Location = New System.Drawing.Point(247, 9)
+        Me.holder_label.Location = New System.Drawing.Point(185, 7)
+        Me.holder_label.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.holder_label.Name = "holder_label"
-        Me.holder_label.Size = New System.Drawing.Size(486, 27)
+        Me.holder_label.Size = New System.Drawing.Size(364, 22)
         Me.holder_label.TabIndex = 57
         Me.holder_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -108,13 +110,16 @@ Partial Class calculator
         Me.backspace.BackColor = System.Drawing.SystemColors.Control
         Me.backspace.FlatAppearance.BorderSize = 0
         Me.backspace.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.backspace.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.backspace.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
         Me.backspace.IconColor = System.Drawing.Color.DimGray
         Me.backspace.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.backspace.IconSize = 40
-        Me.backspace.Location = New System.Drawing.Point(450, 125)
+        Me.backspace.Location = New System.Drawing.Point(340, 102)
+        Me.backspace.Margin = New System.Windows.Forms.Padding(2)
         Me.backspace.Name = "backspace"
-        Me.backspace.Size = New System.Drawing.Size(145, 131)
+        Me.backspace.Rotation = 0R
+        Me.backspace.Size = New System.Drawing.Size(109, 106)
         Me.backspace.TabIndex = 56
         Me.backspace.UseVisualStyleBackColor = False
         '
@@ -123,9 +128,10 @@ Partial Class calculator
         Me.equal.FlatAppearance.BorderSize = 0
         Me.equal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.equal.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.equal.Location = New System.Drawing.Point(599, 658)
+        Me.equal.Location = New System.Drawing.Point(449, 535)
+        Me.equal.Margin = New System.Windows.Forms.Padding(2)
         Me.equal.Name = "equal"
-        Me.equal.Size = New System.Drawing.Size(145, 130)
+        Me.equal.Size = New System.Drawing.Size(109, 106)
         Me.equal.TabIndex = 5
         Me.equal.Text = "="
         Me.equal.UseVisualStyleBackColor = True
@@ -135,9 +141,10 @@ Partial Class calculator
         Me.plus.FlatAppearance.BorderSize = 0
         Me.plus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.plus.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.plus.Location = New System.Drawing.Point(599, 525)
+        Me.plus.Location = New System.Drawing.Point(453, 427)
+        Me.plus.Margin = New System.Windows.Forms.Padding(2)
         Me.plus.Name = "plus"
-        Me.plus.Size = New System.Drawing.Size(145, 130)
+        Me.plus.Size = New System.Drawing.Size(109, 106)
         Me.plus.TabIndex = 5
         Me.plus.Text = "+"
         Me.plus.UseVisualStyleBackColor = True
@@ -147,9 +154,10 @@ Partial Class calculator
         Me.comma.FlatAppearance.BorderSize = 0
         Me.comma.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.comma.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.comma.Location = New System.Drawing.Point(451, 658)
+        Me.comma.Location = New System.Drawing.Point(338, 535)
+        Me.comma.Margin = New System.Windows.Forms.Padding(2)
         Me.comma.Name = "comma"
-        Me.comma.Size = New System.Drawing.Size(145, 130)
+        Me.comma.Size = New System.Drawing.Size(109, 106)
         Me.comma.TabIndex = 5
         Me.comma.Text = "."
         Me.comma.UseVisualStyleBackColor = True
@@ -160,9 +168,10 @@ Partial Class calculator
         Me.three.FlatAppearance.BorderSize = 0
         Me.three.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.three.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.three.Location = New System.Drawing.Point(451, 525)
+        Me.three.Location = New System.Drawing.Point(338, 427)
+        Me.three.Margin = New System.Windows.Forms.Padding(2)
         Me.three.Name = "three"
-        Me.three.Size = New System.Drawing.Size(145, 130)
+        Me.three.Size = New System.Drawing.Size(109, 106)
         Me.three.TabIndex = 5
         Me.three.Text = "3"
         Me.three.UseVisualStyleBackColor = False
@@ -172,9 +181,10 @@ Partial Class calculator
         Me.plus_minus_button.FlatAppearance.BorderSize = 0
         Me.plus_minus_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.plus_minus_button.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.plus_minus_button.Location = New System.Drawing.Point(155, 658)
+        Me.plus_minus_button.Location = New System.Drawing.Point(116, 535)
+        Me.plus_minus_button.Margin = New System.Windows.Forms.Padding(2)
         Me.plus_minus_button.Name = "plus_minus_button"
-        Me.plus_minus_button.Size = New System.Drawing.Size(145, 130)
+        Me.plus_minus_button.Size = New System.Drawing.Size(109, 106)
         Me.plus_minus_button.TabIndex = 5
         Me.plus_minus_button.Text = "±"
         Me.plus_minus_button.UseVisualStyleBackColor = True
@@ -185,9 +195,10 @@ Partial Class calculator
         Me.one.FlatAppearance.BorderSize = 0
         Me.one.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.one.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.one.Location = New System.Drawing.Point(155, 525)
+        Me.one.Location = New System.Drawing.Point(116, 427)
+        Me.one.Margin = New System.Windows.Forms.Padding(2)
         Me.one.Name = "one"
-        Me.one.Size = New System.Drawing.Size(145, 130)
+        Me.one.Size = New System.Drawing.Size(109, 106)
         Me.one.TabIndex = 5
         Me.one.Text = "1"
         Me.one.UseVisualStyleBackColor = False
@@ -197,9 +208,10 @@ Partial Class calculator
         Me.zero.FlatAppearance.BorderSize = 0
         Me.zero.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.zero.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.zero.Location = New System.Drawing.Point(303, 658)
+        Me.zero.Location = New System.Drawing.Point(227, 535)
+        Me.zero.Margin = New System.Windows.Forms.Padding(2)
         Me.zero.Name = "zero"
-        Me.zero.Size = New System.Drawing.Size(145, 130)
+        Me.zero.Size = New System.Drawing.Size(109, 106)
         Me.zero.TabIndex = 5
         Me.zero.Text = "0"
         Me.zero.UseVisualStyleBackColor = True
@@ -210,9 +222,10 @@ Partial Class calculator
         Me.two.FlatAppearance.BorderSize = 0
         Me.two.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.two.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.two.Location = New System.Drawing.Point(303, 525)
+        Me.two.Location = New System.Drawing.Point(227, 427)
+        Me.two.Margin = New System.Windows.Forms.Padding(2)
         Me.two.Name = "two"
-        Me.two.Size = New System.Drawing.Size(145, 130)
+        Me.two.Size = New System.Drawing.Size(109, 106)
         Me.two.TabIndex = 5
         Me.two.Text = "2"
         Me.two.UseVisualStyleBackColor = False
@@ -222,9 +235,10 @@ Partial Class calculator
         Me.fraction_button.FlatAppearance.BorderSize = 0
         Me.fraction_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.fraction_button.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.fraction_button.Location = New System.Drawing.Point(7, 658)
+        Me.fraction_button.Location = New System.Drawing.Point(5, 535)
+        Me.fraction_button.Margin = New System.Windows.Forms.Padding(2)
         Me.fraction_button.Name = "fraction_button"
-        Me.fraction_button.Size = New System.Drawing.Size(145, 130)
+        Me.fraction_button.Size = New System.Drawing.Size(109, 106)
         Me.fraction_button.TabIndex = 5
         Me.fraction_button.Text = "¹̷ x"
         Me.fraction_button.UseVisualStyleBackColor = True
@@ -234,9 +248,10 @@ Partial Class calculator
         Me.cubed_button.FlatAppearance.BorderSize = 0
         Me.cubed_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cubed_button.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cubed_button.Location = New System.Drawing.Point(7, 525)
+        Me.cubed_button.Location = New System.Drawing.Point(5, 427)
+        Me.cubed_button.Margin = New System.Windows.Forms.Padding(2)
         Me.cubed_button.Name = "cubed_button"
-        Me.cubed_button.Size = New System.Drawing.Size(145, 130)
+        Me.cubed_button.Size = New System.Drawing.Size(109, 106)
         Me.cubed_button.TabIndex = 5
         Me.cubed_button.Text = "x³"
         Me.cubed_button.UseVisualStyleBackColor = True
@@ -246,9 +261,10 @@ Partial Class calculator
         Me.minus.FlatAppearance.BorderSize = 0
         Me.minus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.minus.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.minus.Location = New System.Drawing.Point(599, 392)
+        Me.minus.Location = New System.Drawing.Point(453, 318)
+        Me.minus.Margin = New System.Windows.Forms.Padding(2)
         Me.minus.Name = "minus"
-        Me.minus.Size = New System.Drawing.Size(145, 130)
+        Me.minus.Size = New System.Drawing.Size(109, 106)
         Me.minus.TabIndex = 4
         Me.minus.Text = "-"
         Me.minus.UseVisualStyleBackColor = True
@@ -259,9 +275,10 @@ Partial Class calculator
         Me.six.FlatAppearance.BorderSize = 0
         Me.six.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.six.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.six.Location = New System.Drawing.Point(451, 392)
+        Me.six.Location = New System.Drawing.Point(338, 318)
+        Me.six.Margin = New System.Windows.Forms.Padding(2)
         Me.six.Name = "six"
-        Me.six.Size = New System.Drawing.Size(145, 130)
+        Me.six.Size = New System.Drawing.Size(109, 106)
         Me.six.TabIndex = 4
         Me.six.Text = "6"
         Me.six.UseVisualStyleBackColor = False
@@ -272,9 +289,10 @@ Partial Class calculator
         Me.four.FlatAppearance.BorderSize = 0
         Me.four.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.four.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.four.Location = New System.Drawing.Point(155, 392)
+        Me.four.Location = New System.Drawing.Point(116, 318)
+        Me.four.Margin = New System.Windows.Forms.Padding(2)
         Me.four.Name = "four"
-        Me.four.Size = New System.Drawing.Size(145, 130)
+        Me.four.Size = New System.Drawing.Size(109, 106)
         Me.four.TabIndex = 4
         Me.four.Text = "4"
         Me.four.UseVisualStyleBackColor = False
@@ -285,9 +303,10 @@ Partial Class calculator
         Me.five.FlatAppearance.BorderSize = 0
         Me.five.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.five.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.five.Location = New System.Drawing.Point(303, 392)
+        Me.five.Location = New System.Drawing.Point(227, 318)
+        Me.five.Margin = New System.Windows.Forms.Padding(2)
         Me.five.Name = "five"
-        Me.five.Size = New System.Drawing.Size(145, 130)
+        Me.five.Size = New System.Drawing.Size(109, 106)
         Me.five.TabIndex = 4
         Me.five.Text = "5"
         Me.five.UseVisualStyleBackColor = False
@@ -297,9 +316,10 @@ Partial Class calculator
         Me.squared_button.FlatAppearance.BorderSize = 0
         Me.squared_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.squared_button.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.squared_button.Location = New System.Drawing.Point(7, 392)
+        Me.squared_button.Location = New System.Drawing.Point(5, 318)
+        Me.squared_button.Margin = New System.Windows.Forms.Padding(2)
         Me.squared_button.Name = "squared_button"
-        Me.squared_button.Size = New System.Drawing.Size(145, 130)
+        Me.squared_button.Size = New System.Drawing.Size(109, 106)
         Me.squared_button.TabIndex = 4
         Me.squared_button.Text = "x²"
         Me.squared_button.UseVisualStyleBackColor = True
@@ -309,9 +329,10 @@ Partial Class calculator
         Me.times.FlatAppearance.BorderSize = 0
         Me.times.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.times.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.times.Location = New System.Drawing.Point(599, 259)
+        Me.times.Location = New System.Drawing.Point(453, 210)
+        Me.times.Margin = New System.Windows.Forms.Padding(2)
         Me.times.Name = "times"
-        Me.times.Size = New System.Drawing.Size(145, 130)
+        Me.times.Size = New System.Drawing.Size(109, 106)
         Me.times.TabIndex = 3
         Me.times.Text = "x"
         Me.times.UseVisualStyleBackColor = True
@@ -322,9 +343,10 @@ Partial Class calculator
         Me.nine.FlatAppearance.BorderSize = 0
         Me.nine.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.nine.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.nine.Location = New System.Drawing.Point(451, 259)
+        Me.nine.Location = New System.Drawing.Point(338, 210)
+        Me.nine.Margin = New System.Windows.Forms.Padding(2)
         Me.nine.Name = "nine"
-        Me.nine.Size = New System.Drawing.Size(145, 130)
+        Me.nine.Size = New System.Drawing.Size(109, 106)
         Me.nine.TabIndex = 3
         Me.nine.Text = "9"
         Me.nine.UseVisualStyleBackColor = False
@@ -335,9 +357,10 @@ Partial Class calculator
         Me.seven.FlatAppearance.BorderSize = 0
         Me.seven.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.seven.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.seven.Location = New System.Drawing.Point(155, 259)
+        Me.seven.Location = New System.Drawing.Point(116, 210)
+        Me.seven.Margin = New System.Windows.Forms.Padding(2)
         Me.seven.Name = "seven"
-        Me.seven.Size = New System.Drawing.Size(145, 130)
+        Me.seven.Size = New System.Drawing.Size(109, 106)
         Me.seven.TabIndex = 3
         Me.seven.Text = "7"
         Me.seven.UseVisualStyleBackColor = False
@@ -348,9 +371,10 @@ Partial Class calculator
         Me.eight.FlatAppearance.BorderSize = 0
         Me.eight.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.eight.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.eight.Location = New System.Drawing.Point(303, 259)
+        Me.eight.Location = New System.Drawing.Point(227, 210)
+        Me.eight.Margin = New System.Windows.Forms.Padding(2)
         Me.eight.Name = "eight"
-        Me.eight.Size = New System.Drawing.Size(145, 130)
+        Me.eight.Size = New System.Drawing.Size(109, 106)
         Me.eight.TabIndex = 3
         Me.eight.Text = "8"
         Me.eight.UseVisualStyleBackColor = False
@@ -360,9 +384,10 @@ Partial Class calculator
         Me.squareroot_button.FlatAppearance.BorderSize = 0
         Me.squareroot_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.squareroot_button.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.squareroot_button.Location = New System.Drawing.Point(7, 259)
+        Me.squareroot_button.Location = New System.Drawing.Point(5, 210)
+        Me.squareroot_button.Margin = New System.Windows.Forms.Padding(2)
         Me.squareroot_button.Name = "squareroot_button"
-        Me.squareroot_button.Size = New System.Drawing.Size(145, 130)
+        Me.squareroot_button.Size = New System.Drawing.Size(109, 106)
         Me.squareroot_button.TabIndex = 3
         Me.squareroot_button.Text = "√"
         Me.squareroot_button.UseVisualStyleBackColor = True
@@ -372,9 +397,10 @@ Partial Class calculator
         Me.devide.FlatAppearance.BorderSize = 0
         Me.devide.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.devide.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.devide.Location = New System.Drawing.Point(599, 126)
+        Me.devide.Location = New System.Drawing.Point(453, 102)
+        Me.devide.Margin = New System.Windows.Forms.Padding(2)
         Me.devide.Name = "devide"
-        Me.devide.Size = New System.Drawing.Size(145, 130)
+        Me.devide.Size = New System.Drawing.Size(109, 106)
         Me.devide.TabIndex = 2
         Me.devide.Text = "÷"
         Me.devide.UseVisualStyleBackColor = True
@@ -384,9 +410,10 @@ Partial Class calculator
         Me.cancel_all.FlatAppearance.BorderSize = 0
         Me.cancel_all.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cancel_all.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cancel_all.Location = New System.Drawing.Point(155, 126)
+        Me.cancel_all.Location = New System.Drawing.Point(116, 102)
+        Me.cancel_all.Margin = New System.Windows.Forms.Padding(2)
         Me.cancel_all.Name = "cancel_all"
-        Me.cancel_all.Size = New System.Drawing.Size(145, 130)
+        Me.cancel_all.Size = New System.Drawing.Size(109, 106)
         Me.cancel_all.TabIndex = 2
         Me.cancel_all.Text = "CE"
         Me.cancel_all.UseVisualStyleBackColor = True
@@ -396,9 +423,10 @@ Partial Class calculator
         Me.cancel.FlatAppearance.BorderSize = 0
         Me.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cancel.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cancel.Location = New System.Drawing.Point(303, 126)
+        Me.cancel.Location = New System.Drawing.Point(227, 102)
+        Me.cancel.Margin = New System.Windows.Forms.Padding(2)
         Me.cancel.Name = "cancel"
-        Me.cancel.Size = New System.Drawing.Size(145, 130)
+        Me.cancel.Size = New System.Drawing.Size(109, 106)
         Me.cancel.TabIndex = 2
         Me.cancel.Text = "C"
         Me.cancel.UseVisualStyleBackColor = True
@@ -408,9 +436,10 @@ Partial Class calculator
         Me.percentage_button.FlatAppearance.BorderSize = 0
         Me.percentage_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.percentage_button.Font = New System.Drawing.Font("Arial Rounded MT Bold", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.percentage_button.Location = New System.Drawing.Point(7, 126)
+        Me.percentage_button.Location = New System.Drawing.Point(5, 102)
+        Me.percentage_button.Margin = New System.Windows.Forms.Padding(2)
         Me.percentage_button.Name = "percentage_button"
-        Me.percentage_button.Size = New System.Drawing.Size(145, 130)
+        Me.percentage_button.Size = New System.Drawing.Size(109, 106)
         Me.percentage_button.TabIndex = 2
         Me.percentage_button.Text = "%"
         Me.percentage_button.UseVisualStyleBackColor = True
@@ -420,10 +449,10 @@ Partial Class calculator
         Me.solution_box.BackColor = System.Drawing.SystemColors.Control
         Me.solution_box.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.solution_box.Font = New System.Drawing.Font("Arial Rounded MT Bold", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.solution_box.Location = New System.Drawing.Point(3, 42)
-        Me.solution_box.Margin = New System.Windows.Forms.Padding(3, 3, 25, 3)
+        Me.solution_box.Location = New System.Drawing.Point(2, 34)
+        Me.solution_box.Margin = New System.Windows.Forms.Padding(2, 2, 19, 2)
         Me.solution_box.Name = "solution_box"
-        Me.solution_box.Size = New System.Drawing.Size(730, 55)
+        Me.solution_box.Size = New System.Drawing.Size(548, 44)
         Me.solution_box.TabIndex = 1
         Me.solution_box.Text = "0"
         Me.solution_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -432,9 +461,10 @@ Partial Class calculator
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Verdana", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(58, 7)
+        Me.Label1.Location = New System.Drawing.Point(44, 6)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(121, 29)
+        Me.Label1.Size = New System.Drawing.Size(96, 23)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Standard"
         '
@@ -442,23 +472,27 @@ Partial Class calculator
         '
         Me.IconButton1.FlatAppearance.BorderSize = 0
         Me.IconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.IconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.Bars
         Me.IconButton1.IconColor = System.Drawing.Color.Black
         Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.IconButton1.IconSize = 30
-        Me.IconButton1.Location = New System.Drawing.Point(7, 8)
+        Me.IconButton1.Location = New System.Drawing.Point(5, 6)
+        Me.IconButton1.Margin = New System.Windows.Forms.Padding(2)
         Me.IconButton1.Name = "IconButton1"
-        Me.IconButton1.Size = New System.Drawing.Size(58, 28)
+        Me.IconButton1.Rotation = 0R
+        Me.IconButton1.Size = New System.Drawing.Size(44, 23)
         Me.IconButton1.TabIndex = 0
         Me.IconButton1.UseVisualStyleBackColor = True
         '
         'calculator
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(752, 805)
+        Me.ClientSize = New System.Drawing.Size(607, 652)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "calculator"
