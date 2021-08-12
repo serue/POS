@@ -22,6 +22,7 @@ Partial Class test
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(test))
         Me.Admin = New System.Windows.Forms.CheckBox()
         Me.reports = New System.Windows.Forms.CheckBox()
         Me.sales = New System.Windows.Forms.CheckBox()
@@ -39,6 +40,7 @@ Partial Class test
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Installer1 = New System.Configuration.Install.Installer()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -47,9 +49,10 @@ Partial Class test
         Me.Admin.AutoSize = True
         Me.Admin.Checked = True
         Me.Admin.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.Admin.Location = New System.Drawing.Point(35, 194)
+        Me.Admin.Location = New System.Drawing.Point(26, 158)
+        Me.Admin.Margin = New System.Windows.Forms.Padding(2)
         Me.Admin.Name = "Admin"
-        Me.Admin.Size = New System.Drawing.Size(69, 21)
+        Me.Admin.Size = New System.Drawing.Size(55, 17)
         Me.Admin.TabIndex = 0
         Me.Admin.Text = "Admin"
         Me.Admin.UseVisualStyleBackColor = True
@@ -57,9 +60,10 @@ Partial Class test
         'reports
         '
         Me.reports.AutoSize = True
-        Me.reports.Location = New System.Drawing.Point(35, 287)
+        Me.reports.Location = New System.Drawing.Point(26, 233)
+        Me.reports.Margin = New System.Windows.Forms.Padding(2)
         Me.reports.Name = "reports"
-        Me.reports.Size = New System.Drawing.Size(80, 21)
+        Me.reports.Size = New System.Drawing.Size(63, 17)
         Me.reports.TabIndex = 1
         Me.reports.Text = "Reports"
         Me.reports.UseVisualStyleBackColor = True
@@ -67,9 +71,10 @@ Partial Class test
         'sales
         '
         Me.sales.AutoSize = True
-        Me.sales.Location = New System.Drawing.Point(204, 287)
+        Me.sales.Location = New System.Drawing.Point(153, 233)
+        Me.sales.Margin = New System.Windows.Forms.Padding(2)
         Me.sales.Name = "sales"
-        Me.sales.Size = New System.Drawing.Size(65, 21)
+        Me.sales.Size = New System.Drawing.Size(52, 17)
         Me.sales.TabIndex = 2
         Me.sales.Text = "Sales"
         Me.sales.UseVisualStyleBackColor = True
@@ -77,65 +82,73 @@ Partial Class test
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(72, 21)
+        Me.TextBox1.Location = New System.Drawing.Point(54, 17)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(245, 35)
+        Me.TextBox1.Size = New System.Drawing.Size(185, 30)
         Me.TextBox1.TabIndex = 3
         '
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(72, 110)
+        Me.TextBox2.Location = New System.Drawing.Point(54, 89)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(245, 35)
+        Me.TextBox2.Size = New System.Drawing.Size(185, 30)
         Me.TextBox2.TabIndex = 4
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(391, 191)
+        Me.Button1.Location = New System.Drawing.Point(293, 155)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(56, 19)
         Me.Button1.TabIndex = 5
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(377, 110)
+        Me.TextBox3.Location = New System.Drawing.Point(283, 89)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox3.Size = New System.Drawing.Size(76, 20)
         Me.TextBox3.TabIndex = 6
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(391, 47)
+        Me.TextBox4.Location = New System.Drawing.Point(293, 38)
+        Me.TextBox4.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox4.Size = New System.Drawing.Size(76, 20)
         Me.TextBox4.TabIndex = 7
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(379, 334)
+        Me.Button2.Location = New System.Drawing.Point(284, 271)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.Size = New System.Drawing.Size(56, 19)
         Me.Button2.TabIndex = 8
         Me.Button2.Text = "Action"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(366, 222)
+        Me.Button3.Location = New System.Drawing.Point(274, 180)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.Size = New System.Drawing.Size(56, 19)
         Me.Button3.TabIndex = 9
         Me.Button3.Text = "Hey"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(389, 290)
+        Me.Button4.Location = New System.Drawing.Point(292, 236)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(2)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.Size = New System.Drawing.Size(56, 19)
         Me.Button4.TabIndex = 10
         Me.Button4.Text = "Button4"
         Me.Button4.UseVisualStyleBackColor = True
@@ -145,55 +158,64 @@ Partial Class test
         Me.Panel1.Controls.Add(Me.Button5)
         Me.Panel1.Controls.Add(Me.TextBox6)
         Me.Panel1.Controls.Add(Me.TextBox5)
-        Me.Panel1.Location = New System.Drawing.Point(6, 3)
+        Me.Panel1.Location = New System.Drawing.Point(4, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(508, 420)
+        Me.Panel1.Size = New System.Drawing.Size(381, 341)
         Me.Panel1.TabIndex = 11
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(340, 159)
+        Me.Button5.Location = New System.Drawing.Point(255, 129)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(2)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.Size = New System.Drawing.Size(56, 19)
         Me.Button5.TabIndex = 2
         Me.Button5.Text = "Save"
         Me.Button5.UseVisualStyleBackColor = True
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(97, 88)
+        Me.TextBox6.Location = New System.Drawing.Point(73, 72)
+        Me.TextBox6.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(318, 22)
+        Me.TextBox6.Size = New System.Drawing.Size(240, 20)
         Me.TextBox6.TabIndex = 1
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(97, 44)
+        Me.TextBox5.Location = New System.Drawing.Point(73, 36)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(318, 22)
+        Me.TextBox5.Size = New System.Drawing.Size(240, 20)
         Me.TextBox5.TabIndex = 0
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(871, 196)
+        Me.Button6.Location = New System.Drawing.Point(405, 11)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(2)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(134, 23)
+        Me.Button6.Size = New System.Drawing.Size(100, 19)
         Me.Button6.TabIndex = 12
         Me.Button6.Text = "Button6"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(850, 283)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(390, 82)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(2)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 22)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(151, 20)
         Me.DateTimePicker1.TabIndex = 13
+
+
         '
         'test
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1603, 659)
+        Me.ClientSize = New System.Drawing.Size(1028, 535)
+
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Panel1)
@@ -208,10 +230,12 @@ Partial Class test
         Me.Controls.Add(Me.sales)
         Me.Controls.Add(Me.reports)
         Me.Controls.Add(Me.Admin)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "test"
         Me.Text = "test"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -234,4 +258,6 @@ Partial Class test
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Button6 As Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents Installer1 As System.Configuration.Install.Installer
+
 End Class

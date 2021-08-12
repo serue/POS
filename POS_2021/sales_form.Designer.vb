@@ -23,11 +23,12 @@ Partial Class sales_form
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(sales_form))
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -121,6 +122,21 @@ Partial Class sales_form
         Me.MetroTile1 = New MetroFramework.Controls.MetroTile()
         Me.lookup_button = New MetroFramework.Controls.MetroTile()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.OtherPaymentsPanel = New System.Windows.Forms.Panel()
+        Me.SplitTotal_label = New System.Windows.Forms.Label()
+        Me.totLabel = New System.Windows.Forms.Label()
+        Me.CancelTransactionButton = New System.Windows.Forms.Button()
+        Me.ProcessTrsactionButton = New System.Windows.Forms.Button()
+        Me.txtForex = New System.Windows.Forms.TextBox()
+        Me.txtCard = New System.Windows.Forms.TextBox()
+        Me.txtEcoCash = New System.Windows.Forms.TextBox()
+        Me.txtCash = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.AmtPanel = New System.Windows.Forms.Panel()
         Me.FinaliseTransaction = New System.Windows.Forms.Button()
         Me.Accept_Quantity = New System.Windows.Forms.Button()
@@ -134,19 +150,6 @@ Partial Class sales_form
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.OtherPaymentsPanel = New System.Windows.Forms.Panel()
-        Me.CancelTransactionButton = New System.Windows.Forms.Button()
-        Me.ProcessTrsactionButton = New System.Windows.Forms.Button()
-        Me.txtForex = New System.Windows.Forms.TextBox()
-        Me.txtCard = New System.Windows.Forms.TextBox()
-        Me.txtEcoCash = New System.Windows.Forms.TextBox()
-        Me.txtCash = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.list_grid = New MetroFramework.Controls.MetroGrid()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -156,6 +159,7 @@ Partial Class sales_form
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Form_Thread = New System.ComponentModel.BackgroundWorker()
+        Me.ManagementInstaller1 = New System.Management.Instrumentation.ManagementInstaller()
         Me.Panel1.SuspendLayout()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -168,12 +172,12 @@ Partial Class sales_form
         Me.Panel15.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
+        Me.OtherPaymentsPanel.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.AmtPanel.SuspendLayout()
         Me.lookupPanel.SuspendLayout()
         Me.lookPan.SuspendLayout()
         Me.Panel4.SuspendLayout()
-        Me.OtherPaymentsPanel.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -225,7 +229,7 @@ Partial Class sales_form
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.POS_2021.My.Resources.Resources.Company_Logo
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(3, 4)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
@@ -779,7 +783,7 @@ Partial Class sales_form
         Me.fast_other_button.Name = "fast_other_button"
         Me.fast_other_button.Size = New System.Drawing.Size(64, 51)
         Me.fast_other_button.TabIndex = 67
-        Me.fast_other_button.Text = "F12 OTHER"
+        Me.fast_other_button.Text = "F12 " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SPLIT TENDER"
         Me.fast_other_button.UseVisualStyleBackColor = False
         '
         'f10_button
@@ -921,7 +925,7 @@ Partial Class sales_form
         Me.OtherPaymentButton.Name = "OtherPaymentButton"
         Me.OtherPaymentButton.Size = New System.Drawing.Size(147, 55)
         Me.OtherPaymentButton.TabIndex = 36
-        Me.OtherPaymentButton.Text = "OTHER"
+        Me.OtherPaymentButton.Text = "SPLIT TENDER"
         Me.OtherPaymentButton.UseVisualStyleBackColor = False
         '
         'f5_button
@@ -1586,9 +1590,9 @@ Partial Class sales_form
         '
         'Panel8
         '
+        Me.Panel8.Controls.Add(Me.OtherPaymentsPanel)
         Me.Panel8.Controls.Add(Me.AmtPanel)
         Me.Panel8.Controls.Add(Me.lookupPanel)
-        Me.Panel8.Controls.Add(Me.OtherPaymentsPanel)
         Me.Panel8.Controls.Add(Me.list_grid)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel8.Location = New System.Drawing.Point(0, 88)
@@ -1597,9 +1601,206 @@ Partial Class sales_form
         Me.Panel8.Size = New System.Drawing.Size(775, 541)
         Me.Panel8.TabIndex = 7
         '
+        'OtherPaymentsPanel
+        '
+        Me.OtherPaymentsPanel.BackColor = System.Drawing.Color.LightGray
+        Me.OtherPaymentsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.OtherPaymentsPanel.Controls.Add(Me.SplitTotal_label)
+        Me.OtherPaymentsPanel.Controls.Add(Me.totLabel)
+        Me.OtherPaymentsPanel.Controls.Add(Me.CancelTransactionButton)
+        Me.OtherPaymentsPanel.Controls.Add(Me.ProcessTrsactionButton)
+        Me.OtherPaymentsPanel.Controls.Add(Me.txtForex)
+        Me.OtherPaymentsPanel.Controls.Add(Me.txtCard)
+        Me.OtherPaymentsPanel.Controls.Add(Me.txtEcoCash)
+        Me.OtherPaymentsPanel.Controls.Add(Me.txtCash)
+        Me.OtherPaymentsPanel.Controls.Add(Me.Label16)
+        Me.OtherPaymentsPanel.Controls.Add(Me.Label15)
+        Me.OtherPaymentsPanel.Controls.Add(Me.Label14)
+        Me.OtherPaymentsPanel.Controls.Add(Me.Label13)
+        Me.OtherPaymentsPanel.Controls.Add(Me.Panel3)
+        Me.OtherPaymentsPanel.Location = New System.Drawing.Point(369, 53)
+        Me.OtherPaymentsPanel.Margin = New System.Windows.Forms.Padding(2)
+        Me.OtherPaymentsPanel.Name = "OtherPaymentsPanel"
+        Me.OtherPaymentsPanel.Size = New System.Drawing.Size(339, 303)
+        Me.OtherPaymentsPanel.TabIndex = 2
+        Me.OtherPaymentsPanel.Visible = False
+        '
+        'SplitTotal_label
+        '
+        Me.SplitTotal_label.AutoSize = True
+        Me.SplitTotal_label.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SplitTotal_label.ForeColor = System.Drawing.Color.Maroon
+        Me.SplitTotal_label.Location = New System.Drawing.Point(160, 51)
+        Me.SplitTotal_label.Name = "SplitTotal_label"
+        Me.SplitTotal_label.Size = New System.Drawing.Size(22, 23)
+        Me.SplitTotal_label.TabIndex = 12
+        Me.SplitTotal_label.Text = "0"
+        '
+        'totLabel
+        '
+        Me.totLabel.AutoSize = True
+        Me.totLabel.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.totLabel.ForeColor = System.Drawing.Color.Maroon
+        Me.totLabel.Location = New System.Drawing.Point(44, 53)
+        Me.totLabel.Name = "totLabel"
+        Me.totLabel.Size = New System.Drawing.Size(92, 18)
+        Me.totLabel.TabIndex = 11
+        Me.totLabel.Text = "Total Paid: "
+        '
+        'CancelTransactionButton
+        '
+        Me.CancelTransactionButton.BackColor = System.Drawing.Color.Purple
+        Me.CancelTransactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CancelTransactionButton.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CancelTransactionButton.ForeColor = System.Drawing.Color.White
+        Me.CancelTransactionButton.Location = New System.Drawing.Point(45, 246)
+        Me.CancelTransactionButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.CancelTransactionButton.Name = "CancelTransactionButton"
+        Me.CancelTransactionButton.Size = New System.Drawing.Size(77, 28)
+        Me.CancelTransactionButton.TabIndex = 10
+        Me.CancelTransactionButton.Text = "Caancel Transaction"
+        Me.CancelTransactionButton.UseVisualStyleBackColor = False
+        '
+        'ProcessTrsactionButton
+        '
+        Me.ProcessTrsactionButton.BackColor = System.Drawing.Color.MediumBlue
+        Me.ProcessTrsactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ProcessTrsactionButton.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessTrsactionButton.ForeColor = System.Drawing.Color.White
+        Me.ProcessTrsactionButton.Location = New System.Drawing.Point(126, 246)
+        Me.ProcessTrsactionButton.Margin = New System.Windows.Forms.Padding(2)
+        Me.ProcessTrsactionButton.Name = "ProcessTrsactionButton"
+        Me.ProcessTrsactionButton.Size = New System.Drawing.Size(150, 28)
+        Me.ProcessTrsactionButton.TabIndex = 9
+        Me.ProcessTrsactionButton.Text = "Process Transaction"
+        Me.ProcessTrsactionButton.UseVisualStyleBackColor = True
+        '
+        'txtForex
+        '
+        Me.txtForex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtForex.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtForex.ForeColor = System.Drawing.Color.DarkRed
+        Me.txtForex.Location = New System.Drawing.Point(104, 201)
+        Me.txtForex.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtForex.Name = "txtForex"
+        Me.txtForex.Size = New System.Drawing.Size(174, 30)
+        Me.txtForex.TabIndex = 8
+        Me.txtForex.Text = "0"
+        Me.txtForex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtCard
+        '
+        Me.txtCard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCard.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCard.ForeColor = System.Drawing.Color.DarkRed
+        Me.txtCard.Location = New System.Drawing.Point(104, 165)
+        Me.txtCard.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtCard.Name = "txtCard"
+        Me.txtCard.Size = New System.Drawing.Size(174, 30)
+        Me.txtCard.TabIndex = 7
+        Me.txtCard.Text = "0"
+        Me.txtCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtEcoCash
+        '
+        Me.txtEcoCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtEcoCash.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEcoCash.ForeColor = System.Drawing.Color.DarkRed
+        Me.txtEcoCash.Location = New System.Drawing.Point(104, 132)
+        Me.txtEcoCash.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtEcoCash.Name = "txtEcoCash"
+        Me.txtEcoCash.Size = New System.Drawing.Size(174, 30)
+        Me.txtEcoCash.TabIndex = 6
+        Me.txtEcoCash.Text = "0"
+        Me.txtEcoCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtCash
+        '
+        Me.txtCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCash.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCash.ForeColor = System.Drawing.Color.DarkRed
+        Me.txtCash.Location = New System.Drawing.Point(104, 99)
+        Me.txtCash.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtCash.Name = "txtCash"
+        Me.txtCash.Size = New System.Drawing.Size(174, 30)
+        Me.txtCash.TabIndex = 5
+        Me.txtCash.Text = "0"
+        Me.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.Sienna
+        Me.Label16.Location = New System.Drawing.Point(42, 201)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(48, 17)
+        Me.Label16.TabIndex = 4
+        Me.Label16.Text = "Forex:"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.Sienna
+        Me.Label15.Location = New System.Drawing.Point(8, 168)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(82, 17)
+        Me.Label15.TabIndex = 3
+        Me.Label15.Text = "Card/Swipe:"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.Sienna
+        Me.Label14.Location = New System.Drawing.Point(21, 134)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(70, 17)
+        Me.Label14.TabIndex = 2
+        Me.Label14.Text = "Eco Cash:"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.Sienna
+        Me.Label13.Location = New System.Drawing.Point(45, 101)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(43, 17)
+        Me.Label13.TabIndex = 1
+        Me.Label13.Text = "Cash:"
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.Label9)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(337, 41)
+        Me.Panel3.TabIndex = 0
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label9.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.SeaGreen
+        Me.Label9.Location = New System.Drawing.Point(69, 9)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(181, 21)
+        Me.Label9.TabIndex = 0
+        Me.Label9.Text = "Other Payment Methods"
+        '
         'AmtPanel
         '
-        Me.AmtPanel.BackColor = System.Drawing.Color.White
+        Me.AmtPanel.BackColor = System.Drawing.SystemColors.Control
         Me.AmtPanel.Controls.Add(Me.qty_paid_textbox)
         Me.AmtPanel.Controls.Add(Me.View_AmtPaid_Label)
         Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
@@ -1660,7 +1861,7 @@ Partial Class sales_form
         Me.lookupPanel.Location = New System.Drawing.Point(2, 55)
         Me.lookupPanel.Margin = New System.Windows.Forms.Padding(2)
         Me.lookupPanel.Name = "lookupPanel"
-        Me.lookupPanel.Size = New System.Drawing.Size(766, 220)
+        Me.lookupPanel.Size = New System.Drawing.Size(766, 242)
         Me.lookupPanel.TabIndex = 3
         Me.lookupPanel.Visible = False
         '
@@ -1682,7 +1883,7 @@ Partial Class sales_form
         Me.lookPan.Location = New System.Drawing.Point(0, 33)
         Me.lookPan.Margin = New System.Windows.Forms.Padding(2)
         Me.lookPan.Name = "lookPan"
-        Me.lookPan.Size = New System.Drawing.Size(762, 182)
+        Me.lookPan.Size = New System.Drawing.Size(762, 148)
         Me.lookPan.TabIndex = 4
         '
         'Button14
@@ -1742,7 +1943,7 @@ Partial Class sales_form
         Me.searchbar.FontSize = MetroFramework.MetroTextBoxSize.Tall
         Me.searchbar.FontWeight = MetroFramework.MetroTextBoxWeight.Bold
         Me.searchbar.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.searchbar.Icon = Global.POS_2021.My.Resources.Resources.Company_Logo
+        Me.searchbar.Icon = CType(resources.GetObject("searchbar.Icon"), System.Drawing.Image)
         Me.searchbar.Lines = New String(-1) {}
         Me.searchbar.Location = New System.Drawing.Point(152, 2)
         Me.searchbar.Margin = New System.Windows.Forms.Padding(2)
@@ -1796,179 +1997,6 @@ Partial Class sales_form
         Me.Label17.TabIndex = 0
         Me.Label17.Text = "Stock Look Up"
         '
-        'OtherPaymentsPanel
-        '
-        Me.OtherPaymentsPanel.BackColor = System.Drawing.Color.LightGray
-        Me.OtherPaymentsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.OtherPaymentsPanel.Controls.Add(Me.CancelTransactionButton)
-        Me.OtherPaymentsPanel.Controls.Add(Me.ProcessTrsactionButton)
-        Me.OtherPaymentsPanel.Controls.Add(Me.txtForex)
-        Me.OtherPaymentsPanel.Controls.Add(Me.txtCard)
-        Me.OtherPaymentsPanel.Controls.Add(Me.txtEcoCash)
-        Me.OtherPaymentsPanel.Controls.Add(Me.txtCash)
-        Me.OtherPaymentsPanel.Controls.Add(Me.Label16)
-        Me.OtherPaymentsPanel.Controls.Add(Me.Label15)
-        Me.OtherPaymentsPanel.Controls.Add(Me.Label14)
-        Me.OtherPaymentsPanel.Controls.Add(Me.Label13)
-        Me.OtherPaymentsPanel.Controls.Add(Me.Panel3)
-        Me.OtherPaymentsPanel.Location = New System.Drawing.Point(415, 137)
-        Me.OtherPaymentsPanel.Margin = New System.Windows.Forms.Padding(2)
-        Me.OtherPaymentsPanel.Name = "OtherPaymentsPanel"
-        Me.OtherPaymentsPanel.Size = New System.Drawing.Size(320, 65)
-        Me.OtherPaymentsPanel.TabIndex = 2
-        Me.OtherPaymentsPanel.Visible = False
-        '
-        'CancelTransactionButton
-        '
-        Me.CancelTransactionButton.BackColor = System.Drawing.Color.Purple
-        Me.CancelTransactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CancelTransactionButton.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CancelTransactionButton.ForeColor = System.Drawing.Color.White
-        Me.CancelTransactionButton.Location = New System.Drawing.Point(26, 205)
-        Me.CancelTransactionButton.Margin = New System.Windows.Forms.Padding(2)
-        Me.CancelTransactionButton.Name = "CancelTransactionButton"
-        Me.CancelTransactionButton.Size = New System.Drawing.Size(128, 28)
-        Me.CancelTransactionButton.TabIndex = 10
-        Me.CancelTransactionButton.Text = "Caancel Transaction"
-        Me.CancelTransactionButton.UseVisualStyleBackColor = False
-        '
-        'ProcessTrsactionButton
-        '
-        Me.ProcessTrsactionButton.BackColor = System.Drawing.Color.MediumBlue
-        Me.ProcessTrsactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ProcessTrsactionButton.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProcessTrsactionButton.ForeColor = System.Drawing.Color.White
-        Me.ProcessTrsactionButton.Location = New System.Drawing.Point(158, 205)
-        Me.ProcessTrsactionButton.Margin = New System.Windows.Forms.Padding(2)
-        Me.ProcessTrsactionButton.Name = "ProcessTrsactionButton"
-        Me.ProcessTrsactionButton.Size = New System.Drawing.Size(128, 28)
-        Me.ProcessTrsactionButton.TabIndex = 9
-        Me.ProcessTrsactionButton.Text = "Process Transaction"
-        Me.ProcessTrsactionButton.UseVisualStyleBackColor = True
-        '
-        'txtForex
-        '
-        Me.txtForex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtForex.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtForex.ForeColor = System.Drawing.Color.DarkRed
-        Me.txtForex.Location = New System.Drawing.Point(106, 160)
-        Me.txtForex.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtForex.Name = "txtForex"
-        Me.txtForex.Size = New System.Drawing.Size(174, 30)
-        Me.txtForex.TabIndex = 8
-        Me.txtForex.Text = "0"
-        Me.txtForex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtCard
-        '
-        Me.txtCard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCard.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCard.ForeColor = System.Drawing.Color.DarkRed
-        Me.txtCard.Location = New System.Drawing.Point(106, 124)
-        Me.txtCard.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtCard.Name = "txtCard"
-        Me.txtCard.Size = New System.Drawing.Size(174, 30)
-        Me.txtCard.TabIndex = 7
-        Me.txtCard.Text = "0"
-        Me.txtCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtEcoCash
-        '
-        Me.txtEcoCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtEcoCash.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEcoCash.ForeColor = System.Drawing.Color.DarkRed
-        Me.txtEcoCash.Location = New System.Drawing.Point(106, 91)
-        Me.txtEcoCash.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtEcoCash.Name = "txtEcoCash"
-        Me.txtEcoCash.Size = New System.Drawing.Size(174, 30)
-        Me.txtEcoCash.TabIndex = 6
-        Me.txtEcoCash.Text = "0"
-        Me.txtEcoCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtCash
-        '
-        Me.txtCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCash.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCash.ForeColor = System.Drawing.Color.DarkRed
-        Me.txtCash.Location = New System.Drawing.Point(106, 58)
-        Me.txtCash.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtCash.Name = "txtCash"
-        Me.txtCash.Size = New System.Drawing.Size(174, 30)
-        Me.txtCash.TabIndex = 5
-        Me.txtCash.Text = "0"
-        Me.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.Sienna
-        Me.Label16.Location = New System.Drawing.Point(44, 160)
-        Me.Label16.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(48, 17)
-        Me.Label16.TabIndex = 4
-        Me.Label16.Text = "Forex:"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.Sienna
-        Me.Label15.Location = New System.Drawing.Point(10, 127)
-        Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(82, 17)
-        Me.Label15.TabIndex = 3
-        Me.Label15.Text = "Card/Swipe:"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.Sienna
-        Me.Label14.Location = New System.Drawing.Point(23, 93)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(70, 17)
-        Me.Label14.TabIndex = 2
-        Me.Label14.Text = "Eco Cash:"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.Sienna
-        Me.Label13.Location = New System.Drawing.Point(47, 60)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(43, 17)
-        Me.Label13.TabIndex = 1
-        Me.Label13.Text = "Cash:"
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.Label9)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(318, 41)
-        Me.Panel3.TabIndex = 0
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label9.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.SeaGreen
-        Me.Label9.Location = New System.Drawing.Point(69, 9)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(181, 21)
-        Me.Label9.TabIndex = 0
-        Me.Label9.Text = "Other Payment Methods"
-        '
         'list_grid
         '
         Me.list_grid.AllowUserToAddRows = False
@@ -1978,24 +2006,24 @@ Partial Class sales_form
         Me.list_grid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.list_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.list_grid.ColumnHeadersHeight = 40
         Me.list_grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle14
         Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.list_grid.EnableHeadersVisualStyles = False
         Me.list_grid.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
@@ -2004,14 +2032,14 @@ Partial Class sales_form
         Me.list_grid.Margin = New System.Windows.Forms.Padding(2)
         Me.list_grid.Name = "list_grid"
         Me.list_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.list_grid.RowHeadersWidth = 10
         Me.list_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.list_grid.RowTemplate.Height = 30
@@ -2045,8 +2073,8 @@ Partial Class sales_form
         'Column4
         '
         Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle12
         Me.Column4.HeaderText = "Qty"
         Me.Column4.MinimumWidth = 6
         Me.Column4.Name = "Column4"
@@ -2063,8 +2091,8 @@ Partial Class sales_form
         'Column6
         '
         Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle13
         Me.Column6.HeaderText = "Amount"
         Me.Column6.MinimumWidth = 6
         Me.Column6.Name = "Column6"
@@ -2114,16 +2142,16 @@ Partial Class sales_form
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
+        Me.OtherPaymentsPanel.ResumeLayout(False)
+        Me.OtherPaymentsPanel.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.AmtPanel.ResumeLayout(False)
         Me.AmtPanel.PerformLayout()
         Me.lookupPanel.ResumeLayout(False)
         Me.lookPan.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
-        Me.OtherPaymentsPanel.ResumeLayout(False)
-        Me.OtherPaymentsPanel.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -2257,4 +2285,7 @@ Partial Class sales_form
     Friend WithEvents f10_button As Button
     Friend WithEvents Button14 As Button
     Friend WithEvents addition_button As Button
+    Friend WithEvents ManagementInstaller1 As Management.Instrumentation.ManagementInstaller
+    Friend WithEvents SplitTotal_label As Label
+    Friend WithEvents totLabel As Label
 End Class

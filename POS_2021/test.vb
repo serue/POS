@@ -115,12 +115,9 @@ Public Class test
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        Dim a As Date = Now
-        If a.ToShortDateString > DateTimePicker1.Text Then
-            MsgBox(a.ToShortDateString)
-        Else
-            MsgBox(DateTimePicker1.Text)
-        End If
-
+        Dim collen As Decimal = CDec("1,223,456.90") + CDec("200")
+        MsgBox(collen)
     End Sub
+
+
 End Class

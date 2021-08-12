@@ -190,3 +190,4 @@ INSERT INTO M_PAYMENTS(METHOD, NOTES) VALUES('CASH','For all cash Transaactions 
 INSERT INTO M_PAYMENTS(METHOD, NOTES) VALUES('CARD','For all card Transaactions in the system');
 INSERT INTO M_PAYMENTS(METHOD, NOTES) VALUES('ECOCASH','For all ecocash Transaactions in the system');
 INSERT INTO M_PAYMENTS(METHOD, NOTES) VALUES('FOREX','For all forex Transaactions in the system');
+INSERT INTO M_PAYMENTS(METHOD, NOTES) VALUES('MULTIPLE','For all split Tender Transaactions in the system');
