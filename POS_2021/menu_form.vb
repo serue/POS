@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Data.SqlClient
+Imports System.Runtime.InteropServices
 Imports FontAwesome.Sharp
 Imports Tulpep.NotificationWindow
 
@@ -11,6 +12,8 @@ Public Class menu_form
     Dim Design As New IntefaceDesign
     Dim Notice As New PopupNotifier
     Public nyuwani As New Form
+    Dim myPermissions As ConnectionAndPermissions
+    Dim connection As New SqlConnection
     Private user As String
     Public Property ActiveUser() As String
         Get
@@ -98,6 +101,68 @@ Public Class menu_form
         Notice.ShowOptionsButton = True
         Notice.Size = New Size(700, 200)
         Notice.Popup()
+
+
+        Chart1.ChartAreas(0).AxisX.LineWidth = 1
+        Chart1.ChartAreas(0).AxisY.LineWidth = 1
+        'Chart1.ChartAreas(0).AxisX.LabelStyle.Enabled = False
+        'Chart1.ChartAreas(0).AxisY.LabelStyle.Enabled = False
+        'Chart1.ChartAreas(0).AxisX.MajorGrid.Enabled = False
+        Chart1.ChartAreas(0).AxisY.MajorGrid.Enabled = False
+        'Chart1.ChartAreas(0).AxisX.MinorGrid.Enabled = False
+        'Chart1.ChartAreas(0).AxisY.MinorGrid.Enabled = False
+        'Chart1.ChartAreas(0).AxisX.MajorTickMark.Enabled = False
+        'Chart1.ChartAreas(0).AxisY.MajorTickMark.Enabled = False
+        'Chart1.ChartAreas(0).AxisX.MinorTickMark.Enabled = False
+        'Chart1.ChartAreas(0).AxisY.MinorTickMark.Enabled = False
+        Chart1.ChartAreas(0).BackColor = SystemColors.Control
+        Me.Refresh()
+        Chart1.ChartAreas(0).AxisX.IsMarginVisible = False
+        Me.Chart1.Series("Series1").Points.AddXY("collen", 110)
+        Me.Chart1.Series("Series1").Points.AddXY("kabote", 99)
+        Me.Chart1.Series("Series1").Points.AddXY("dhinda", 9)
+        Me.Chart1.Series("Series1").Points.AddXY("seru", 56)
+
+        Me.Chart1.Series("Series2").Points.AddXY("collen", 90)
+        Me.Chart1.Series("Series2").Points.AddXY("kabote", 69)
+        Me.Chart1.Series("Series2").Points.AddXY("dhinda", 89)
+        Me.Chart1.Series("Series2").Points.AddXY("seru", 40)
+
+        Me.Chart1.Series("Series3").Points.AddXY("collen", 60)
+        Me.Chart1.Series("Series3").Points.AddXY("kabote", 40)
+        Me.Chart1.Series("Series3").Points.AddXY("dhinda", 50)
+        Me.Chart1.Series("Series3").Points.AddXY("seru", 76)
+
+
+        Me.Chart1.Series("Series1").Points.AddXY("zindove", 75)
+        Me.Chart1.Series("Series1").Points.AddXY("jebwe", 60)
+        Me.Chart1.Series("Series1").Points.AddXY("raika", 34)
+        Me.Chart1.Series("Series1").Points.AddXY("chamakore", 55)
+
+        Me.Chart1.Series("Series2").Points.AddXY("zindove", 30)
+        Me.Chart1.Series("Series2").Points.AddXY("jebwe", 38)
+        Me.Chart1.Series("Series2").Points.AddXY("raika", 10)
+        Me.Chart1.Series("Series2").Points.AddXY("chamakore", 98)
+
+        Me.Chart1.Series("Series3").Points.AddXY("zindove", 90)
+        Me.Chart1.Series("Series3").Points.AddXY("jebwe", 25)
+        Me.Chart1.Series("Series3").Points.AddXY("raika", 60)
+        Me.Chart1.Series("Series3").Points.AddXY("chamakore", 40)
+
+        Me.Chart1.Series("Series1").Points.AddXY("zind", 87)
+        Me.Chart1.Series("Series1").Points.AddXY("jeb", 50)
+        Me.Chart1.Series("Series1").Points.AddXY("rai", 60)
+        Me.Chart1.Series("Series1").Points.AddXY("cham", 70)
+
+        Me.Chart1.Series("Series2").Points.AddXY("zin", 50)
+        Me.Chart1.Series("Series2").Points.AddXY("jeb", 65)
+        Me.Chart1.Series("Series2").Points.AddXY("rai", 33)
+        Me.Chart1.Series("Series2").Points.AddXY("cham", 40)
+
+        Me.Chart1.Series("Series3").Points.AddXY("zin", 70)
+        Me.Chart1.Series("Series3").Points.AddXY("jeb", 80)
+        Me.Chart1.Series("Series3").Points.AddXY("rai", 40)
+        Me.Chart1.Series("Series3").Points.AddXY("cham", 34)
     End Sub
 
     Private Sub close_button_Click(sender As Object, e As EventArgs) Handles close_button.Click
@@ -209,8 +274,8 @@ Public Class menu_form
     End Sub
 
     Private Sub Timer4_Tick(sender As Object, e As EventArgs) Handles Timer4.Tick
-        date_label.Text = Now.ToLongDateString
-        time_label.Text = Now.ToLongTimeString
+        date_label.Text = Now
+
     End Sub
 
     Private Sub database_button_Click(sender As Object, e As EventArgs) Handles database_button.Click
@@ -290,5 +355,49 @@ Public Class menu_form
         categories.Show()
     End Sub
 
+    Private Sub subPanel_Paint(sender As Object, e As PaintEventArgs) Handles subPanel.Paint
 
+    End Sub
+
+    Private Sub Guna2Shapes1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Backup_button_Click(sender As Object, e As EventArgs) Handles Backup_button.Click
+        If MessageBox.Show("Are sure you want to backup your database, Please make sure that no operation is going to be interupted and then proceed", "System Database Backup", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK Then
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                Using command As New SqlCommand("BACKUP DATABASE POS_DATABASE TO DISK=@DISK WITH init;", connection)
+                    command.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("System Database Backup was successful", "Back Up System Database", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "Backup Failed with the following  Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub restore_button_Click(sender As Object, e As EventArgs) Handles restore_button.Click
+        Try
+            connection = New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
+            connection.Open()
+            Using cmd As New SqlCommand("RESTORE DATABASE POS_DATABASE FROM DISK=@DISK WITH replace;", connection)
+                cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
+                cmd.ExecuteNonQuery()
+                MessageBox.Show("Database Restore was successful", "Restoring a database from backup", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An Error Occured on restoring the database", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

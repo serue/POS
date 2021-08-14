@@ -2,7 +2,9 @@
 Imports System.Net
 Public Class settings
     Dim connection As SqlConnection
+    Dim backUpConnection As SqlConnection
     Dim myPermissions As New ConnectionAndPermissions
+    Dim createconnection As SqlConnection
     Dim MyID As Integer = 0
     Dim company As String = ""
     Private user As String
@@ -35,8 +37,25 @@ Public Class settings
     Private Sub settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim name As String = Dns.GetHostName
         txtTillName.Text = name
+
         loadSettings()
         Try
+            If My.Settings.auth_type = "" Then
+            ElseIf My.Settings.auth_type = "windows" Then
+                Panel7.Enabled = True
+                Panel8.Enabled = False
+                sqlServerAuthentication.Checked = False
+                Windows_authentication.Checked = True
+                Windows_server_name.Text = My.Settings.server
+            Else
+                Panel8.Enabled = True
+                sqlServerAuthentication.Checked = True
+                Windows_authentication.Checked = False
+                Sql_Server_name.Text = My.Settings.server
+                sql_password.Text = My.Settings.DBPassword
+                sql_username.Text = My.Settings.DBusername
+            End If
+            txtSavedPrinter.Text = My.Settings.PRINTER
             connection = myPermissions.getConnection
             connection.Open()
             SelectCompany()
@@ -80,7 +99,79 @@ Public Class settings
     End Sub
 
     Private Sub save_printer_Click(sender As Object, e As EventArgs) Handles save_printer.Click
+        Try
+            'variables for network authentication on server
+            Dim networkAuth As String = "1433;Network Library=DBMSSOCN;Initial Catalog=POS_DATABASE;"
+            Dim backAuthNetwork As String = "1433;Network Library=DBMSSOCN;Initial Catalog=master;"
+            Dim server As String = Sql_Server_name.Text
+            Dim userID As String = sql_username.Text
+            Dim Password As String = sql_password.Text
+            Dim SqlConString As String = "Data Source=" & server & "," & networkAuth & "User ID=" & userID & ";Password=" & Password
+            Dim SqlbackupCon As String = "Data Source=" & server & "," & backAuthNetwork & "User ID=" & userID & ";Password=" & Password
 
+            'variables for windows authentication on server
+            '   Dim con As New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
+            Dim WinAuth As String = "Data Source=" & Windows_server_name.Text & ";Initial Catalog=POS_DATABASE; Integrated Security=True;"
+            Dim winBakUPAuth As String = "Data Source=" & Windows_server_name.Text & ";Initial Catalog=master; Integrated Security=True;"
+
+
+
+            'building the  connection for sqlserver based authentication
+            If sqlServerAuthentication.Checked Then
+
+
+                If Sql_Server_name.Text <> "" And sql_password.Text <> "" And sql_username.Text <> "" Then
+                    createconnection = New SqlConnection(SqlConString)
+                    createconnection.Open()
+
+                    backUpConnection = New SqlConnection(SqlbackupCon)
+                    backUpConnection.Open()
+                    My.Settings.Reset()
+                    My.Settings.connection = SqlConString
+                    My.Settings.backupConnection = SqlbackupCon
+                    My.Settings.server = Sql_Server_name.Text
+                    My.Settings.DBusername = sql_username.Text
+                    My.Settings.DBPassword = sql_password.Text
+                    My.Settings.auth_type = "sqlserver"
+                    My.Settings.PRINTER = cmbPrinter.Text
+                    My.Settings.Save()
+                    MsgBox("Connection SetUp was successfully")
+                    backUpConnection.Close()
+                    createconnection.Close()
+                Else
+                    MsgBox("Provide details baba")
+                End If
+                'buil the connection for windows based authentication
+            ElseIf Windows_authentication.Checked Then
+
+                If Windows_server_name.Text <> "" Then
+                    createconnection = New SqlConnection(WinAuth)
+                    backUpConnection = New SqlConnection(winBakUPAuth)
+                    createconnection.Open()
+                    backUpConnection.Open()
+                    My.Settings.Reset()
+                    My.Settings.connection = WinAuth
+                    My.Settings.backupConnection = winBakUPAuth
+                    My.Settings.server = Windows_server_name.Text
+                    My.Settings.DBusername = "windows"
+                    My.Settings.DBusername = "windows"
+                    My.Settings.auth_type = "windows"
+                    My.Settings.PRINTER = cmbPrinter.Text
+
+                    My.Settings.Save()
+                    MsgBox("Connection SetUp was successfully")
+                    createconnection.Close()
+
+                    backUpConnection.Close()
+                End If
+            End If
+
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "The following error was encountered on saving settings", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MsgBox(ex.StackTrace)
+        End Try
     End Sub
     Private Sub SelectCompany()
         Using cm As New SqlCommand("SELECT NAME FROM COMPANY", connection)
@@ -95,6 +186,18 @@ Public Class settings
 
     Private Sub save_item_Click(sender As Object, e As EventArgs) Handles save_item.Click
         Try
+            'loading the settings to the system
+            txtSavedPrinter.Text = My.Settings.PRINTER
+            If My.Settings.auth_type = "" Then
+            ElseIf My.Settings.auth_type = "SqlServerAuthentication" Then
+                Panel8.Enabled = True
+                sqlServerAuthentication.Checked = True
+            Else
+                Panel7.Enabled = True
+                Windows_authentication.Checked = True
+            End If
+
+
             connection = myPermissions.getConnection()
             connection.Open()
             Using CMD As New SqlCommand("SELECT ID FROM BASE_CURRENCY", connection)
@@ -259,7 +362,7 @@ Public Class settings
 
             'load forex
 
-            Using command As New SqlCommand("SELECT CURRENCY,SYMBOL,RATE FROM CURRENCIES", connection)
+            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL,RATE FROM CURRENCIES", connection)
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(table)
@@ -275,6 +378,7 @@ Public Class settings
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "AN ERROR OCCURED LOADING SETTINGS", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         End Try
     End Sub
 
@@ -376,4 +480,35 @@ Public Class settings
         End Try
     End Sub
 
+    Private Sub GroupBox3_Enter(sender As Object, e As EventArgs) Handles GroupBox3.Enter
+
+    End Sub
+
+    Private Sub sqlServerAuthentication_CheckedChanged(sender As Object, e As EventArgs) Handles sqlServerAuthentication.CheckedChanged
+        If sqlServerAuthentication.Checked Then
+            Panel8.Enabled = True
+        Else
+            Panel8.Enabled = False
+        End If
+    End Sub
+
+    Private Sub Windows_authentication_CheckedChanged(sender As Object, e As EventArgs) Handles Windows_authentication.CheckedChanged
+        If Windows_authentication.Checked = True Then
+            Panel7.Enabled = True
+        Else
+            Panel7.Enabled = False
+        End If
+    End Sub
+
+    Private Sub clear_printer_Click(sender As Object, e As EventArgs) Handles clear_printer.Click
+        Try
+            connection = New SqlConnection(My.Settings.connection)
+            connection.Open()
+            MsgBox("open")
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Class

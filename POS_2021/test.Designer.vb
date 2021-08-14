@@ -22,7 +22,13 @@ Partial Class test
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(test))
+        Me.components = New System.ComponentModel.Container()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
         Me.Admin = New System.Windows.Forms.CheckBox()
         Me.reports = New System.Windows.Forms.CheckBox()
         Me.sales = New System.Windows.Forms.CheckBox()
@@ -35,13 +41,20 @@ Partial Class test
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.MaterialRaisedButton2 = New MaterialSkin.Controls.MaterialRaisedButton()
+        Me.MaterialRaisedButton1 = New MaterialSkin.Controls.MaterialRaisedButton()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Installer1 = New System.Configuration.Install.Installer()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Admin
@@ -155,14 +168,40 @@ Partial Class test
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.MaterialRaisedButton2)
+        Me.Panel1.Controls.Add(Me.MaterialRaisedButton1)
         Me.Panel1.Controls.Add(Me.Button5)
         Me.Panel1.Controls.Add(Me.TextBox6)
         Me.Panel1.Controls.Add(Me.TextBox5)
         Me.Panel1.Location = New System.Drawing.Point(4, 2)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(381, 341)
+        Me.Panel1.Size = New System.Drawing.Size(381, 296)
         Me.Panel1.TabIndex = 11
+        '
+        'MaterialRaisedButton2
+        '
+        Me.MaterialRaisedButton2.Depth = 0
+        Me.MaterialRaisedButton2.Location = New System.Drawing.Point(37, 192)
+        Me.MaterialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER
+        Me.MaterialRaisedButton2.Name = "MaterialRaisedButton2"
+        Me.MaterialRaisedButton2.Primary = True
+        Me.MaterialRaisedButton2.Size = New System.Drawing.Size(126, 34)
+        Me.MaterialRaisedButton2.TabIndex = 3
+        Me.MaterialRaisedButton2.Text = "RESTORE Database"
+        Me.MaterialRaisedButton2.UseVisualStyleBackColor = True
+        '
+        'MaterialRaisedButton1
+        '
+        Me.MaterialRaisedButton1.Depth = 0
+        Me.MaterialRaisedButton1.Location = New System.Drawing.Point(169, 192)
+        Me.MaterialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.MaterialRaisedButton1.Name = "MaterialRaisedButton1"
+        Me.MaterialRaisedButton1.Primary = True
+        Me.MaterialRaisedButton1.Size = New System.Drawing.Size(126, 34)
+        Me.MaterialRaisedButton1.TabIndex = 3
+        Me.MaterialRaisedButton1.Text = "Back Up Database"
+        Me.MaterialRaisedButton1.UseVisualStyleBackColor = True
         '
         'Button5
         '
@@ -207,15 +246,73 @@ Partial Class test
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(151, 20)
         Me.DateTimePicker1.TabIndex = 13
-
-
+        '
+        'Chart1
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.BorderWidth = 3
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(405, 131)
+        Me.Chart1.Name = "Chart1"
+        Me.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series1.IsValueShownAsLabel = True
+        Series1.LabelForeColor = System.Drawing.Color.SeaGreen
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series2.IsValueShownAsLabel = True
+        Series2.LabelForeColor = System.Drawing.Color.Purple
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series3.IsValueShownAsLabel = True
+        Series3.LabelForeColor = System.Drawing.Color.SaddleBrown
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series3"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
+        Me.Chart1.Size = New System.Drawing.Size(794, 327)
+        Me.Chart1.TabIndex = 14
+        Me.Chart1.Text = "Chart1"
+        Title1.Name = "Title1"
+        Me.Chart1.Titles.Add(Title1)
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(733, 50)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(75, 23)
+        Me.Button7.TabIndex = 15
+        Me.Button7.Text = "load chart"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Timer1
+        '
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(897, 47)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 16
+        Me.Label1.Text = "Label1"
         '
         'test
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1028, 535)
-
+        Me.ClientSize = New System.Drawing.Size(1247, 535)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Panel1)
@@ -235,7 +332,7 @@ Partial Class test
         Me.Text = "test"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -259,5 +356,10 @@ Partial Class test
     Friend WithEvents Button6 As Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Installer1 As System.Configuration.Install.Installer
-
+    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label1 As Label
+    Friend WithEvents MaterialRaisedButton1 As MaterialSkin.Controls.MaterialRaisedButton
+    Friend WithEvents MaterialRaisedButton2 As MaterialSkin.Controls.MaterialRaisedButton
 End Class

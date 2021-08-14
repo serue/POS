@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class menu_form
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,15 +20,22 @@ Partial Class menu_form
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim Panel8 As System.Windows.Forms.Panel
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.subPanel = New System.Windows.Forms.Panel()
-        Me.time_label = New System.Windows.Forms.Label()
+        Me.MaterialTabControl1 = New MaterialSkin.Controls.MaterialTabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.date_label = New System.Windows.Forms.Label()
-        Me.IconPictureBox3 = New FontAwesome.Sharp.IconPictureBox()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.dashboard_label = New System.Windows.Forms.Label()
         Me.IconPictureBox2 = New FontAwesome.Sharp.IconPictureBox()
@@ -87,7 +94,8 @@ Partial Class menu_form
         Panel8.SuspendLayout()
         Me.mainPanel.SuspendLayout()
         Me.subPanel.SuspendLayout()
-        CType(Me.IconPictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MaterialTabControl1.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel9.SuspendLayout()
         CType(Me.IconPictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,57 +138,106 @@ Partial Class menu_form
         '
         'subPanel
         '
-        Me.subPanel.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.subPanel.Controls.Add(Me.time_label)
+        Me.subPanel.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.subPanel.Controls.Add(Me.MaterialTabControl1)
+        Me.subPanel.Controls.Add(Me.Chart1)
         Me.subPanel.Controls.Add(Me.date_label)
-        Me.subPanel.Controls.Add(Me.IconPictureBox3)
-        Me.subPanel.Location = New System.Drawing.Point(84, 6)
+        Me.subPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.subPanel.Location = New System.Drawing.Point(0, 0)
         Me.subPanel.Margin = New System.Windows.Forms.Padding(2)
         Me.subPanel.Name = "subPanel"
-        Me.subPanel.Size = New System.Drawing.Size(821, 551)
+        Me.subPanel.Size = New System.Drawing.Size(987, 559)
         Me.subPanel.TabIndex = 0
         '
-        'time_label
+        'MaterialTabControl1
         '
-        Me.time_label.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.time_label.AutoSize = True
-        Me.time_label.Font = New System.Drawing.Font("Tahoma", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.time_label.ForeColor = System.Drawing.Color.DarkMagenta
-        Me.time_label.Location = New System.Drawing.Point(365, 178)
-        Me.time_label.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.time_label.Name = "time_label"
-        Me.time_label.Size = New System.Drawing.Size(76, 27)
-        Me.time_label.TabIndex = 2
-        Me.time_label.Text = "Label1"
+        Me.MaterialTabControl1.Alignment = System.Windows.Forms.TabAlignment.Right
+        Me.MaterialTabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons
+        Me.MaterialTabControl1.Controls.Add(Me.TabPage1)
+        Me.MaterialTabControl1.Controls.Add(Me.TabPage2)
+        Me.MaterialTabControl1.Depth = 0
+        Me.MaterialTabControl1.HotTrack = True
+        Me.MaterialTabControl1.Location = New System.Drawing.Point(256, 134)
+        Me.MaterialTabControl1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.MaterialTabControl1.Multiline = True
+        Me.MaterialTabControl1.Name = "MaterialTabControl1"
+        Me.MaterialTabControl1.SelectedIndex = 0
+        Me.MaterialTabControl1.Size = New System.Drawing.Size(200, 100)
+        Me.MaterialTabControl1.TabIndex = 8
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Location = New System.Drawing.Point(4, 4)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(130, 92)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "TabPage1"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Location = New System.Drawing.Point(4, 4)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(130, 92)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Chart1
+        '
+        Me.Chart1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        ChartArea2.AxisX.Interval = 1.0R
+        ChartArea2.AxisX.IsLabelAutoFit = False
+        ChartArea2.AxisX.LabelStyle.Angle = -90
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
+        Me.Chart1.Location = New System.Drawing.Point(12, 308)
+        Me.Chart1.Name = "Chart1"
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series4.Color = System.Drawing.Color.SeaGreen
+        Series4.IsValueShownAsLabel = True
+        Series4.LabelForeColor = System.Drawing.Color.SeaGreen
+        Series4.Legend = "Legend1"
+        Series4.Name = "Series1"
+        Series5.ChartArea = "ChartArea1"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series5.Color = System.Drawing.Color.Purple
+        Series5.IsValueShownAsLabel = True
+        Series5.LabelForeColor = System.Drawing.Color.Purple
+        Series5.Legend = "Legend1"
+        Series5.Name = "Series2"
+        Series6.ChartArea = "ChartArea1"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series6.Color = System.Drawing.Color.SteelBlue
+        Series6.IsValueShownAsLabel = True
+        Series6.LabelForeColor = System.Drawing.Color.SteelBlue
+        Series6.Legend = "Legend1"
+        Series6.Name = "Series3"
+        Me.Chart1.Series.Add(Series4)
+        Me.Chart1.Series.Add(Series5)
+        Me.Chart1.Series.Add(Series6)
+        Me.Chart1.Size = New System.Drawing.Size(766, 240)
+        Me.Chart1.TabIndex = 7
+        Me.Chart1.Text = "Chart1"
         '
         'date_label
         '
-        Me.date_label.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.date_label.AutoSize = True
-        Me.date_label.Font = New System.Drawing.Font("Tahoma", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.date_label.ForeColor = System.Drawing.Color.DarkMagenta
-        Me.date_label.Location = New System.Drawing.Point(364, 145)
+        Me.date_label.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.date_label.ForeColor = System.Drawing.Color.Purple
+        Me.date_label.Location = New System.Drawing.Point(17, 12)
         Me.date_label.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.date_label.Name = "date_label"
-        Me.date_label.Size = New System.Drawing.Size(92, 33)
+        Me.date_label.Size = New System.Drawing.Size(49, 18)
         Me.date_label.TabIndex = 1
         Me.date_label.Text = "Label1"
-        '
-        'IconPictureBox3
-        '
-        Me.IconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.IconPictureBox3.BackColor = System.Drawing.SystemColors.Control
-        Me.IconPictureBox3.ForeColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.CalendarAlt
-        Me.IconPictureBox3.IconColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox3.IconSize = 127
-        Me.IconPictureBox3.Location = New System.Drawing.Point(386, 12)
-        Me.IconPictureBox3.Margin = New System.Windows.Forms.Padding(2)
-        Me.IconPictureBox3.Name = "IconPictureBox3"
-        Me.IconPictureBox3.Size = New System.Drawing.Size(135, 127)
-        Me.IconPictureBox3.TabIndex = 0
-        Me.IconPictureBox3.TabStop = False
         '
         'Panel9
         '
@@ -661,7 +718,7 @@ Partial Class menu_form
         Me.Panel2.Location = New System.Drawing.Point(0, 359)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(213, 45)
+        Me.Panel2.Size = New System.Drawing.Size(196, 45)
         Me.Panel2.TabIndex = 1
         '
         'Category_button
@@ -681,7 +738,7 @@ Partial Class menu_form
         Me.Category_button.Margin = New System.Windows.Forms.Padding(2)
         Me.Category_button.Name = "Category_button"
         Me.Category_button.Rotation = 0R
-        Me.Category_button.Size = New System.Drawing.Size(213, 45)
+        Me.Category_button.Size = New System.Drawing.Size(196, 45)
         Me.Category_button.TabIndex = 2
         Me.Category_button.Text = "Categories"
         Me.Category_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -693,12 +750,12 @@ Partial Class menu_form
         Me.database_panel.Controls.Add(Me.Backup_button)
         Me.database_panel.Controls.Add(Me.database_button)
         Me.database_panel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.database_panel.Location = New System.Drawing.Point(0, 460)
+        Me.database_panel.Location = New System.Drawing.Point(0, 404)
         Me.database_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.database_panel.MaximumSize = New System.Drawing.Size(213, 110)
-        Me.database_panel.MinimumSize = New System.Drawing.Size(213, 45)
+        Me.database_panel.MinimumSize = New System.Drawing.Size(213, 110)
         Me.database_panel.Name = "database_panel"
-        Me.database_panel.Size = New System.Drawing.Size(213, 45)
+        Me.database_panel.Size = New System.Drawing.Size(213, 110)
         Me.database_panel.TabIndex = 1
         '
         'restore_button
@@ -781,10 +838,10 @@ Partial Class menu_form
         '
         Me.Panel12.Controls.Add(Me.btnPermissions)
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel12.Location = New System.Drawing.Point(0, 505)
+        Me.Panel12.Location = New System.Drawing.Point(0, 514)
         Me.Panel12.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(213, 45)
+        Me.Panel12.Size = New System.Drawing.Size(196, 45)
         Me.Panel12.TabIndex = 1
         '
         'btnPermissions
@@ -804,7 +861,7 @@ Partial Class menu_form
         Me.btnPermissions.Margin = New System.Windows.Forms.Padding(2)
         Me.btnPermissions.Name = "btnPermissions"
         Me.btnPermissions.Rotation = 0R
-        Me.btnPermissions.Size = New System.Drawing.Size(213, 45)
+        Me.btnPermissions.Size = New System.Drawing.Size(196, 45)
         Me.btnPermissions.TabIndex = 1
         Me.btnPermissions.Text = "Permissions"
         Me.btnPermissions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -815,10 +872,10 @@ Partial Class menu_form
         Me.Panel7.Controls.Add(Me.settings_button)
         Me.Panel7.Controls.Add(Me.logout_button)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(0, 550)
+        Me.Panel7.Location = New System.Drawing.Point(0, 559)
         Me.Panel7.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(213, 45)
+        Me.Panel7.Size = New System.Drawing.Size(196, 45)
         Me.Panel7.TabIndex = 1
         '
         'settings_button
@@ -837,7 +894,7 @@ Partial Class menu_form
         Me.settings_button.Margin = New System.Windows.Forms.Padding(2)
         Me.settings_button.Name = "settings_button"
         Me.settings_button.Rotation = 0R
-        Me.settings_button.Size = New System.Drawing.Size(108, 45)
+        Me.settings_button.Size = New System.Drawing.Size(91, 45)
         Me.settings_button.TabIndex = 2
         Me.settings_button.Text = "Settings"
         Me.settings_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -1136,7 +1193,7 @@ Partial Class menu_form
         Me.Home_panel.Location = New System.Drawing.Point(0, 3)
         Me.Home_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.Home_panel.Name = "Home_panel"
-        Me.Home_panel.Size = New System.Drawing.Size(213, 45)
+        Me.Home_panel.Size = New System.Drawing.Size(196, 45)
         Me.Home_panel.TabIndex = 4
         '
         'home_button
@@ -1156,7 +1213,7 @@ Partial Class menu_form
         Me.home_button.Margin = New System.Windows.Forms.Padding(2)
         Me.home_button.Name = "home_button"
         Me.home_button.Rotation = 0R
-        Me.home_button.Size = New System.Drawing.Size(213, 45)
+        Me.home_button.Size = New System.Drawing.Size(196, 45)
         Me.home_button.TabIndex = 3
         Me.home_button.Text = "Home"
         Me.home_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1170,7 +1227,7 @@ Partial Class menu_form
         Me.Panel11.Location = New System.Drawing.Point(0, 0)
         Me.Panel11.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(213, 3)
+        Me.Panel11.Size = New System.Drawing.Size(196, 3)
         Me.Panel11.TabIndex = 3
         '
         'Timer1
@@ -1204,7 +1261,8 @@ Partial Class menu_form
         Me.mainPanel.ResumeLayout(False)
         Me.subPanel.ResumeLayout(False)
         Me.subPanel.PerformLayout()
-        CType(Me.IconPictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MaterialTabControl1.ResumeLayout(False)
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel9.ResumeLayout(False)
         Me.Panel9.PerformLayout()
         CType(Me.IconPictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1278,9 +1336,7 @@ Partial Class menu_form
     Friend WithEvents mainPanel As Panel
     Friend WithEvents subPanel As Panel
     Friend WithEvents date_label As Label
-    Friend WithEvents IconPictureBox3 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents Timer4 As Timer
-    Friend WithEvents time_label As Label
     Friend WithEvents database_panel As Panel
     Friend WithEvents restore_button As FontAwesome.Sharp.IconButton
     Friend WithEvents Backup_button As FontAwesome.Sharp.IconButton
@@ -1288,4 +1344,8 @@ Partial Class menu_form
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Category_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents MaterialTabControl1 As MaterialSkin.Controls.MaterialTabControl
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TabPage2 As TabPage
 End Class
