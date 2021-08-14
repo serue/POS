@@ -135,7 +135,7 @@ Public Class settings
                     My.Settings.auth_type = "sqlserver"
                     My.Settings.PRINTER = cmbPrinter.Text
                     My.Settings.Save()
-                    MsgBox("Connection SetUp was successfully")
+                    MessageBox.Show("Connection Set up was successful", "connection Setup", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     backUpConnection.Close()
                     createconnection.Close()
                 Else
@@ -159,7 +159,7 @@ Public Class settings
                     My.Settings.PRINTER = cmbPrinter.Text
 
                     My.Settings.Save()
-                    MsgBox("Connection SetUp was successfully")
+                    MessageBox.Show("Connection Set up was successful", "connection Setup", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     createconnection.Close()
 
                     backUpConnection.Close()
