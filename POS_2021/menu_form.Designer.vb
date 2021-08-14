@@ -24,16 +24,27 @@ Partial Class menu_form
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim Panel8 As System.Windows.Forms.Panel
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.subPanel = New System.Windows.Forms.Panel()
-        Me.MaterialTabControl1 = New MaterialSkin.Controls.MaterialTabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.monthlySalesLabel = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.weeklySales_label = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.daily_sales_label = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.users_label = New System.Windows.Forms.Label()
+        Me.categories_label = New System.Windows.Forms.Label()
+        Me.products_label = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.date_label = New System.Windows.Forms.Label()
         Me.Panel9 = New System.Windows.Forms.Panel()
@@ -94,7 +105,8 @@ Partial Class menu_form
         Panel8.SuspendLayout()
         Me.mainPanel.SuspendLayout()
         Me.subPanel.SuspendLayout()
-        Me.MaterialTabControl1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel9.SuspendLayout()
         CType(Me.IconPictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -139,7 +151,8 @@ Partial Class menu_form
         'subPanel
         '
         Me.subPanel.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.subPanel.Controls.Add(Me.MaterialTabControl1)
+        Me.subPanel.Controls.Add(Me.GroupBox2)
+        Me.subPanel.Controls.Add(Me.GroupBox1)
         Me.subPanel.Controls.Add(Me.Chart1)
         Me.subPanel.Controls.Add(Me.date_label)
         Me.subPanel.Dock = System.Windows.Forms.DockStyle.Fill
@@ -149,81 +162,193 @@ Partial Class menu_form
         Me.subPanel.Size = New System.Drawing.Size(987, 559)
         Me.subPanel.TabIndex = 0
         '
-        'MaterialTabControl1
+        'GroupBox2
         '
-        Me.MaterialTabControl1.Alignment = System.Windows.Forms.TabAlignment.Right
-        Me.MaterialTabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons
-        Me.MaterialTabControl1.Controls.Add(Me.TabPage1)
-        Me.MaterialTabControl1.Controls.Add(Me.TabPage2)
-        Me.MaterialTabControl1.Depth = 0
-        Me.MaterialTabControl1.HotTrack = True
-        Me.MaterialTabControl1.Location = New System.Drawing.Point(256, 134)
-        Me.MaterialTabControl1.MouseState = MaterialSkin.MouseState.HOVER
-        Me.MaterialTabControl1.Multiline = True
-        Me.MaterialTabControl1.Name = "MaterialTabControl1"
-        Me.MaterialTabControl1.SelectedIndex = 0
-        Me.MaterialTabControl1.Size = New System.Drawing.Size(200, 100)
-        Me.MaterialTabControl1.TabIndex = 8
+        Me.GroupBox2.Controls.Add(Me.monthlySalesLabel)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.weeklySales_label)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.daily_sales_label)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.Maroon
+        Me.GroupBox2.Location = New System.Drawing.Point(506, 57)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(420, 176)
+        Me.GroupBox2.TabIndex = 8
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Sales View"
         '
-        'TabPage1
+        'monthlySalesLabel
         '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 4)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(130, 92)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.monthlySalesLabel.AutoSize = True
+        Me.monthlySalesLabel.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.monthlySalesLabel.Location = New System.Drawing.Point(242, 128)
+        Me.monthlySalesLabel.Name = "monthlySalesLabel"
+        Me.monthlySalesLabel.Size = New System.Drawing.Size(69, 21)
+        Me.monthlySalesLabel.TabIndex = 5
+        Me.monthlySalesLabel.Text = "Label10"
         '
-        'TabPage2
+        'Label7
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 4)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(130, 92)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(23, 130)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(92, 17)
+        Me.Label7.TabIndex = 2
+        Me.Label7.Text = "Monthly Sales:"
+        '
+        'weeklySales_label
+        '
+        Me.weeklySales_label.AutoSize = True
+        Me.weeklySales_label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.weeklySales_label.Location = New System.Drawing.Point(242, 76)
+        Me.weeklySales_label.Name = "weeklySales_label"
+        Me.weeklySales_label.Size = New System.Drawing.Size(60, 21)
+        Me.weeklySales_label.TabIndex = 4
+        Me.weeklySales_label.Text = "Label9"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(23, 39)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(67, 17)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Day Sales:"
+        '
+        'daily_sales_label
+        '
+        Me.daily_sales_label.AutoSize = True
+        Me.daily_sales_label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.daily_sales_label.Location = New System.Drawing.Point(242, 37)
+        Me.daily_sales_label.Name = "daily_sales_label"
+        Me.daily_sales_label.Size = New System.Drawing.Size(60, 21)
+        Me.daily_sales_label.TabIndex = 3
+        Me.daily_sales_label.Text = "Label8"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(23, 78)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(85, 17)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Weekly Sales:"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.users_label)
+        Me.GroupBox1.Controls.Add(Me.categories_label)
+        Me.GroupBox1.Controls.Add(Me.products_label)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
+        Me.GroupBox1.Location = New System.Drawing.Point(20, 57)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(420, 176)
+        Me.GroupBox1.TabIndex = 8
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Products and Users"
+        '
+        'users_label
+        '
+        Me.users_label.AutoSize = True
+        Me.users_label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.users_label.Location = New System.Drawing.Point(249, 135)
+        Me.users_label.Name = "users_label"
+        Me.users_label.Size = New System.Drawing.Size(69, 21)
+        Me.users_label.TabIndex = 5
+        Me.users_label.Text = "Label10"
+        '
+        'categories_label
+        '
+        Me.categories_label.AutoSize = True
+        Me.categories_label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.categories_label.Location = New System.Drawing.Point(249, 83)
+        Me.categories_label.Name = "categories_label"
+        Me.categories_label.Size = New System.Drawing.Size(60, 21)
+        Me.categories_label.TabIndex = 4
+        Me.categories_label.Text = "Label9"
+        '
+        'products_label
+        '
+        Me.products_label.AutoSize = True
+        Me.products_label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.products_label.Location = New System.Drawing.Point(249, 44)
+        Me.products_label.Name = "products_label"
+        Me.products_label.Size = New System.Drawing.Size(60, 21)
+        Me.products_label.TabIndex = 3
+        Me.products_label.Text = "Label8"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(17, 138)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(51, 17)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Useers:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(17, 86)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(74, 17)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Categories:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(17, 47)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(62, 17)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Products:"
         '
         'Chart1
         '
         Me.Chart1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        ChartArea2.AxisX.Interval = 1.0R
-        ChartArea2.AxisX.IsLabelAutoFit = False
-        ChartArea2.AxisX.LabelStyle.Angle = -90
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
-        Me.Chart1.Location = New System.Drawing.Point(12, 308)
+        ChartArea1.AxisX.Interval = 1.0R
+        ChartArea1.AxisX.IsLabelAutoFit = False
+        ChartArea1.AxisX.LabelStyle.Angle = -90
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(12, 252)
         Me.Chart1.Name = "Chart1"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series4.Color = System.Drawing.Color.SeaGreen
-        Series4.IsValueShownAsLabel = True
-        Series4.LabelForeColor = System.Drawing.Color.SeaGreen
-        Series4.Legend = "Legend1"
-        Series4.Name = "Series1"
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series5.Color = System.Drawing.Color.Purple
-        Series5.IsValueShownAsLabel = True
-        Series5.LabelForeColor = System.Drawing.Color.Purple
-        Series5.Legend = "Legend1"
-        Series5.Name = "Series2"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series6.Color = System.Drawing.Color.SteelBlue
-        Series6.IsValueShownAsLabel = True
-        Series6.LabelForeColor = System.Drawing.Color.SteelBlue
-        Series6.Legend = "Legend1"
-        Series6.Name = "Series3"
-        Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Series.Add(Series5)
-        Me.Chart1.Series.Add(Series6)
-        Me.Chart1.Size = New System.Drawing.Size(766, 240)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series1.Color = System.Drawing.Color.SeaGreen
+        Series1.IsValueShownAsLabel = True
+        Series1.LabelForeColor = System.Drawing.Color.SeaGreen
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series2.Color = System.Drawing.Color.Purple
+        Series2.IsValueShownAsLabel = True
+        Series2.LabelForeColor = System.Drawing.Color.Purple
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series3.Color = System.Drawing.Color.SteelBlue
+        Series3.IsValueShownAsLabel = True
+        Series3.LabelForeColor = System.Drawing.Color.SteelBlue
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series3"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
+        Me.Chart1.Size = New System.Drawing.Size(878, 296)
         Me.Chart1.TabIndex = 7
         Me.Chart1.Text = "Chart1"
         '
@@ -718,7 +843,7 @@ Partial Class menu_form
         Me.Panel2.Location = New System.Drawing.Point(0, 359)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(196, 45)
+        Me.Panel2.Size = New System.Drawing.Size(213, 45)
         Me.Panel2.TabIndex = 1
         '
         'Category_button
@@ -738,7 +863,7 @@ Partial Class menu_form
         Me.Category_button.Margin = New System.Windows.Forms.Padding(2)
         Me.Category_button.Name = "Category_button"
         Me.Category_button.Rotation = 0R
-        Me.Category_button.Size = New System.Drawing.Size(196, 45)
+        Me.Category_button.Size = New System.Drawing.Size(213, 45)
         Me.Category_button.TabIndex = 2
         Me.Category_button.Text = "Categories"
         Me.Category_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -750,12 +875,12 @@ Partial Class menu_form
         Me.database_panel.Controls.Add(Me.Backup_button)
         Me.database_panel.Controls.Add(Me.database_button)
         Me.database_panel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.database_panel.Location = New System.Drawing.Point(0, 404)
+        Me.database_panel.Location = New System.Drawing.Point(0, 460)
         Me.database_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.database_panel.MaximumSize = New System.Drawing.Size(213, 110)
-        Me.database_panel.MinimumSize = New System.Drawing.Size(213, 110)
+        Me.database_panel.MinimumSize = New System.Drawing.Size(213, 45)
         Me.database_panel.Name = "database_panel"
-        Me.database_panel.Size = New System.Drawing.Size(213, 110)
+        Me.database_panel.Size = New System.Drawing.Size(213, 45)
         Me.database_panel.TabIndex = 1
         '
         'restore_button
@@ -838,10 +963,10 @@ Partial Class menu_form
         '
         Me.Panel12.Controls.Add(Me.btnPermissions)
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel12.Location = New System.Drawing.Point(0, 514)
+        Me.Panel12.Location = New System.Drawing.Point(0, 505)
         Me.Panel12.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(196, 45)
+        Me.Panel12.Size = New System.Drawing.Size(213, 45)
         Me.Panel12.TabIndex = 1
         '
         'btnPermissions
@@ -861,7 +986,7 @@ Partial Class menu_form
         Me.btnPermissions.Margin = New System.Windows.Forms.Padding(2)
         Me.btnPermissions.Name = "btnPermissions"
         Me.btnPermissions.Rotation = 0R
-        Me.btnPermissions.Size = New System.Drawing.Size(196, 45)
+        Me.btnPermissions.Size = New System.Drawing.Size(213, 45)
         Me.btnPermissions.TabIndex = 1
         Me.btnPermissions.Text = "Permissions"
         Me.btnPermissions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -872,10 +997,10 @@ Partial Class menu_form
         Me.Panel7.Controls.Add(Me.settings_button)
         Me.Panel7.Controls.Add(Me.logout_button)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(0, 559)
+        Me.Panel7.Location = New System.Drawing.Point(0, 550)
         Me.Panel7.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(196, 45)
+        Me.Panel7.Size = New System.Drawing.Size(213, 45)
         Me.Panel7.TabIndex = 1
         '
         'settings_button
@@ -894,7 +1019,7 @@ Partial Class menu_form
         Me.settings_button.Margin = New System.Windows.Forms.Padding(2)
         Me.settings_button.Name = "settings_button"
         Me.settings_button.Rotation = 0R
-        Me.settings_button.Size = New System.Drawing.Size(91, 45)
+        Me.settings_button.Size = New System.Drawing.Size(108, 45)
         Me.settings_button.TabIndex = 2
         Me.settings_button.Text = "Settings"
         Me.settings_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -1193,7 +1318,7 @@ Partial Class menu_form
         Me.Home_panel.Location = New System.Drawing.Point(0, 3)
         Me.Home_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.Home_panel.Name = "Home_panel"
-        Me.Home_panel.Size = New System.Drawing.Size(196, 45)
+        Me.Home_panel.Size = New System.Drawing.Size(213, 45)
         Me.Home_panel.TabIndex = 4
         '
         'home_button
@@ -1213,7 +1338,7 @@ Partial Class menu_form
         Me.home_button.Margin = New System.Windows.Forms.Padding(2)
         Me.home_button.Name = "home_button"
         Me.home_button.Rotation = 0R
-        Me.home_button.Size = New System.Drawing.Size(196, 45)
+        Me.home_button.Size = New System.Drawing.Size(213, 45)
         Me.home_button.TabIndex = 3
         Me.home_button.Text = "Home"
         Me.home_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1227,7 +1352,7 @@ Partial Class menu_form
         Me.Panel11.Location = New System.Drawing.Point(0, 0)
         Me.Panel11.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(196, 3)
+        Me.Panel11.Size = New System.Drawing.Size(213, 3)
         Me.Panel11.TabIndex = 3
         '
         'Timer1
@@ -1261,7 +1386,10 @@ Partial Class menu_form
         Me.mainPanel.ResumeLayout(False)
         Me.subPanel.ResumeLayout(False)
         Me.subPanel.PerformLayout()
-        Me.MaterialTabControl1.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel9.ResumeLayout(False)
         Me.Panel9.PerformLayout()
@@ -1345,7 +1473,18 @@ Partial Class menu_form
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Category_button As FontAwesome.Sharp.IconButton
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
-    Friend WithEvents MaterialTabControl1 As MaterialSkin.Controls.MaterialTabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents users_label As Label
+    Friend WithEvents categories_label As Label
+    Friend WithEvents products_label As Label
+    Friend WithEvents monthlySalesLabel As Label
+    Friend WithEvents weeklySales_label As Label
+    Friend WithEvents daily_sales_label As Label
 End Class

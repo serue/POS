@@ -400,4 +400,8 @@ Public Class menu_form
             MessageBox.Show(ex.Message, "An Error Occured on restoring the database", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles users_label.Click, monthlySalesLabel.Click
+
+    End Sub
 End Class
