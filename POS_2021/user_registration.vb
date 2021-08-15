@@ -76,8 +76,8 @@ Public Class user_registration
                     .Add("@ADDRESS", SqlDbType.VarChar).Value = address.Text
                     .Add("@CONTACT", SqlDbType.VarChar).Value = phone.Text
                     .Add("@GENDER", SqlDbType.VarChar).Value = gender.Text
-                    .Add("@USERNAME", SqlDbType.VarChar).Value = username.Text
-                    .Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "Abc")
+                    .Add("@EMP_ID", SqlDbType.VarChar).Value = employee_id.Text
+                    '.Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "Abc")
                 End With
 
                 command.ExecuteNonQuery()
@@ -111,8 +111,8 @@ Public Class user_registration
                         .Add("@AGE ", SqlDbType.VarChar).Value = address.Text
                         .Add("@CONTACT", SqlDbType.VarChar).Value = phone.Text
                         .Add("@GENDER", SqlDbType.VarChar).Value = gender.Text
-                        .Add("@USERNAME", SqlDbType.VarChar).Value = username.Text
-                        .Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "abc")
+                        .Add("@EMP_ID", SqlDbType.VarChar).Value = employee_id.Text
+                        '.Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "abc")
 
 
                     End With

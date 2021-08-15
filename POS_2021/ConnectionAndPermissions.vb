@@ -39,7 +39,7 @@ Public Class ConnectionAndPermissions
     Public Sub Login(username As String, password As String, conn As SqlConnection)
         Try
             conn.Open()
-            Using command As New SqlCommand("select name from users where username=@username and password=@password", conn)
+            Using command As New SqlCommand("SELECT EMP_ID FROM ACCOUNTS WHERE USERNAME=@username AND PASSWORD=@password", conn)
                 With command.Parameters
                     .Add("@username", SqlDbType.VarChar).Value = username
                     .Add("@password", SqlDbType.VarChar).Value = Encrypt(password, "Abc")
@@ -87,8 +87,8 @@ Public Class ConnectionAndPermissions
     Public Function getConnection() As SqlConnection
         Return con
     End Function
-    Public Sub savePermissions(ByVal user As String, ByVal permission As String, ByVal status As Integer, ByVal conString As SqlConnection)
-        Using Command As New SqlCommand("insert into user_permissions(username,permission,status) values(@user,@permission,@status)", conString)
+    Public Sub savePermissions(ByVal user As String, ByVal permission As String, ByVal status As Integer, ByVal conString As SqlConnection, trans As SqlTransaction)
+        Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,PERMISSION,STATUS) values(@user,@permission,@status)", conString)
 
             With Command.Parameters
 
@@ -103,8 +103,8 @@ Public Class ConnectionAndPermissions
         End Using
     End Sub
 
-    Public Sub updatePermissions(ByVal user As String, ByVal permission As String, ByVal status As Integer, ByVal conString As SqlConnection)
-        Using Command As New SqlCommand("update user_permissions set permission=@permission,status=@status where username=@user", conString)
+    Public Sub updatePermissions(ByVal user As String, ByVal permission As String, ByVal status As Integer, ByVal conString As SqlConnection, trans As SqlTransaction)
+        Using Command As New SqlCommand("UPDATE USER_PERMISSIONS SET STATUS=@status where PERMISSION=@permission AND USERNAME=@user ", conString)
 
             With Command.Parameters
 
