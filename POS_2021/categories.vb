@@ -17,6 +17,9 @@ Public Class categories
 
                     .Add("@CATEGORY", SqlDbType.VarChar).Value = cmb_category.Text
                     .Add("@NOTES ", SqlDbType.VarChar).Value = notes_textbox.Text
+                    .Add("@SUB_CATEGORY1", SqlDbType.VarChar).Value = cmb_subCategory1.Text
+                    .Add("@SUB_CATEGORY2", SqlDbType.VarChar).Value = cmb_subcategory2.Text
+                    .Add("@SUB_CATEGORY3", SqlDbType.VarChar).Value = cmb_SubCategory3.Text
 
                 End With
 
@@ -75,6 +78,10 @@ Public Class categories
                         .Add("@ID", SqlDbType.Int).Value = myId
                         .Add("@CATEGORY", SqlDbType.VarChar).Value = cmb_category.Text
                         .Add("@NOTES ", SqlDbType.VarChar).Value = notes_textbox.Text
+                        .Add("@SUB_CATEGORY1", SqlDbType.VarChar).Value = cmb_subCategory1.Text
+                        .Add("@SUB_CATEGORY2", SqlDbType.VarChar).Value = cmb_subcategory2.Text
+                        .Add("@SUB_CATEGORY3", SqlDbType.VarChar).Value = cmb_SubCategory3.Text
+
 
                     End With
 
@@ -113,7 +120,7 @@ Public Class categories
         loadCategories()
     End Sub
 
-    Private Sub cmb_category_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_category.SelectedIndexChanged
+    Private Sub cmb_category_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmb_category.Click
         findID()
     End Sub
 

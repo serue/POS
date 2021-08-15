@@ -142,6 +142,9 @@ Public Class Add_inventory
                 With command.Parameters
                     .Add("@DATE", SqlDbType.Date).Value = Now
                     .Add("@CATEGORY", SqlDbType.VarChar).Value = category_combo.Text
+                    .Add("@SUB_CATEGORY1", SqlDbType.VarChar).Value = subCategory_combo1.Text
+                    .Add("@SUB_CATEGORY2", SqlDbType.VarChar).Value = subCategory_combo2.Text
+                    .Add("@SUB_CATEGORY3", SqlDbType.VarChar).Value = subCategory_combo1.Text
                     .Add("@BARCODE", SqlDbType.VarChar).Value = barcode_textbox.Text
                     .Add("@NAME", SqlDbType.VarChar).Value = name_textbox.Text
                     .Add("@QUANTITY", SqlDbType.Decimal).Value = quantity_textbox.Text
@@ -149,10 +152,15 @@ Public Class Add_inventory
                     .Add("@SALE_QTY", SqlDbType.Decimal).Value = sale_qty_textbox.Text
                     .Add("@COST", SqlDbType.Decimal).Value = cost_textbox.Text
                     .Add("@PRICE", SqlDbType.Decimal).Value = selling_textbox.Text
+                    .Add("@W_PRICE", SqlDbType.Decimal).Value = 0
+                    .Add("@W_QTY", SqlDbType.Decimal).Value = 0
                     .Add("@MARGIN", SqlDbType.Decimal).Value = margin_textbox.Text
                     .Add("@VENDOR_CODE", SqlDbType.VarChar).Value = vendorCode_textbox.Text
                     .Add("@PRODUCT_STATUS", SqlDbType.Int).Value = 1
                     .Add("@SKU", SqlDbType.VarChar).Value = sku_textbox.Text
+                    .Add("@EXTRA1", SqlDbType.VarChar).Value = ""
+                    .Add("@EXTRA2", SqlDbType.VarChar).Value = ""
+                    .Add("@EXTRA2", SqlDbType.VarChar).Value = ""
 
                 End With
                 command.ExecuteNonQuery()
@@ -418,5 +426,7 @@ Public Class Add_inventory
         End Try
     End Sub
 
+    Private Sub Panel5_Paint(sender As Object, e As PaintEventArgs) Handles Panel5.Paint
 
+    End Sub
 End Class
