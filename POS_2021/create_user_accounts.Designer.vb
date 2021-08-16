@@ -26,18 +26,18 @@ Partial Class create_user_accounts
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.employee_id = New MetroFramework.Controls.MetroTextBox()
+        Me.IconPictureBox6 = New FontAwesome.Sharp.IconPictureBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.clear_button = New FontAwesome.Sharp.IconButton()
         Me.confirm_password = New MetroFramework.Controls.MetroTextBox()
+        Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
+        Me.save_button = New FontAwesome.Sharp.IconButton()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.password = New MetroFramework.Controls.MetroTextBox()
         Me.username = New MetroFramework.Controls.MetroTextBox()
-        Me.IconPictureBox6 = New FontAwesome.Sharp.IconPictureBox()
-        Me.clear_button = New FontAwesome.Sharp.IconButton()
-        Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
-        Me.save_button = New FontAwesome.Sharp.IconButton()
         Me.IconPictureBox8 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox9 = New FontAwesome.Sharp.IconPictureBox()
         Me.GroupBox1.SuspendLayout()
@@ -85,7 +85,7 @@ Partial Class create_user_accounts
         Me.GroupBox1.Size = New System.Drawing.Size(580, 243)
         Me.GroupBox1.TabIndex = 20
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Register Users"
+        Me.GroupBox1.Text = "Create User Account"
         '
         'Label11
         '
@@ -132,6 +132,21 @@ Partial Class create_user_accounts
         Me.employee_id.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.employee_id.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
         '
+        'IconPictureBox6
+        '
+        Me.IconPictureBox6.BackColor = System.Drawing.SystemColors.Control
+        Me.IconPictureBox6.ForeColor = System.Drawing.Color.Indigo
+        Me.IconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.UserTag
+        Me.IconPictureBox6.IconColor = System.Drawing.Color.Indigo
+        Me.IconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.IconPictureBox6.IconSize = 24
+        Me.IconPictureBox6.Location = New System.Drawing.Point(145, 24)
+        Me.IconPictureBox6.Margin = New System.Windows.Forms.Padding(2)
+        Me.IconPictureBox6.Name = "IconPictureBox6"
+        Me.IconPictureBox6.Size = New System.Drawing.Size(24, 26)
+        Me.IconPictureBox6.TabIndex = 25
+        Me.IconPictureBox6.TabStop = False
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -140,6 +155,25 @@ Partial Class create_user_accounts
         Me.Label10.Size = New System.Drawing.Size(117, 17)
         Me.Label10.TabIndex = 24
         Me.Label10.Text = "Confirm Password:"
+        '
+        'clear_button
+        '
+        Me.clear_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.clear_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
+        Me.clear_button.IconColor = System.Drawing.Color.DarkRed
+        Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.clear_button.IconSize = 25
+        Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.clear_button.Location = New System.Drawing.Point(319, 192)
+        Me.clear_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.clear_button.Name = "clear_button"
+        Me.clear_button.Rotation = 0R
+        Me.clear_button.Size = New System.Drawing.Size(79, 33)
+        Me.clear_button.TabIndex = 18
+        Me.clear_button.Text = "Clear"
+        Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.clear_button.UseVisualStyleBackColor = True
         '
         'confirm_password
         '
@@ -176,6 +210,40 @@ Partial Class create_user_accounts
         Me.confirm_password.WaterMark = "Confirm your password"
         Me.confirm_password.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.confirm_password.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
+        '
+        'IconPictureBox1
+        '
+        Me.IconPictureBox1.BackColor = System.Drawing.SystemColors.Control
+        Me.IconPictureBox1.ForeColor = System.Drawing.Color.Indigo
+        Me.IconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Key
+        Me.IconPictureBox1.IconColor = System.Drawing.Color.Indigo
+        Me.IconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.IconPictureBox1.IconSize = 24
+        Me.IconPictureBox1.Location = New System.Drawing.Point(146, 115)
+        Me.IconPictureBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.IconPictureBox1.Name = "IconPictureBox1"
+        Me.IconPictureBox1.Size = New System.Drawing.Size(24, 26)
+        Me.IconPictureBox1.TabIndex = 22
+        Me.IconPictureBox1.TabStop = False
+        '
+        'save_button
+        '
+        Me.save_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.save_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.save_button.IconChar = FontAwesome.Sharp.IconChar.Plus
+        Me.save_button.IconColor = System.Drawing.Color.DarkSlateBlue
+        Me.save_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.save_button.IconSize = 25
+        Me.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.save_button.Location = New System.Drawing.Point(402, 192)
+        Me.save_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.save_button.Name = "save_button"
+        Me.save_button.Rotation = 0R
+        Me.save_button.Size = New System.Drawing.Size(145, 33)
+        Me.save_button.TabIndex = 16
+        Me.save_button.Text = "Create Account"
+        Me.save_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.save_button.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -292,74 +360,6 @@ Partial Class create_user_accounts
         Me.username.WaterMark = "Enter your username"
         Me.username.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.username.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
-        '
-        'IconPictureBox6
-        '
-        Me.IconPictureBox6.BackColor = System.Drawing.SystemColors.Control
-        Me.IconPictureBox6.ForeColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.UserTag
-        Me.IconPictureBox6.IconColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox6.IconSize = 24
-        Me.IconPictureBox6.Location = New System.Drawing.Point(145, 24)
-        Me.IconPictureBox6.Margin = New System.Windows.Forms.Padding(2)
-        Me.IconPictureBox6.Name = "IconPictureBox6"
-        Me.IconPictureBox6.Size = New System.Drawing.Size(24, 26)
-        Me.IconPictureBox6.TabIndex = 25
-        Me.IconPictureBox6.TabStop = False
-        '
-        'clear_button
-        '
-        Me.clear_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.clear_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
-        Me.clear_button.IconColor = System.Drawing.Color.DarkRed
-        Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.clear_button.IconSize = 25
-        Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(319, 192)
-        Me.clear_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.clear_button.Name = "clear_button"
-        Me.clear_button.Rotation = 0R
-        Me.clear_button.Size = New System.Drawing.Size(79, 33)
-        Me.clear_button.TabIndex = 18
-        Me.clear_button.Text = "Clear"
-        Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.clear_button.UseVisualStyleBackColor = True
-        '
-        'IconPictureBox1
-        '
-        Me.IconPictureBox1.BackColor = System.Drawing.SystemColors.Control
-        Me.IconPictureBox1.ForeColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Key
-        Me.IconPictureBox1.IconColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox1.IconSize = 24
-        Me.IconPictureBox1.Location = New System.Drawing.Point(146, 115)
-        Me.IconPictureBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.IconPictureBox1.Name = "IconPictureBox1"
-        Me.IconPictureBox1.Size = New System.Drawing.Size(24, 26)
-        Me.IconPictureBox1.TabIndex = 22
-        Me.IconPictureBox1.TabStop = False
-        '
-        'save_button
-        '
-        Me.save_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.save_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.save_button.IconChar = FontAwesome.Sharp.IconChar.Plus
-        Me.save_button.IconColor = System.Drawing.Color.DarkSlateBlue
-        Me.save_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.save_button.IconSize = 25
-        Me.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_button.Location = New System.Drawing.Point(402, 192)
-        Me.save_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.save_button.Name = "save_button"
-        Me.save_button.Rotation = 0R
-        Me.save_button.Size = New System.Drawing.Size(145, 33)
-        Me.save_button.TabIndex = 16
-        Me.save_button.Text = "Create Account"
-        Me.save_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.save_button.UseVisualStyleBackColor = True
         '
         'IconPictureBox8
         '

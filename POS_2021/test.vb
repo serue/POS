@@ -8,7 +8,14 @@ Public Class test
     Private Sub test_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Admin.CheckState = status
         Timer1.Start()
-
+        Dim emptyTextBoxes =
+        From txt In Me.Controls.OfType(Of TextBox)()
+        Where txt.Text.Length = 0
+        Select txt.Name
+        If emptyTextBoxes.Any Then
+            MessageBox.Show(String.Format("Please fill following textboxes: {0}",
+                            String.Join(",", emptyTextBoxes)))
+        End If
     End Sub
     Private Sub save()
         connection = myPermissions.getConnection()
