@@ -22,8 +22,11 @@ Partial Class create_user_accounts
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.MaterialDivider1 = New MaterialSkin.Controls.MaterialDivider()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.show_pass = New MaterialSkin.Controls.MaterialCheckBox()
+        Me.cancel_button = New FontAwesome.Sharp.IconButton()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.employee_id = New MetroFramework.Controls.MetroTextBox()
         Me.IconPictureBox6 = New FontAwesome.Sharp.IconPictureBox()
@@ -40,11 +43,13 @@ Partial Class create_user_accounts
         Me.username = New MetroFramework.Controls.MetroTextBox()
         Me.IconPictureBox8 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox9 = New FontAwesome.Sharp.IconPictureBox()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.IconPictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MaterialDivider1
@@ -62,6 +67,8 @@ Partial Class create_user_accounts
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.show_pass)
+        Me.GroupBox1.Controls.Add(Me.cancel_button)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.employee_id)
         Me.GroupBox1.Controls.Add(Me.IconPictureBox6)
@@ -82,10 +89,45 @@ Partial Class create_user_accounts
         Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
         Me.GroupBox1.Location = New System.Drawing.Point(6, 7)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(580, 243)
+        Me.GroupBox1.Size = New System.Drawing.Size(580, 252)
         Me.GroupBox1.TabIndex = 20
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Create User Account"
+        '
+        'show_pass
+        '
+        Me.show_pass.AutoSize = True
+        Me.show_pass.Depth = 0
+        Me.show_pass.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.show_pass.Location = New System.Drawing.Point(153, 159)
+        Me.show_pass.Margin = New System.Windows.Forms.Padding(0)
+        Me.show_pass.MouseLocation = New System.Drawing.Point(-1, -1)
+        Me.show_pass.MouseState = MaterialSkin.MouseState.HOVER
+        Me.show_pass.Name = "show_pass"
+        Me.show_pass.Ripple = True
+        Me.show_pass.Size = New System.Drawing.Size(127, 30)
+        Me.show_pass.TabIndex = 5
+        Me.show_pass.Text = "Show password"
+        Me.show_pass.UseVisualStyleBackColor = True
+        '
+        'cancel_button
+        '
+        Me.cancel_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.cancel_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cancel_button.IconChar = FontAwesome.Sharp.IconChar.Xbox
+        Me.cancel_button.IconColor = System.Drawing.Color.DarkRed
+        Me.cancel_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.cancel_button.IconSize = 20
+        Me.cancel_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.cancel_button.Location = New System.Drawing.Point(222, 198)
+        Me.cancel_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.cancel_button.Name = "cancel_button"
+        Me.cancel_button.Rotation = 0R
+        Me.cancel_button.Size = New System.Drawing.Size(92, 33)
+        Me.cancel_button.TabIndex = 8
+        Me.cancel_button.Text = "Cancel"
+        Me.cancel_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.cancel_button.UseVisualStyleBackColor = True
         '
         'Label11
         '
@@ -126,7 +168,7 @@ Partial Class create_user_accounts
         Me.employee_id.SelectionStart = 0
         Me.employee_id.ShortcutsEnabled = True
         Me.employee_id.Size = New System.Drawing.Size(374, 26)
-        Me.employee_id.TabIndex = 26
+        Me.employee_id.TabIndex = 1
         Me.employee_id.UseSelectable = True
         Me.employee_id.WaterMark = "Enter your Employee ID"
         Me.employee_id.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -165,12 +207,12 @@ Partial Class create_user_accounts
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.clear_button.IconSize = 25
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(319, 192)
+        Me.clear_button.Location = New System.Drawing.Point(319, 198)
         Me.clear_button.Margin = New System.Windows.Forms.Padding(2)
         Me.clear_button.Name = "clear_button"
         Me.clear_button.Rotation = 0R
         Me.clear_button.Size = New System.Drawing.Size(79, 33)
-        Me.clear_button.TabIndex = 18
+        Me.clear_button.TabIndex = 7
         Me.clear_button.Text = "Clear"
         Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.clear_button.UseVisualStyleBackColor = True
@@ -205,7 +247,7 @@ Partial Class create_user_accounts
         Me.confirm_password.SelectionStart = 0
         Me.confirm_password.ShortcutsEnabled = True
         Me.confirm_password.Size = New System.Drawing.Size(374, 26)
-        Me.confirm_password.TabIndex = 23
+        Me.confirm_password.TabIndex = 4
         Me.confirm_password.UseSelectable = True
         Me.confirm_password.WaterMark = "Confirm your password"
         Me.confirm_password.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -235,12 +277,12 @@ Partial Class create_user_accounts
         Me.save_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.save_button.IconSize = 25
         Me.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_button.Location = New System.Drawing.Point(402, 192)
+        Me.save_button.Location = New System.Drawing.Point(402, 198)
         Me.save_button.Margin = New System.Windows.Forms.Padding(2)
         Me.save_button.Name = "save_button"
         Me.save_button.Rotation = 0R
         Me.save_button.Size = New System.Drawing.Size(145, 33)
-        Me.save_button.TabIndex = 16
+        Me.save_button.TabIndex = 6
         Me.save_button.Text = "Create Account"
         Me.save_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.save_button.UseVisualStyleBackColor = True
@@ -258,7 +300,7 @@ Partial Class create_user_accounts
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(169, 158)
+        Me.Label1.Location = New System.Drawing.Point(294, 163)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(167, 19)
@@ -271,7 +313,7 @@ Partial Class create_user_accounts
         Me.LinkLabel1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.LinkLabel1.Location = New System.Drawing.Point(340, 157)
+        Me.LinkLabel1.Location = New System.Drawing.Point(465, 162)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(76, 20)
@@ -319,7 +361,7 @@ Partial Class create_user_accounts
         Me.password.SelectionStart = 0
         Me.password.ShortcutsEnabled = True
         Me.password.Size = New System.Drawing.Size(374, 26)
-        Me.password.TabIndex = 13
+        Me.password.TabIndex = 3
         Me.password.UseSelectable = True
         Me.password.WaterMark = "Enter your password"
         Me.password.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -355,7 +397,7 @@ Partial Class create_user_accounts
         Me.username.SelectionStart = 0
         Me.username.ShortcutsEnabled = True
         Me.username.Size = New System.Drawing.Size(374, 26)
-        Me.username.TabIndex = 12
+        Me.username.TabIndex = 2
         Me.username.UseSelectable = True
         Me.username.WaterMark = "Enter your username"
         Me.username.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -391,11 +433,15 @@ Partial Class create_user_accounts
         Me.IconPictureBox9.TabIndex = 4
         Me.IconPictureBox9.TabStop = False
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'create_user_accounts
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(591, 252)
+        Me.ClientSize = New System.Drawing.Size(591, 261)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.MaterialDivider1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -409,6 +455,7 @@ Partial Class create_user_accounts
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -431,4 +478,7 @@ Partial Class create_user_accounts
     Friend WithEvents username As MetroFramework.Controls.MetroTextBox
     Friend WithEvents IconPictureBox8 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents IconPictureBox9 As FontAwesome.Sharp.IconPictureBox
+    Friend WithEvents show_pass As MaterialSkin.Controls.MaterialCheckBox
+    Friend WithEvents cancel_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

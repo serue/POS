@@ -31,6 +31,10 @@ Partial Class Permissions
         Me.profit_reports = New System.Windows.Forms.CheckBox()
         Me.stock_reports = New System.Windows.Forms.CheckBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.backup_database = New System.Windows.Forms.CheckBox()
+        Me.is_admin = New System.Windows.Forms.CheckBox()
+        Me.activate_user = New System.Windows.Forms.CheckBox()
+        Me.reset_passwords = New System.Windows.Forms.CheckBox()
         Me.register_users = New System.Windows.Forms.CheckBox()
         Me.manage_users = New System.Windows.Forms.CheckBox()
         Me.Give_permissions = New System.Windows.Forms.CheckBox()
@@ -38,27 +42,18 @@ Partial Class Permissions
         Me.edit_inventory = New System.Windows.Forms.CheckBox()
         Me.add_inventory = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.return_sales = New System.Windows.Forms.CheckBox()
         Me.view_sales = New System.Windows.Forms.CheckBox()
         Me.cancel_transactions = New System.Windows.Forms.CheckBox()
         Me.cashup_balances = New System.Windows.Forms.CheckBox()
         Me.transaction_log = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.employee_id = New MetroFramework.Controls.MetroComboBox()
+        Me.search_button = New MetroFramework.Controls.MetroButton()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtPhone = New System.Windows.Forms.TextBox()
-        Me.txtNationalID = New System.Windows.Forms.TextBox()
-        Me.txtAddress = New System.Windows.Forms.TextBox()
-        Me.CmbUsers = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.return_sales = New System.Windows.Forms.CheckBox()
-        Me.reset_passwords = New System.Windows.Forms.CheckBox()
-        Me.activate_user = New System.Windows.Forms.CheckBox()
-        Me.is_admin = New System.Windows.Forms.CheckBox()
-        Me.backup_database = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -79,7 +74,7 @@ Partial Class Permissions
         Me.Panel1.Controls.Add(Me.GroupBox4)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(965, 609)
         Me.Panel1.TabIndex = 0
@@ -93,7 +88,7 @@ Partial Class Permissions
         Me.Button2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Olive
         Me.Button2.Location = New System.Drawing.Point(672, 567)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(274, 35)
         Me.Button2.TabIndex = 14
@@ -109,7 +104,7 @@ Partial Class Permissions
         Me.Button1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.Olive
         Me.Button1.Location = New System.Drawing.Point(379, 567)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(289, 35)
         Me.Button1.TabIndex = 13
@@ -190,6 +185,46 @@ Partial Class Permissions
         Me.GroupBox3.TabIndex = 9
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "3. Administration Rights"
+        '
+        'backup_database
+        '
+        Me.backup_database.AutoSize = True
+        Me.backup_database.Location = New System.Drawing.Point(265, 49)
+        Me.backup_database.Name = "backup_database"
+        Me.backup_database.Size = New System.Drawing.Size(196, 21)
+        Me.backup_database.TabIndex = 9
+        Me.backup_database.Text = "Backup/Restore Database"
+        Me.backup_database.UseVisualStyleBackColor = True
+        '
+        'is_admin
+        '
+        Me.is_admin.AutoSize = True
+        Me.is_admin.Location = New System.Drawing.Point(265, 22)
+        Me.is_admin.Name = "is_admin"
+        Me.is_admin.Size = New System.Drawing.Size(81, 21)
+        Me.is_admin.TabIndex = 8
+        Me.is_admin.Text = "Is Admin"
+        Me.is_admin.UseVisualStyleBackColor = True
+        '
+        'activate_user
+        '
+        Me.activate_user.AutoSize = True
+        Me.activate_user.Location = New System.Drawing.Point(49, 139)
+        Me.activate_user.Name = "activate_user"
+        Me.activate_user.Size = New System.Drawing.Size(195, 21)
+        Me.activate_user.TabIndex = 7
+        Me.activate_user.Text = "Activate/Deactivate Users"
+        Me.activate_user.UseVisualStyleBackColor = True
+        '
+        'reset_passwords
+        '
+        Me.reset_passwords.AutoSize = True
+        Me.reset_passwords.Location = New System.Drawing.Point(49, 109)
+        Me.reset_passwords.Name = "reset_passwords"
+        Me.reset_passwords.Size = New System.Drawing.Size(160, 21)
+        Me.reset_passwords.TabIndex = 6
+        Me.reset_passwords.Text = "Reset User Passwords"
+        Me.reset_passwords.UseVisualStyleBackColor = True
         '
         'register_users
         '
@@ -272,6 +307,16 @@ Partial Class Permissions
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "1. Transactions Rights"
         '
+        'return_sales
+        '
+        Me.return_sales.AutoSize = True
+        Me.return_sales.Location = New System.Drawing.Point(57, 139)
+        Me.return_sales.Name = "return_sales"
+        Me.return_sales.Size = New System.Drawing.Size(98, 21)
+        Me.return_sales.TabIndex = 4
+        Me.return_sales.Text = "Return Sale"
+        Me.return_sales.UseVisualStyleBackColor = True
+        '
         'view_sales
         '
         Me.view_sales.AutoSize = True
@@ -317,7 +362,7 @@ Partial Class Permissions
         Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Panel2.BackColor = System.Drawing.Color.Bisque
         Me.Panel2.Location = New System.Drawing.Point(10, 162)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(937, 3)
         Me.Panel2.TabIndex = 8
@@ -325,166 +370,65 @@ Partial Class Permissions
         'GroupBox4
         '
         Me.GroupBox4.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.GroupBox4.Controls.Add(Me.employee_id)
+        Me.GroupBox4.Controls.Add(Me.search_button)
         Me.GroupBox4.Controls.Add(Me.txtUsername)
         Me.GroupBox4.Controls.Add(Me.Label7)
-        Me.GroupBox4.Controls.Add(Me.txtPhone)
-        Me.GroupBox4.Controls.Add(Me.txtNationalID)
-        Me.GroupBox4.Controls.Add(Me.txtAddress)
-        Me.GroupBox4.Controls.Add(Me.CmbUsers)
-        Me.GroupBox4.Controls.Add(Me.Label6)
-        Me.GroupBox4.Controls.Add(Me.Label5)
-        Me.GroupBox4.Controls.Add(Me.Label4)
         Me.GroupBox4.Controls.Add(Me.Label3)
         Me.GroupBox4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.ForeColor = System.Drawing.Color.Firebrick
-        Me.GroupBox4.Location = New System.Drawing.Point(10, 29)
+        Me.GroupBox4.Location = New System.Drawing.Point(10, 3)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(937, 130)
+        Me.GroupBox4.Size = New System.Drawing.Size(937, 156)
         Me.GroupBox4.TabIndex = 7
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "User Personal Details "
         '
+        'employee_id
+        '
+        Me.employee_id.FormattingEnabled = True
+        Me.employee_id.ItemHeight = 23
+        Me.employee_id.Location = New System.Drawing.Point(169, 19)
+        Me.employee_id.Name = "employee_id"
+        Me.employee_id.Size = New System.Drawing.Size(405, 29)
+        Me.employee_id.TabIndex = 14
+        Me.employee_id.UseSelectable = True
+        '
+        'search_button
+        '
+        Me.search_button.Location = New System.Drawing.Point(171, 107)
+        Me.search_button.Name = "search_button"
+        Me.search_button.Size = New System.Drawing.Size(105, 23)
+        Me.search_button.TabIndex = 13
+        Me.search_button.Text = "SEARCH USER"
+        Me.search_button.UseSelectable = True
+        '
         'txtUsername
         '
         Me.txtUsername.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsername.Location = New System.Drawing.Point(592, 24)
+        Me.txtUsername.Location = New System.Drawing.Point(169, 56)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(319, 27)
+        Me.txtUsername.ReadOnly = True
+        Me.txtUsername.Size = New System.Drawing.Size(405, 27)
         Me.txtUsername.TabIndex = 12
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(494, 28)
+        Me.Label7.Location = New System.Drawing.Point(39, 60)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(75, 17)
         Me.Label7.TabIndex = 11
         Me.Label7.Text = "Username:"
-        '
-        'txtPhone
-        '
-        Me.txtPhone.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPhone.Location = New System.Drawing.Point(592, 59)
-        Me.txtPhone.Name = "txtPhone"
-        Me.txtPhone.ReadOnly = True
-        Me.txtPhone.Size = New System.Drawing.Size(320, 27)
-        Me.txtPhone.TabIndex = 8
-        '
-        'txtNationalID
-        '
-        Me.txtNationalID.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNationalID.Location = New System.Drawing.Point(128, 98)
-        Me.txtNationalID.Name = "txtNationalID"
-        Me.txtNationalID.ReadOnly = True
-        Me.txtNationalID.Size = New System.Drawing.Size(337, 27)
-        Me.txtNationalID.TabIndex = 7
-        '
-        'txtAddress
-        '
-        Me.txtAddress.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAddress.Location = New System.Drawing.Point(128, 55)
-        Me.txtAddress.Multiline = True
-        Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.ReadOnly = True
-        Me.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtAddress.Size = New System.Drawing.Size(337, 35)
-        Me.txtAddress.TabIndex = 6
-        '
-        'CmbUsers
-        '
-        Me.CmbUsers.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbUsers.FormattingEnabled = True
-        Me.CmbUsers.Location = New System.Drawing.Point(128, 23)
-        Me.CmbUsers.MaxDropDownItems = 100
-        Me.CmbUsers.Name = "CmbUsers"
-        Me.CmbUsers.Size = New System.Drawing.Size(337, 27)
-        Me.CmbUsers.TabIndex = 5
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(494, 63)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(57, 17)
-        Me.Label6.TabIndex = 4
-        Me.Label6.Text = "Phone :"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(20, 99)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(85, 17)
-        Me.Label5.TabIndex = 3
-        Me.Label5.Text = "National ID:"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(37, 57)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 17)
-        Me.Label4.TabIndex = 2
-        Me.Label4.Text = "Address :"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(29, 26)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 17)
+        Me.Label3.Size = New System.Drawing.Size(134, 17)
         Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Select User:"
-        '
-        'return_sales
-        '
-        Me.return_sales.AutoSize = True
-        Me.return_sales.Location = New System.Drawing.Point(57, 139)
-        Me.return_sales.Name = "return_sales"
-        Me.return_sales.Size = New System.Drawing.Size(98, 21)
-        Me.return_sales.TabIndex = 4
-        Me.return_sales.Text = "Return Sale"
-        Me.return_sales.UseVisualStyleBackColor = True
-        '
-        'reset_passwords
-        '
-        Me.reset_passwords.AutoSize = True
-        Me.reset_passwords.Location = New System.Drawing.Point(49, 109)
-        Me.reset_passwords.Name = "reset_passwords"
-        Me.reset_passwords.Size = New System.Drawing.Size(160, 21)
-        Me.reset_passwords.TabIndex = 6
-        Me.reset_passwords.Text = "Reset User Passwords"
-        Me.reset_passwords.UseVisualStyleBackColor = True
-        '
-        'activate_user
-        '
-        Me.activate_user.AutoSize = True
-        Me.activate_user.Location = New System.Drawing.Point(49, 139)
-        Me.activate_user.Name = "activate_user"
-        Me.activate_user.Size = New System.Drawing.Size(195, 21)
-        Me.activate_user.TabIndex = 7
-        Me.activate_user.Text = "Activate/Deactivate Users"
-        Me.activate_user.UseVisualStyleBackColor = True
-        '
-        'is_admin
-        '
-        Me.is_admin.AutoSize = True
-        Me.is_admin.Location = New System.Drawing.Point(265, 22)
-        Me.is_admin.Name = "is_admin"
-        Me.is_admin.Size = New System.Drawing.Size(81, 21)
-        Me.is_admin.TabIndex = 8
-        Me.is_admin.Text = "Is Admin"
-        Me.is_admin.UseVisualStyleBackColor = True
-        '
-        'backup_database
-        '
-        Me.backup_database.AutoSize = True
-        Me.backup_database.Location = New System.Drawing.Point(265, 49)
-        Me.backup_database.Name = "backup_database"
-        Me.backup_database.Size = New System.Drawing.Size(196, 21)
-        Me.backup_database.TabIndex = 9
-        Me.backup_database.Text = "Backup/Restore Database"
-        Me.backup_database.UseVisualStyleBackColor = True
+        Me.Label3.Text = "Select Employee ID:"
         '
         'Permissions
         '
@@ -492,7 +436,7 @@ Partial Class Permissions
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(965, 609)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Permissions"
         Me.Text = "Permissions"
         Me.Panel1.ResumeLayout(False)
@@ -515,13 +459,6 @@ Partial Class Permissions
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents txtPhone As TextBox
-    Friend WithEvents txtNationalID As TextBox
-    Friend WithEvents txtAddress As TextBox
-    Friend WithEvents CmbUsers As ComboBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
@@ -547,4 +484,6 @@ Partial Class Permissions
     Friend WithEvents return_sales As CheckBox
     Friend WithEvents backup_database As CheckBox
     Friend WithEvents is_admin As CheckBox
+    Friend WithEvents employee_id As MetroFramework.Controls.MetroComboBox
+    Friend WithEvents search_button As MetroFramework.Controls.MetroButton
 End Class

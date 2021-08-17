@@ -22,44 +22,40 @@ Partial Class update_user_accounts
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.MetroTextBox1 = New MetroFramework.Controls.MetroTextBox()
-        Me.IconPictureBox2 = New FontAwesome.Sharp.IconPictureBox()
+        Me.cancel_button = New FontAwesome.Sharp.IconButton()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.clear_button = New FontAwesome.Sharp.IconButton()
         Me.confirm_password = New MetroFramework.Controls.MetroTextBox()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.save_button = New FontAwesome.Sharp.IconButton()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.password = New MetroFramework.Controls.MetroTextBox()
         Me.username = New MetroFramework.Controls.MetroTextBox()
         Me.IconPictureBox8 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox9 = New FontAwesome.Sharp.IconPictureBox()
         Me.MaterialDivider1 = New MaterialSkin.Controls.MaterialDivider()
+        Me.show_pass = New MaterialSkin.Controls.MaterialCheckBox()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox1.SuspendLayout()
-        CType(Me.IconPictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IconPictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.MetroTextBox1)
-        Me.GroupBox1.Controls.Add(Me.IconPictureBox2)
+        Me.GroupBox1.Controls.Add(Me.show_pass)
+        Me.GroupBox1.Controls.Add(Me.cancel_button)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.clear_button)
         Me.GroupBox1.Controls.Add(Me.confirm_password)
         Me.GroupBox1.Controls.Add(Me.IconPictureBox1)
         Me.GroupBox1.Controls.Add(Me.save_button)
         Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.LinkLabel1)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.password)
         Me.GroupBox1.Controls.Add(Me.username)
@@ -69,75 +65,34 @@ Partial Class update_user_accounts
         Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
         Me.GroupBox1.Location = New System.Drawing.Point(5, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(575, 256)
+        Me.GroupBox1.Size = New System.Drawing.Size(575, 201)
         Me.GroupBox1.TabIndex = 21
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Update User Account"
         '
-        'Label2
+        'cancel_button
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(25, 61)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(126, 17)
-        Me.Label2.TabIndex = 30
-        Me.Label2.Text = "Enter Old Password:"
-        '
-        'MetroTextBox1
-        '
-        '
-        '
-        '
-        Me.MetroTextBox1.CustomButton.Image = Nothing
-        Me.MetroTextBox1.CustomButton.Location = New System.Drawing.Point(350, 2)
-        Me.MetroTextBox1.CustomButton.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTextBox1.CustomButton.Name = ""
-        Me.MetroTextBox1.CustomButton.Size = New System.Drawing.Size(21, 21)
-        Me.MetroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
-        Me.MetroTextBox1.CustomButton.TabIndex = 1
-        Me.MetroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
-        Me.MetroTextBox1.CustomButton.UseSelectable = True
-        Me.MetroTextBox1.CustomButton.Visible = False
-        Me.MetroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Medium
-        Me.MetroTextBox1.Lines = New String(-1) {}
-        Me.MetroTextBox1.Location = New System.Drawing.Point(182, 55)
-        Me.MetroTextBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTextBox1.MaxLength = 32767
-        Me.MetroTextBox1.Multiline = True
-        Me.MetroTextBox1.Name = "MetroTextBox1"
-        Me.MetroTextBox1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.MetroTextBox1.PromptText = "Enter your old password"
-        Me.MetroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None
-        Me.MetroTextBox1.SelectedText = ""
-        Me.MetroTextBox1.SelectionLength = 0
-        Me.MetroTextBox1.SelectionStart = 0
-        Me.MetroTextBox1.ShortcutsEnabled = True
-        Me.MetroTextBox1.Size = New System.Drawing.Size(374, 26)
-        Me.MetroTextBox1.TabIndex = 29
-        Me.MetroTextBox1.UseSelectable = True
-        Me.MetroTextBox1.WaterMark = "Enter your old password"
-        Me.MetroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.MetroTextBox1.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
-        '
-        'IconPictureBox2
-        '
-        Me.IconPictureBox2.BackColor = System.Drawing.SystemColors.Control
-        Me.IconPictureBox2.ForeColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Key
-        Me.IconPictureBox2.IconColor = System.Drawing.Color.Indigo
-        Me.IconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconPictureBox2.IconSize = 24
-        Me.IconPictureBox2.Location = New System.Drawing.Point(154, 56)
-        Me.IconPictureBox2.Margin = New System.Windows.Forms.Padding(2)
-        Me.IconPictureBox2.Name = "IconPictureBox2"
-        Me.IconPictureBox2.Size = New System.Drawing.Size(24, 26)
-        Me.IconPictureBox2.TabIndex = 28
-        Me.IconPictureBox2.TabStop = False
+        Me.cancel_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.cancel_button.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cancel_button.IconChar = FontAwesome.Sharp.IconChar.Xbox
+        Me.cancel_button.IconColor = System.Drawing.Color.DarkRed
+        Me.cancel_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.cancel_button.IconSize = 20
+        Me.cancel_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.cancel_button.Location = New System.Drawing.Point(223, 157)
+        Me.cancel_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.cancel_button.Name = "cancel_button"
+        Me.cancel_button.Rotation = 0R
+        Me.cancel_button.Size = New System.Drawing.Size(92, 33)
+        Me.cancel_button.TabIndex = 6
+        Me.cancel_button.Text = "Cancel"
+        Me.cancel_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.cancel_button.UseVisualStyleBackColor = True
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(6, 121)
+        Me.Label10.Location = New System.Drawing.Point(6, 91)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(147, 17)
         Me.Label10.TabIndex = 24
@@ -150,14 +105,14 @@ Partial Class update_user_accounts
         Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
         Me.clear_button.IconColor = System.Drawing.Color.DarkRed
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.clear_button.IconSize = 25
+        Me.clear_button.IconSize = 20
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(319, 182)
+        Me.clear_button.Location = New System.Drawing.Point(319, 157)
         Me.clear_button.Margin = New System.Windows.Forms.Padding(2)
         Me.clear_button.Name = "clear_button"
         Me.clear_button.Rotation = 0R
         Me.clear_button.Size = New System.Drawing.Size(79, 33)
-        Me.clear_button.TabIndex = 18
+        Me.clear_button.TabIndex = 5
         Me.clear_button.Text = "Clear"
         Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.clear_button.UseVisualStyleBackColor = True
@@ -179,7 +134,7 @@ Partial Class update_user_accounts
         Me.confirm_password.CustomButton.Visible = False
         Me.confirm_password.FontSize = MetroFramework.MetroTextBoxSize.Medium
         Me.confirm_password.Lines = New String(-1) {}
-        Me.confirm_password.Location = New System.Drawing.Point(184, 115)
+        Me.confirm_password.Location = New System.Drawing.Point(184, 85)
         Me.confirm_password.Margin = New System.Windows.Forms.Padding(2)
         Me.confirm_password.MaxLength = 32767
         Me.confirm_password.Multiline = True
@@ -192,7 +147,7 @@ Partial Class update_user_accounts
         Me.confirm_password.SelectionStart = 0
         Me.confirm_password.ShortcutsEnabled = True
         Me.confirm_password.Size = New System.Drawing.Size(374, 26)
-        Me.confirm_password.TabIndex = 23
+        Me.confirm_password.TabIndex = 3
         Me.confirm_password.UseSelectable = True
         Me.confirm_password.WaterMark = "Confirm your new password"
         Me.confirm_password.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -206,7 +161,7 @@ Partial Class update_user_accounts
         Me.IconPictureBox1.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.IconPictureBox1.IconSize = 24
-        Me.IconPictureBox1.Location = New System.Drawing.Point(156, 116)
+        Me.IconPictureBox1.Location = New System.Drawing.Point(156, 86)
         Me.IconPictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.IconPictureBox1.Name = "IconPictureBox1"
         Me.IconPictureBox1.Size = New System.Drawing.Size(24, 26)
@@ -222,12 +177,12 @@ Partial Class update_user_accounts
         Me.save_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.save_button.IconSize = 25
         Me.save_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_button.Location = New System.Drawing.Point(402, 182)
+        Me.save_button.Location = New System.Drawing.Point(402, 157)
         Me.save_button.Margin = New System.Windows.Forms.Padding(2)
         Me.save_button.Name = "save_button"
         Me.save_button.Rotation = 0R
         Me.save_button.Size = New System.Drawing.Size(145, 33)
-        Me.save_button.TabIndex = 16
+        Me.save_button.TabIndex = 4
         Me.save_button.Text = "Update Account"
         Me.save_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.save_button.UseVisualStyleBackColor = True
@@ -235,37 +190,11 @@ Partial Class update_user_accounts
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(21, 91)
+        Me.Label9.Location = New System.Drawing.Point(21, 61)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(131, 17)
         Me.Label9.TabIndex = 21
         Me.Label9.Text = "Enter New Password:"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(180, 151)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(134, 19)
-        Me.Label1.TabIndex = 13
-        Me.Label1.Text = "No longer intrested?"
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Font = New System.Drawing.Font("Segoe UI Symbol", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
-        Me.LinkLabel1.LinkColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.LinkLabel1.Location = New System.Drawing.Point(351, 150)
-        Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(76, 20)
-        Me.LinkLabel1.TabIndex = 12
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "login here"
-        Me.LinkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         '
         'Label8
         '
@@ -293,7 +222,7 @@ Partial Class update_user_accounts
         Me.password.CustomButton.Visible = False
         Me.password.FontSize = MetroFramework.MetroTextBoxSize.Medium
         Me.password.Lines = New String(-1) {}
-        Me.password.Location = New System.Drawing.Point(183, 85)
+        Me.password.Location = New System.Drawing.Point(183, 55)
         Me.password.Margin = New System.Windows.Forms.Padding(2)
         Me.password.MaxLength = 32767
         Me.password.Multiline = True
@@ -306,7 +235,7 @@ Partial Class update_user_accounts
         Me.password.SelectionStart = 0
         Me.password.ShortcutsEnabled = True
         Me.password.Size = New System.Drawing.Size(374, 26)
-        Me.password.TabIndex = 13
+        Me.password.TabIndex = 2
         Me.password.UseSelectable = True
         Me.password.WaterMark = "Enter your new password"
         Me.password.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -342,7 +271,7 @@ Partial Class update_user_accounts
         Me.username.SelectionStart = 0
         Me.username.ShortcutsEnabled = True
         Me.username.Size = New System.Drawing.Size(374, 26)
-        Me.username.TabIndex = 12
+        Me.username.TabIndex = 0
         Me.username.UseSelectable = True
         Me.username.WaterMark = "Enter your username"
         Me.username.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -371,7 +300,7 @@ Partial Class update_user_accounts
         Me.IconPictureBox9.IconColor = System.Drawing.Color.Indigo
         Me.IconPictureBox9.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.IconPictureBox9.IconSize = 24
-        Me.IconPictureBox9.Location = New System.Drawing.Point(155, 86)
+        Me.IconPictureBox9.Location = New System.Drawing.Point(155, 56)
         Me.IconPictureBox9.Margin = New System.Windows.Forms.Padding(2)
         Me.IconPictureBox9.Name = "IconPictureBox9"
         Me.IconPictureBox9.Size = New System.Drawing.Size(24, 26)
@@ -391,11 +320,31 @@ Partial Class update_user_accounts
         Me.MaterialDivider1.TabIndex = 22
         Me.MaterialDivider1.Text = "MaterialDivider1"
         '
+        'show_pass
+        '
+        Me.show_pass.AutoSize = True
+        Me.show_pass.Depth = 0
+        Me.show_pass.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.show_pass.Location = New System.Drawing.Point(213, 121)
+        Me.show_pass.Margin = New System.Windows.Forms.Padding(0)
+        Me.show_pass.MouseLocation = New System.Drawing.Point(-1, -1)
+        Me.show_pass.MouseState = MaterialSkin.MouseState.HOVER
+        Me.show_pass.Name = "show_pass"
+        Me.show_pass.Ripple = True
+        Me.show_pass.Size = New System.Drawing.Size(127, 30)
+        Me.show_pass.TabIndex = 9
+        Me.show_pass.Text = "Show password"
+        Me.show_pass.UseVisualStyleBackColor = True
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'update_user_accounts
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(587, 264)
+        Me.ClientSize = New System.Drawing.Size(587, 219)
         Me.Controls.Add(Me.MaterialDivider1)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -405,30 +354,28 @@ Partial Class update_user_accounts
         Me.Text = "Update your user Account"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.IconPictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IconPictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents MetroTextBox1 As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents IconPictureBox2 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents Label10 As Label
     Friend WithEvents clear_button As FontAwesome.Sharp.IconButton
     Friend WithEvents confirm_password As MetroFramework.Controls.MetroTextBox
     Friend WithEvents IconPictureBox1 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents save_button As FontAwesome.Sharp.IconButton
     Friend WithEvents Label9 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents Label8 As Label
     Friend WithEvents password As MetroFramework.Controls.MetroTextBox
     Friend WithEvents username As MetroFramework.Controls.MetroTextBox
     Friend WithEvents IconPictureBox8 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents IconPictureBox9 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents MaterialDivider1 As MaterialSkin.Controls.MaterialDivider
+    Friend WithEvents cancel_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents show_pass As MaterialSkin.Controls.MaterialCheckBox
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

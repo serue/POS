@@ -87,34 +87,26 @@ Public Class ConnectionAndPermissions
     Public Function getConnection() As SqlConnection
         Return con
     End Function
-    Public Sub savePermissions(ByVal user As String, ByVal permission As String, ByVal status As Integer, ByVal conString As SqlConnection, trans As SqlTransaction)
-        Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,PERMISSION,STATUS) values(@user,@permission,@status)", conString)
-
+    Public Sub savePermissions(user As String, employee As String, permission As String, status As Integer, conString As SqlConnection, trans As SqlTransaction)
+        Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,EMP_ID,PERMISSION,STATUS) values(@user,@EMP_ID,@permission,@status)", conString)
             With Command.Parameters
-
                 .Add("@user", SqlDbType.VarChar).Value = user
+                .Add("@EMP_ID", SqlDbType.VarChar).Value = employee
                 .Add("@permission", SqlDbType.VarChar).Value = permission
                 .Add("@status", SqlDbType.VarChar).Value = status
-
-
             End With
-
             Command.ExecuteNonQuery()
         End Using
     End Sub
 
-    Public Sub updatePermissions(ByVal user As String, ByVal permission As String, ByVal status As Integer, ByVal conString As SqlConnection, trans As SqlTransaction)
-        Using Command As New SqlCommand("UPDATE USER_PERMISSIONS SET STATUS=@status where PERMISSION=@permission AND USERNAME=@user ", conString)
-
+    Public Sub updatePermissions(user As String, employee As String, permission As String, status As Integer, conString As SqlConnection, trans As SqlTransaction)
+        Using Command As New SqlCommand("UPDATE USER_PERMISSIONS SET STATUS=@status where PERMISSION=@permission AND USERNAME=@user AND EMP_ID=@EMP_ID", conString)
             With Command.Parameters
-
                 .Add("@user", SqlDbType.VarChar).Value = user
+                .Add("@EMP_ID", SqlDbType.VarChar).Value = employee
                 .Add("@permission", SqlDbType.VarChar).Value = permission
                 .Add("@status", SqlDbType.Int).Value = status
-
-
             End With
-
             Command.ExecuteNonQuery()
         End Using
     End Sub
