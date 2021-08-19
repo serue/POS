@@ -228,4 +228,14 @@ Public Class inventory_list
             MessageBox.Show(ex.Message, "Error while retrieving data for Inventory", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub quantity_box_KeyPress(sender As Object, e As KeyPressEventArgs) Handles quantity_box.KeyPress
+        Try
+            If ((Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 Then
+                MessageBox.Show("Only numbers are allowed", "Numbers only")
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

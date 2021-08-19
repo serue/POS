@@ -50,26 +50,48 @@ Public Class ConnectionAndPermissions
                 adapter.Fill(table)
 
                 If table.Rows.Count > 0 Then
-                    Using cmd As New SqlCommand("SELECT * FROM COMPANY", conn)
-                        Dim COMPANYTABLE As New DataTable
-                        Dim ADAPTER1 As New SqlDataAdapter(cmd)
-                        ADAPTER1.Fill(COMPANYTABLE)
-                        If COMPANYTABLE.Rows.Count > 0 Then
-                            Full_name = table(0)(0)
-                            sales_form.ActiveUser = Full_name
-                            sales_form.ActiveUsername = username
-                            sales_form.Show()
-                            sign_in.Close()
+                    Using CM As New SqlCommand("SELECT * FROM ACCOUNTS WHERE STATUS='1'", connection)
+                        Dim reader As SqlDataReader = CM.ExecuteReader
+                        If reader.HasRows Then
+                            Using permissionsCommand As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSSION='is_admin' AND STATUS='1'", connection)
+                                With permissionsCommand.Parameters
+                                    .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                End With
+                                Dim permissionReader As SqlDataReader = permissionsCommand.ExecuteReader()
+                                If permissionReader.HasRows Then
+                                    Using cmd As New SqlCommand("SELECT * FROM COMPANY", conn)
+                                        Dim COMPANYTABLE As New DataTable
+                                        Dim ADAPTER1 As New SqlDataAdapter(cmd)
+                                        ADAPTER1.Fill(COMPANYTABLE)
+                                        If COMPANYTABLE.Rows.Count > 0 Then
+                                            Full_name = table(0)(0)
+                                            sales_form.ActiveUser = Full_name
+                                            sales_form.ActiveUsername = username
+                                            sales_form.Show()
+                                            sign_in.Close()
+                                        Else
+                                            MessageBox.Show("Some critical settings has not been done, user is taken to set it up now", "Setting Pop up", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                                            Full_name = table(0)(0)
+                                            company.ActiveUser = Full_name
+                                            company.ActiveUsername = username
+                                            company.Show()
+                                            sign_in.Close()
+                                        End If
+                                    End Using
+                                Else
+                                    Full_name = table(0)(0)
+                                    sales_form.ActiveUser = Full_name
+                                    sales_form.ActiveUsername = username
+                                    sales_form.Show()
+                                    sign_in.Close()
+                                End If
+                            End Using
+
                         Else
-                            MessageBox.Show("Some critical settings has not been done, user is taken to set it up now", "Setting Pop up", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            Full_name = table(0)(0)
-                            company.ActiveUser = Full_name
-                            company.ActiveUsername = username
-                            company.Show()
-                            sign_in.Close()
+                            MessageBox.Show("Your account has been deactivated, Please see your supervisor to activate it", "Account was deactivated", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         End If
                     End Using
-
                 Else
                     MessageBox.Show("login failed, wrong username or password", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If

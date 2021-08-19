@@ -24,6 +24,7 @@ Partial Class update_user_accounts
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.show_pass = New MaterialSkin.Controls.MaterialCheckBox()
         Me.cancel_button = New FontAwesome.Sharp.IconButton()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.clear_button = New FontAwesome.Sharp.IconButton()
@@ -37,7 +38,6 @@ Partial Class update_user_accounts
         Me.IconPictureBox8 = New FontAwesome.Sharp.IconPictureBox()
         Me.IconPictureBox9 = New FontAwesome.Sharp.IconPictureBox()
         Me.MaterialDivider1 = New MaterialSkin.Controls.MaterialDivider()
-        Me.show_pass = New MaterialSkin.Controls.MaterialCheckBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,6 +69,22 @@ Partial Class update_user_accounts
         Me.GroupBox1.TabIndex = 21
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Update User Account"
+        '
+        'show_pass
+        '
+        Me.show_pass.AutoSize = True
+        Me.show_pass.Depth = 0
+        Me.show_pass.Font = New System.Drawing.Font("Roboto", 10.0!)
+        Me.show_pass.Location = New System.Drawing.Point(213, 121)
+        Me.show_pass.Margin = New System.Windows.Forms.Padding(0)
+        Me.show_pass.MouseLocation = New System.Drawing.Point(-1, -1)
+        Me.show_pass.MouseState = MaterialSkin.MouseState.HOVER
+        Me.show_pass.Name = "show_pass"
+        Me.show_pass.Ripple = True
+        Me.show_pass.Size = New System.Drawing.Size(127, 30)
+        Me.show_pass.TabIndex = 9
+        Me.show_pass.Text = "Show password"
+        Me.show_pass.UseVisualStyleBackColor = True
         '
         'cancel_button
         '
@@ -319,22 +335,6 @@ Partial Class update_user_accounts
         Me.MaterialDivider1.Size = New System.Drawing.Size(587, 2)
         Me.MaterialDivider1.TabIndex = 22
         Me.MaterialDivider1.Text = "MaterialDivider1"
-        '
-        'show_pass
-        '
-        Me.show_pass.AutoSize = True
-        Me.show_pass.Depth = 0
-        Me.show_pass.Font = New System.Drawing.Font("Roboto", 10.0!)
-        Me.show_pass.Location = New System.Drawing.Point(213, 121)
-        Me.show_pass.Margin = New System.Windows.Forms.Padding(0)
-        Me.show_pass.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.show_pass.MouseState = MaterialSkin.MouseState.HOVER
-        Me.show_pass.Name = "show_pass"
-        Me.show_pass.Ripple = True
-        Me.show_pass.Size = New System.Drawing.Size(127, 30)
-        Me.show_pass.TabIndex = 9
-        Me.show_pass.Text = "Show password"
-        Me.show_pass.UseVisualStyleBackColor = True
         '
         'ErrorProvider1
         '

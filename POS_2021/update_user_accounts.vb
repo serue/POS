@@ -117,4 +117,13 @@ Public Class update_user_accounts
         End If
 
     End Sub
+
+    Private Sub password_Leave(sender As Object, e As EventArgs) Handles username.Leave, password.Leave, confirm_password.Leave
+        Dim t As MetroTextBox = sender
+        If t.Text = "" Then
+            ErrorProvider1.SetError(t, "value cannot be empty")
+        Else
+            ErrorProvider1.SetError(t, "")
+        End If
+    End Sub
 End Class

@@ -53,14 +53,12 @@ Partial Class menu_form
         Me.active_user = New System.Windows.Forms.Label()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.users_panel = New System.Windows.Forms.Panel()
-        Me.change_password_button = New FontAwesome.Sharp.IconButton()
-        Me.updateUser_button = New FontAwesome.Sharp.IconButton()
-        Me.registerUser_button = New FontAwesome.Sharp.IconButton()
+        Me.change_password = New FontAwesome.Sharp.IconButton()
+        Me.update_users = New FontAwesome.Sharp.IconButton()
+        Me.register_users = New FontAwesome.Sharp.IconButton()
         Me.IconButton4 = New FontAwesome.Sharp.IconButton()
         Me.inventoy_panel = New System.Windows.Forms.Panel()
-        Me.update_price_button = New FontAwesome.Sharp.IconButton()
         Me.stock_valuation = New FontAwesome.Sharp.IconButton()
-        Me.update_inventory_button = New FontAwesome.Sharp.IconButton()
         Me.add_inventory = New FontAwesome.Sharp.IconButton()
         Me.Inventory_menu = New FontAwesome.Sharp.IconButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -76,22 +74,22 @@ Partial Class menu_form
         Me.Category_button = New FontAwesome.Sharp.IconButton()
         Me.database_panel = New System.Windows.Forms.Panel()
         Me.restore_button = New FontAwesome.Sharp.IconButton()
-        Me.Backup_button = New FontAwesome.Sharp.IconButton()
+        Me.backup_database = New FontAwesome.Sharp.IconButton()
         Me.database_button = New FontAwesome.Sharp.IconButton()
         Me.Panel12 = New System.Windows.Forms.Panel()
-        Me.btnPermissions = New FontAwesome.Sharp.IconButton()
+        Me.give_permissions = New FontAwesome.Sharp.IconButton()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.settings_button = New FontAwesome.Sharp.IconButton()
+        Me.edit_settings = New FontAwesome.Sharp.IconButton()
         Me.logout_button = New FontAwesome.Sharp.IconButton()
         Me.reports_panel = New System.Windows.Forms.Panel()
-        Me.stock_reports_button = New FontAwesome.Sharp.IconButton()
-        Me.scheduled_report_button = New FontAwesome.Sharp.IconButton()
-        Me.DayEnd_reports_button = New FontAwesome.Sharp.IconButton()
+        Me.stock_reports = New FontAwesome.Sharp.IconButton()
+        Me.scheduled_reports = New FontAwesome.Sharp.IconButton()
+        Me.profit_reports = New FontAwesome.Sharp.IconButton()
         Me.reports_menu = New FontAwesome.Sharp.IconButton()
         Me.sales_panel = New System.Windows.Forms.Panel()
-        Me.IconButton1 = New FontAwesome.Sharp.IconButton()
-        Me.IconButton2 = New FontAwesome.Sharp.IconButton()
-        Me.returns_button = New FontAwesome.Sharp.IconButton()
+        Me.cashup_balances = New FontAwesome.Sharp.IconButton()
+        Me.transaction_logs = New FontAwesome.Sharp.IconButton()
+        Me.return_sales = New FontAwesome.Sharp.IconButton()
         Me.dayEnd_sales = New FontAwesome.Sharp.IconButton()
         Me.sales_menu = New FontAwesome.Sharp.IconButton()
         Me.Home_panel = New System.Windows.Forms.Panel()
@@ -437,12 +435,12 @@ Partial Class menu_form
         'users_panel
         '
         Me.users_panel.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.users_panel.Controls.Add(Me.change_password_button)
-        Me.users_panel.Controls.Add(Me.updateUser_button)
-        Me.users_panel.Controls.Add(Me.registerUser_button)
+        Me.users_panel.Controls.Add(Me.change_password)
+        Me.users_panel.Controls.Add(Me.update_users)
+        Me.users_panel.Controls.Add(Me.register_users)
         Me.users_panel.Controls.Add(Me.IconButton4)
         Me.users_panel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.users_panel.Location = New System.Drawing.Point(0, 314)
+        Me.users_panel.Location = New System.Drawing.Point(0, 183)
         Me.users_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.users_panel.MaximumSize = New System.Drawing.Size(197, 142)
         Me.users_panel.MinimumSize = New System.Drawing.Size(197, 45)
@@ -450,83 +448,83 @@ Partial Class menu_form
         Me.users_panel.Size = New System.Drawing.Size(197, 45)
         Me.users_panel.TabIndex = 5
         '
-        'change_password_button
+        'change_password
         '
-        Me.change_password_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.change_password_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.change_password_button.FlatAppearance.BorderSize = 0
-        Me.change_password_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.change_password_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.change_password_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.change_password_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.change_password_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.change_password_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.change_password_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.change_password_button.IconSize = 30
-        Me.change_password_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.change_password_button.Location = New System.Drawing.Point(0, 109)
-        Me.change_password_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.change_password_button.Name = "change_password_button"
-        Me.change_password_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.change_password_button.Rotation = 0R
-        Me.change_password_button.Size = New System.Drawing.Size(197, 32)
-        Me.change_password_button.TabIndex = 3
-        Me.change_password_button.Text = "Change Password"
-        Me.change_password_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.change_password_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.change_password_button.UseVisualStyleBackColor = False
+        Me.change_password.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.change_password.Dock = System.Windows.Forms.DockStyle.Top
+        Me.change_password.FlatAppearance.BorderSize = 0
+        Me.change_password.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.change_password.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.change_password.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.change_password.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.change_password.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.change_password.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.change_password.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.change_password.IconSize = 30
+        Me.change_password.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.change_password.Location = New System.Drawing.Point(0, 109)
+        Me.change_password.Margin = New System.Windows.Forms.Padding(2)
+        Me.change_password.Name = "change_password"
+        Me.change_password.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.change_password.Rotation = 0R
+        Me.change_password.Size = New System.Drawing.Size(197, 32)
+        Me.change_password.TabIndex = 3
+        Me.change_password.Text = "Change Password"
+        Me.change_password.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.change_password.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.change_password.UseVisualStyleBackColor = False
         '
-        'updateUser_button
+        'update_users
         '
-        Me.updateUser_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.updateUser_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.updateUser_button.FlatAppearance.BorderSize = 0
-        Me.updateUser_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.updateUser_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.updateUser_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.updateUser_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.updateUser_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.updateUser_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.updateUser_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.updateUser_button.IconSize = 30
-        Me.updateUser_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.updateUser_button.Location = New System.Drawing.Point(0, 77)
-        Me.updateUser_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.updateUser_button.Name = "updateUser_button"
-        Me.updateUser_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.updateUser_button.Rotation = 0R
-        Me.updateUser_button.Size = New System.Drawing.Size(197, 32)
-        Me.updateUser_button.TabIndex = 2
-        Me.updateUser_button.Text = "Update users"
-        Me.updateUser_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.updateUser_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.updateUser_button.UseVisualStyleBackColor = False
+        Me.update_users.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.update_users.Dock = System.Windows.Forms.DockStyle.Top
+        Me.update_users.FlatAppearance.BorderSize = 0
+        Me.update_users.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.update_users.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.update_users.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.update_users.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.update_users.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.update_users.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.update_users.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.update_users.IconSize = 30
+        Me.update_users.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.update_users.Location = New System.Drawing.Point(0, 77)
+        Me.update_users.Margin = New System.Windows.Forms.Padding(2)
+        Me.update_users.Name = "update_users"
+        Me.update_users.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.update_users.Rotation = 0R
+        Me.update_users.Size = New System.Drawing.Size(197, 32)
+        Me.update_users.TabIndex = 2
+        Me.update_users.Text = "Update users"
+        Me.update_users.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.update_users.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.update_users.UseVisualStyleBackColor = False
         '
-        'registerUser_button
+        'register_users
         '
-        Me.registerUser_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.registerUser_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.registerUser_button.FlatAppearance.BorderSize = 0
-        Me.registerUser_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.registerUser_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.registerUser_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.registerUser_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.registerUser_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.registerUser_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.registerUser_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.registerUser_button.IconSize = 30
-        Me.registerUser_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.registerUser_button.Location = New System.Drawing.Point(0, 45)
-        Me.registerUser_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.registerUser_button.Name = "registerUser_button"
-        Me.registerUser_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.registerUser_button.Rotation = 0R
-        Me.registerUser_button.Size = New System.Drawing.Size(197, 32)
-        Me.registerUser_button.TabIndex = 1
-        Me.registerUser_button.Text = "Register New user"
-        Me.registerUser_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.registerUser_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.registerUser_button.UseVisualStyleBackColor = False
+        Me.register_users.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.register_users.Dock = System.Windows.Forms.DockStyle.Top
+        Me.register_users.FlatAppearance.BorderSize = 0
+        Me.register_users.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.register_users.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.register_users.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.register_users.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.register_users.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.register_users.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.register_users.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.register_users.IconSize = 30
+        Me.register_users.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.register_users.Location = New System.Drawing.Point(0, 45)
+        Me.register_users.Margin = New System.Windows.Forms.Padding(2)
+        Me.register_users.Name = "register_users"
+        Me.register_users.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.register_users.Rotation = 0R
+        Me.register_users.Size = New System.Drawing.Size(197, 32)
+        Me.register_users.TabIndex = 1
+        Me.register_users.Text = "Register New user"
+        Me.register_users.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.register_users.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.register_users.UseVisualStyleBackColor = False
         '
         'IconButton4
         '
@@ -555,45 +553,17 @@ Partial Class menu_form
         'inventoy_panel
         '
         Me.inventoy_panel.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.inventoy_panel.Controls.Add(Me.update_price_button)
         Me.inventoy_panel.Controls.Add(Me.stock_valuation)
-        Me.inventoy_panel.Controls.Add(Me.update_inventory_button)
         Me.inventoy_panel.Controls.Add(Me.add_inventory)
         Me.inventoy_panel.Controls.Add(Me.Inventory_menu)
         Me.inventoy_panel.Dock = System.Windows.Forms.DockStyle.Top
         Me.inventoy_panel.Location = New System.Drawing.Point(0, 48)
         Me.inventoy_panel.Margin = New System.Windows.Forms.Padding(2)
-        Me.inventoy_panel.MaximumSize = New System.Drawing.Size(197, 176)
+        Me.inventoy_panel.MaximumSize = New System.Drawing.Size(197, 109)
         Me.inventoy_panel.MinimumSize = New System.Drawing.Size(197, 45)
         Me.inventoy_panel.Name = "inventoy_panel"
-        Me.inventoy_panel.Size = New System.Drawing.Size(197, 176)
+        Me.inventoy_panel.Size = New System.Drawing.Size(197, 45)
         Me.inventoy_panel.TabIndex = 3
-        '
-        'update_price_button
-        '
-        Me.update_price_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.update_price_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.update_price_button.FlatAppearance.BorderSize = 0
-        Me.update_price_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.update_price_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.update_price_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.update_price_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.update_price_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.update_price_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.update_price_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.update_price_button.IconSize = 30
-        Me.update_price_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.update_price_button.Location = New System.Drawing.Point(0, 141)
-        Me.update_price_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.update_price_button.Name = "update_price_button"
-        Me.update_price_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.update_price_button.Rotation = 0R
-        Me.update_price_button.Size = New System.Drawing.Size(197, 32)
-        Me.update_price_button.TabIndex = 4
-        Me.update_price_button.Text = "Update Price and Quantity"
-        Me.update_price_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.update_price_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.update_price_button.UseVisualStyleBackColor = False
         '
         'stock_valuation
         '
@@ -602,14 +572,14 @@ Partial Class menu_form
         Me.stock_valuation.FlatAppearance.BorderSize = 0
         Me.stock_valuation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.stock_valuation.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.stock_valuation.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stock_valuation.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.stock_valuation.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.stock_valuation.ForeColor = System.Drawing.Color.LightGray
         Me.stock_valuation.IconChar = FontAwesome.Sharp.IconChar.None
         Me.stock_valuation.IconColor = System.Drawing.Color.WhiteSmoke
         Me.stock_valuation.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.stock_valuation.IconSize = 30
         Me.stock_valuation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.stock_valuation.Location = New System.Drawing.Point(0, 109)
+        Me.stock_valuation.Location = New System.Drawing.Point(0, 77)
         Me.stock_valuation.Margin = New System.Windows.Forms.Padding(2)
         Me.stock_valuation.Name = "stock_valuation"
         Me.stock_valuation.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
@@ -621,32 +591,6 @@ Partial Class menu_form
         Me.stock_valuation.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.stock_valuation.UseVisualStyleBackColor = False
         '
-        'update_inventory_button
-        '
-        Me.update_inventory_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.update_inventory_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.update_inventory_button.FlatAppearance.BorderSize = 0
-        Me.update_inventory_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.update_inventory_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.update_inventory_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.update_inventory_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.update_inventory_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.update_inventory_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.update_inventory_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.update_inventory_button.IconSize = 30
-        Me.update_inventory_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.update_inventory_button.Location = New System.Drawing.Point(0, 77)
-        Me.update_inventory_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.update_inventory_button.Name = "update_inventory_button"
-        Me.update_inventory_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.update_inventory_button.Rotation = 0R
-        Me.update_inventory_button.Size = New System.Drawing.Size(197, 32)
-        Me.update_inventory_button.TabIndex = 2
-        Me.update_inventory_button.Text = "Update Inventory Details"
-        Me.update_inventory_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.update_inventory_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.update_inventory_button.UseVisualStyleBackColor = False
-        '
         'add_inventory
         '
         Me.add_inventory.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
@@ -654,8 +598,8 @@ Partial Class menu_form
         Me.add_inventory.FlatAppearance.BorderSize = 0
         Me.add_inventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.add_inventory.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.add_inventory.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.add_inventory.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.add_inventory.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.add_inventory.ForeColor = System.Drawing.Color.LightGray
         Me.add_inventory.IconChar = FontAwesome.Sharp.IconChar.None
         Me.add_inventory.IconColor = System.Drawing.Color.WhiteSmoke
         Me.add_inventory.IconFont = FontAwesome.Sharp.IconFont.[Auto]
@@ -668,7 +612,7 @@ Partial Class menu_form
         Me.add_inventory.Rotation = 0R
         Me.add_inventory.Size = New System.Drawing.Size(197, 32)
         Me.add_inventory.TabIndex = 1
-        Me.add_inventory.Text = "Add New Inventory"
+        Me.add_inventory.Text = "Add/Edit Inventory"
         Me.add_inventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.add_inventory.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.add_inventory.UseVisualStyleBackColor = False
@@ -840,7 +784,7 @@ Partial Class menu_form
         '
         Me.Panel2.Controls.Add(Me.Category_button)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 359)
+        Me.Panel2.Location = New System.Drawing.Point(0, 228)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(213, 45)
@@ -872,7 +816,7 @@ Partial Class menu_form
         'database_panel
         '
         Me.database_panel.Controls.Add(Me.restore_button)
-        Me.database_panel.Controls.Add(Me.Backup_button)
+        Me.database_panel.Controls.Add(Me.backup_database)
         Me.database_panel.Controls.Add(Me.database_button)
         Me.database_panel.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.database_panel.Location = New System.Drawing.Point(0, 460)
@@ -890,7 +834,7 @@ Partial Class menu_form
         Me.restore_button.FlatAppearance.BorderSize = 0
         Me.restore_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.restore_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.restore_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.restore_button.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.restore_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.restore_button.IconChar = FontAwesome.Sharp.IconChar.None
         Me.restore_button.IconColor = System.Drawing.Color.WhiteSmoke
@@ -909,31 +853,31 @@ Partial Class menu_form
         Me.restore_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.restore_button.UseVisualStyleBackColor = False
         '
-        'Backup_button
+        'backup_database
         '
-        Me.Backup_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.Backup_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Backup_button.FlatAppearance.BorderSize = 0
-        Me.Backup_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Backup_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.Backup_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Backup_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Backup_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.Backup_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.Backup_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.Backup_button.IconSize = 30
-        Me.Backup_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Backup_button.Location = New System.Drawing.Point(0, 45)
-        Me.Backup_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.Backup_button.Name = "Backup_button"
-        Me.Backup_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.Backup_button.Rotation = 0R
-        Me.Backup_button.Size = New System.Drawing.Size(213, 32)
-        Me.Backup_button.TabIndex = 2
-        Me.Backup_button.Text = "Backup Data"
-        Me.Backup_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Backup_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.Backup_button.UseVisualStyleBackColor = False
+        Me.backup_database.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.backup_database.Dock = System.Windows.Forms.DockStyle.Top
+        Me.backup_database.FlatAppearance.BorderSize = 0
+        Me.backup_database.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.backup_database.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.backup_database.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.backup_database.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.backup_database.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.backup_database.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.backup_database.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.backup_database.IconSize = 30
+        Me.backup_database.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.backup_database.Location = New System.Drawing.Point(0, 45)
+        Me.backup_database.Margin = New System.Windows.Forms.Padding(2)
+        Me.backup_database.Name = "backup_database"
+        Me.backup_database.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.backup_database.Rotation = 0R
+        Me.backup_database.Size = New System.Drawing.Size(213, 32)
+        Me.backup_database.TabIndex = 2
+        Me.backup_database.Text = "Backup Data"
+        Me.backup_database.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.backup_database.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.backup_database.UseVisualStyleBackColor = False
         '
         'database_button
         '
@@ -961,7 +905,7 @@ Partial Class menu_form
         '
         'Panel12
         '
-        Me.Panel12.Controls.Add(Me.btnPermissions)
+        Me.Panel12.Controls.Add(Me.give_permissions)
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel12.Location = New System.Drawing.Point(0, 505)
         Me.Panel12.Margin = New System.Windows.Forms.Padding(2)
@@ -969,32 +913,32 @@ Partial Class menu_form
         Me.Panel12.Size = New System.Drawing.Size(213, 45)
         Me.Panel12.TabIndex = 1
         '
-        'btnPermissions
+        'give_permissions
         '
-        Me.btnPermissions.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnPermissions.FlatAppearance.BorderSize = 0
-        Me.btnPermissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPermissions.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.btnPermissions.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPermissions.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnPermissions.IconChar = FontAwesome.Sharp.IconChar.Cog
-        Me.btnPermissions.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.btnPermissions.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnPermissions.IconSize = 35
-        Me.btnPermissions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPermissions.Location = New System.Drawing.Point(0, 0)
-        Me.btnPermissions.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnPermissions.Name = "btnPermissions"
-        Me.btnPermissions.Rotation = 0R
-        Me.btnPermissions.Size = New System.Drawing.Size(213, 45)
-        Me.btnPermissions.TabIndex = 1
-        Me.btnPermissions.Text = "Permissions"
-        Me.btnPermissions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnPermissions.UseVisualStyleBackColor = True
+        Me.give_permissions.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.give_permissions.FlatAppearance.BorderSize = 0
+        Me.give_permissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.give_permissions.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.give_permissions.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.give_permissions.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.give_permissions.IconChar = FontAwesome.Sharp.IconChar.Cog
+        Me.give_permissions.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.give_permissions.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.give_permissions.IconSize = 35
+        Me.give_permissions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.give_permissions.Location = New System.Drawing.Point(0, 0)
+        Me.give_permissions.Margin = New System.Windows.Forms.Padding(2)
+        Me.give_permissions.Name = "give_permissions"
+        Me.give_permissions.Rotation = 0R
+        Me.give_permissions.Size = New System.Drawing.Size(213, 45)
+        Me.give_permissions.TabIndex = 1
+        Me.give_permissions.Text = "Permissions"
+        Me.give_permissions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.give_permissions.UseVisualStyleBackColor = True
         '
         'Panel7
         '
-        Me.Panel7.Controls.Add(Me.settings_button)
+        Me.Panel7.Controls.Add(Me.edit_settings)
         Me.Panel7.Controls.Add(Me.logout_button)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(0, 550)
@@ -1003,27 +947,27 @@ Partial Class menu_form
         Me.Panel7.Size = New System.Drawing.Size(213, 45)
         Me.Panel7.TabIndex = 1
         '
-        'settings_button
+        'edit_settings
         '
-        Me.settings_button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.settings_button.FlatAppearance.BorderSize = 0
-        Me.settings_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.settings_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.settings_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.settings_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.settings_button.IconChar = FontAwesome.Sharp.IconChar.Tools
-        Me.settings_button.IconColor = System.Drawing.Color.Gainsboro
-        Me.settings_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.settings_button.IconSize = 30
-        Me.settings_button.Location = New System.Drawing.Point(105, 0)
-        Me.settings_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.settings_button.Name = "settings_button"
-        Me.settings_button.Rotation = 0R
-        Me.settings_button.Size = New System.Drawing.Size(108, 45)
-        Me.settings_button.TabIndex = 2
-        Me.settings_button.Text = "Settings"
-        Me.settings_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.settings_button.UseVisualStyleBackColor = True
+        Me.edit_settings.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.edit_settings.FlatAppearance.BorderSize = 0
+        Me.edit_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.edit_settings.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.edit_settings.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.edit_settings.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.edit_settings.IconChar = FontAwesome.Sharp.IconChar.Tools
+        Me.edit_settings.IconColor = System.Drawing.Color.Gainsboro
+        Me.edit_settings.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.edit_settings.IconSize = 30
+        Me.edit_settings.Location = New System.Drawing.Point(105, 0)
+        Me.edit_settings.Margin = New System.Windows.Forms.Padding(2)
+        Me.edit_settings.Name = "edit_settings"
+        Me.edit_settings.Rotation = 0R
+        Me.edit_settings.Size = New System.Drawing.Size(108, 45)
+        Me.edit_settings.TabIndex = 2
+        Me.edit_settings.Text = "Settings"
+        Me.edit_settings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.edit_settings.UseVisualStyleBackColor = True
         '
         'logout_button
         '
@@ -1031,7 +975,7 @@ Partial Class menu_form
         Me.logout_button.FlatAppearance.BorderSize = 0
         Me.logout_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.logout_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.logout_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.logout_button.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.logout_button.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.logout_button.IconChar = FontAwesome.Sharp.IconChar.PowerOff
         Me.logout_button.IconColor = System.Drawing.Color.Red
@@ -1051,12 +995,12 @@ Partial Class menu_form
         'reports_panel
         '
         Me.reports_panel.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.reports_panel.Controls.Add(Me.stock_reports_button)
-        Me.reports_panel.Controls.Add(Me.scheduled_report_button)
-        Me.reports_panel.Controls.Add(Me.DayEnd_reports_button)
+        Me.reports_panel.Controls.Add(Me.stock_reports)
+        Me.reports_panel.Controls.Add(Me.scheduled_reports)
+        Me.reports_panel.Controls.Add(Me.profit_reports)
         Me.reports_panel.Controls.Add(Me.reports_menu)
         Me.reports_panel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.reports_panel.Location = New System.Drawing.Point(0, 269)
+        Me.reports_panel.Location = New System.Drawing.Point(0, 138)
         Me.reports_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.reports_panel.MaximumSize = New System.Drawing.Size(197, 145)
         Me.reports_panel.MinimumSize = New System.Drawing.Size(197, 45)
@@ -1064,83 +1008,83 @@ Partial Class menu_form
         Me.reports_panel.Size = New System.Drawing.Size(197, 45)
         Me.reports_panel.TabIndex = 10
         '
-        'stock_reports_button
+        'stock_reports
         '
-        Me.stock_reports_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.stock_reports_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.stock_reports_button.FlatAppearance.BorderSize = 0
-        Me.stock_reports_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.stock_reports_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.stock_reports_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stock_reports_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.stock_reports_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.stock_reports_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.stock_reports_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.stock_reports_button.IconSize = 30
-        Me.stock_reports_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.stock_reports_button.Location = New System.Drawing.Point(0, 109)
-        Me.stock_reports_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.stock_reports_button.Name = "stock_reports_button"
-        Me.stock_reports_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.stock_reports_button.Rotation = 0R
-        Me.stock_reports_button.Size = New System.Drawing.Size(197, 32)
-        Me.stock_reports_button.TabIndex = 3
-        Me.stock_reports_button.Text = "Stock Reports"
-        Me.stock_reports_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.stock_reports_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.stock_reports_button.UseVisualStyleBackColor = False
+        Me.stock_reports.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.stock_reports.Dock = System.Windows.Forms.DockStyle.Top
+        Me.stock_reports.FlatAppearance.BorderSize = 0
+        Me.stock_reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.stock_reports.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.stock_reports.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.stock_reports.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.stock_reports.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.stock_reports.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.stock_reports.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.stock_reports.IconSize = 30
+        Me.stock_reports.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.stock_reports.Location = New System.Drawing.Point(0, 109)
+        Me.stock_reports.Margin = New System.Windows.Forms.Padding(2)
+        Me.stock_reports.Name = "stock_reports"
+        Me.stock_reports.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.stock_reports.Rotation = 0R
+        Me.stock_reports.Size = New System.Drawing.Size(197, 32)
+        Me.stock_reports.TabIndex = 3
+        Me.stock_reports.Text = "Stock Reports"
+        Me.stock_reports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.stock_reports.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.stock_reports.UseVisualStyleBackColor = False
         '
-        'scheduled_report_button
+        'scheduled_reports
         '
-        Me.scheduled_report_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.scheduled_report_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.scheduled_report_button.FlatAppearance.BorderSize = 0
-        Me.scheduled_report_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.scheduled_report_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.scheduled_report_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.scheduled_report_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.scheduled_report_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.scheduled_report_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.scheduled_report_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.scheduled_report_button.IconSize = 30
-        Me.scheduled_report_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.scheduled_report_button.Location = New System.Drawing.Point(0, 77)
-        Me.scheduled_report_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.scheduled_report_button.Name = "scheduled_report_button"
-        Me.scheduled_report_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.scheduled_report_button.Rotation = 0R
-        Me.scheduled_report_button.Size = New System.Drawing.Size(197, 32)
-        Me.scheduled_report_button.TabIndex = 2
-        Me.scheduled_report_button.Text = "Scheduled Sales Reports"
-        Me.scheduled_report_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.scheduled_report_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.scheduled_report_button.UseVisualStyleBackColor = False
+        Me.scheduled_reports.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.scheduled_reports.Dock = System.Windows.Forms.DockStyle.Top
+        Me.scheduled_reports.FlatAppearance.BorderSize = 0
+        Me.scheduled_reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.scheduled_reports.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.scheduled_reports.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.scheduled_reports.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.scheduled_reports.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.scheduled_reports.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.scheduled_reports.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.scheduled_reports.IconSize = 30
+        Me.scheduled_reports.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.scheduled_reports.Location = New System.Drawing.Point(0, 77)
+        Me.scheduled_reports.Margin = New System.Windows.Forms.Padding(2)
+        Me.scheduled_reports.Name = "scheduled_reports"
+        Me.scheduled_reports.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.scheduled_reports.Rotation = 0R
+        Me.scheduled_reports.Size = New System.Drawing.Size(197, 32)
+        Me.scheduled_reports.TabIndex = 2
+        Me.scheduled_reports.Text = "Scheduled  Reports"
+        Me.scheduled_reports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.scheduled_reports.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.scheduled_reports.UseVisualStyleBackColor = False
         '
-        'DayEnd_reports_button
+        'profit_reports
         '
-        Me.DayEnd_reports_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.DayEnd_reports_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.DayEnd_reports_button.FlatAppearance.BorderSize = 0
-        Me.DayEnd_reports_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DayEnd_reports_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.DayEnd_reports_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DayEnd_reports_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.DayEnd_reports_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.DayEnd_reports_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.DayEnd_reports_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.DayEnd_reports_button.IconSize = 30
-        Me.DayEnd_reports_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.DayEnd_reports_button.Location = New System.Drawing.Point(0, 45)
-        Me.DayEnd_reports_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.DayEnd_reports_button.Name = "DayEnd_reports_button"
-        Me.DayEnd_reports_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.DayEnd_reports_button.Rotation = 0R
-        Me.DayEnd_reports_button.Size = New System.Drawing.Size(197, 32)
-        Me.DayEnd_reports_button.TabIndex = 1
-        Me.DayEnd_reports_button.Text = "Day End Sales"
-        Me.DayEnd_reports_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.DayEnd_reports_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.DayEnd_reports_button.UseVisualStyleBackColor = False
+        Me.profit_reports.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.profit_reports.Dock = System.Windows.Forms.DockStyle.Top
+        Me.profit_reports.FlatAppearance.BorderSize = 0
+        Me.profit_reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.profit_reports.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.profit_reports.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.profit_reports.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.profit_reports.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.profit_reports.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.profit_reports.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.profit_reports.IconSize = 30
+        Me.profit_reports.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.profit_reports.Location = New System.Drawing.Point(0, 45)
+        Me.profit_reports.Margin = New System.Windows.Forms.Padding(2)
+        Me.profit_reports.Name = "profit_reports"
+        Me.profit_reports.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.profit_reports.Rotation = 0R
+        Me.profit_reports.Size = New System.Drawing.Size(197, 32)
+        Me.profit_reports.TabIndex = 1
+        Me.profit_reports.Text = "Profit Reports"
+        Me.profit_reports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.profit_reports.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.profit_reports.UseVisualStyleBackColor = False
         '
         'reports_menu
         '
@@ -1169,13 +1113,13 @@ Partial Class menu_form
         'sales_panel
         '
         Me.sales_panel.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
-        Me.sales_panel.Controls.Add(Me.IconButton1)
-        Me.sales_panel.Controls.Add(Me.IconButton2)
-        Me.sales_panel.Controls.Add(Me.returns_button)
+        Me.sales_panel.Controls.Add(Me.cashup_balances)
+        Me.sales_panel.Controls.Add(Me.transaction_logs)
+        Me.sales_panel.Controls.Add(Me.return_sales)
         Me.sales_panel.Controls.Add(Me.dayEnd_sales)
         Me.sales_panel.Controls.Add(Me.sales_menu)
         Me.sales_panel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.sales_panel.Location = New System.Drawing.Point(0, 224)
+        Me.sales_panel.Location = New System.Drawing.Point(0, 93)
         Me.sales_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.sales_panel.MaximumSize = New System.Drawing.Size(197, 176)
         Me.sales_panel.MinimumSize = New System.Drawing.Size(197, 45)
@@ -1183,83 +1127,83 @@ Partial Class menu_form
         Me.sales_panel.Size = New System.Drawing.Size(197, 45)
         Me.sales_panel.TabIndex = 8
         '
-        'IconButton1
+        'cashup_balances
         '
-        Me.IconButton1.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.IconButton1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.IconButton1.FlatAppearance.BorderSize = 0
-        Me.IconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.IconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.IconButton1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.IconButton1.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.IconButton1.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconButton1.IconSize = 30
-        Me.IconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.IconButton1.Location = New System.Drawing.Point(0, 141)
-        Me.IconButton1.Margin = New System.Windows.Forms.Padding(2)
-        Me.IconButton1.Name = "IconButton1"
-        Me.IconButton1.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.IconButton1.Rotation = 0R
-        Me.IconButton1.Size = New System.Drawing.Size(197, 32)
-        Me.IconButton1.TabIndex = 4
-        Me.IconButton1.Text = "Reprint Last Trans"
-        Me.IconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.IconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.IconButton1.UseVisualStyleBackColor = False
+        Me.cashup_balances.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.cashup_balances.Dock = System.Windows.Forms.DockStyle.Top
+        Me.cashup_balances.FlatAppearance.BorderSize = 0
+        Me.cashup_balances.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cashup_balances.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.cashup_balances.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cashup_balances.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.cashup_balances.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.cashup_balances.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.cashup_balances.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.cashup_balances.IconSize = 30
+        Me.cashup_balances.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.cashup_balances.Location = New System.Drawing.Point(0, 141)
+        Me.cashup_balances.Margin = New System.Windows.Forms.Padding(2)
+        Me.cashup_balances.Name = "cashup_balances"
+        Me.cashup_balances.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.cashup_balances.Rotation = 0R
+        Me.cashup_balances.Size = New System.Drawing.Size(197, 32)
+        Me.cashup_balances.TabIndex = 4
+        Me.cashup_balances.Text = "Cash Up Balances"
+        Me.cashup_balances.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cashup_balances.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.cashup_balances.UseVisualStyleBackColor = False
         '
-        'IconButton2
+        'transaction_logs
         '
-        Me.IconButton2.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.IconButton2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.IconButton2.FlatAppearance.BorderSize = 0
-        Me.IconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.IconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.IconButton2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.IconButton2.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.IconButton2.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.IconButton2.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.IconButton2.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconButton2.IconSize = 30
-        Me.IconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.IconButton2.Location = New System.Drawing.Point(0, 109)
-        Me.IconButton2.Margin = New System.Windows.Forms.Padding(2)
-        Me.IconButton2.Name = "IconButton2"
-        Me.IconButton2.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.IconButton2.Rotation = 0R
-        Me.IconButton2.Size = New System.Drawing.Size(197, 32)
-        Me.IconButton2.TabIndex = 3
-        Me.IconButton2.Text = "Transaction Log"
-        Me.IconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.IconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.IconButton2.UseVisualStyleBackColor = False
+        Me.transaction_logs.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.transaction_logs.Dock = System.Windows.Forms.DockStyle.Top
+        Me.transaction_logs.FlatAppearance.BorderSize = 0
+        Me.transaction_logs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.transaction_logs.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.transaction_logs.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.transaction_logs.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.transaction_logs.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.transaction_logs.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.transaction_logs.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.transaction_logs.IconSize = 30
+        Me.transaction_logs.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.transaction_logs.Location = New System.Drawing.Point(0, 109)
+        Me.transaction_logs.Margin = New System.Windows.Forms.Padding(2)
+        Me.transaction_logs.Name = "transaction_logs"
+        Me.transaction_logs.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.transaction_logs.Rotation = 0R
+        Me.transaction_logs.Size = New System.Drawing.Size(197, 32)
+        Me.transaction_logs.TabIndex = 3
+        Me.transaction_logs.Text = "Transaction Log"
+        Me.transaction_logs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.transaction_logs.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.transaction_logs.UseVisualStyleBackColor = False
         '
-        'returns_button
+        'return_sales
         '
-        Me.returns_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.returns_button.Dock = System.Windows.Forms.DockStyle.Top
-        Me.returns_button.FlatAppearance.BorderSize = 0
-        Me.returns_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.returns_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.returns_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.returns_button.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.returns_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.returns_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.returns_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.returns_button.IconSize = 30
-        Me.returns_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.returns_button.Location = New System.Drawing.Point(0, 77)
-        Me.returns_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.returns_button.Name = "returns_button"
-        Me.returns_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
-        Me.returns_button.Rotation = 0R
-        Me.returns_button.Size = New System.Drawing.Size(197, 32)
-        Me.returns_button.TabIndex = 2
-        Me.returns_button.Text = "Sales Returns"
-        Me.returns_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.returns_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.returns_button.UseVisualStyleBackColor = False
+        Me.return_sales.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.return_sales.Dock = System.Windows.Forms.DockStyle.Top
+        Me.return_sales.FlatAppearance.BorderSize = 0
+        Me.return_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.return_sales.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.return_sales.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.return_sales.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.return_sales.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.return_sales.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.return_sales.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.return_sales.IconSize = 30
+        Me.return_sales.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.return_sales.Location = New System.Drawing.Point(0, 77)
+        Me.return_sales.Margin = New System.Windows.Forms.Padding(2)
+        Me.return_sales.Name = "return_sales"
+        Me.return_sales.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.return_sales.Rotation = 0R
+        Me.return_sales.Size = New System.Drawing.Size(197, 32)
+        Me.return_sales.TabIndex = 2
+        Me.return_sales.Text = "Sales Returns"
+        Me.return_sales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.return_sales.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.return_sales.UseVisualStyleBackColor = False
         '
         'dayEnd_sales
         '
@@ -1268,7 +1212,7 @@ Partial Class menu_form
         Me.dayEnd_sales.FlatAppearance.BorderSize = 0
         Me.dayEnd_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.dayEnd_sales.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.dayEnd_sales.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dayEnd_sales.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dayEnd_sales.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.dayEnd_sales.IconChar = FontAwesome.Sharp.IconChar.None
         Me.dayEnd_sales.IconColor = System.Drawing.Color.WhiteSmoke
@@ -1432,33 +1376,31 @@ Partial Class menu_form
     Friend WithEvents inventoy_panel As Panel
     Friend WithEvents Inventory_menu As FontAwesome.Sharp.IconButton
     Friend WithEvents stock_valuation As FontAwesome.Sharp.IconButton
-    Friend WithEvents update_inventory_button As FontAwesome.Sharp.IconButton
     Friend WithEvents add_inventory As FontAwesome.Sharp.IconButton
     Friend WithEvents users_panel As Panel
-    Friend WithEvents change_password_button As FontAwesome.Sharp.IconButton
-    Friend WithEvents updateUser_button As FontAwesome.Sharp.IconButton
-    Friend WithEvents registerUser_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents change_password As FontAwesome.Sharp.IconButton
+    Friend WithEvents update_users As FontAwesome.Sharp.IconButton
+    Friend WithEvents register_users As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton4 As FontAwesome.Sharp.IconButton
-    Friend WithEvents update_price_button As FontAwesome.Sharp.IconButton
     Friend WithEvents sales_panel As Panel
-    Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
-    Friend WithEvents IconButton2 As FontAwesome.Sharp.IconButton
-    Friend WithEvents returns_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents cashup_balances As FontAwesome.Sharp.IconButton
+    Friend WithEvents transaction_logs As FontAwesome.Sharp.IconButton
+    Friend WithEvents return_sales As FontAwesome.Sharp.IconButton
     Friend WithEvents dayEnd_sales As FontAwesome.Sharp.IconButton
     Friend WithEvents sales_menu As FontAwesome.Sharp.IconButton
     Friend WithEvents reports_panel As Panel
-    Friend WithEvents stock_reports_button As FontAwesome.Sharp.IconButton
-    Friend WithEvents scheduled_report_button As FontAwesome.Sharp.IconButton
-    Friend WithEvents DayEnd_reports_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents stock_reports As FontAwesome.Sharp.IconButton
+    Friend WithEvents scheduled_reports As FontAwesome.Sharp.IconButton
+    Friend WithEvents profit_reports As FontAwesome.Sharp.IconButton
     Friend WithEvents reports_menu As FontAwesome.Sharp.IconButton
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Timer3 As Timer
     Friend WithEvents Panel7 As Panel
-    Friend WithEvents settings_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents edit_settings As FontAwesome.Sharp.IconButton
     Friend WithEvents logout_button As FontAwesome.Sharp.IconButton
     Friend WithEvents Panel12 As Panel
-    Friend WithEvents btnPermissions As FontAwesome.Sharp.IconButton
+    Friend WithEvents give_permissions As FontAwesome.Sharp.IconButton
     Friend WithEvents dashboard_label As Label
     Friend WithEvents IconPictureBox2 As FontAwesome.Sharp.IconPictureBox
     Friend WithEvents mainPanel As Panel
@@ -1467,7 +1409,7 @@ Partial Class menu_form
     Friend WithEvents Timer4 As Timer
     Friend WithEvents database_panel As Panel
     Friend WithEvents restore_button As FontAwesome.Sharp.IconButton
-    Friend WithEvents Backup_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents backup_database As FontAwesome.Sharp.IconButton
     Friend WithEvents database_button As FontAwesome.Sharp.IconButton
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel2 As Panel

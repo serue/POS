@@ -34,7 +34,7 @@ Public Class Permissions
                 Dim reader As SqlDataReader = cmd.ExecuteReader
                 If reader.HasRows Then
                     Dim transaction As SqlTransaction = connection.BeginTransaction
-                    myPermissions.savePermissions(txtUsername.Text, employee_id.Text, transaction_log.Name, transaction_log.CheckState, connection, transaction)
+                    myPermissions.savePermissions(txtUsername.Text, employee_id.Text, transaction_logs.Name, transaction_logs.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, cashup_balances.Name, cashup_balances.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, cancel_transactions.Name, cancel_transactions.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, view_sales.Name, view_sales.CheckState, connection, transaction)
@@ -44,11 +44,11 @@ Public Class Permissions
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, scheduled_reports.Name, scheduled_reports.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, Give_permissions.Name, Give_permissions.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, register_users.Name, register_users.CheckState, connection, transaction)
-                    myPermissions.savePermissions(txtUsername.Text, employee_id.Text, manage_users.Name, manage_users.CheckState, connection, transaction)
+                    myPermissions.savePermissions(txtUsername.Text, employee_id.Text, update_users.Name, update_users.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, add_inventory.Name, add_inventory.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, edit_inventory.Name, edit_inventory.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, return_sales.Name, return_sales.CheckState, connection, transaction)
-                    myPermissions.savePermissions(txtUsername.Text, employee_id.Text, reset_passwords.Name, reset_passwords.CheckState, connection, transaction)
+                    myPermissions.savePermissions(txtUsername.Text, employee_id.Text, edit_settings.Name, edit_settings.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, activate_user.Name, activate_user.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, is_admin.Name, is_admin.CheckState, connection, transaction)
                     myPermissions.savePermissions(txtUsername.Text, employee_id.Text, backup_database.Name, backup_database.CheckState, connection, transaction)
@@ -74,7 +74,7 @@ Public Class Permissions
                 Dim reader As SqlDataReader = cmd.ExecuteReader
                 If reader.HasRows Then
                     Dim transaction As SqlTransaction = connection.BeginTransaction
-                    myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, transaction_log.Name, transaction_log.CheckState, connection, transaction)
+                    myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, transaction_logs.Name, transaction_logs.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, cashup_balances.Name, cashup_balances.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, cancel_transactions.Name, cancel_transactions.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, view_sales.Name, view_sales.CheckState, connection, transaction)
@@ -84,11 +84,11 @@ Public Class Permissions
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, scheduled_reports.Name, scheduled_reports.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, Give_permissions.Name, Give_permissions.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, register_users.Name, register_users.CheckState, connection, transaction)
-                    myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, manage_users.Name, manage_users.CheckState, connection, transaction)
+                    myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, update_users.Name, update_users.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, add_inventory.Name, add_inventory.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, edit_inventory.Name, edit_inventory.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, return_sales.Name, return_sales.CheckState, connection, transaction)
-                    myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, reset_passwords.Name, reset_passwords.CheckState, connection, transaction)
+                    myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, edit_settings.Name, edit_settings.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, activate_user.Name, activate_user.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, is_admin.Name, is_admin.CheckState, connection, transaction)
                     myPermissions.updatePermissions(txtUsername.Text, employee_id.Text, backup_database.Name, backup_database.CheckState, connection, transaction)

@@ -266,11 +266,30 @@ Public Class menu_form
 
     End Sub
 
-    Private Sub btnPermissions_Click(sender As Object, e As EventArgs) Handles btnPermissions.Click
-        Design.activeMainButton(btnPermissions)
-        Design.OpenChildSmall(Me.mainPanel, New Permissions)
-        subPanel.Visible = False
-        dashboard_label.Text = "user permissions".ToUpper
+    Private Sub btnPermissions_Click(sender As Object, e As EventArgs) Handles give_permissions.Click
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
+                With command.Parameters
+                    .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                    .Add("@PERMISSION", SqlDbType.VarChar).Value = give_permissions.Name
+                End With
+                Dim reader As SqlDataReader = command.ExecuteReader
+                If reader.HasRows Then
+                    Design.activeMainButton(give_permissions)
+                    Design.OpenChildSmall(Me.mainPanel, New Permissions)
+                    subPanel.Visible = False
+                    dashboard_label.Text = "user permissions".ToUpper
+                Else
+                    MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "The following error happened while trying to check roles", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub Timer4_Tick(sender As Object, e As EventArgs) Handles Timer4.Tick
@@ -329,15 +348,29 @@ Public Class menu_form
             SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0)
         End If
     End Sub
+    Private Sub settings_button_Click(sender As Object, e As EventArgs) Handles edit_settings.Click
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
+                With command.Parameters
+                    .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                    .Add("@PERMISSION", SqlDbType.VarChar).Value = edit_settings.Name
+                End With
+                Dim reader As SqlDataReader = command.ExecuteReader
+                If reader.HasRows Then
+                    Design.activeMainButton(edit_settings)
+                    settings.ActiveUser = ActiveUser
+                    settings.ActiveUsername = username
+                    settings.ShowDialog()
+                Else
+                    MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
 
-    Private Sub update_inventory_button_Click(sender As Object, e As EventArgs) Handles update_inventory_button.Click
-        Design.activeButton(update_inventory_button)
-    End Sub
-
-    Private Sub settings_button_Click(sender As Object, e As EventArgs) Handles settings_button.Click
-        Design.activeMainButton(settings_button)
-        settings.ActiveUser = ActiveUser
-        settings.Show()
+        End Try
     End Sub
 
     Private Sub logout_button_Click(sender As Object, e As EventArgs) Handles logout_button.Click
@@ -352,30 +385,28 @@ Public Class menu_form
     End Sub
 
     Private Sub Category_button_Click(sender As Object, e As EventArgs) Handles Category_button.Click
-        categories.Show()
+        categories.ShowDialog()
     End Sub
-
-    Private Sub subPanel_Paint(sender As Object, e As PaintEventArgs) Handles subPanel.Paint
-
-    End Sub
-
-    Private Sub Guna2Shapes1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Backup_button_Click(sender As Object, e As EventArgs) Handles Backup_button.Click
+    Private Sub Backup_button_Click(sender As Object, e As EventArgs) Handles backup_database.Click
         If MessageBox.Show("Are sure you want to backup your database, Please make sure that no operation is going to be interupted and then proceed", "System Database Backup", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK Then
             Try
                 connection = myPermissions.getConnection
                 connection.Open()
-                Using command As New SqlCommand("BACKUP DATABASE POS_DATABASE TO DISK=@DISK WITH init;", connection)
-                    command.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
-                    command.ExecuteNonQuery()
-                    MessageBox.Show("System Database Backup was successful", "Back Up System Database", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
+                    With command.Parameters
+                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                        .Add("@PERMISSION", SqlDbType.VarChar).Value = backup_database.Name
+                    End With
+                    Dim reader As SqlDataReader = command.ExecuteReader
+                    If reader.HasRows Then
+                        Using cmd As New SqlCommand("BACKUP DATABASE POS_DATABASE TO DISK=@DISK WITH init;", connection)
+                            cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
+                            cmd.ExecuteNonQuery()
+                            MessageBox.Show("System Database Backup was successful", "Back Up System Database", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End Using
+                    Else
+                        MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
                 End Using
                 connection.Close()
             Catch ex As Exception
@@ -389,10 +420,21 @@ Public Class menu_form
         Try
             connection = New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
             connection.Open()
-            Using cmd As New SqlCommand("RESTORE DATABASE POS_DATABASE FROM DISK=@DISK WITH replace;", connection)
-                cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
-                cmd.ExecuteNonQuery()
-                MessageBox.Show("Database Restore was successful", "Restoring a database from backup", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
+                With command.Parameters
+                    .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                    .Add("@PERMISSION", SqlDbType.VarChar).Value = backup_database.Name
+                End With
+                Dim reader As SqlDataReader = command.ExecuteReader
+                If reader.HasRows Then
+                    Using cmd As New SqlCommand("RESTORE DATABASE POS_DATABASE FROM DISK=@DISK WITH replace;", connection)
+                        cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
+                        cmd.ExecuteNonQuery()
+                        MessageBox.Show("Database Restore was successful", "Restoring a database from backup", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End Using
+                Else
+                    MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
             End Using
             connection.Close()
         Catch ex As Exception
@@ -403,5 +445,62 @@ Public Class menu_form
 
     Private Sub Label10_Click(sender As Object, e As EventArgs) Handles users_label.Click, monthlySalesLabel.Click
 
+    End Sub
+
+    Private Sub dayEnd_sales_Click(sender As Object, e As EventArgs) Handles dayEnd_sales.Click
+        checkPermissions(username, dayEnd_sales.Name, New Add_inventory)
+    End Sub
+
+    Private Sub cashup_balances_Click(sender As Object, e As EventArgs) Handles cashup_balances.Click
+        checkPermissions(username, cashup_balances.Name, New Add_inventory)
+    End Sub
+    Private Sub checkPermissions(account As String, permit As String, destinition As Form)
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
+                With command.Parameters
+                    .Add("@USERNAME", SqlDbType.VarChar).Value = account
+                    .Add("@PERMISSION", SqlDbType.VarChar).Value = permit
+                End With
+                Dim reader As SqlDataReader = command.ExecuteReader
+                If reader.HasRows Then
+                    destinition.Show()
+                Else
+                    MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub return_sales_Click(sender As Object, e As EventArgs) Handles return_sales.Click
+        checkPermissions(username, return_sales.Name, New Add_inventory)
+    End Sub
+
+    Private Sub transaction_logs_Click(sender As Object, e As EventArgs) Handles transaction_logs.Click
+        checkPermissions(username, transaction_logs.Name, New Add_inventory)
+    End Sub
+
+    Private Sub profit_reports_Click(sender As Object, e As EventArgs) Handles profit_reports.Click
+        checkPermissions(username, profit_reports.Name, New Add_inventory)
+    End Sub
+
+    Private Sub scheduled_reports_Click(sender As Object, e As EventArgs) Handles scheduled_reports.Click
+        checkPermissions(username, scheduled_reports.Name, New Add_inventory)
+    End Sub
+
+    Private Sub stock_reports_Click(sender As Object, e As EventArgs) Handles stock_reports.Click
+        checkPermissions(username, stock_reports.Name, New Add_inventory)
+    End Sub
+
+    Private Sub register_users_Click(sender As Object, e As EventArgs) Handles register_users.Click
+        checkPermissions(username, register_users.Name, New Add_inventory)
+    End Sub
+
+    Private Sub update_users_Click(sender As Object, e As EventArgs) Handles update_users.Click
+        checkPermissions(username, update_users.Name, New Add_inventory)
     End Sub
 End Class

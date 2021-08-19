@@ -34,9 +34,9 @@ Partial Class Permissions
         Me.backup_database = New System.Windows.Forms.CheckBox()
         Me.is_admin = New System.Windows.Forms.CheckBox()
         Me.activate_user = New System.Windows.Forms.CheckBox()
-        Me.reset_passwords = New System.Windows.Forms.CheckBox()
+        Me.edit_settings = New System.Windows.Forms.CheckBox()
         Me.register_users = New System.Windows.Forms.CheckBox()
-        Me.manage_users = New System.Windows.Forms.CheckBox()
+        Me.update_users = New System.Windows.Forms.CheckBox()
         Me.Give_permissions = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.edit_inventory = New System.Windows.Forms.CheckBox()
@@ -46,7 +46,7 @@ Partial Class Permissions
         Me.view_sales = New System.Windows.Forms.CheckBox()
         Me.cancel_transactions = New System.Windows.Forms.CheckBox()
         Me.cashup_balances = New System.Windows.Forms.CheckBox()
-        Me.transaction_log = New System.Windows.Forms.CheckBox()
+        Me.transaction_logs = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.employee_id = New MetroFramework.Controls.MetroComboBox()
@@ -173,9 +173,9 @@ Partial Class Permissions
         Me.GroupBox3.Controls.Add(Me.backup_database)
         Me.GroupBox3.Controls.Add(Me.is_admin)
         Me.GroupBox3.Controls.Add(Me.activate_user)
-        Me.GroupBox3.Controls.Add(Me.reset_passwords)
+        Me.GroupBox3.Controls.Add(Me.edit_settings)
         Me.GroupBox3.Controls.Add(Me.register_users)
-        Me.GroupBox3.Controls.Add(Me.manage_users)
+        Me.GroupBox3.Controls.Add(Me.update_users)
         Me.GroupBox3.Controls.Add(Me.Give_permissions)
         Me.GroupBox3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.Color.SaddleBrown
@@ -216,15 +216,15 @@ Partial Class Permissions
         Me.activate_user.Text = "Activate/Deactivate Users"
         Me.activate_user.UseVisualStyleBackColor = True
         '
-        'reset_passwords
+        'edit_settings
         '
-        Me.reset_passwords.AutoSize = True
-        Me.reset_passwords.Location = New System.Drawing.Point(49, 109)
-        Me.reset_passwords.Name = "reset_passwords"
-        Me.reset_passwords.Size = New System.Drawing.Size(160, 21)
-        Me.reset_passwords.TabIndex = 6
-        Me.reset_passwords.Text = "Reset User Passwords"
-        Me.reset_passwords.UseVisualStyleBackColor = True
+        Me.edit_settings.AutoSize = True
+        Me.edit_settings.Location = New System.Drawing.Point(49, 109)
+        Me.edit_settings.Name = "edit_settings"
+        Me.edit_settings.Size = New System.Drawing.Size(104, 21)
+        Me.edit_settings.TabIndex = 6
+        Me.edit_settings.Text = "Edit Settings"
+        Me.edit_settings.UseVisualStyleBackColor = True
         '
         'register_users
         '
@@ -236,15 +236,15 @@ Partial Class Permissions
         Me.register_users.Text = "Register Users"
         Me.register_users.UseVisualStyleBackColor = True
         '
-        'manage_users
+        'update_users
         '
-        Me.manage_users.AutoSize = True
-        Me.manage_users.Location = New System.Drawing.Point(49, 52)
-        Me.manage_users.Name = "manage_users"
-        Me.manage_users.Size = New System.Drawing.Size(115, 21)
-        Me.manage_users.TabIndex = 2
-        Me.manage_users.Text = "Manage Users"
-        Me.manage_users.UseVisualStyleBackColor = True
+        Me.update_users.AutoSize = True
+        Me.update_users.Location = New System.Drawing.Point(49, 52)
+        Me.update_users.Name = "update_users"
+        Me.update_users.Size = New System.Drawing.Size(115, 21)
+        Me.update_users.TabIndex = 2
+        Me.update_users.Text = "Manage Users"
+        Me.update_users.UseVisualStyleBackColor = True
         '
         'Give_permissions
         '
@@ -297,7 +297,7 @@ Partial Class Permissions
         Me.GroupBox1.Controls.Add(Me.view_sales)
         Me.GroupBox1.Controls.Add(Me.cancel_transactions)
         Me.GroupBox1.Controls.Add(Me.cashup_balances)
-        Me.GroupBox1.Controls.Add(Me.transaction_log)
+        Me.GroupBox1.Controls.Add(Me.transaction_logs)
         Me.GroupBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.SaddleBrown
         Me.GroupBox1.Location = New System.Drawing.Point(10, 185)
@@ -347,15 +347,15 @@ Partial Class Permissions
         Me.cashup_balances.Text = "View Cashup Balances "
         Me.cashup_balances.UseVisualStyleBackColor = True
         '
-        'transaction_log
+        'transaction_logs
         '
-        Me.transaction_log.AutoSize = True
-        Me.transaction_log.Location = New System.Drawing.Point(57, 22)
-        Me.transaction_log.Name = "transaction_log"
-        Me.transaction_log.Size = New System.Drawing.Size(166, 21)
-        Me.transaction_log.TabIndex = 0
-        Me.transaction_log.Text = "View Transactions log"
-        Me.transaction_log.UseVisualStyleBackColor = True
+        Me.transaction_logs.AutoSize = True
+        Me.transaction_logs.Location = New System.Drawing.Point(57, 22)
+        Me.transaction_logs.Name = "transaction_logs"
+        Me.transaction_logs.Size = New System.Drawing.Size(166, 21)
+        Me.transaction_logs.TabIndex = 0
+        Me.transaction_logs.Text = "View Transactions log"
+        Me.transaction_logs.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -467,7 +467,7 @@ Partial Class Permissions
     Friend WithEvents stock_reports As CheckBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents register_users As CheckBox
-    Friend WithEvents manage_users As CheckBox
+    Friend WithEvents update_users As CheckBox
     Friend WithEvents Give_permissions As CheckBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents edit_inventory As CheckBox
@@ -476,11 +476,11 @@ Partial Class Permissions
     Friend WithEvents view_sales As CheckBox
     Friend WithEvents cancel_transactions As CheckBox
     Friend WithEvents cashup_balances As CheckBox
-    Friend WithEvents transaction_log As CheckBox
+    Friend WithEvents transaction_logs As CheckBox
     Friend WithEvents dayEnd_reports As CheckBox
     Friend WithEvents scheduled_reports As CheckBox
     Friend WithEvents activate_user As CheckBox
-    Friend WithEvents reset_passwords As CheckBox
+    Friend WithEvents edit_settings As CheckBox
     Friend WithEvents return_sales As CheckBox
     Friend WithEvents backup_database As CheckBox
     Friend WithEvents is_admin As CheckBox

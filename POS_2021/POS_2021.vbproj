@@ -195,6 +195,26 @@
     <Compile Include="inventory_list.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="loader.Designer.vb">
+      <DependentUpon>loader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="loader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loaderData.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>loaderData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="loaderData.vb">
+      <DependentUpon>loaderData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="loaderReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>loaderReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="menu_form.Designer.vb">
       <DependentUpon>menu_form.vb</DependentUpon>
     </Compile>
@@ -248,6 +268,12 @@
     <Compile Include="sale_form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="server_configuration.Designer.vb">
+      <DependentUpon>server_configuration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="server_configuration.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="settings.Designer.vb">
       <DependentUpon>settings.vb</DependentUpon>
     </Compile>
@@ -258,6 +284,12 @@
       <DependentUpon>sign_in.vb</DependentUpon>
     </Compile>
     <Compile Include="sign_in.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="splash1.Designer.vb">
+      <DependentUpon>splash1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="splash1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="temporary.Designer.vb">
@@ -313,6 +345,13 @@
     <EmbeddedResource Include="inventory_list.resx">
       <DependentUpon>inventory_list.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="loader.resx">
+      <DependentUpon>loader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loaderReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>loaderReport.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="menu_form.resx">
       <DependentUpon>menu_form.vb</DependentUpon>
     </EmbeddedResource>
@@ -337,11 +376,17 @@
     <EmbeddedResource Include="sale_form.resx">
       <DependentUpon>sale_form.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="server_configuration.resx">
+      <DependentUpon>server_configuration.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="settings.resx">
       <DependentUpon>settings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sign_in.resx">
       <DependentUpon>sign_in.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="splash1.resx">
+      <DependentUpon>splash1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="temporary.resx">
       <DependentUpon>temporary.vb</DependentUpon>
@@ -361,6 +406,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />
+    <None Include="loaderData.xsc">
+      <DependentUpon>loaderData.xsd</DependentUpon>
+    </None>
+    <None Include="loaderData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>loaderData.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="loaderData.xss">
+      <DependentUpon>loaderData.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -390,8 +446,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Curve-Loading.gif" />
+    <None Include="Resources\loading %281%29.gif" />
+    <None Include="Resources\loading-cargando.gif" />
+    <Content Include="Resources\loading.gif" />
+    <None Include="Resources\loading1.gif" />
+    <None Include="Resources\logo-removebg-preview.png" />
+    <None Include="Resources\the_logo.png" />
+    <None Include="Resources\logs.png" />
     <Content Include="sqls\POS_DATABASES.sql" />
     <Content Include="sqls\STORED PROCEDURE.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -60,8 +60,9 @@ Partial Class inventory_list
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1564, 726)
+        Me.Panel1.Size = New System.Drawing.Size(1028, 590)
         Me.Panel1.TabIndex = 0
         '
         'Panel3
@@ -69,9 +70,10 @@ Partial Class inventory_list
         Me.Panel3.Controls.Add(Me.Panel5)
         Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(0, 3)
+        Me.Panel3.Location = New System.Drawing.Point(0, 2)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1564, 723)
+        Me.Panel3.Size = New System.Drawing.Size(1028, 588)
         Me.Panel3.TabIndex = 1
         '
         'Panel5
@@ -79,9 +81,10 @@ Partial Class inventory_list
         Me.Panel5.Controls.Add(Me.Panel7)
         Me.Panel5.Controls.Add(Me.Panel6)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(0, 55)
+        Me.Panel5.Location = New System.Drawing.Point(0, 45)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1564, 668)
+        Me.Panel5.Size = New System.Drawing.Size(1028, 543)
         Me.Panel5.TabIndex = 2
         '
         'Panel7
@@ -90,8 +93,9 @@ Partial Class inventory_list
         Me.Panel7.Controls.Add(Me.list_grid)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel7.Location = New System.Drawing.Point(0, 1)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(1564, 667)
+        Me.Panel7.Size = New System.Drawing.Size(1028, 542)
         Me.Panel7.TabIndex = 2
         '
         'panel_Stock
@@ -102,9 +106,10 @@ Partial Class inventory_list
         Me.panel_Stock.Controls.Add(Me.Label3)
         Me.panel_Stock.Controls.Add(Me.Panel9)
         Me.panel_Stock.Controls.Add(Me.Label2)
-        Me.panel_Stock.Location = New System.Drawing.Point(621, 103)
+        Me.panel_Stock.Location = New System.Drawing.Point(466, 84)
+        Me.panel_Stock.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.panel_Stock.Name = "panel_Stock"
-        Me.panel_Stock.Size = New System.Drawing.Size(393, 196)
+        Me.panel_Stock.Size = New System.Drawing.Size(296, 160)
         Me.panel_Stock.TabIndex = 1
         Me.panel_Stock.Visible = False
         '
@@ -112,9 +117,10 @@ Partial Class inventory_list
         '
         Me.Save_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Save_button.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Save_button.Location = New System.Drawing.Point(103, 119)
+        Me.Save_button.Location = New System.Drawing.Point(77, 97)
+        Me.Save_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Save_button.Name = "Save_button"
-        Me.Save_button.Size = New System.Drawing.Size(184, 51)
+        Me.Save_button.Size = New System.Drawing.Size(138, 41)
         Me.Save_button.TabIndex = 4
         Me.Save_button.Text = "Update Quantity"
         Me.Save_button.UseVisualStyleBackColor = True
@@ -122,9 +128,10 @@ Partial Class inventory_list
         'quantity_box
         '
         Me.quantity_box.Font = New System.Drawing.Font("Tahoma", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.quantity_box.Location = New System.Drawing.Point(103, 66)
+        Me.quantity_box.Location = New System.Drawing.Point(77, 54)
+        Me.quantity_box.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.quantity_box.Name = "quantity_box"
-        Me.quantity_box.Size = New System.Drawing.Size(184, 47)
+        Me.quantity_box.Size = New System.Drawing.Size(139, 39)
         Me.quantity_box.TabIndex = 3
         Me.quantity_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -133,18 +140,20 @@ Partial Class inventory_list
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Label3.Location = New System.Drawing.Point(99, 42)
+        Me.Label3.Location = New System.Drawing.Point(74, 34)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(188, 21)
+        Me.Label3.Size = New System.Drawing.Size(155, 17)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Enter Ordered Stock:"
         '
         'Panel9
         '
         Me.Panel9.BackColor = System.Drawing.Color.OrangeRed
-        Me.Panel9.Location = New System.Drawing.Point(4, 32)
+        Me.Panel9.Location = New System.Drawing.Point(3, 26)
+        Me.Panel9.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(380, 2)
+        Me.Panel9.Size = New System.Drawing.Size(285, 2)
         Me.Panel9.TabIndex = 1
         '
         'Label2
@@ -152,9 +161,10 @@ Partial Class inventory_list
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Label2.Location = New System.Drawing.Point(17, 7)
+        Me.Label2.Location = New System.Drawing.Point(13, 6)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(345, 23)
+        Me.Label2.Size = New System.Drawing.Size(268, 18)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Update The Current Stock Quantity"
         '
@@ -165,10 +175,11 @@ Partial Class inventory_list
         Me.list_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.list_grid.Location = New System.Drawing.Point(0, 0)
+        Me.list_grid.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.list_grid.Name = "list_grid"
         Me.list_grid.RowHeadersWidth = 51
         Me.list_grid.RowTemplate.Height = 24
-        Me.list_grid.Size = New System.Drawing.Size(1564, 667)
+        Me.list_grid.Size = New System.Drawing.Size(1028, 542)
         Me.list_grid.TabIndex = 0
         '
         'Panel6
@@ -176,8 +187,9 @@ Partial Class inventory_list
         Me.Panel6.BackColor = System.Drawing.Color.Yellow
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1564, 1)
+        Me.Panel6.Size = New System.Drawing.Size(1028, 1)
         Me.Panel6.TabIndex = 1
         '
         'Panel4
@@ -193,22 +205,26 @@ Partial Class inventory_list
         Me.Panel4.Controls.Add(Me.Label1)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1564, 55)
+        Me.Panel4.Size = New System.Drawing.Size(1028, 45)
         Me.Panel4.TabIndex = 1
         '
         'update_product
         '
         Me.update_product.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.update_product.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.update_product.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.update_product.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.update_product.ForeColor = System.Drawing.Color.Blue
         Me.update_product.IconChar = FontAwesome.Sharp.IconChar.Edit
         Me.update_product.IconColor = System.Drawing.Color.Blue
         Me.update_product.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.update_product.IconSize = 30
-        Me.update_product.Location = New System.Drawing.Point(1279, 16)
+        Me.update_product.IconSize = 20
+        Me.update_product.Location = New System.Drawing.Point(814, 13)
+        Me.update_product.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.update_product.Name = "update_product"
-        Me.update_product.Size = New System.Drawing.Size(163, 31)
+        Me.update_product.Rotation = 0R
+        Me.update_product.Size = New System.Drawing.Size(122, 25)
         Me.update_product.TabIndex = 5
         Me.update_product.Text = "Update Product"
         Me.update_product.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -217,15 +233,18 @@ Partial Class inventory_list
         'Return_product
         '
         Me.Return_product.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Return_product.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Return_product.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.Return_product.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Return_product.ForeColor = System.Drawing.Color.Teal
         Me.Return_product.IconChar = FontAwesome.Sharp.IconChar.CheckCircle
         Me.Return_product.IconColor = System.Drawing.Color.Teal
         Me.Return_product.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.Return_product.IconSize = 30
-        Me.Return_product.Location = New System.Drawing.Point(1112, 16)
+        Me.Return_product.IconSize = 20
+        Me.Return_product.Location = New System.Drawing.Point(689, 13)
+        Me.Return_product.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Return_product.Name = "Return_product"
-        Me.Return_product.Size = New System.Drawing.Size(161, 31)
+        Me.Return_product.Rotation = 0R
+        Me.Return_product.Size = New System.Drawing.Size(121, 25)
         Me.Return_product.TabIndex = 5
         Me.Return_product.Text = "Return Product"
         Me.Return_product.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -234,15 +253,18 @@ Partial Class inventory_list
         'Write_off
         '
         Me.Write_off.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Write_off.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Write_off.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.Write_off.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Write_off.ForeColor = System.Drawing.Color.DarkRed
         Me.Write_off.IconChar = FontAwesome.Sharp.IconChar.TimesCircle
         Me.Write_off.IconColor = System.Drawing.Color.DarkRed
         Me.Write_off.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.Write_off.IconSize = 30
-        Me.Write_off.Location = New System.Drawing.Point(976, 16)
+        Me.Write_off.IconSize = 20
+        Me.Write_off.Location = New System.Drawing.Point(587, 13)
+        Me.Write_off.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Write_off.Name = "Write_off"
-        Me.Write_off.Size = New System.Drawing.Size(130, 31)
+        Me.Write_off.Rotation = 0R
+        Me.Write_off.Size = New System.Drawing.Size(98, 25)
         Me.Write_off.TabIndex = 7
         Me.Write_off.Text = "Write Off"
         Me.Write_off.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -251,15 +273,18 @@ Partial Class inventory_list
         'NewStock_button
         '
         Me.NewStock_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.NewStock_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NewStock_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.NewStock_button.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NewStock_button.ForeColor = System.Drawing.Color.MidnightBlue
         Me.NewStock_button.IconChar = FontAwesome.Sharp.IconChar.Plus
         Me.NewStock_button.IconColor = System.Drawing.Color.MidnightBlue
         Me.NewStock_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.NewStock_button.IconSize = 30
-        Me.NewStock_button.Location = New System.Drawing.Point(840, 16)
+        Me.NewStock_button.IconSize = 20
+        Me.NewStock_button.Location = New System.Drawing.Point(485, 13)
+        Me.NewStock_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.NewStock_button.Name = "NewStock_button"
-        Me.NewStock_button.Size = New System.Drawing.Size(130, 31)
+        Me.NewStock_button.Rotation = 0R
+        Me.NewStock_button.Size = New System.Drawing.Size(98, 25)
         Me.NewStock_button.TabIndex = 6
         Me.NewStock_button.Text = "New Stock"
         Me.NewStock_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -268,15 +293,18 @@ Partial Class inventory_list
         'Delete_button
         '
         Me.Delete_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Delete_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Delete_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.Delete_button.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Delete_button.ForeColor = System.Drawing.Color.Red
         Me.Delete_button.IconChar = FontAwesome.Sharp.IconChar.Trash
         Me.Delete_button.IconColor = System.Drawing.Color.Red
         Me.Delete_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.Delete_button.IconSize = 26
-        Me.Delete_button.Location = New System.Drawing.Point(724, 16)
+        Me.Delete_button.IconSize = 20
+        Me.Delete_button.Location = New System.Drawing.Point(398, 13)
+        Me.Delete_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Delete_button.Name = "Delete_button"
-        Me.Delete_button.Size = New System.Drawing.Size(110, 31)
+        Me.Delete_button.Rotation = 0R
+        Me.Delete_button.Size = New System.Drawing.Size(82, 25)
         Me.Delete_button.TabIndex = 5
         Me.Delete_button.Text = "Delete"
         Me.Delete_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -285,15 +313,18 @@ Partial Class inventory_list
         'search_button
         '
         Me.search_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.search_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.search_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.search_button.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.search_button.ForeColor = System.Drawing.Color.Indigo
         Me.search_button.IconChar = FontAwesome.Sharp.IconChar.SearchPlus
         Me.search_button.IconColor = System.Drawing.Color.Indigo
         Me.search_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.search_button.IconSize = 30
-        Me.search_button.Location = New System.Drawing.Point(608, 15)
+        Me.search_button.IconSize = 20
+        Me.search_button.Location = New System.Drawing.Point(311, 12)
+        Me.search_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.search_button.Name = "search_button"
-        Me.search_button.Size = New System.Drawing.Size(110, 31)
+        Me.search_button.Rotation = 0R
+        Me.search_button.Size = New System.Drawing.Size(82, 25)
         Me.search_button.TabIndex = 4
         Me.search_button.Text = "Search"
         Me.search_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -302,15 +333,18 @@ Partial Class inventory_list
         'Refresh_button
         '
         Me.Refresh_button.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Refresh_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Refresh_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.Refresh_button.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Refresh_button.ForeColor = System.Drawing.Color.DarkGreen
         Me.Refresh_button.IconChar = FontAwesome.Sharp.IconChar.Recycle
         Me.Refresh_button.IconColor = System.Drawing.Color.DarkGreen
         Me.Refresh_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.Refresh_button.IconSize = 30
-        Me.Refresh_button.Location = New System.Drawing.Point(1448, 16)
+        Me.Refresh_button.IconSize = 20
+        Me.Refresh_button.Location = New System.Drawing.Point(941, 13)
+        Me.Refresh_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Refresh_button.Name = "Refresh_button"
-        Me.Refresh_button.Size = New System.Drawing.Size(110, 31)
+        Me.Refresh_button.Rotation = 0R
+        Me.Refresh_button.Size = New System.Drawing.Size(82, 25)
         Me.Refresh_button.TabIndex = 3
         Me.Refresh_button.Text = "Refresh"
         Me.Refresh_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -322,9 +356,10 @@ Partial Class inventory_list
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SEARCH_BOX.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SEARCH_BOX.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.SEARCH_BOX.Location = New System.Drawing.Point(85, 16)
+        Me.SEARCH_BOX.Location = New System.Drawing.Point(64, 13)
+        Me.SEARCH_BOX.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.SEARCH_BOX.Name = "SEARCH_BOX"
-        Me.SEARCH_BOX.Size = New System.Drawing.Size(517, 29)
+        Me.SEARCH_BOX.Size = New System.Drawing.Size(244, 25)
         Me.SEARCH_BOX.TabIndex = 1
         '
         'Label1
@@ -332,9 +367,10 @@ Partial Class inventory_list
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.Label1.Location = New System.Drawing.Point(12, 19)
+        Me.Label1.Location = New System.Drawing.Point(9, 15)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 23)
+        Me.Label1.Size = New System.Drawing.Size(57, 18)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Search:"
         '
@@ -343,17 +379,19 @@ Partial Class inventory_list
         Me.Panel2.BackColor = System.Drawing.Color.Tomato
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1564, 3)
+        Me.Panel2.Size = New System.Drawing.Size(1028, 2)
         Me.Panel2.TabIndex = 0
         '
         'inventory_list
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1564, 726)
+        Me.ClientSize = New System.Drawing.Size(1028, 590)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "inventory_list"
         Me.Text = "INVENTORY LIST"
         Me.Panel1.ResumeLayout(False)
