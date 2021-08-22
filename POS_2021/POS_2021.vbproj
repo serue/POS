@@ -233,6 +233,12 @@
     <Compile Include="receipt_form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="returns.Designer.vb">
+      <DependentUpon>returns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="returns.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="sales.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +298,7 @@
     <Compile Include="splash1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="sqls\cancel_transaction_module.vb" />
     <Compile Include="temporary.Designer.vb">
       <DependentUpon>temporary.vb</DependentUpon>
     </Compile>
@@ -360,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="receipt_form.resx">
       <DependentUpon>receipt_form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="returns.resx">
+      <DependentUpon>returns.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sales.resx">
       <DependentUpon>sales.vb</DependentUpon>

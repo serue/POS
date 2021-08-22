@@ -6,7 +6,9 @@ Public Class loader
     Dim myPermissions As New ConnectionAndPermissions
     Private Sub loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '   Control.CheckForIllegalCrossThreadCalls = False
+        re_load.Enabled = False
         BackgroundWorker1.RunWorkerAsync()
+        re_load.Enabled = True
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
@@ -23,7 +25,9 @@ Public Class loader
         If BackgroundWorker1.IsBusy Then
             MsgBox("busy")
         Else
+            re_load.Enabled = False
             BackgroundWorker1.RunWorkerAsync()
+            re_load.Enabled = True
         End If
     End Sub
 

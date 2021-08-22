@@ -60,7 +60,7 @@ Partial Class inventory_list
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1028, 590)
         Me.Panel1.TabIndex = 0
@@ -71,7 +71,7 @@ Partial Class inventory_list
         Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 2)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1028, 588)
         Me.Panel3.TabIndex = 1
@@ -82,7 +82,7 @@ Partial Class inventory_list
         Me.Panel5.Controls.Add(Me.Panel6)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 45)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(1028, 543)
         Me.Panel5.TabIndex = 2
@@ -93,7 +93,7 @@ Partial Class inventory_list
         Me.Panel7.Controls.Add(Me.list_grid)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel7.Location = New System.Drawing.Point(0, 1)
-        Me.Panel7.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(1028, 542)
         Me.Panel7.TabIndex = 2
@@ -106,8 +106,8 @@ Partial Class inventory_list
         Me.panel_Stock.Controls.Add(Me.Label3)
         Me.panel_Stock.Controls.Add(Me.Panel9)
         Me.panel_Stock.Controls.Add(Me.Label2)
-        Me.panel_Stock.Location = New System.Drawing.Point(466, 84)
-        Me.panel_Stock.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.panel_Stock.Location = New System.Drawing.Point(390, 84)
+        Me.panel_Stock.Margin = New System.Windows.Forms.Padding(2)
         Me.panel_Stock.Name = "panel_Stock"
         Me.panel_Stock.Size = New System.Drawing.Size(296, 160)
         Me.panel_Stock.TabIndex = 1
@@ -118,7 +118,7 @@ Partial Class inventory_list
         Me.Save_button.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Save_button.ForeColor = System.Drawing.Color.SaddleBrown
         Me.Save_button.Location = New System.Drawing.Point(77, 97)
-        Me.Save_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Save_button.Margin = New System.Windows.Forms.Padding(2)
         Me.Save_button.Name = "Save_button"
         Me.Save_button.Size = New System.Drawing.Size(138, 41)
         Me.Save_button.TabIndex = 4
@@ -129,7 +129,7 @@ Partial Class inventory_list
         '
         Me.quantity_box.Font = New System.Drawing.Font("Tahoma", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.quantity_box.Location = New System.Drawing.Point(77, 54)
-        Me.quantity_box.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.quantity_box.Margin = New System.Windows.Forms.Padding(2)
         Me.quantity_box.Name = "quantity_box"
         Me.quantity_box.Size = New System.Drawing.Size(139, 39)
         Me.quantity_box.TabIndex = 3
@@ -151,7 +151,7 @@ Partial Class inventory_list
         '
         Me.Panel9.BackColor = System.Drawing.Color.OrangeRed
         Me.Panel9.Location = New System.Drawing.Point(3, 26)
-        Me.Panel9.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel9.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(285, 2)
         Me.Panel9.TabIndex = 1
@@ -175,7 +175,7 @@ Partial Class inventory_list
         Me.list_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.list_grid.Location = New System.Drawing.Point(0, 0)
-        Me.list_grid.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.list_grid.Margin = New System.Windows.Forms.Padding(2)
         Me.list_grid.Name = "list_grid"
         Me.list_grid.RowHeadersWidth = 51
         Me.list_grid.RowTemplate.Height = 24
@@ -187,7 +187,7 @@ Partial Class inventory_list
         Me.Panel6.BackColor = System.Drawing.Color.Yellow
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
-        Me.Panel6.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(1028, 1)
         Me.Panel6.TabIndex = 1
@@ -205,7 +205,7 @@ Partial Class inventory_list
         Me.Panel4.Controls.Add(Me.Label1)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(1028, 45)
         Me.Panel4.TabIndex = 1
@@ -221,7 +221,7 @@ Partial Class inventory_list
         Me.update_product.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.update_product.IconSize = 20
         Me.update_product.Location = New System.Drawing.Point(814, 13)
-        Me.update_product.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.update_product.Margin = New System.Windows.Forms.Padding(2)
         Me.update_product.Name = "update_product"
         Me.update_product.Rotation = 0R
         Me.update_product.Size = New System.Drawing.Size(122, 25)
@@ -241,7 +241,7 @@ Partial Class inventory_list
         Me.Return_product.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.Return_product.IconSize = 20
         Me.Return_product.Location = New System.Drawing.Point(689, 13)
-        Me.Return_product.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Return_product.Margin = New System.Windows.Forms.Padding(2)
         Me.Return_product.Name = "Return_product"
         Me.Return_product.Rotation = 0R
         Me.Return_product.Size = New System.Drawing.Size(121, 25)
@@ -261,7 +261,7 @@ Partial Class inventory_list
         Me.Write_off.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.Write_off.IconSize = 20
         Me.Write_off.Location = New System.Drawing.Point(587, 13)
-        Me.Write_off.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Write_off.Margin = New System.Windows.Forms.Padding(2)
         Me.Write_off.Name = "Write_off"
         Me.Write_off.Rotation = 0R
         Me.Write_off.Size = New System.Drawing.Size(98, 25)
@@ -281,7 +281,7 @@ Partial Class inventory_list
         Me.NewStock_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.NewStock_button.IconSize = 20
         Me.NewStock_button.Location = New System.Drawing.Point(485, 13)
-        Me.NewStock_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.NewStock_button.Margin = New System.Windows.Forms.Padding(2)
         Me.NewStock_button.Name = "NewStock_button"
         Me.NewStock_button.Rotation = 0R
         Me.NewStock_button.Size = New System.Drawing.Size(98, 25)
@@ -301,7 +301,7 @@ Partial Class inventory_list
         Me.Delete_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.Delete_button.IconSize = 20
         Me.Delete_button.Location = New System.Drawing.Point(398, 13)
-        Me.Delete_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Delete_button.Margin = New System.Windows.Forms.Padding(2)
         Me.Delete_button.Name = "Delete_button"
         Me.Delete_button.Rotation = 0R
         Me.Delete_button.Size = New System.Drawing.Size(82, 25)
@@ -321,7 +321,7 @@ Partial Class inventory_list
         Me.search_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.search_button.IconSize = 20
         Me.search_button.Location = New System.Drawing.Point(311, 12)
-        Me.search_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.search_button.Margin = New System.Windows.Forms.Padding(2)
         Me.search_button.Name = "search_button"
         Me.search_button.Rotation = 0R
         Me.search_button.Size = New System.Drawing.Size(82, 25)
@@ -341,7 +341,7 @@ Partial Class inventory_list
         Me.Refresh_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.Refresh_button.IconSize = 20
         Me.Refresh_button.Location = New System.Drawing.Point(941, 13)
-        Me.Refresh_button.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Refresh_button.Margin = New System.Windows.Forms.Padding(2)
         Me.Refresh_button.Name = "Refresh_button"
         Me.Refresh_button.Rotation = 0R
         Me.Refresh_button.Size = New System.Drawing.Size(82, 25)
@@ -357,7 +357,7 @@ Partial Class inventory_list
         Me.SEARCH_BOX.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SEARCH_BOX.ForeColor = System.Drawing.Color.SaddleBrown
         Me.SEARCH_BOX.Location = New System.Drawing.Point(64, 13)
-        Me.SEARCH_BOX.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SEARCH_BOX.Margin = New System.Windows.Forms.Padding(2)
         Me.SEARCH_BOX.Name = "SEARCH_BOX"
         Me.SEARCH_BOX.Size = New System.Drawing.Size(244, 25)
         Me.SEARCH_BOX.TabIndex = 1
@@ -379,7 +379,7 @@ Partial Class inventory_list
         Me.Panel2.BackColor = System.Drawing.Color.Tomato
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1028, 2)
         Me.Panel2.TabIndex = 0
@@ -391,7 +391,7 @@ Partial Class inventory_list
         Me.ClientSize = New System.Drawing.Size(1028, 590)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "inventory_list"
         Me.Text = "INVENTORY LIST"
         Me.Panel1.ResumeLayout(False)

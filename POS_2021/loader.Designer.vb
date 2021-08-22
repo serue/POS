@@ -32,7 +32,6 @@ Partial Class loader
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.re_load = New System.Windows.Forms.Button()
-        Me.close_application = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         CType(Me.loadingPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,7 +100,7 @@ Partial Class loader
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.SlateBlue
-        Me.Label2.Location = New System.Drawing.Point(97, 95)
+        Me.Label2.Location = New System.Drawing.Point(97, 144)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(90, 20)
         Me.Label2.TabIndex = 6
@@ -112,7 +111,7 @@ Partial Class loader
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Indigo
-        Me.Label3.Location = New System.Drawing.Point(40, 130)
+        Me.Label3.Location = New System.Drawing.Point(36, 179)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(227, 21)
         Me.Label3.TabIndex = 7
@@ -131,6 +130,7 @@ Partial Class loader
         '
         're_load
         '
+        Me.re_load.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.re_load.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.re_load.ForeColor = System.Drawing.Color.Indigo
         Me.re_load.Location = New System.Drawing.Point(212, 334)
@@ -140,22 +140,11 @@ Partial Class loader
         Me.re_load.Text = "Re load"
         Me.re_load.UseVisualStyleBackColor = True
         '
-        'close_application
-        '
-        Me.close_application.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.close_application.ForeColor = System.Drawing.Color.Indigo
-        Me.close_application.Location = New System.Drawing.Point(86, 334)
-        Me.close_application.Name = "close_application"
-        Me.close_application.Size = New System.Drawing.Size(120, 25)
-        Me.close_application.TabIndex = 10
-        Me.close_application.Text = "Close Application"
-        Me.close_application.UseVisualStyleBackColor = True
-        '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.loadingPic)
-        Me.Panel2.Location = New System.Drawing.Point(44, 187)
+        Me.Panel2.Location = New System.Drawing.Point(44, 236)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(200, 68)
         Me.Panel2.TabIndex = 11
@@ -169,7 +158,6 @@ Partial Class loader
         Me.ClientSize = New System.Drawing.Size(299, 364)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.CrystalReportViewer1)
-        Me.Controls.Add(Me.close_application)
         Me.Controls.Add(Me.re_load)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -201,6 +189,5 @@ Partial Class loader
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents re_load As Button
-    Friend WithEvents close_application As Button
     Friend WithEvents Panel2 As Panel
 End Class

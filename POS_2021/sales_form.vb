@@ -214,14 +214,14 @@ Public Class sales_form
                             list_grid.Rows.Item(rNum).Cells(2).Value = table1(0)(1)
                             list_grid.Rows.Item(rNum).Cells(3).Value = table1(0)(2)
                             list_grid.Rows.Item(rNum).Cells(4).Value = table1(0)(3)
-                            list_grid.Rows.Item(rNum).Cells(5).Value = (CDec(table1(0)(3)) * CDec(table1(0)(2))).ToString("###,###,###.00")
+                            list_grid.Rows.Item(rNum).Cells(5).Value = Math.Round(CDec(table1(0)(3)) * CDec(table1(0)(2)), 2)
                         End If
                         totalsum = 0
                         For row As Integer = 0 To list_grid.Rows.Count - 1
                             totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
                         Next
-                        cost_label.Text = CDec(table1(0)(3)).ToString(" ###,###,###.00")
-                        total_label.Text = totalsum.ToString(" ###,###,###.00")
+                        cost_label.Text = Math.Round(CDec(table1(0)(3)), 2)
+                        total_label.Text = Math.Round(totalsum, 2)
 
                         If isButchery Then
                             AmtPanel.Visible = True
@@ -269,7 +269,7 @@ Public Class sales_form
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
                     TAX = table(0)(0) * total_label.Text
-                    TAX = TAX.ToString(" ###,###,###.00")
+                    TAX = Math.Round(TAX, 2)
                 Else
                     MessageBox.Show("There is no VAT set for the organisation", "Retrieving VAT", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If

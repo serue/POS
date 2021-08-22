@@ -66,6 +66,7 @@ Public Class inventory_list
 
     Private Sub NewStock_button_Click(sender As Object, e As EventArgs) Handles NewStock_button.Click
         panel_Stock.Visible = True
+        quantity_box.Focus()
     End Sub
 
     Private Sub Save_button_Click(sender As Object, e As EventArgs) Handles Save_button.Click
@@ -234,6 +235,14 @@ Public Class inventory_list
             If ((Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57)) And Asc(e.KeyChar) <> 8 And Asc(e.KeyChar) <> 46 Then
                 MessageBox.Show("Only numbers are allowed", "Numbers only")
             End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub list_grid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles list_grid.CellClick
+        Try
+            SEARCH_BOX.Text = list_grid.CurrentRow.Cells(0).Value
         Catch ex As Exception
 
         End Try
