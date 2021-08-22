@@ -65,6 +65,8 @@ Module cancel_transaction_module
                         End Using
                         transaction.Commit()
                     Next
+                Else
+                    MessageBox.Show("There is no transactio with this receipt number, please  check the receipt number and proceed,", "Invalid Receipt", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If
             End Using
             MessageBox.Show("Transaction was Cancelled succesfully", "Cancelling Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information)

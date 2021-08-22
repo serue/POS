@@ -169,6 +169,12 @@
     <Compile Include="calculator.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="cancel_transaction_form.Designer.vb">
+      <DependentUpon>cancel_transaction_form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cancel_transaction_form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="categories.Designer.vb">
       <DependentUpon>categories.vb</DependentUpon>
     </Compile>
@@ -298,7 +304,7 @@
     <Compile Include="splash1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="sqls\cancel_transaction_module.vb" />
+    <Compile Include="cancel_transaction_module.vb" />
     <Compile Include="temporary.Designer.vb">
       <DependentUpon>temporary.vb</DependentUpon>
     </Compile>
@@ -309,6 +315,12 @@
       <DependentUpon>test.vb</DependentUpon>
     </Compile>
     <Compile Include="test.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transaction_log.Designer.vb">
+      <DependentUpon>transaction_log.vb</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_log.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="update_user_accounts.Designer.vb">
@@ -339,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="calculator.resx">
       <DependentUpon>calculator.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cancel_transaction_form.resx">
+      <DependentUpon>cancel_transaction_form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="categories.resx">
       <DependentUpon>categories.vb</DependentUpon>
@@ -403,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="transaction_log.resx">
+      <DependentUpon>transaction_log.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="update_user_accounts.resx">
       <DependentUpon>update_user_accounts.vb</DependentUpon>

@@ -76,4 +76,11 @@ Public Class returns
     Private Sub clear_button_Click(sender As Object, e As EventArgs) Handles clear_button.Click
 
     End Sub
+
+    Private Sub returns_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("Are you sure you want to cancel sales returns", "cancel Returns", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        Else
+            e.Cancel = True
+        End If
+    End Sub
 End Class
