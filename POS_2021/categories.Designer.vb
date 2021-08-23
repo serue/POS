@@ -30,14 +30,14 @@ Partial Class categories
         Me.edit_details = New FontAwesome.Sharp.IconButton()
         Me.clear_button = New FontAwesome.Sharp.IconButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cmb_category = New MetroFramework.Controls.MetroComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cmb_SubCategory3 = New MetroFramework.Controls.MetroComboBox()
-        Me.cmb_subcategory2 = New MetroFramework.Controls.MetroComboBox()
         Me.cmb_subCategory1 = New MetroFramework.Controls.MetroComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.cmb_category = New System.Windows.Forms.ComboBox()
+        Me.cmb_subcategory2 = New System.Windows.Forms.ComboBox()
+        Me.cmb_subcategory3 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -171,20 +171,9 @@ Partial Class categories
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Mandatory Main Categories"
         '
-        'cmb_category
-        '
-        Me.cmb_category.FormattingEnabled = True
-        Me.cmb_category.ItemHeight = 23
-        Me.cmb_category.Location = New System.Drawing.Point(161, 42)
-        Me.cmb_category.Name = "cmb_category"
-        Me.cmb_category.PromptText = "Enter New Category"
-        Me.cmb_category.Size = New System.Drawing.Size(322, 29)
-        Me.cmb_category.TabIndex = 29
-        Me.cmb_category.UseSelectable = True
-        '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.cmb_SubCategory3)
+        Me.GroupBox2.Controls.Add(Me.cmb_subcategory3)
         Me.GroupBox2.Controls.Add(Me.cmb_subcategory2)
         Me.GroupBox2.Controls.Add(Me.clear_button)
         Me.GroupBox2.Controls.Add(Me.cmb_subCategory1)
@@ -202,32 +191,11 @@ Partial Class categories
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Optional Sub Categories"
         '
-        'cmb_SubCategory3
-        '
-        Me.cmb_SubCategory3.FormattingEnabled = True
-        Me.cmb_SubCategory3.ItemHeight = 23
-        Me.cmb_SubCategory3.Location = New System.Drawing.Point(156, 114)
-        Me.cmb_SubCategory3.Name = "cmb_SubCategory3"
-        Me.cmb_SubCategory3.PromptText = "Enter  New Category"
-        Me.cmb_SubCategory3.Size = New System.Drawing.Size(322, 29)
-        Me.cmb_SubCategory3.TabIndex = 5
-        Me.cmb_SubCategory3.UseSelectable = True
-        '
-        'cmb_subcategory2
-        '
-        Me.cmb_subcategory2.FormattingEnabled = True
-        Me.cmb_subcategory2.ItemHeight = 23
-        Me.cmb_subcategory2.Location = New System.Drawing.Point(158, 72)
-        Me.cmb_subcategory2.Name = "cmb_subcategory2"
-        Me.cmb_subcategory2.PromptText = "Enter  New Category"
-        Me.cmb_subcategory2.Size = New System.Drawing.Size(322, 29)
-        Me.cmb_subcategory2.TabIndex = 4
-        Me.cmb_subcategory2.UseSelectable = True
-        '
         'cmb_subCategory1
         '
         Me.cmb_subCategory1.FormattingEnabled = True
         Me.cmb_subCategory1.ItemHeight = 23
+        Me.cmb_subCategory1.Items.AddRange(New Object() {"weighed"})
         Me.cmb_subCategory1.Location = New System.Drawing.Point(158, 32)
         Me.cmb_subCategory1.Name = "cmb_subCategory1"
         Me.cmb_subCategory1.PromptText = "Enter  New Category"
@@ -258,9 +226,33 @@ Partial Class categories
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(15, 37)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(101, 17)
+        Me.Label3.Size = New System.Drawing.Size(119, 17)
         Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Sub Category 1:"
+        Me.Label3.Text = "Weighed Category:"
+        '
+        'cmb_category
+        '
+        Me.cmb_category.FormattingEnabled = True
+        Me.cmb_category.Location = New System.Drawing.Point(161, 39)
+        Me.cmb_category.Name = "cmb_category"
+        Me.cmb_category.Size = New System.Drawing.Size(320, 25)
+        Me.cmb_category.TabIndex = 5
+        '
+        'cmb_subcategory2
+        '
+        Me.cmb_subcategory2.FormattingEnabled = True
+        Me.cmb_subcategory2.Location = New System.Drawing.Point(158, 73)
+        Me.cmb_subcategory2.Name = "cmb_subcategory2"
+        Me.cmb_subcategory2.Size = New System.Drawing.Size(322, 25)
+        Me.cmb_subcategory2.TabIndex = 28
+        '
+        'cmb_subcategory3
+        '
+        Me.cmb_subcategory3.FormattingEnabled = True
+        Me.cmb_subcategory3.Location = New System.Drawing.Point(158, 117)
+        Me.cmb_subcategory3.Name = "cmb_subcategory3"
+        Me.cmb_subcategory3.Size = New System.Drawing.Size(320, 25)
+        Me.cmb_subcategory3.TabIndex = 29
         '
         'categories
         '
@@ -294,12 +286,12 @@ Partial Class categories
     Friend WithEvents edit_details As FontAwesome.Sharp.IconButton
     Friend WithEvents clear_button As FontAwesome.Sharp.IconButton
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents cmb_category As MetroFramework.Controls.MetroComboBox
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents cmb_SubCategory3 As MetroFramework.Controls.MetroComboBox
-    Friend WithEvents cmb_subcategory2 As MetroFramework.Controls.MetroComboBox
     Friend WithEvents cmb_subCategory1 As MetroFramework.Controls.MetroComboBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents cmb_category As ComboBox
+    Friend WithEvents cmb_subcategory2 As ComboBox
+    Friend WithEvents cmb_subcategory3 As ComboBox
 End Class

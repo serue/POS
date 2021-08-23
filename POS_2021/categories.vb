@@ -116,7 +116,7 @@ Public Class categories
             MessageBox.Show(ex.Message, "The following error occured while getting the category ID", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub cmb_category_Click(sender As Object, e As EventArgs) Handles cmb_category.Click
+    Private Sub cmb_category_Click(sender As Object, e As EventArgs)
         loadCategories()
     End Sub
 

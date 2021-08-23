@@ -33,7 +33,7 @@ Partial Class Permissions
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.backup_database = New System.Windows.Forms.CheckBox()
         Me.is_admin = New System.Windows.Forms.CheckBox()
-        Me.activate_user = New System.Windows.Forms.CheckBox()
+        Me.activate_users = New System.Windows.Forms.CheckBox()
         Me.edit_settings = New System.Windows.Forms.CheckBox()
         Me.register_users = New System.Windows.Forms.CheckBox()
         Me.update_users = New System.Windows.Forms.CheckBox()
@@ -83,9 +83,8 @@ Partial Class Permissions
         '
         Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Button2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button2.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Olive
         Me.Button2.Location = New System.Drawing.Point(672, 567)
         Me.Button2.Margin = New System.Windows.Forms.Padding(2)
@@ -99,9 +98,8 @@ Partial Class Permissions
         '
         Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Button1.BackColor = System.Drawing.Color.Gainsboro
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button1.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.Olive
         Me.Button1.Location = New System.Drawing.Point(379, 567)
         Me.Button1.Margin = New System.Windows.Forms.Padding(2)
@@ -172,7 +170,7 @@ Partial Class Permissions
         Me.GroupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.GroupBox3.Controls.Add(Me.backup_database)
         Me.GroupBox3.Controls.Add(Me.is_admin)
-        Me.GroupBox3.Controls.Add(Me.activate_user)
+        Me.GroupBox3.Controls.Add(Me.activate_users)
         Me.GroupBox3.Controls.Add(Me.edit_settings)
         Me.GroupBox3.Controls.Add(Me.register_users)
         Me.GroupBox3.Controls.Add(Me.update_users)
@@ -206,15 +204,15 @@ Partial Class Permissions
         Me.is_admin.Text = "Is Admin"
         Me.is_admin.UseVisualStyleBackColor = True
         '
-        'activate_user
+        'activate_users
         '
-        Me.activate_user.AutoSize = True
-        Me.activate_user.Location = New System.Drawing.Point(49, 139)
-        Me.activate_user.Name = "activate_user"
-        Me.activate_user.Size = New System.Drawing.Size(195, 21)
-        Me.activate_user.TabIndex = 7
-        Me.activate_user.Text = "Activate/Deactivate Users"
-        Me.activate_user.UseVisualStyleBackColor = True
+        Me.activate_users.AutoSize = True
+        Me.activate_users.Location = New System.Drawing.Point(49, 139)
+        Me.activate_users.Name = "activate_users"
+        Me.activate_users.Size = New System.Drawing.Size(195, 21)
+        Me.activate_users.TabIndex = 7
+        Me.activate_users.Text = "Activate/Deactivate Users"
+        Me.activate_users.UseVisualStyleBackColor = True
         '
         'edit_settings
         '
@@ -479,7 +477,7 @@ Partial Class Permissions
     Friend WithEvents transaction_logs As CheckBox
     Friend WithEvents dayEnd_reports As CheckBox
     Friend WithEvents scheduled_reports As CheckBox
-    Friend WithEvents activate_user As CheckBox
+    Friend WithEvents activate_users As CheckBox
     Friend WithEvents edit_settings As CheckBox
     Friend WithEvents return_sales As CheckBox
     Friend WithEvents backup_database As CheckBox

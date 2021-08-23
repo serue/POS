@@ -5,7 +5,7 @@ Imports System.Text
 Public Class ConnectionAndPermissions
     Private connection As SqlConnection = New SqlConnection("Data Source=192.168.43.223,1433;Network Library=DBMSSOCN;Initial Catalog=POS_DATABASE;User ID=sa;Password=2556b11j;")
     Dim con As New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
-
+    Dim connect As New SqlConnection("Data Source=DESKTOP-SS9FC2T\SQLEXPRESS; Initial Catalog=POS_DATABASE; Integrated Security=True;")
 
     ' password harshing using md5
 
@@ -50,24 +50,35 @@ Public Class ConnectionAndPermissions
                 adapter.Fill(table)
 
                 If table.Rows.Count > 0 Then
-                    Using CM As New SqlCommand("SELECT * FROM ACCOUNTS WHERE STATUS='1'", connection)
-                        Dim reader As SqlDataReader = CM.ExecuteReader
-                        If reader.HasRows Then
-                            Using permissionsCommand As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSSION='is_admin' AND STATUS='1'", connection)
+                    Using UserCommand As New SqlCommand("SELECT NAME FROM USERS WHERE EMP_ID=@EMP_ID", conn)
+                        UserCommand.Parameters.Add("@EMP_ID", SqlDbType.VarChar).Value = table(0)(0)
+                        adapter = New SqlDataAdapter(UserCommand)
+                        table = New DataTable
+                        adapter.Fill(table)
+                        Full_name = table(0)(0)
+                    End Using
+                    Using CM As New SqlCommand("SELECT * FROM ACCOUNTS WHERE STATUS='1'", conn)
+                        Dim reader As New SqlDataAdapter(CM)
+                        Dim AccTable As New DataTable
+                        reader.Fill(AccTable)
+                        If AccTable.Rows.Count > 0 Then
+                            Using permissionsCommand As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION='is_admin' AND STATUS='1'", conn)
                                 With permissionsCommand.Parameters
                                     .Add("@USERNAME", SqlDbType.VarChar).Value = username
                                 End With
-                                Dim permissionReader As SqlDataReader = permissionsCommand.ExecuteReader()
-                                If permissionReader.HasRows Then
+                                Dim permissionAdapter As New SqlDataAdapter(permissionsCommand)
+                                Dim permissionsTable As New DataTable
+                                permissionAdapter.Fill(permissionsTable)
+                                If permissionsTable.Rows.Count Then
                                     Using cmd As New SqlCommand("SELECT * FROM COMPANY", conn)
                                         Dim COMPANYTABLE As New DataTable
                                         Dim ADAPTER1 As New SqlDataAdapter(cmd)
                                         ADAPTER1.Fill(COMPANYTABLE)
                                         If COMPANYTABLE.Rows.Count > 0 Then
-                                            Full_name = table(0)(0)
-                                            sales_form.ActiveUser = Full_name
-                                            sales_form.ActiveUsername = username
-                                            sales_form.Show()
+                                            '
+                                            menu_form.ActiveUser = Full_name
+                                            menu_form.ActiveUsername = username
+                                            menu_form.Show()
                                             sign_in.Close()
                                         Else
                                             MessageBox.Show("Some critical settings has not been done, user is taken to set it up now", "Setting Pop up", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -99,7 +110,7 @@ Public Class ConnectionAndPermissions
             conn.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-
+            MessageBox.Show(ex.StackTrace)
             conn.Close()
         End Try
     End Sub
@@ -107,7 +118,7 @@ Public Class ConnectionAndPermissions
 
 
     Public Function getConnection() As SqlConnection
-        Return con
+        Return connect
     End Function
     Public Sub savePermissions(user As String, employee As String, permission As String, status As Integer, conString As SqlConnection, trans As SqlTransaction)
         Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,EMP_ID,PERMISSION,STATUS) values(@user,@EMP_ID,@permission,@status)", conString)

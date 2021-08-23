@@ -183,7 +183,7 @@ Public Class sales_form
                 End If
 
             End Using
-            Using command As New SqlCommand("SELECT BARCODE,NAME,SALE_QTY,PRICE,QUANTITY,CATEGORY FROM INVENTORY WHERE BARCODE=@id", connection)
+            Using command As New SqlCommand("SELECT BARCODE,NAME,SALE_QTY,PRICE,QUANTITY,CATEGORY,SUB_CATEGORY1 FROM INVENTORY WHERE BARCODE=@id", connection)
                 command.Parameters.Add("@id", SqlDbType.VarChar).Value = barcode_textbox.Text
                 Dim ada As New SqlDataAdapter(command)
                 Dim table1 As New DataTable
@@ -191,7 +191,7 @@ Public Class sales_form
                 If table1.Rows.Count > 0 Then
                     remainingStock = table1(0)(0)
                     Dim qua As Integer = table1(0)(4)
-                    If table1(0)(5) = "butchery".ToUpper Then
+                    If table1(0)(5) = "weighed".ToUpper Then
                         isButchery = True
                     End If
 
@@ -1371,9 +1371,15 @@ Public Class sales_form
                 Dim currencyTable As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(currencyTable)
-                CurrencyRate = currencyTable(0)(0)
-                Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
-                total_label.Text = temporaryValue
+                If table1.Rows.Count > 0 Then
+                    CurrencyRate = currencyTable(0)(0)
+                    Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
+                    total_label.Text = temporaryValue
+                Else
+                    MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    connection.Close()
+                    Exit Sub
+                End If
             End Using
             connection.Close()
         Catch ex As Exception
@@ -1403,9 +1409,15 @@ Public Class sales_form
                     Dim currencyTable As New DataTable
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(currencyTable)
-                    CurrencyRate = currencyTable(0)(0)
-                    Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
-                    total_label.Text = temporaryValue
+                    If currencyTable.Rows.Count > 0 Then
+                        CurrencyRate = currencyTable(0)(0)
+                        Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
+                        total_label.Text = temporaryValue
+                    Else
+                        MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        connection.Close()
+                        Exit Sub
+                    End If
                 End Using
                 connection.Close()
             Catch ex As Exception
