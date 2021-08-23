@@ -31,31 +31,41 @@ Partial Class Add_inventory
         Me.list_grid = New System.Windows.Forms.DataGridView()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.quantity_textbox = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.sale_qty_textbox = New System.Windows.Forms.TextBox()
+        Me.selling_textbox = New System.Windows.Forms.TextBox()
+        Me.re_order_textbox = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cost_textbox = New System.Windows.Forms.TextBox()
+        Me.margin_textbox = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.SubCategory_combo3 = New MetroFramework.Controls.MetroComboBox()
+        Me.subCategory_combo2 = New MetroFramework.Controls.MetroComboBox()
+        Me.subCategory_combo1 = New MetroFramework.Controls.MetroComboBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.category_combo = New MetroFramework.Controls.MetroComboBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.sku_textbox = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.name_textbox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.vendorCode_textbox = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.barcode_textbox = New System.Windows.Forms.TextBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.SEARCH_BOX = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.name_textbox = New System.Windows.Forms.TextBox()
-        Me.vendorCode_textbox = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.sku_textbox = New System.Windows.Forms.TextBox()
-        Me.quantity_textbox = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.cost_textbox = New System.Windows.Forms.TextBox()
-        Me.re_order_textbox = New System.Windows.Forms.TextBox()
-        Me.margin_textbox = New System.Windows.Forms.TextBox()
-        Me.barcode_textbox = New System.Windows.Forms.TextBox()
-        Me.selling_textbox = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.sale_qty_textbox = New System.Windows.Forms.TextBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Delete_button = New FontAwesome.Sharp.IconButton()
         Me.clear_button = New FontAwesome.Sharp.IconButton()
@@ -66,26 +76,16 @@ Partial Class Add_inventory
         Me.save_item = New FontAwesome.Sharp.IconButton()
         Me.edit_details = New FontAwesome.Sharp.IconButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.category_combo = New MetroFramework.Controls.MetroComboBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.subCategory_combo1 = New MetroFramework.Controls.MetroComboBox()
-        Me.subCategory_combo2 = New MetroFramework.Controls.MetroComboBox()
-        Me.SubCategory_combo3 = New MetroFramework.Controls.MetroComboBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Panel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.Panel5.SuspendLayout()
-        Me.Panel7.SuspendLayout()
-        Me.Panel4.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
+        Me.Panel7.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -187,6 +187,368 @@ Partial Class Add_inventory
         Me.Panel5.Size = New System.Drawing.Size(856, 297)
         Me.Panel5.TabIndex = 24
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label4)
+        Me.GroupBox3.Controls.Add(Me.quantity_textbox)
+        Me.GroupBox3.Controls.Add(Me.Label5)
+        Me.GroupBox3.Controls.Add(Me.Label9)
+        Me.GroupBox3.Controls.Add(Me.Label8)
+        Me.GroupBox3.Controls.Add(Me.sale_qty_textbox)
+        Me.GroupBox3.Controls.Add(Me.selling_textbox)
+        Me.GroupBox3.Controls.Add(Me.re_order_textbox)
+        Me.GroupBox3.Controls.Add(Me.Label7)
+        Me.GroupBox3.Controls.Add(Me.cost_textbox)
+        Me.GroupBox3.Controls.Add(Me.margin_textbox)
+        Me.GroupBox3.Controls.Add(Me.Label6)
+        Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.ForeColor = System.Drawing.Color.Maroon
+        Me.GroupBox3.Location = New System.Drawing.Point(4, 164)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(840, 88)
+        Me.GroupBox3.TabIndex = 2
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Price and Quantity"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Maroon
+        Me.Label4.Location = New System.Drawing.Point(29, 28)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(72, 17)
+        Me.Label4.TabIndex = 12
+        Me.Label4.Text = "QUANTITY:"
+        '
+        'quantity_textbox
+        '
+        Me.quantity_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.quantity_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.quantity_textbox.Location = New System.Drawing.Point(116, 20)
+        Me.quantity_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.quantity_textbox.Name = "quantity_textbox"
+        Me.quantity_textbox.Size = New System.Drawing.Size(136, 30)
+        Me.quantity_textbox.TabIndex = 7
+        Me.quantity_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Maroon
+        Me.Label5.Location = New System.Drawing.Point(271, 27)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(100, 17)
+        Me.Label5.TabIndex = 13
+        Me.Label5.Text = "Minimum Stock:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.Maroon
+        Me.Label9.Location = New System.Drawing.Point(558, 58)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(59, 17)
+        Me.Label9.TabIndex = 17
+        Me.Label9.Text = "Sale Qty:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Maroon
+        Me.Label8.Location = New System.Drawing.Point(273, 57)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(96, 17)
+        Me.Label8.TabIndex = 16
+        Me.Label8.Text = "SELLING PRICE:"
+        '
+        'sale_qty_textbox
+        '
+        Me.sale_qty_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sale_qty_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.sale_qty_textbox.Location = New System.Drawing.Point(642, 51)
+        Me.sale_qty_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.sale_qty_textbox.Name = "sale_qty_textbox"
+        Me.sale_qty_textbox.Size = New System.Drawing.Size(136, 30)
+        Me.sale_qty_textbox.TabIndex = 18
+        Me.sale_qty_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'selling_textbox
+        '
+        Me.selling_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.selling_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.selling_textbox.Location = New System.Drawing.Point(379, 52)
+        Me.selling_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.selling_textbox.Name = "selling_textbox"
+        Me.selling_textbox.Size = New System.Drawing.Size(136, 30)
+        Me.selling_textbox.TabIndex = 11
+        Me.selling_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        're_order_textbox
+        '
+        Me.re_order_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.re_order_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.re_order_textbox.Location = New System.Drawing.Point(378, 18)
+        Me.re_order_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.re_order_textbox.Name = "re_order_textbox"
+        Me.re_order_textbox.Size = New System.Drawing.Size(136, 30)
+        Me.re_order_textbox.TabIndex = 8
+        Me.re_order_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.Maroon
+        Me.Label7.Location = New System.Drawing.Point(36, 56)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(61, 17)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "MARGIN:"
+        '
+        'cost_textbox
+        '
+        Me.cost_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cost_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.cost_textbox.Location = New System.Drawing.Point(642, 17)
+        Me.cost_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.cost_textbox.Name = "cost_textbox"
+        Me.cost_textbox.Size = New System.Drawing.Size(136, 30)
+        Me.cost_textbox.TabIndex = 9
+        Me.cost_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'margin_textbox
+        '
+        Me.margin_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.margin_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.margin_textbox.Location = New System.Drawing.Point(116, 54)
+        Me.margin_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.margin_textbox.Name = "margin_textbox"
+        Me.margin_textbox.Size = New System.Drawing.Size(136, 30)
+        Me.margin_textbox.TabIndex = 10
+        Me.margin_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Maroon
+        Me.Label6.Location = New System.Drawing.Point(542, 27)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(80, 17)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "COST PRICE:"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.SubCategory_combo3)
+        Me.GroupBox1.Controls.Add(Me.subCategory_combo2)
+        Me.GroupBox1.Controls.Add(Me.subCategory_combo1)
+        Me.GroupBox1.Controls.Add(Me.Label17)
+        Me.GroupBox1.Controls.Add(Me.Label16)
+        Me.GroupBox1.Controls.Add(Me.Label15)
+        Me.GroupBox1.Controls.Add(Me.category_combo)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 6)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(380, 155)
+        Me.GroupBox1.TabIndex = 26
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Categories"
+        '
+        'SubCategory_combo3
+        '
+        Me.SubCategory_combo3.ForeColor = System.Drawing.Color.Maroon
+        Me.SubCategory_combo3.FormattingEnabled = True
+        Me.SubCategory_combo3.ItemHeight = 23
+        Me.SubCategory_combo3.Location = New System.Drawing.Point(108, 118)
+        Me.SubCategory_combo3.Name = "SubCategory_combo3"
+        Me.SubCategory_combo3.PromptText = "Select Category"
+        Me.SubCategory_combo3.Size = New System.Drawing.Size(266, 29)
+        Me.SubCategory_combo3.TabIndex = 9
+        Me.SubCategory_combo3.UseSelectable = True
+        '
+        'subCategory_combo2
+        '
+        Me.subCategory_combo2.ForeColor = System.Drawing.Color.Maroon
+        Me.subCategory_combo2.FormattingEnabled = True
+        Me.subCategory_combo2.ItemHeight = 23
+        Me.subCategory_combo2.Location = New System.Drawing.Point(109, 84)
+        Me.subCategory_combo2.Name = "subCategory_combo2"
+        Me.subCategory_combo2.PromptText = "Select Category"
+        Me.subCategory_combo2.Size = New System.Drawing.Size(266, 29)
+        Me.subCategory_combo2.TabIndex = 8
+        Me.subCategory_combo2.UseSelectable = True
+        '
+        'subCategory_combo1
+        '
+        Me.subCategory_combo1.ForeColor = System.Drawing.Color.Maroon
+        Me.subCategory_combo1.FormattingEnabled = True
+        Me.subCategory_combo1.ItemHeight = 23
+        Me.subCategory_combo1.Location = New System.Drawing.Point(110, 51)
+        Me.subCategory_combo1.Name = "subCategory_combo1"
+        Me.subCategory_combo1.PromptText = "Select Weighed Category"
+        Me.subCategory_combo1.Size = New System.Drawing.Size(266, 29)
+        Me.subCategory_combo1.TabIndex = 7
+        Me.subCategory_combo1.UseSelectable = True
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(5, 124)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(97, 17)
+        Me.Label17.TabIndex = 6
+        Me.Label17.Text = "Sub Category3:"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(6, 90)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(97, 17)
+        Me.Label16.TabIndex = 5
+        Me.Label16.Text = "Sub Category2:"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(3, 59)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(108, 17)
+        Me.Label15.TabIndex = 4
+        Me.Label15.Text = "Weight Category:"
+        '
+        'category_combo
+        '
+        Me.category_combo.ForeColor = System.Drawing.Color.Maroon
+        Me.category_combo.FormattingEnabled = True
+        Me.category_combo.ItemHeight = 23
+        Me.category_combo.Location = New System.Drawing.Point(110, 18)
+        Me.category_combo.Name = "category_combo"
+        Me.category_combo.PromptText = "Select Category"
+        Me.category_combo.Size = New System.Drawing.Size(266, 29)
+        Me.category_combo.TabIndex = 3
+        Me.category_combo.UseSelectable = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.sku_textbox)
+        Me.GroupBox2.Controls.Add(Me.Label11)
+        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.name_textbox)
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.vendorCode_textbox)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.barcode_textbox)
+        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.Maroon
+        Me.GroupBox2.Location = New System.Drawing.Point(389, 5)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(454, 156)
+        Me.GroupBox2.TabIndex = 1
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Product Descriptions"
+        '
+        'sku_textbox
+        '
+        Me.sku_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.sku_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.sku_textbox.Location = New System.Drawing.Point(96, 108)
+        Me.sku_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.sku_textbox.Name = "sku_textbox"
+        Me.sku_textbox.Size = New System.Drawing.Size(353, 25)
+        Me.sku_textbox.TabIndex = 22
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.Maroon
+        Me.Label11.Location = New System.Drawing.Point(13, 112)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(69, 16)
+        Me.Label11.TabIndex = 20
+        Me.Label11.Text = "SKU Code:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.Maroon
+        Me.Label10.Location = New System.Drawing.Point(-1, 82)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(88, 17)
+        Me.Label10.TabIndex = 19
+        Me.Label10.Text = "Vendor Code:"
+        '
+        'name_textbox
+        '
+        Me.name_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.name_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.name_textbox.Location = New System.Drawing.Point(98, 50)
+        Me.name_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.name_textbox.Name = "name_textbox"
+        Me.name_textbox.Size = New System.Drawing.Size(351, 25)
+        Me.name_textbox.TabIndex = 6
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Maroon
+        Me.Label2.Location = New System.Drawing.Point(13, 28)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(59, 17)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Barcode:"
+        '
+        'vendorCode_textbox
+        '
+        Me.vendorCode_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.vendorCode_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.vendorCode_textbox.Location = New System.Drawing.Point(98, 79)
+        Me.vendorCode_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.vendorCode_textbox.Name = "vendorCode_textbox"
+        Me.vendorCode_textbox.Size = New System.Drawing.Size(351, 25)
+        Me.vendorCode_textbox.TabIndex = 21
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Maroon
+        Me.Label3.Location = New System.Drawing.Point(26, 53)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(46, 17)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Name:"
+        '
+        'barcode_textbox
+        '
+        Me.barcode_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.barcode_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.barcode_textbox.Location = New System.Drawing.Point(98, 21)
+        Me.barcode_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.barcode_textbox.Name = "barcode_textbox"
+        Me.barcode_textbox.Size = New System.Drawing.Size(351, 25)
+        Me.barcode_textbox.TabIndex = 4
+        '
         'Panel8
         '
         Me.Panel8.BackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(117, Byte), Integer))
@@ -245,232 +607,6 @@ Partial Class Add_inventory
         Me.Label13.Size = New System.Drawing.Size(156, 17)
         Me.Label13.TabIndex = 23
         Me.Label13.Text = "View Added Products"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.Maroon
-        Me.Label8.Location = New System.Drawing.Point(273, 57)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(96, 17)
-        Me.Label8.TabIndex = 16
-        Me.Label8.Text = "SELLING PRICE:"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.Maroon
-        Me.Label10.Location = New System.Drawing.Point(-1, 82)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(88, 17)
-        Me.Label10.TabIndex = 19
-        Me.Label10.Text = "Vendor Code:"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Maroon
-        Me.Label3.Location = New System.Drawing.Point(26, 53)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(46, 17)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Name:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.Maroon
-        Me.Label11.Location = New System.Drawing.Point(13, 112)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(69, 16)
-        Me.Label11.TabIndex = 20
-        Me.Label11.Text = "SKU Code:"
-        '
-        'name_textbox
-        '
-        Me.name_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.name_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.name_textbox.Location = New System.Drawing.Point(98, 50)
-        Me.name_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.name_textbox.Name = "name_textbox"
-        Me.name_textbox.Size = New System.Drawing.Size(351, 25)
-        Me.name_textbox.TabIndex = 6
-        '
-        'vendorCode_textbox
-        '
-        Me.vendorCode_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.vendorCode_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.vendorCode_textbox.Location = New System.Drawing.Point(98, 79)
-        Me.vendorCode_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.vendorCode_textbox.Name = "vendorCode_textbox"
-        Me.vendorCode_textbox.Size = New System.Drawing.Size(351, 25)
-        Me.vendorCode_textbox.TabIndex = 21
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Maroon
-        Me.Label7.Location = New System.Drawing.Point(36, 56)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(61, 17)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "MARGIN:"
-        '
-        'sku_textbox
-        '
-        Me.sku_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.sku_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.sku_textbox.Location = New System.Drawing.Point(96, 108)
-        Me.sku_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.sku_textbox.Name = "sku_textbox"
-        Me.sku_textbox.Size = New System.Drawing.Size(353, 25)
-        Me.sku_textbox.TabIndex = 22
-        '
-        'quantity_textbox
-        '
-        Me.quantity_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.quantity_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.quantity_textbox.Location = New System.Drawing.Point(116, 20)
-        Me.quantity_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.quantity_textbox.Name = "quantity_textbox"
-        Me.quantity_textbox.Size = New System.Drawing.Size(136, 30)
-        Me.quantity_textbox.TabIndex = 7
-        Me.quantity_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Maroon
-        Me.Label6.Location = New System.Drawing.Point(542, 27)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(80, 17)
-        Me.Label6.TabIndex = 14
-        Me.Label6.Text = "COST PRICE:"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Maroon
-        Me.Label9.Location = New System.Drawing.Point(558, 58)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(59, 17)
-        Me.Label9.TabIndex = 17
-        Me.Label9.Text = "Sale Qty:"
-        '
-        'cost_textbox
-        '
-        Me.cost_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cost_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.cost_textbox.Location = New System.Drawing.Point(642, 17)
-        Me.cost_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.cost_textbox.Name = "cost_textbox"
-        Me.cost_textbox.Size = New System.Drawing.Size(136, 30)
-        Me.cost_textbox.TabIndex = 9
-        Me.cost_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        're_order_textbox
-        '
-        Me.re_order_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.re_order_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.re_order_textbox.Location = New System.Drawing.Point(378, 18)
-        Me.re_order_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.re_order_textbox.Name = "re_order_textbox"
-        Me.re_order_textbox.Size = New System.Drawing.Size(136, 30)
-        Me.re_order_textbox.TabIndex = 8
-        Me.re_order_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'margin_textbox
-        '
-        Me.margin_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.margin_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.margin_textbox.Location = New System.Drawing.Point(116, 54)
-        Me.margin_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.margin_textbox.Name = "margin_textbox"
-        Me.margin_textbox.Size = New System.Drawing.Size(136, 30)
-        Me.margin_textbox.TabIndex = 10
-        Me.margin_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'barcode_textbox
-        '
-        Me.barcode_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.barcode_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.barcode_textbox.Location = New System.Drawing.Point(98, 21)
-        Me.barcode_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.barcode_textbox.Name = "barcode_textbox"
-        Me.barcode_textbox.Size = New System.Drawing.Size(351, 25)
-        Me.barcode_textbox.TabIndex = 4
-        '
-        'selling_textbox
-        '
-        Me.selling_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.selling_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.selling_textbox.Location = New System.Drawing.Point(379, 52)
-        Me.selling_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.selling_textbox.Name = "selling_textbox"
-        Me.selling_textbox.Size = New System.Drawing.Size(136, 30)
-        Me.selling_textbox.TabIndex = 11
-        Me.selling_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Maroon
-        Me.Label5.Location = New System.Drawing.Point(271, 27)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(100, 17)
-        Me.Label5.TabIndex = 13
-        Me.Label5.Text = "Minimum Stock:"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Maroon
-        Me.Label4.Location = New System.Drawing.Point(29, 28)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(72, 17)
-        Me.Label4.TabIndex = 12
-        Me.Label4.Text = "QUANTITY:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Maroon
-        Me.Label2.Location = New System.Drawing.Point(13, 28)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(59, 17)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Barcode:"
-        '
-        'sale_qty_textbox
-        '
-        Me.sale_qty_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.sale_qty_textbox.ForeColor = System.Drawing.Color.Maroon
-        Me.sale_qty_textbox.Location = New System.Drawing.Point(642, 51)
-        Me.sale_qty_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.sale_qty_textbox.Name = "sale_qty_textbox"
-        Me.sale_qty_textbox.Size = New System.Drawing.Size(136, 30)
-        Me.sale_qty_textbox.TabIndex = 18
-        Me.sale_qty_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Panel4
         '
@@ -663,142 +799,6 @@ Partial Class Add_inventory
         Me.Panel2.Size = New System.Drawing.Size(1028, 2)
         Me.Panel2.TabIndex = 1
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.SubCategory_combo3)
-        Me.GroupBox1.Controls.Add(Me.subCategory_combo2)
-        Me.GroupBox1.Controls.Add(Me.subCategory_combo1)
-        Me.GroupBox1.Controls.Add(Me.Label17)
-        Me.GroupBox1.Controls.Add(Me.Label16)
-        Me.GroupBox1.Controls.Add(Me.Label15)
-        Me.GroupBox1.Controls.Add(Me.category_combo)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 6)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(380, 155)
-        Me.GroupBox1.TabIndex = 26
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Categories"
-        '
-        'category_combo
-        '
-        Me.category_combo.ForeColor = System.Drawing.Color.Maroon
-        Me.category_combo.FormattingEnabled = True
-        Me.category_combo.ItemHeight = 23
-        Me.category_combo.Location = New System.Drawing.Point(110, 18)
-        Me.category_combo.Name = "category_combo"
-        Me.category_combo.PromptText = "Select Category"
-        Me.category_combo.Size = New System.Drawing.Size(266, 29)
-        Me.category_combo.TabIndex = 3
-        Me.category_combo.UseSelectable = True
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(8, 59)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(97, 17)
-        Me.Label15.TabIndex = 4
-        Me.Label15.Text = "Sub Category1:"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(6, 90)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(97, 17)
-        Me.Label16.TabIndex = 5
-        Me.Label16.Text = "Sub Category2:"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(5, 124)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(97, 17)
-        Me.Label17.TabIndex = 6
-        Me.Label17.Text = "Sub Category3:"
-        '
-        'subCategory_combo1
-        '
-        Me.subCategory_combo1.ForeColor = System.Drawing.Color.Maroon
-        Me.subCategory_combo1.FormattingEnabled = True
-        Me.subCategory_combo1.ItemHeight = 23
-        Me.subCategory_combo1.Location = New System.Drawing.Point(110, 51)
-        Me.subCategory_combo1.Name = "subCategory_combo1"
-        Me.subCategory_combo1.PromptText = "Select Category"
-        Me.subCategory_combo1.Size = New System.Drawing.Size(266, 29)
-        Me.subCategory_combo1.TabIndex = 7
-        Me.subCategory_combo1.UseSelectable = True
-        '
-        'subCategory_combo2
-        '
-        Me.subCategory_combo2.ForeColor = System.Drawing.Color.Maroon
-        Me.subCategory_combo2.FormattingEnabled = True
-        Me.subCategory_combo2.ItemHeight = 23
-        Me.subCategory_combo2.Location = New System.Drawing.Point(109, 84)
-        Me.subCategory_combo2.Name = "subCategory_combo2"
-        Me.subCategory_combo2.PromptText = "Select Category"
-        Me.subCategory_combo2.Size = New System.Drawing.Size(266, 29)
-        Me.subCategory_combo2.TabIndex = 8
-        Me.subCategory_combo2.UseSelectable = True
-        '
-        'SubCategory_combo3
-        '
-        Me.SubCategory_combo3.ForeColor = System.Drawing.Color.Maroon
-        Me.SubCategory_combo3.FormattingEnabled = True
-        Me.SubCategory_combo3.ItemHeight = 23
-        Me.SubCategory_combo3.Location = New System.Drawing.Point(108, 118)
-        Me.SubCategory_combo3.Name = "SubCategory_combo3"
-        Me.SubCategory_combo3.PromptText = "Select Category"
-        Me.SubCategory_combo3.Size = New System.Drawing.Size(266, 29)
-        Me.SubCategory_combo3.TabIndex = 9
-        Me.SubCategory_combo3.UseSelectable = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.sku_textbox)
-        Me.GroupBox2.Controls.Add(Me.Label11)
-        Me.GroupBox2.Controls.Add(Me.Label10)
-        Me.GroupBox2.Controls.Add(Me.name_textbox)
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.vendorCode_textbox)
-        Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.barcode_textbox)
-        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.ForeColor = System.Drawing.Color.Maroon
-        Me.GroupBox2.Location = New System.Drawing.Point(389, 5)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(454, 156)
-        Me.GroupBox2.TabIndex = 1
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Product Descriptions"
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Label4)
-        Me.GroupBox3.Controls.Add(Me.quantity_textbox)
-        Me.GroupBox3.Controls.Add(Me.Label5)
-        Me.GroupBox3.Controls.Add(Me.Label9)
-        Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.sale_qty_textbox)
-        Me.GroupBox3.Controls.Add(Me.selling_textbox)
-        Me.GroupBox3.Controls.Add(Me.re_order_textbox)
-        Me.GroupBox3.Controls.Add(Me.Label7)
-        Me.GroupBox3.Controls.Add(Me.cost_textbox)
-        Me.GroupBox3.Controls.Add(Me.margin_textbox)
-        Me.GroupBox3.Controls.Add(Me.Label6)
-        Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.ForeColor = System.Drawing.Color.Maroon
-        Me.GroupBox3.Location = New System.Drawing.Point(4, 164)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(840, 88)
-        Me.GroupBox3.TabIndex = 2
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Price and Quantity"
-        '
         'Add_inventory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -816,16 +816,16 @@ Partial Class Add_inventory
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel7.PerformLayout()
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

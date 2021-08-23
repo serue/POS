@@ -25,7 +25,7 @@ Public Class sign_in
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
-        user_registration.Show()
+        create_user_accounts.Show()
         Me.Close()
     End Sub
 

@@ -39,8 +39,10 @@ Public Class create_user_accounts
         Using command As New SqlCommand("SELECT * FROM USERS WHERE EMP_ID=@name", connection)
             command.Parameters.Add("@name", SqlDbType.VarChar).Value = employee_id.Text
             is_Registerd = False
-            Dim reader As SqlDataReader = command.ExecuteReader
-            If reader.HasRows Then
+            Dim reader As New SqlDataAdapter(command)
+            Dim table As New DataTable
+            reader.Fill(table)
+            If table.Rows.Count > 0 Then
                 is_Registerd = True
             End If
         End Using
@@ -54,16 +56,19 @@ Public Class create_user_accounts
                 MessageBox.Show("Some controls are empty, Please fill your data properly", "Empty Controls", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
                 If is_Registerd = True Then
-                    Using command As New SqlCommand("INSERT INTO ACCOUNTS(EMP_ID,USERNAME,PASSWORD VALUES(@EMP_ID,@USERNAME,@PASSWORD", connection)
+                    Using command As New SqlCommand("INSERT INTO ACCOUNTS(EMP_ID,USERNAME,PASSWORD,STATUS) VALUES(@EMP_ID,@USERNAME,@PASSWORD,@STATUS)", connection)
                         With command.Parameters
                             .Add("@EMP_ID", SqlDbType.VarChar).Value = employee_id.Text
                             .Add("@USERNAME", SqlDbType.VarChar).Value = employee_id.Text
                             .Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "Abc")
+                            .Add("@STATUS", SqlDbType.Int).Value = 1
                         End With
                         Using cmd As New SqlCommand("SELECT * FROM ACCOUNTS WHERE USERNAME=@USERNAME", connection)
                             cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = employee_id.Text
-                            Dim reader As SqlDataReader = cmd.ExecuteReader
-                            If reader.HasRows Then
+                            Dim adapter As New SqlDataAdapter(cmd)
+                            Dim table As New DataTable
+                            adapter.Fill(table)
+                            If table.Rows.Count > 0 Then
                                 MessageBox.Show("Already Exists", "Create Account", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                             Else
                                 command.ExecuteNonQuery()
@@ -80,7 +85,8 @@ Public Class create_user_accounts
             connection.Close()
         Catch ex As Exception
             connection.Close()
-            MessageBox.Show(ex.StackTrace, "An Error Occured while Creating Account", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "An Error Occured while Creating Account", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MsgBox(ex.StackTrace)
         End Try
     End Sub
     Private Sub ClearTexts()
@@ -88,7 +94,7 @@ Public Class create_user_accounts
         username.Clear()
         password.Clear()
         confirm_password.Clear()
-        employee_id.Focus()
+
     End Sub
 
     Private Sub clear_button_Click(sender As Object, e As EventArgs) Handles clear_button.Click
@@ -104,8 +110,10 @@ Public Class create_user_accounts
     End Sub
 
     Private Sub create_user_accounts_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If Not MessageBox.Show("Do you want to stop password update", "Updating Password", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        If Not MessageBox.Show("Do you want to stop Account Creation", "Creating Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             e.Cancel = True
+        Else
+            sign_in.Show()
         End If
     End Sub
 
@@ -139,5 +147,10 @@ Public Class create_user_accounts
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+       
+        Me.Close()
     End Sub
 End Class

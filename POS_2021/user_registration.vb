@@ -49,9 +49,7 @@ Public Class user_registration
         address.Clear()
         age.Clear()
         phone.Clear()
-
-        username.Clear()
-        password.Clear()
+        employee_id.Clear()
         name_textbox.Focus()
     End Sub
 
