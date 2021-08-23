@@ -121,7 +121,7 @@ Public Class ConnectionAndPermissions
         Return connect
     End Function
     Public Sub savePermissions(user As String, employee As String, permission As String, status As Integer, conString As SqlConnection, trans As SqlTransaction)
-        Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,EMP_ID,PERMISSION,STATUS) values(@user,@EMP_ID,@permission,@status)", conString)
+        Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,EMP_ID,PERMISSION,STATUS) values(@user,@EMP_ID,@permission,@status)", conString, trans)
             With Command.Parameters
                 .Add("@user", SqlDbType.VarChar).Value = user
                 .Add("@EMP_ID", SqlDbType.VarChar).Value = employee
@@ -133,7 +133,7 @@ Public Class ConnectionAndPermissions
     End Sub
 
     Public Sub updatePermissions(user As String, employee As String, permission As String, status As Integer, conString As SqlConnection, trans As SqlTransaction)
-        Using Command As New SqlCommand("UPDATE USER_PERMISSIONS SET STATUS=@status where PERMISSION=@permission AND USERNAME=@user AND EMP_ID=@EMP_ID", conString)
+        Using Command As New SqlCommand("UPDATE USER_PERMISSIONS SET STATUS=@status where PERMISSION=@permission AND USERNAME=@user AND EMP_ID=@EMP_ID", conString, trans)
             With Command.Parameters
                 .Add("@user", SqlDbType.VarChar).Value = user
                 .Add("@EMP_ID", SqlDbType.VarChar).Value = employee

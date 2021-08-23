@@ -49,11 +49,11 @@ Partial Class Permissions
         Me.transaction_logs = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.employee_id = New MetroFramework.Controls.MetroComboBox()
         Me.search_button = New MetroFramework.Controls.MetroButton()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.employee_id = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -382,16 +382,6 @@ Partial Class Permissions
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "User Personal Details "
         '
-        'employee_id
-        '
-        Me.employee_id.FormattingEnabled = True
-        Me.employee_id.ItemHeight = 23
-        Me.employee_id.Location = New System.Drawing.Point(169, 19)
-        Me.employee_id.Name = "employee_id"
-        Me.employee_id.Size = New System.Drawing.Size(405, 29)
-        Me.employee_id.TabIndex = 14
-        Me.employee_id.UseSelectable = True
-        '
         'search_button
         '
         Me.search_button.Location = New System.Drawing.Point(171, 107)
@@ -427,6 +417,14 @@ Partial Class Permissions
         Me.Label3.Size = New System.Drawing.Size(134, 17)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Select Employee ID:"
+        '
+        'employee_id
+        '
+        Me.employee_id.FormattingEnabled = True
+        Me.employee_id.Location = New System.Drawing.Point(171, 23)
+        Me.employee_id.Name = "employee_id"
+        Me.employee_id.Size = New System.Drawing.Size(403, 25)
+        Me.employee_id.TabIndex = 15
         '
         'Permissions
         '
@@ -482,6 +480,6 @@ Partial Class Permissions
     Friend WithEvents return_sales As CheckBox
     Friend WithEvents backup_database As CheckBox
     Friend WithEvents is_admin As CheckBox
-    Friend WithEvents employee_id As MetroFramework.Controls.MetroComboBox
     Friend WithEvents search_button As MetroFramework.Controls.MetroButton
+    Friend WithEvents employee_id As ComboBox
 End Class

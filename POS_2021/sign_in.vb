@@ -45,4 +45,8 @@ Public Class sign_in
         password_textbox.Clear()
         username_textbox.Focus()
     End Sub
+
+    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        update_user_accounts.ShowDialog()
+    End Sub
 End Class

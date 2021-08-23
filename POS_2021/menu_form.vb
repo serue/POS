@@ -12,7 +12,7 @@ Public Class menu_form
     Dim Design As New IntefaceDesign
     Dim Notice As New PopupNotifier
     Public nyuwani As New Form
-    Dim myPermissions As ConnectionAndPermissions
+    Dim myPermissions As New ConnectionAndPermissions
     Dim connection As New SqlConnection
     Private user As String
     Public Property ActiveUser() As String
