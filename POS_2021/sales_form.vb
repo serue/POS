@@ -289,20 +289,22 @@ Public Class sales_form
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
-                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,TRANS_TIME,AMOUNT,PAID,CHANGE,TAX,PAYMENT,CASHIER,TILL) Values(@TRANS_DATE,@TRANS_TIME,@TRANSACTION_ID,@AMOUNT,@PAID,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL)"
+                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
 
                 Using regcommand As New SqlCommand(RegisterTransactionQuery, connection, transaction)
                     With regcommand.Parameters
                         .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                        .Add("@TRANS_DATE", SqlDbType.DateTime).Value = Now.Date
-                        .Add("@TRANS_TIME", SqlDbType.Time).Value = Now.TimeOfDay
+                        .Add("@TRANS_DATE", SqlDbType.DateTime).Value = Format(Now, "General Date")
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = CDec(total_label.Text)
                         .Add("@PAID", SqlDbType.Decimal).Value = qty_paid_textbox.Text
+                        .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - TAX, 2)
                         .Add("@CHANGE", SqlDbType.Decimal).Value = CDec(change_label.Text)
                         .Add("@TAX", SqlDbType.Decimal).Value = TAX
                         .Add("@PAYMENT", SqlDbType.VarChar).Value = Transaction_type
                         .Add("@CASHIER", SqlDbType.VarChar).Value = username
                         .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
+                        .Add("@TOTAL_ITEMS", SqlDbType.Int).Value = list_grid.RowCount
+                        .Add("@STATUS", SqlDbType.VarChar).Value = "COMPLETED"
                     End With
                     regcommand.ExecuteNonQuery()
                 End Using
@@ -334,18 +336,18 @@ Public Class sales_form
 
                     'inserting transaction details into the database table
 
-                    'Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection, transaction)
+                    Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection, transaction)
 
-                    '    With TransactionDetailCommand.Parameters
-                    '        .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                    '        .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                    '        .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
-                    '        .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
+                        With TransactionDetailCommand.Parameters
+                            .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
+                            .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                            .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
+                            .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
 
-                    '    End With
-                    '    list_grid.AllowUserToAddRows = False
-                    '    TransactionDetailCommand.ExecuteNonQuery()
-                    'End Using
+                        End With
+                        list_grid.AllowUserToAddRows = False
+                        TransactionDetailCommand.ExecuteNonQuery()
+                    End Using
 
                     'check if the product has a sale for the day
                     Dim updateQuantity As Integer
@@ -459,6 +461,7 @@ Public Class sales_form
             Else
                 MessageBox.Show("No Products has been found on the list !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
+            transaction.Commit()
             barcode_textbox.Focus()
             connection.Close()
         Catch ex As Exception

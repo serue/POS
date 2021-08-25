@@ -118,7 +118,7 @@ Public Class ConnectionAndPermissions
 
 
     Public Function getConnection() As SqlConnection
-        Return connect
+        Return con
     End Function
     Public Sub savePermissions(user As String, employee As String, permission As String, status As Integer, conString As SqlConnection, trans As SqlTransaction)
         Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,EMP_ID,PERMISSION,STATUS) values(@user,@EMP_ID,@permission,@status)", conString, trans)

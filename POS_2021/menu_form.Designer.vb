@@ -440,7 +440,7 @@ Partial Class menu_form
         Me.users_panel.Controls.Add(Me.register_users)
         Me.users_panel.Controls.Add(Me.IconButton4)
         Me.users_panel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.users_panel.Location = New System.Drawing.Point(0, 183)
+        Me.users_panel.Location = New System.Drawing.Point(0, 283)
         Me.users_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.users_panel.MaximumSize = New System.Drawing.Size(197, 142)
         Me.users_panel.MinimumSize = New System.Drawing.Size(197, 45)
@@ -784,7 +784,7 @@ Partial Class menu_form
         '
         Me.Panel2.Controls.Add(Me.Category_button)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 228)
+        Me.Panel2.Location = New System.Drawing.Point(0, 328)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(213, 45)
@@ -1005,7 +1005,7 @@ Partial Class menu_form
         Me.reports_panel.MaximumSize = New System.Drawing.Size(197, 145)
         Me.reports_panel.MinimumSize = New System.Drawing.Size(197, 45)
         Me.reports_panel.Name = "reports_panel"
-        Me.reports_panel.Size = New System.Drawing.Size(197, 45)
+        Me.reports_panel.Size = New System.Drawing.Size(197, 145)
         Me.reports_panel.TabIndex = 10
         '
         'stock_reports

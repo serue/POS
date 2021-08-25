@@ -106,6 +106,12 @@
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.PointOfService, Version=1.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\POSForDotNet.SDK.1.14.1\lib\net40\Microsoft.PointOfService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.PointOfService.ControlBase, Version=1.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\POSForDotNet.SDK.1.14.1\lib\net40\Microsoft.PointOfService.ControlBase.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -193,6 +199,18 @@
     </Compile>
     <Compile Include="create_user_accounts.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DayEndReportForm.Designer.vb">
+      <DependentUpon>DayEndReportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DayEndReportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DayEndSalesReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DayEndSalesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="IntefaceDesign.vb" />
     <Compile Include="inventory_list.Designer.vb">
@@ -305,6 +323,28 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cancel_transaction_module.vb" />
+    <Compile Include="DayEndDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DayEndDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="StockReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StockReportDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockReportDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="StockReportForm.Designer.vb">
+      <DependentUpon>StockReportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StockReportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="temporary.Designer.vb">
       <DependentUpon>temporary.vb</DependentUpon>
     </Compile>
@@ -364,6 +404,13 @@
     <EmbeddedResource Include="create_user_accounts.resx">
       <DependentUpon>create_user_accounts.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DayEndReportForm.resx">
+      <DependentUpon>DayEndReportForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DayEndSalesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DayEndSalesReport.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="inventory_list.resx">
       <DependentUpon>inventory_list.vb</DependentUpon>
     </EmbeddedResource>
@@ -413,6 +460,13 @@
     <EmbeddedResource Include="splash1.resx">
       <DependentUpon>splash1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StockReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StockReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockReportForm.resx">
+      <DependentUpon>StockReportForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="temporary.resx">
       <DependentUpon>temporary.vb</DependentUpon>
     </EmbeddedResource>
@@ -455,8 +509,32 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DayEndDataSet.xsc">
+      <DependentUpon>DayEndDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DayEndDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DayEndDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DayEndDataSet.xss">
+      <DependentUpon>DayEndDataSet.xsd</DependentUpon>
+    </None>
     <None Include="sqls\POS_DATABASE.bak" />
+    <None Include="StockReportDataset.xsc">
+      <DependentUpon>StockReportDataset.xsd</DependentUpon>
+    </None>
+    <None Include="StockReportDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StockReportDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="StockReportDataset.xss">
+      <DependentUpon>StockReportDataset.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Company Logo.jpg" />

@@ -59,7 +59,7 @@ Public Class create_user_accounts
                     Using command As New SqlCommand("INSERT INTO ACCOUNTS(EMP_ID,USERNAME,PASSWORD,STATUS) VALUES(@EMP_ID,@USERNAME,@PASSWORD,@STATUS)", connection)
                         With command.Parameters
                             .Add("@EMP_ID", SqlDbType.VarChar).Value = employee_id.Text
-                            .Add("@USERNAME", SqlDbType.VarChar).Value = employee_id.Text
+                            .Add("@USERNAME", SqlDbType.VarChar).Value = username.Text
                             .Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "Abc")
                             .Add("@STATUS", SqlDbType.Int).Value = 1
                         End With

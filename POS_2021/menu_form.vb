@@ -375,6 +375,8 @@ Public Class menu_form
 
     Private Sub logout_button_Click(sender As Object, e As EventArgs) Handles logout_button.Click
         Design.activeMainButton(logout_button)
+        sign_in.Show()
+        Me.Close()
     End Sub
 
     Private Sub stock_valuation_Click(sender As Object, e As EventArgs) Handles stock_valuation.Click
@@ -472,12 +474,35 @@ Public Class menu_form
             End Using
             connection.Close()
         Catch ex As Exception
-
+            connection.Close()
+            MessageBox.Show(ex.Message, "Erro Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
+    Private Sub checkPermission(account As String, permit As String, destinition As Form)
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
+                With command.Parameters
+                    .Add("@USERNAME", SqlDbType.VarChar).Value = account
+                    .Add("@PERMISSION", SqlDbType.VarChar).Value = permit
+                End With
+                Dim reader As SqlDataReader = command.ExecuteReader
+                If reader.HasRows Then
+                    destinition.ShowDialog()
+                Else
+                    MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "Erro Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Sub return_sales_Click(sender As Object, e As EventArgs) Handles return_sales.Click
-        checkPermissions(username, return_sales.Name, New Add_inventory)
+        checkPermissions(username, return_sales.Name, New DayEndReportForm)
     End Sub
 
     Private Sub transaction_logs_Click(sender As Object, e As EventArgs) Handles transaction_logs.Click
@@ -493,14 +518,14 @@ Public Class menu_form
     End Sub
 
     Private Sub stock_reports_Click(sender As Object, e As EventArgs) Handles stock_reports.Click
-        checkPermissions(username, stock_reports.Name, New Add_inventory)
+        checkPermissions(username, stock_reports.Name, New StockReportForm)
     End Sub
 
     Private Sub register_users_Click(sender As Object, e As EventArgs) Handles register_users.Click
-        checkPermissions(username, register_users.Name, New Add_inventory)
+        checkPermission(username, register_users.Name, New user_registration)
     End Sub
 
     Private Sub update_users_Click(sender As Object, e As EventArgs) Handles update_users.Click
-        checkPermissions(username, update_users.Name, New Add_inventory)
+        checkPermissions(username, update_users.Name, New user_registration)
     End Sub
 End Class
