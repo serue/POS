@@ -15,6 +15,7 @@ Public Class menu_form
     Dim myPermissions As New ConnectionAndPermissions
     Dim connection As New SqlConnection
     Private user As String
+    Dim hasPermission As Boolean = False
     Public Property ActiveUser() As String
         Get
             Return user
@@ -490,8 +491,9 @@ Public Class menu_form
                 End With
                 Dim reader As SqlDataReader = command.ExecuteReader
                 If reader.HasRows Then
-                    destinition.ShowDialog()
+                    destinition.Show()
                 Else
+                    hasPermission = False
                     MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If
             End Using
@@ -514,7 +516,8 @@ Public Class menu_form
     End Sub
 
     Private Sub scheduled_reports_Click(sender As Object, e As EventArgs) Handles scheduled_reports.Click
-        checkPermissions(username, scheduled_reports.Name, New Add_inventory)
+        checkPermission(username, scheduled_reports.Name, New ScheduledReportForm)
+        dashboard_label.Text = ScheduledReportForm.Text.ToUpper
     End Sub
 
     Private Sub stock_reports_Click(sender As Object, e As EventArgs) Handles stock_reports.Click

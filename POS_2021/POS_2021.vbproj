@@ -298,6 +298,26 @@
     <Compile Include="sale_form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ScheduledReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduledReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScheduledReportDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduledReportDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledReportDataset.vb">
+      <DependentUpon>ScheduledReportDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledReportForm.Designer.vb">
+      <DependentUpon>ScheduledReportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledReportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="server_configuration.Designer.vb">
       <DependentUpon>server_configuration.vb</DependentUpon>
     </Compile>
@@ -448,6 +468,13 @@
     <EmbeddedResource Include="sale_form.resx">
       <DependentUpon>sale_form.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScheduledReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduledReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduledReportForm.resx">
+      <DependentUpon>ScheduledReportForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="server_configuration.resx">
       <DependentUpon>server_configuration.vb</DependentUpon>
     </EmbeddedResource>
@@ -522,6 +549,17 @@
     </None>
     <None Include="DayEndDataSet.xss">
       <DependentUpon>DayEndDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ScheduledReportDataset.xsc">
+      <DependentUpon>ScheduledReportDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ScheduledReportDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScheduledReportDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ScheduledReportDataset.xss">
+      <DependentUpon>ScheduledReportDataset.xsd</DependentUpon>
     </None>
     <None Include="sqls\POS_DATABASE.bak" />
     <None Include="StockReportDataset.xsc">
