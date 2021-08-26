@@ -221,7 +221,7 @@ Public Class sales_form
                             totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
                         Next
                         cost_label.Text = Math.Round(CDec(table1(0)(3)), 2)
-                        total_label.Text = Math.Round(totalsum, 2)
+                        total_label.Text = totalsum
 
                         If isButchery Then
                             AmtPanel.Visible = True
@@ -618,22 +618,13 @@ Public Class sales_form
     End Sub
     Private Sub ProcessTrsactionButton_Click(sender As Object, e As EventArgs) Handles ProcessTrsactionButton.Click
         Try
-            connection = myPermissions.getConnection()
-            connection.Open()
             ProcessTrsactionButton.Focus()
-            Dim TheRate As Decimal
-            Using cmd As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                Dim TABLE As New DataTable
-                Dim ADAPTER As New SqlDataAdapter(cmd)
-                ADAPTER.Fill(TABLE)
-                If TABLE.Rows.Count > 0 Then
-                    TheRate = TABLE(0)(0)
+
+            If CDec(SplitTotal_label.Text) >= CDec(total_label.Text) And SplitTotal_label.Text <> "" Then
+                Dim change As Decimal = (SplitTotal_label.Text - total_label.Text)
+                If change > 0 Then
+                    change_label.Text = change
                 End If
-            End Using
-            connection.Close()
-            Dim forexAmt As Decimal = TheRate * txtForex.Text
-            Dim totalAmount As Decimal = txtCard.Text + txtCash.Text + txtEcoCash.Text + forexAmt
-            If totalAmount > total_label.Text Then
                 getTax()
                 FindMaxID()
                 RegisterSplitTransaction()
@@ -677,9 +668,13 @@ Public Class sales_form
                         Dim currencyTable As New DataTable
                         Dim adapter As New SqlDataAdapter(command)
                         adapter.Fill(currencyTable)
-                        CurrencyRate = currencyTable(0)(0)
-                        Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
-                        total_label.Text = Math.Round(temporaryValue, 2)
+                        If currencyTable.Rows.Count > 0 Then
+                            totalsum = 0
+                            For row As Integer = 0 To list_grid.Rows.Count - 1
+                                totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                            Next
+                            total_label.Text = totalsum
+                        End If
                     End Using
                     connection.Close()
                 Catch ex As Exception
@@ -716,35 +711,13 @@ Public Class sales_form
 
     Private Sub txtForex_LostFocus(sender As Object, e As EventArgs) Handles txtForex.LostFocus, txtEcoCash.LostFocus, txtCard.LostFocus, txtCash.LostFocus
         Try
-            connection = myPermissions.getConnection
-            connection.Open()
-
             Dim txt As TextBox = sender
             If txt.Text = "" Then
                 txt.Text = 0
             End If
-            Dim payArray() As Object = {txtCash, txtCard, txtEcoCash}
-            Dim forex As Decimal
-            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                Dim table As New DataTable
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(table)
-                forex = txtForex.Text * table(0)(0)
-            End Using
-            Dim ValueForSplit As Decimal = 0
-
-            For Each item In payArray
-                ValueForSplit += item.text
-            Next
-            SplitTotal_label.Text = ValueForSplit + forex
-            connection.Close()
         Catch ex As Exception
-            connection.Close()
-            MessageBox.Show(ex.Message)
-            MsgBox(ex.StackTrace)
+
         End Try
-
-
     End Sub
 
     Private Sub txtForex_GotFocus(sender As Object, e As EventArgs) Handles txtForex.GotFocus, txtEcoCash.GotFocus, txtCard.GotFocus, txtCash.GotFocus
@@ -756,6 +729,7 @@ Public Class sales_form
 
     Private Sub Assign_Methods(sender As Object, e As EventArgs) Handles RTGS_button.Click, forex_button.Click, ecocash_button.Click, cash_button.Click
         Try
+            Dim TotalPayable As Decimal = 0
             If total_label.Text <= 0 Or total_label.Text = "" Then
                 MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Else
@@ -765,8 +739,9 @@ Public Class sales_form
                 Dim localMethod As String
                 localMethod = method_label.Text
 
+
                 If Transaction_type = "FOREX" Then
-                    If localMethod = "CARD" Or localMethod = "CASH" Or localMethod = "ECOCASH" Then
+                    If localMethod = "CARD" Or localMethod = "CASH" Or localMethod = "ECOCASH" Or localMethod = "." Or localMethod = "" Then
                         Try
                             connection = myPermissions.getConnection
                             connection.Open()
@@ -774,9 +749,13 @@ Public Class sales_form
                                 Dim currencyTable As New DataTable
                                 Dim adapter As New SqlDataAdapter(command)
                                 adapter.Fill(currencyTable)
-                                CurrencyRate = currencyTable(0)(0)
-                                Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
-                                total_label.Text = Math.Round(temporaryValue, 2)
+                                If currencyTable.Rows.Count > 0 Then
+
+                                    CurrencyRate = currencyTable(0)(0)
+                                    Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
+                                    total_label.Text = Math.Round(temporaryValue, 2)
+
+                                End If
                             End Using
                             connection.Close()
                         Catch ex As Exception
@@ -805,27 +784,34 @@ Public Class sales_form
                                 Dim currencyTable As New DataTable
                                 Dim adapter As New SqlDataAdapter(command)
                                 adapter.Fill(currencyTable)
-                                CurrencyRate = currencyTable(0)(0)
-                                Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
-                                total_label.Text = Math.Round(temporaryValue, 2)
+                                If currencyTable.Rows.Count > 0 Then
+
+                                    totalsum = 0
+                                    For row As Integer = 0 To list_grid.Rows.Count - 1
+                                        totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                                    Next
+                                    total_label.Text = totalsum
+
+                                End If
                             End Using
                             connection.Close()
                         Catch ex As Exception
                             connection.Close()
                             MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
                         End Try
-                    Else
-                        AmtPanel.Visible = True
-                        qty_viewLabel.Visible = False
-                        quantity_textbox.Visible = False
-                        Accept_Quantity.Visible = False
-                        HideQuantityInputs()
-                        Me.AcceptButton = Me.FinaliseTransaction
-                        AmtPanel.Visible = True
-                        method_label.Text = btn.Text
-                        qty_paid_textbox.ReadOnly = False
-                        qty_paid_textbox.Focus()
                     End If
+                    AmtPanel.Visible = True
+                    qty_viewLabel.Visible = False
+                    quantity_textbox.Visible = False
+                    Accept_Quantity.Visible = False
+                    HideQuantityInputs()
+                    Me.AcceptButton = Me.FinaliseTransaction
+                    AmtPanel.Visible = True
+                    method_label.Text = btn.Text
+                    qty_paid_textbox.ReadOnly = False
+                    qty_paid_textbox.Text = ""
+                    qty_paid_textbox.Focus()
+
                 End If
                 If btn.Text = "CARD" Or btn.Text = "ECOCASH" Then
                     qty_paid_textbox.ReadOnly = True
@@ -1147,6 +1133,7 @@ Public Class sales_form
 
     Private Sub Form_Thread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles Form_Thread.DoWork
         Try
+
             If Not qty_paid_textbox.Text Is Nothing And CDec(qty_paid_textbox.Text) >= CDec(total_label.Text) Then
                 Dim change As Decimal = (qty_paid_textbox.Text - total_label.Text)
                 If change > 0 Then
@@ -1187,14 +1174,15 @@ Public Class sales_form
                     Dim ReceiptForm As New receipt_form
                     ReceiptForm.Transaction = 12
                     ReceiptForm.Show()
+                    MessageBox.Show("Transaction was successful", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             ElseIf yes_radio.Checked = True Then
                 Dim ReceiptForm As New receipt_form
                 ReceiptForm.Transaction = 234
                 ReceiptForm.Show()
+                MessageBox.Show("Transaction was successful", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
             AmtPanel.Visible = False
-            MessageBox.Show("Transaction was successful,Printing Receipt now", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
             list_grid.Rows.Clear()
             barcode_textbox.Clear()
             barcode_textbox.Focus()
@@ -1307,9 +1295,13 @@ Public Class sales_form
                     Dim currencyTable As New DataTable
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(currencyTable)
-                    CurrencyRate = currencyTable(0)(0)
-                    Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
-                    total_label.Text = temporaryValue
+                    If currencyTable.Rows.Count > 0 Then
+                        totalsum = 0
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                        Next
+                        total_label.Text = totalsum
+                    End If
                 End Using
                 connection.Close()
             Catch ex As Exception
@@ -1342,9 +1334,13 @@ Public Class sales_form
                     Dim currencyTable As New DataTable
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(currencyTable)
-                    CurrencyRate = currencyTable(0)(0)
-                    Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
-                    total_label.Text = temporaryValue
+                    If currencyTable.Rows.Count > 0 Then
+                        totalsum = 0
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                        Next
+                        total_label.Text = totalsum
+                    End If
                 End Using
                 connection.Close()
             Catch ex As Exception
@@ -1374,9 +1370,9 @@ Public Class sales_form
                 Dim currencyTable As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(currencyTable)
-                If table1.Rows.Count > 0 Then
+                If currencyTable.Rows.Count > 0 Then
                     CurrencyRate = currencyTable(0)(0)
-                    Dim temporaryValue As Decimal = CDec(total_label.Text) / CurrencyRate
+                    Dim temporaryValue As Decimal = Math.Round(CDec(total_label.Text) / CurrencyRate, 2)
                     total_label.Text = temporaryValue
                 Else
                     MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -1413,9 +1409,11 @@ Public Class sales_form
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(currencyTable)
                     If currencyTable.Rows.Count > 0 Then
-                        CurrencyRate = currencyTable(0)(0)
-                        Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
-                        total_label.Text = temporaryValue
+                        totalsum = 0
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                        Next
+                        total_label.Text = totalsum
                     Else
                         MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         connection.Close()
@@ -1560,6 +1558,9 @@ Public Class sales_form
                         totalsum += row.Cells(5).Value
                     Next
                     total_label.Text = totalsum.ToString("###,###,###.00")
+                Else
+                    cost_label.Text = 0
+                    total_label.Text = 0
                 End If
             End If
 
@@ -1623,20 +1624,22 @@ Public Class sales_form
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
-                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,TRANS_TIME,AMOUNT,PAID,CHANGE,TAX,PAYMENT,CASHIER,TILL) Values(@TRANS_DATE,@TRANS_TIME,@TRANSACTION_ID,@AMOUNT,@PAID,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL)"
+                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
 
                 Using regcommand As New SqlCommand(RegisterTransactionQuery, connection, transaction)
                     With regcommand.Parameters
                         .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                        .Add("@TRANS_DATE", SqlDbType.DateTime).Value = Now.Date
-                        .Add("@TRANS_TIME", SqlDbType.Time).Value = Now.ToShortTimeString
+                        .Add("@TRANS_DATE", SqlDbType.DateTime).Value = Format(Now, "General Date")
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = CDec(total_label.Text)
                         .Add("@PAID", SqlDbType.Decimal).Value = SplitTotal_label.Text
+                        .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - TAX, 2)
                         .Add("@CHANGE", SqlDbType.Decimal).Value = CDec(change_label.Text)
                         .Add("@TAX", SqlDbType.Decimal).Value = TAX
                         .Add("@PAYMENT", SqlDbType.VarChar).Value = Transaction_type
                         .Add("@CASHIER", SqlDbType.VarChar).Value = username
                         .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
+                        .Add("@TOTAL_ITEMS", SqlDbType.Int).Value = list_grid.RowCount
+                        .Add("@STATUS", SqlDbType.VarChar).Value = "COMPLETED"
                     End With
                     regcommand.ExecuteNonQuery()
                 End Using
@@ -1668,18 +1671,18 @@ Public Class sales_form
 
                     'inserting transaction details into the database table
 
-                    'Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection, transaction)
+                    Using TransactionDetailCommand As New SqlCommand("INSERT INTO TRANS_DETAILS(TRANSACTION_ID,BARCODE,QUANTITY,AMOUNT) VALUES(@TRANSACTION_ID,@BARCODE,@QUANTITY,@AMOUNT)", connection, transaction)
 
-                    '    With TransactionDetailCommand.Parameters
-                    '        .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                    '        .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                    '        .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
-                    '        .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
+                        With TransactionDetailCommand.Parameters
+                            .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
+                            .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                            .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
+                            .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
 
-                    '    End With
-                    '    list_grid.AllowUserToAddRows = False
-                    '    TransactionDetailCommand.ExecuteNonQuery()
-                    'End Using
+                        End With
+                        list_grid.AllowUserToAddRows = False
+                        TransactionDetailCommand.ExecuteNonQuery()
+                    End Using
 
 
 
@@ -1729,7 +1732,7 @@ Public Class sales_form
                                                 .Add("@profit", SqlDbType.Decimal).Value = updateProfit
                                                 .Add("@product_code", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                 .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
-                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtCard.Text)
+                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                 .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
                                             End With
                                             saleUpdateCommand.ExecuteNonQuery()
@@ -1775,7 +1778,7 @@ Public Class sales_form
                                             With saleUpdateCommand.Parameters
                                                 .Add("@QUANTITY", SqlDbType.Int).Value = updateQuantity
                                                 .Add("@PROFIT", SqlDbType.Decimal).Value = updateProfit
-                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtCard.Text)
+                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                 .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                 .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
                                             End With
@@ -1844,7 +1847,7 @@ Public Class sales_form
                                                     .Add("@profit", SqlDbType.Decimal).Value = updateProfit
                                                     .Add("@product_code", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                     .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
-                                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtCash.Text)
+                                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                     .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
                                                 End With
                                                 saleUpdateCommand.ExecuteNonQuery()
@@ -1890,7 +1893,7 @@ Public Class sales_form
                                                 With saleUpdateCommand.Parameters
                                                     .Add("@QUANTITY", SqlDbType.Int).Value = updateQuantity
                                                     .Add("@PROFIT", SqlDbType.Decimal).Value = updateProfit
-                                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtCash.Text)
+                                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                     .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
                                                 End With
@@ -1961,7 +1964,7 @@ Public Class sales_form
                                                 .Add("@profit", SqlDbType.Decimal).Value = updateProfit
                                                 .Add("@product_code", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                 .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
-                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtEcoCash.Text)
+                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                 .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
                                             End With
                                             saleUpdateCommand.ExecuteNonQuery()
@@ -2007,7 +2010,7 @@ Public Class sales_form
                                             With saleUpdateCommand.Parameters
                                                 .Add("@QUANTITY", SqlDbType.Int).Value = updateQuantity
                                                 .Add("@PROFIT", SqlDbType.Decimal).Value = updateProfit
-                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtEcoCash.Text)
+                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                 .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                 .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
                                             End With
@@ -2075,7 +2078,7 @@ Public Class sales_form
                                                 .Add("@profit", SqlDbType.Decimal).Value = updateProfit
                                                 .Add("@product_code", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                 .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
-                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtForex.Text)
+                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                 .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
                                             End With
                                             saleUpdateCommand.ExecuteNonQuery()
@@ -2121,7 +2124,7 @@ Public Class sales_form
                                             With saleUpdateCommand.Parameters
                                                 .Add("@QUANTITY", SqlDbType.Int).Value = updateQuantity
                                                 .Add("@PROFIT", SqlDbType.Decimal).Value = updateProfit
-                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(txtForex.Text)
+                                                .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                                 .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                                 .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
                                             End With
@@ -2150,6 +2153,7 @@ Public Class sales_form
                         End If
                     Next
                 Next
+                transaction.Commit()
                 MessageBox.Show("Transaction is complete !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("No Products has been found on the list !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -2165,4 +2169,34 @@ Public Class sales_form
 
     End Sub
 
+    Private Sub txtCash_TextChanged(sender As Object, e As EventArgs) Handles txtForex.TextChanged, txtEcoCash.TextChanged, txtCash.TextChanged, txtCard.TextChanged
+        Try
+            Dim NullText() As TextBox = {txtCard, txtCash, txtEcoCash, txtForex}
+            Dim forex As Decimal = 0
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    SplitTotal_label.Text = 0
+                    For Each item In NullText
+                        If item.Text <> "" Then
+                            If item.Name = "txtForex" Then
+                                forex = cdec(item.Text )* cdec(table(0)(0))
+                                SplitTotal_label.Text += forex
+                            Else
+                                SplitTotal_label.Text += CDec(item.Text)
+                            End If
+                        End If
+                    Next
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "An Error Occured Adding the split tender", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
 End Class
