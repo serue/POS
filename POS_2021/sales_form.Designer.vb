@@ -25,10 +25,12 @@ Partial Class sales_form
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(sales_form))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -110,18 +112,23 @@ Partial Class sales_form
         Me.btn6 = New System.Windows.Forms.Button()
         Me.btn3 = New System.Windows.Forms.Button()
         Me.btn9 = New System.Windows.Forms.Button()
-        Me.MetroTile10 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile11 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile9 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile5 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile4 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile8 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile7 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile3 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile2 = New MetroFramework.Controls.MetroTile()
-        Me.MetroTile1 = New MetroFramework.Controls.MetroTile()
-        Me.lookup_button = New MetroFramework.Controls.MetroTile()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.lookupPanel = New System.Windows.Forms.Panel()
+        Me.lookPan = New System.Windows.Forms.Panel()
+        Me.search_grid = New System.Windows.Forms.DataGridView()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.searchbar = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.list_grid = New MetroFramework.Controls.MetroGrid()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OtherPaymentsPanel = New System.Windows.Forms.Panel()
         Me.SplitTotal_label = New System.Windows.Forms.Label()
         Me.totLabel = New System.Windows.Forms.Label()
@@ -141,22 +148,6 @@ Partial Class sales_form
         Me.FinaliseTransaction = New System.Windows.Forms.Button()
         Me.Accept_Quantity = New System.Windows.Forms.Button()
         Me.Cancel_Payment = New System.Windows.Forms.Button()
-        Me.lookupPanel = New System.Windows.Forms.Panel()
-        Me.lookPan = New System.Windows.Forms.Panel()
-        Me.Button14 = New System.Windows.Forms.Button()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.searchbar = New MetroFramework.Controls.MetroTextBox()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.list_grid = New MetroFramework.Controls.MetroGrid()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Form_Thread = New System.ComponentModel.BackgroundWorker()
         Me.ManagementInstaller1 = New System.Management.Instrumentation.ManagementInstaller()
@@ -172,13 +163,14 @@ Partial Class sales_form
         Me.Panel15.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
+        Me.lookupPanel.SuspendLayout()
+        Me.lookPan.SuspendLayout()
+        CType(Me.search_grid, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.SuspendLayout()
+        CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.OtherPaymentsPanel.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.AmtPanel.SuspendLayout()
-        Me.lookupPanel.SuspendLayout()
-        Me.lookPan.SuspendLayout()
-        Me.Panel4.SuspendLayout()
-        CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -1357,241 +1349,10 @@ Partial Class sales_form
         Me.btn9.Text = "9"
         Me.btn9.UseVisualStyleBackColor = False
         '
-        'MetroTile10
-        '
-        Me.MetroTile10.ActiveControl = Nothing
-        Me.MetroTile10.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile10.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile10.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile10.Location = New System.Drawing.Point(660, 93)
-        Me.MetroTile10.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile10.Name = "MetroTile10"
-        Me.MetroTile10.Size = New System.Drawing.Size(81, 53)
-        Me.MetroTile10.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile10.TabIndex = 48
-        Me.MetroTile10.Text = "PLUS" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "QUANTITY"
-        Me.MetroTile10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile10.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile10.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile10.UseCustomBackColor = True
-        Me.MetroTile10.UseCustomForeColor = True
-        Me.MetroTile10.UseSelectable = True
-        Me.MetroTile10.UseStyleColors = True
-        '
-        'MetroTile11
-        '
-        Me.MetroTile11.ActiveControl = Nothing
-        Me.MetroTile11.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile11.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile11.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile11.Location = New System.Drawing.Point(555, 93)
-        Me.MetroTile11.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile11.Name = "MetroTile11"
-        Me.MetroTile11.Size = New System.Drawing.Size(89, 53)
-        Me.MetroTile11.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile11.TabIndex = 50
-        Me.MetroTile11.Text = "F11" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "BACKOFFICE"
-        Me.MetroTile11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile11.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile11.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile11.UseCustomBackColor = True
-        Me.MetroTile11.UseCustomForeColor = True
-        Me.MetroTile11.UseSelectable = True
-        Me.MetroTile11.UseStyleColors = True
-        '
-        'MetroTile9
-        '
-        Me.MetroTile9.ActiveControl = Nothing
-        Me.MetroTile9.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile9.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile9.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile9.Location = New System.Drawing.Point(438, 93)
-        Me.MetroTile9.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile9.Name = "MetroTile9"
-        Me.MetroTile9.Size = New System.Drawing.Size(112, 53)
-        Me.MetroTile9.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile9.TabIndex = 51
-        Me.MetroTile9.Text = "F10" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "REPRINT RECEIPT"
-        Me.MetroTile9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile9.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile9.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile9.UseCustomBackColor = True
-        Me.MetroTile9.UseCustomForeColor = True
-        Me.MetroTile9.UseSelectable = True
-        Me.MetroTile9.UseStyleColors = True
-        '
-        'MetroTile5
-        '
-        Me.MetroTile5.ActiveControl = Nothing
-        Me.MetroTile5.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile5.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile5.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile5.Location = New System.Drawing.Point(253, 93)
-        Me.MetroTile5.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile5.Name = "MetroTile5"
-        Me.MetroTile5.Size = New System.Drawing.Size(69, 53)
-        Me.MetroTile5.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile5.TabIndex = 46
-        Me.MetroTile5.Text = "F8" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "RETURNS"
-        Me.MetroTile5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile5.UseCustomBackColor = True
-        Me.MetroTile5.UseCustomForeColor = True
-        Me.MetroTile5.UseSelectable = True
-        Me.MetroTile5.UseStyleColors = True
-        '
-        'MetroTile4
-        '
-        Me.MetroTile4.ActiveControl = Nothing
-        Me.MetroTile4.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile4.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile4.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile4.Location = New System.Drawing.Point(327, 93)
-        Me.MetroTile4.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile4.Name = "MetroTile4"
-        Me.MetroTile4.Size = New System.Drawing.Size(107, 53)
-        Me.MetroTile4.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile4.TabIndex = 45
-        Me.MetroTile4.Text = "F9" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "CANCEL TRANS"
-        Me.MetroTile4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile4.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile4.UseCustomBackColor = True
-        Me.MetroTile4.UseCustomForeColor = True
-        Me.MetroTile4.UseSelectable = True
-        Me.MetroTile4.UseStyleColors = True
-        '
-        'MetroTile8
-        '
-        Me.MetroTile8.ActiveControl = Nothing
-        Me.MetroTile8.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile8.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile8.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile8.Location = New System.Drawing.Point(574, 28)
-        Me.MetroTile8.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile8.Name = "MetroTile8"
-        Me.MetroTile8.Size = New System.Drawing.Size(77, 50)
-        Me.MetroTile8.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile8.TabIndex = 49
-        Me.MetroTile8.Text = "F5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FOREX"
-        Me.MetroTile8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile8.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile8.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile8.UseCustomBackColor = True
-        Me.MetroTile8.UseCustomForeColor = True
-        Me.MetroTile8.UseSelectable = True
-        Me.MetroTile8.UseStyleColors = True
-        '
-        'MetroTile7
-        '
-        Me.MetroTile7.ActiveControl = Nothing
-        Me.MetroTile7.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile7.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile7.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile7.Location = New System.Drawing.Point(654, 28)
-        Me.MetroTile7.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile7.Name = "MetroTile7"
-        Me.MetroTile7.Size = New System.Drawing.Size(77, 50)
-        Me.MetroTile7.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile7.TabIndex = 47
-        Me.MetroTile7.Text = "F7" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "VOID"
-        Me.MetroTile7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile7.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile7.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile7.UseCustomBackColor = True
-        Me.MetroTile7.UseCustomForeColor = True
-        Me.MetroTile7.UseSelectable = True
-        Me.MetroTile7.UseStyleColors = True
-        '
-        'MetroTile3
-        '
-        Me.MetroTile3.ActiveControl = Nothing
-        Me.MetroTile3.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile3.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile3.Location = New System.Drawing.Point(493, 28)
-        Me.MetroTile3.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile3.Name = "MetroTile3"
-        Me.MetroTile3.Size = New System.Drawing.Size(77, 50)
-        Me.MetroTile3.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile3.TabIndex = 44
-        Me.MetroTile3.Text = "F4" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SWIPE"
-        Me.MetroTile3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile3.UseCustomBackColor = True
-        Me.MetroTile3.UseCustomForeColor = True
-        Me.MetroTile3.UseSelectable = True
-        Me.MetroTile3.UseStyleColors = True
-        '
-        'MetroTile2
-        '
-        Me.MetroTile2.ActiveControl = Nothing
-        Me.MetroTile2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile2.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile2.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile2.Location = New System.Drawing.Point(413, 28)
-        Me.MetroTile2.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile2.Name = "MetroTile2"
-        Me.MetroTile2.Size = New System.Drawing.Size(77, 50)
-        Me.MetroTile2.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile2.TabIndex = 43
-        Me.MetroTile2.Text = "F3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ECOCASH"
-        Me.MetroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile2.UseCustomBackColor = True
-        Me.MetroTile2.UseCustomForeColor = True
-        Me.MetroTile2.UseSelectable = True
-        Me.MetroTile2.UseStyleColors = True
-        '
-        'MetroTile1
-        '
-        Me.MetroTile1.ActiveControl = Nothing
-        Me.MetroTile1.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MetroTile1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.MetroTile1.ForeColor = System.Drawing.Color.Sienna
-        Me.MetroTile1.Location = New System.Drawing.Point(333, 28)
-        Me.MetroTile1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MetroTile1.Name = "MetroTile1"
-        Me.MetroTile1.Size = New System.Drawing.Size(77, 50)
-        Me.MetroTile1.Style = MetroFramework.MetroColorStyle.Black
-        Me.MetroTile1.TabIndex = 42
-        Me.MetroTile1.Text = "F2" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "CASH"
-        Me.MetroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.MetroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.MetroTile1.UseCustomBackColor = True
-        Me.MetroTile1.UseCustomForeColor = True
-        Me.MetroTile1.UseSelectable = True
-        Me.MetroTile1.UseStyleColors = True
-        '
-        'lookup_button
-        '
-        Me.lookup_button.ActiveControl = Nothing
-        Me.lookup_button.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.lookup_button.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.lookup_button.ForeColor = System.Drawing.Color.Sienna
-        Me.lookup_button.Location = New System.Drawing.Point(253, 28)
-        Me.lookup_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.lookup_button.Name = "lookup_button"
-        Me.lookup_button.Size = New System.Drawing.Size(77, 50)
-        Me.lookup_button.Style = MetroFramework.MetroColorStyle.Black
-        Me.lookup_button.TabIndex = 41
-        Me.lookup_button.Text = "F1" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "LOOK UP"
-        Me.lookup_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lookup_button.TileTextFontSize = MetroFramework.MetroTileTextSize.Small
-        Me.lookup_button.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular
-        Me.lookup_button.UseCustomBackColor = True
-        Me.lookup_button.UseCustomForeColor = True
-        Me.lookup_button.UseSelectable = True
-        Me.lookup_button.UseStyleColors = True
-        '
         'Panel8
         '
-        Me.Panel8.Controls.Add(Me.OtherPaymentsPanel)
         Me.Panel8.Controls.Add(Me.AmtPanel)
+        Me.Panel8.Controls.Add(Me.OtherPaymentsPanel)
         Me.Panel8.Controls.Add(Me.lookupPanel)
         Me.Panel8.Controls.Add(Me.list_grid)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Fill
@@ -1600,6 +1361,232 @@ Partial Class sales_form
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(775, 541)
         Me.Panel8.TabIndex = 7
+        '
+        'lookupPanel
+        '
+        Me.lookupPanel.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lookupPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lookupPanel.Controls.Add(Me.lookPan)
+        Me.lookupPanel.Controls.Add(Me.Panel4)
+        Me.lookupPanel.Location = New System.Drawing.Point(2, 55)
+        Me.lookupPanel.Margin = New System.Windows.Forms.Padding(2)
+        Me.lookupPanel.Name = "lookupPanel"
+        Me.lookupPanel.Size = New System.Drawing.Size(766, 480)
+        Me.lookupPanel.TabIndex = 3
+        Me.lookupPanel.Visible = False
+        '
+        'lookPan
+        '
+        Me.lookPan.Controls.Add(Me.search_grid)
+        Me.lookPan.Dock = System.Windows.Forms.DockStyle.Top
+        Me.lookPan.Location = New System.Drawing.Point(0, 46)
+        Me.lookPan.Margin = New System.Windows.Forms.Padding(2)
+        Me.lookPan.Name = "lookPan"
+        Me.lookPan.Size = New System.Drawing.Size(762, 428)
+        Me.lookPan.TabIndex = 4
+        '
+        'search_grid
+        '
+        Me.search_grid.AllowUserToAddRows = False
+        Me.search_grid.BackgroundColor = System.Drawing.Color.Gainsboro
+        Me.search_grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.search_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.search_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.search_grid.ColumnHeadersHeight = 35
+        Me.search_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.search_grid.DefaultCellStyle = DataGridViewCellStyle2
+        Me.search_grid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.search_grid.GridColor = System.Drawing.Color.WhiteSmoke
+        Me.search_grid.Location = New System.Drawing.Point(0, 0)
+        Me.search_grid.MultiSelect = False
+        Me.search_grid.Name = "search_grid"
+        Me.search_grid.ReadOnly = True
+        Me.search_grid.RowHeadersWidth = 15
+        Me.search_grid.RowTemplate.Height = 35
+        Me.search_grid.Size = New System.Drawing.Size(762, 428)
+        Me.search_grid.TabIndex = 0
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.searchbar)
+        Me.Panel4.Controls.Add(Me.Button1)
+        Me.Panel4.Controls.Add(Me.Panel5)
+        Me.Panel4.Controls.Add(Me.Panel2)
+        Me.Panel4.Controls.Add(Me.Label17)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(762, 46)
+        Me.Panel4.TabIndex = 3
+        '
+        'searchbar
+        '
+        Me.searchbar.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.searchbar.ForeColor = System.Drawing.Color.Indigo
+        Me.searchbar.Location = New System.Drawing.Point(141, 2)
+        Me.searchbar.Name = "searchbar"
+        Me.searchbar.Size = New System.Drawing.Size(521, 33)
+        Me.searchbar.TabIndex = 7
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.Indigo
+        Me.Button1.Location = New System.Drawing.Point(667, 3)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(86, 34)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Search"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Panel5
+        '
+        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel5.Location = New System.Drawing.Point(136, 0)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(4, 32)
+        Me.Panel5.TabIndex = 4
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.IndianRed
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(0, 42)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(762, 4)
+        Me.Panel2.TabIndex = 1
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Sienna
+        Me.Label17.Location = New System.Drawing.Point(2, 2)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(130, 25)
+        Me.Label17.TabIndex = 0
+        Me.Label17.Text = "Stock Look Up"
+        '
+        'list_grid
+        '
+        Me.list_grid.AllowUserToAddRows = False
+        Me.list_grid.AllowUserToResizeRows = False
+        Me.list_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.list_grid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.list_grid.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.list_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.list_grid.ColumnHeadersHeight = 40
+        Me.list_grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle6
+        Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.list_grid.EnableHeadersVisualStyles = False
+        Me.list_grid.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.list_grid.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.list_grid.Location = New System.Drawing.Point(0, 0)
+        Me.list_grid.Margin = New System.Windows.Forms.Padding(2)
+        Me.list_grid.Name = "list_grid"
+        Me.list_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        Me.list_grid.RowHeadersWidth = 10
+        Me.list_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.list_grid.RowTemplate.Height = 30
+        Me.list_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.list_grid.Size = New System.Drawing.Size(775, 541)
+        Me.list_grid.TabIndex = 1
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column1.HeaderText = "#"
+        Me.Column1.MinimumWidth = 6
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 42
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column2.HeaderText = "Barcode"
+        Me.Column2.MinimumWidth = 6
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 95
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column3.HeaderText = "Description"
+        Me.Column3.MinimumWidth = 6
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Column4.HeaderText = "Qty"
+        Me.Column4.MinimumWidth = 6
+        Me.Column4.Name = "Column4"
+        Me.Column4.Width = 60
+        '
+        'Column5
+        '
+        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column5.HeaderText = "Price"
+        Me.Column5.MinimumWidth = 6
+        Me.Column5.Name = "Column5"
+        Me.Column5.Width = 71
+        '
+        'Column6
+        '
+        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Column6.HeaderText = "Amount"
+        Me.Column6.MinimumWidth = 6
+        Me.Column6.Name = "Column6"
+        Me.Column6.Width = 95
         '
         'OtherPaymentsPanel
         '
@@ -1852,252 +1839,6 @@ Partial Class sales_form
         Me.Cancel_Payment.Text = "Cancel"
         Me.Cancel_Payment.UseVisualStyleBackColor = True
         '
-        'lookupPanel
-        '
-        Me.lookupPanel.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lookupPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lookupPanel.Controls.Add(Me.lookPan)
-        Me.lookupPanel.Controls.Add(Me.Panel4)
-        Me.lookupPanel.Location = New System.Drawing.Point(2, 55)
-        Me.lookupPanel.Margin = New System.Windows.Forms.Padding(2)
-        Me.lookupPanel.Name = "lookupPanel"
-        Me.lookupPanel.Size = New System.Drawing.Size(766, 242)
-        Me.lookupPanel.TabIndex = 3
-        Me.lookupPanel.Visible = False
-        '
-        'lookPan
-        '
-        Me.lookPan.Controls.Add(Me.lookup_button)
-        Me.lookPan.Controls.Add(Me.MetroTile1)
-        Me.lookPan.Controls.Add(Me.MetroTile2)
-        Me.lookPan.Controls.Add(Me.MetroTile3)
-        Me.lookPan.Controls.Add(Me.Button14)
-        Me.lookPan.Controls.Add(Me.MetroTile7)
-        Me.lookPan.Controls.Add(Me.MetroTile8)
-        Me.lookPan.Controls.Add(Me.MetroTile5)
-        Me.lookPan.Controls.Add(Me.MetroTile4)
-        Me.lookPan.Controls.Add(Me.MetroTile10)
-        Me.lookPan.Controls.Add(Me.MetroTile9)
-        Me.lookPan.Controls.Add(Me.MetroTile11)
-        Me.lookPan.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lookPan.Location = New System.Drawing.Point(0, 33)
-        Me.lookPan.Margin = New System.Windows.Forms.Padding(2)
-        Me.lookPan.Name = "lookPan"
-        Me.lookPan.Size = New System.Drawing.Size(762, 148)
-        Me.lookPan.TabIndex = 4
-        '
-        'Button14
-        '
-        Me.Button14.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Button14.FlatAppearance.BorderSize = 0
-        Me.Button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button14.ForeColor = System.Drawing.Color.Sienna
-        Me.Button14.Location = New System.Drawing.Point(127, 57)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(71, 36)
-        Me.Button14.TabIndex = 65
-        Me.Button14.Text = "F7 VOID"
-        Me.Button14.UseVisualStyleBackColor = False
-        '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.Button1)
-        Me.Panel4.Controls.Add(Me.searchbar)
-        Me.Panel4.Controls.Add(Me.Panel5)
-        Me.Panel4.Controls.Add(Me.Panel2)
-        Me.Panel4.Controls.Add(Me.Label17)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(762, 33)
-        Me.Panel4.TabIndex = 3
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(584, 2)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(88, 27)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Search"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'searchbar
-        '
-        '
-        '
-        '
-        Me.searchbar.CustomButton.Image = Nothing
-        Me.searchbar.CustomButton.Location = New System.Drawing.Point(404, 2)
-        Me.searchbar.CustomButton.Margin = New System.Windows.Forms.Padding(2)
-        Me.searchbar.CustomButton.Name = ""
-        Me.searchbar.CustomButton.Size = New System.Drawing.Size(21, 21)
-        Me.searchbar.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
-        Me.searchbar.CustomButton.TabIndex = 1
-        Me.searchbar.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
-        Me.searchbar.CustomButton.UseSelectable = True
-        Me.searchbar.CustomButton.Visible = False
-        Me.searchbar.DisplayIcon = True
-        Me.searchbar.FontSize = MetroFramework.MetroTextBoxSize.Tall
-        Me.searchbar.FontWeight = MetroFramework.MetroTextBoxWeight.Bold
-        Me.searchbar.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.searchbar.Icon = CType(resources.GetObject("searchbar.Icon"), System.Drawing.Image)
-        Me.searchbar.Lines = New String(-1) {}
-        Me.searchbar.Location = New System.Drawing.Point(152, 2)
-        Me.searchbar.Margin = New System.Windows.Forms.Padding(2)
-        Me.searchbar.MaxLength = 32767
-        Me.searchbar.Multiline = True
-        Me.searchbar.Name = "searchbar"
-        Me.searchbar.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.searchbar.PromptText = "Search"
-        Me.searchbar.ScrollBars = System.Windows.Forms.ScrollBars.None
-        Me.searchbar.SelectedText = ""
-        Me.searchbar.SelectionLength = 0
-        Me.searchbar.SelectionStart = 0
-        Me.searchbar.ShortcutsEnabled = True
-        Me.searchbar.Size = New System.Drawing.Size(428, 26)
-        Me.searchbar.TabIndex = 5
-        Me.searchbar.UseCustomForeColor = True
-        Me.searchbar.UseSelectable = True
-        Me.searchbar.WaterMark = "Search"
-        Me.searchbar.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.searchbar.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
-        '
-        'Panel5
-        '
-        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel5.Location = New System.Drawing.Point(136, 0)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(4, 32)
-        Me.Panel5.TabIndex = 4
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.IndianRed
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 29)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(762, 4)
-        Me.Panel2.TabIndex = 1
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Sienna
-        Me.Label17.Location = New System.Drawing.Point(2, 2)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(130, 25)
-        Me.Label17.TabIndex = 0
-        Me.Label17.Text = "Stock Look Up"
-        '
-        'list_grid
-        '
-        Me.list_grid.AllowUserToAddRows = False
-        Me.list_grid.AllowUserToResizeRows = False
-        Me.list_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.list_grid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.list_grid.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
-        Me.list_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.list_grid.ColumnHeadersHeight = 40
-        Me.list_grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle4
-        Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.list_grid.EnableHeadersVisualStyles = False
-        Me.list_grid.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.list_grid.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.list_grid.Location = New System.Drawing.Point(0, 0)
-        Me.list_grid.Margin = New System.Windows.Forms.Padding(2)
-        Me.list_grid.Name = "list_grid"
-        Me.list_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.list_grid.RowHeadersWidth = 10
-        Me.list_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.list_grid.RowTemplate.Height = 30
-        Me.list_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.list_grid.Size = New System.Drawing.Size(775, 541)
-        Me.list_grid.TabIndex = 1
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.HeaderText = "#"
-        Me.Column1.MinimumWidth = 6
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 42
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column2.HeaderText = "Barcode"
-        Me.Column2.MinimumWidth = 6
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 95
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column3.HeaderText = "Description"
-        Me.Column3.MinimumWidth = 6
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column4.HeaderText = "Qty"
-        Me.Column4.MinimumWidth = 6
-        Me.Column4.Name = "Column4"
-        Me.Column4.Width = 60
-        '
-        'Column5
-        '
-        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column5.HeaderText = "Price"
-        Me.Column5.MinimumWidth = 6
-        Me.Column5.Name = "Column5"
-        Me.Column5.Width = 71
-        '
-        'Column6
-        '
-        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column6.HeaderText = "Amount"
-        Me.Column6.MinimumWidth = 6
-        Me.Column6.Name = "Column6"
-        Me.Column6.Width = 95
-        '
         'Timer1
         '
         '
@@ -2142,17 +1883,18 @@ Partial Class sales_form
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
+        Me.lookupPanel.ResumeLayout(False)
+        Me.lookPan.ResumeLayout(False)
+        CType(Me.search_grid, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
+        CType(Me.list_grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.OtherPaymentsPanel.ResumeLayout(False)
         Me.OtherPaymentsPanel.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.AmtPanel.ResumeLayout(False)
         Me.AmtPanel.PerformLayout()
-        Me.lookupPanel.ResumeLayout(False)
-        Me.lookPan.ResumeLayout(False)
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
-        CType(Me.list_grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2191,17 +1933,6 @@ Partial Class sales_form
     Friend WithEvents Panel15 As Panel
     Friend WithEvents Panel7 As Panel
     Friend WithEvents Label5 As Label
-    Friend WithEvents MetroTile10 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile11 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile9 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile8 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile7 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile5 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile4 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile3 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile2 As MetroFramework.Controls.MetroTile
-    Friend WithEvents MetroTile1 As MetroFramework.Controls.MetroTile
-    Friend WithEvents lookup_button As MetroFramework.Controls.MetroTile
     Friend WithEvents void_button As Button
     Friend WithEvents reprint_button As Button
     Friend WithEvents cancelTrans_button As Button
@@ -2257,7 +1988,6 @@ Partial Class sales_form
     Friend WithEvents lookupPanel As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Button1 As Button
-    Friend WithEvents searchbar As MetroFramework.Controls.MetroTextBox
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label17 As Label
@@ -2283,9 +2013,10 @@ Partial Class sales_form
     Friend WithEvents f9_button As Button
     Friend WithEvents fast_other_button As Button
     Friend WithEvents f10_button As Button
-    Friend WithEvents Button14 As Button
     Friend WithEvents addition_button As Button
     Friend WithEvents ManagementInstaller1 As Management.Instrumentation.ManagementInstaller
     Friend WithEvents SplitTotal_label As Label
     Friend WithEvents totLabel As Label
+    Friend WithEvents searchbar As TextBox
+    Friend WithEvents search_grid As DataGridView
 End Class

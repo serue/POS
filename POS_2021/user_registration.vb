@@ -23,6 +23,15 @@ Public Class user_registration
             userID = value
         End Set
     End Property
+    Private EMP_ID As String
+    Public Property Employee() As String
+        Get
+            Return EMP_ID
+        End Get
+        Set(ByVal value As String)
+            EMP_ID = value
+        End Set
+    End Property
     Function MD5Hash(ByVal value As String) As Byte()
 
         Return MDS.ComputeHash(ASCIIEncoding.ASCII.GetBytes(value))
@@ -40,7 +49,34 @@ Public Class user_registration
 
     End Function
     Private Sub user_registration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            If EMP_ID <> "" Or EMP_ID IsNot Nothing Then
+                connection = myPermissions.getConnection
+                connection.Open()
+                Using command As New SqlCommand("SELECT * FROM USERS WHERE EMP_ID=@EMP_ID", connection)
+                    command.Parameters.Add("@EMP_ID", SqlDbType.VarChar).Value = EMP_ID
+                    Dim table As New DataTable
+                    Dim adapter As New SqlDataAdapter(command)
+                    adapter.Fill(table)
+                    If table.Rows.Count > 0 Then
+                        name_textbox.Text = table(0)(1)
+                        id_number.Text = table(0)(2)
+                        address.Text = table(0)(3)
+                        age.Text = table(0)(4)
+                        gender.Text = table(0)(5)
+                        phone.Text = table(0)(6)
+                        employee_id.Text = table(0)(7)
+                    Else
+                        MessageBox.Show("There is no user with the id supplied", "User not found", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+                End Using
 
+                connection.Close()
+            End If
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub clear()
@@ -74,7 +110,7 @@ Public Class user_registration
                     .Add("@ADDRESS", SqlDbType.VarChar).Value = address.Text
                     .Add("@CONTACT", SqlDbType.VarChar).Value = phone.Text
                     .Add("@GENDER", SqlDbType.VarChar).Value = gender.Text
-                    .Add("@EMP_ID", SqlDbType.VarChar).Value = employee_id.Text
+                    .Add("@EMP_ID", SqlDbType.VarChar).Value = EMP_ID
                     '.Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "Abc")
                 End With
 

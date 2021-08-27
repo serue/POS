@@ -239,6 +239,12 @@
       <DependentUpon>loaderReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="look_up.Designer.vb">
+      <DependentUpon>look_up.vb</DependentUpon>
+    </Compile>
+    <Compile Include="look_up.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="menu_form.Designer.vb">
       <DependentUpon>menu_form.vb</DependentUpon>
     </Compile>
@@ -383,6 +389,12 @@
     <Compile Include="transaction_log.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="update_users.Designer.vb">
+      <DependentUpon>update_users.vb</DependentUpon>
+    </Compile>
+    <Compile Include="update_users.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="update_user_accounts.Designer.vb">
       <DependentUpon>update_user_accounts.vb</DependentUpon>
     </Compile>
@@ -440,6 +452,9 @@
     <EmbeddedResource Include="loaderReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>loaderReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="look_up.resx">
+      <DependentUpon>look_up.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="menu_form.resx">
       <DependentUpon>menu_form.vb</DependentUpon>
@@ -502,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="transaction_log.resx">
       <DependentUpon>transaction_log.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="update_users.resx">
+      <DependentUpon>update_users.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="update_user_accounts.resx">
       <DependentUpon>update_user_accounts.vb</DependentUpon>

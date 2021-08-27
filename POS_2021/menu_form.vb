@@ -376,8 +376,11 @@ Public Class menu_form
 
     Private Sub logout_button_Click(sender As Object, e As EventArgs) Handles logout_button.Click
         Design.activeMainButton(logout_button)
-        sign_in.Show()
-        Me.Close()
+        If MessageBox.Show("Are you sure you want to Logout", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            sign_in.Show()
+            Me.Close()
+        Else
+        End If
     End Sub
 
     Private Sub stock_valuation_Click(sender As Object, e As EventArgs) Handles stock_valuation.Click
@@ -491,7 +494,7 @@ Public Class menu_form
                 End With
                 Dim reader As SqlDataReader = command.ExecuteReader
                 If reader.HasRows Then
-                    destinition.Show()
+                    hasPermission = True
                 Else
                     hasPermission = False
                     MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -525,10 +528,16 @@ Public Class menu_form
     End Sub
 
     Private Sub register_users_Click(sender As Object, e As EventArgs) Handles register_users.Click
-        checkPermission(username, register_users.Name, New user_registration)
+        checkPermissions(username, register_users.Name, New user_registration)
     End Sub
 
     Private Sub update_users_Click(sender As Object, e As EventArgs) Handles update_users.Click
-        checkPermissions(username, update_users.Name, New user_registration)
+        checkPermission(username, update_users.Name, New update_users)
+        If hasPermission = True Then
+            Design.OpenChildSmall(Me.mainPanel, New update_users)
+            Design.activeButton(add_inventory)
+            subPanel.Visible = False
+            dashboard_label.Text = "MANAGE REGISTERED USERS".ToUpper
+        End If
     End Sub
 End Class
