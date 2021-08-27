@@ -169,7 +169,7 @@ Public Class sales_form
         End If
     End Sub
     'adding items to datagrid view in a sub
-    Private Sub AddProductToGrid()
+    Private Sub AddProductToGrid(AddBarcode As String)
         found = False
         Try
             connection = myPermissions.getConnection()
@@ -184,20 +184,20 @@ Public Class sales_form
 
             End Using
             Using command As New SqlCommand("SELECT BARCODE,NAME,SALE_QTY,PRICE,QUANTITY,CATEGORY,SUB_CATEGORY1 FROM INVENTORY WHERE BARCODE=@id", connection)
-                command.Parameters.Add("@id", SqlDbType.VarChar).Value = barcode_textbox.Text
+                command.Parameters.Add("@id", SqlDbType.VarChar).Value = AddBarcode
                 Dim ada As New SqlDataAdapter(command)
                 Dim table1 As New DataTable
                 ada.Fill(table1)
                 If table1.Rows.Count > 0 Then
                     remainingStock = table1(0)(0)
                     Dim qua As Integer = table1(0)(4)
-                    If table1(0)(5) = "weighed".ToUpper Then
+                    If table1(0)(6) = "weighed" Then
                         isButchery = True
                     End If
 
                     If qua > 1 Then
                         For Each row As DataGridViewRow In list_grid.Rows
-                            If row.Cells(1).Value = barcode_textbox.Text Then
+                            If row.Cells(1).Value = AddBarcode Then
                                 Index = row.Cells(3).Value + 1 'THIS IS THE PRODUCT QUANTITY BEING ADDED TO THE GRID
                                 row.Cells(3).Value = Index  'THIS IS THE PRODUCT QUANTITY BEING ADDED TO THE GRID
                                 row.Cells(5).Value = (row.Cells(3).Value * table1(0)(3))
@@ -224,11 +224,15 @@ Public Class sales_form
                         total_label.Text = totalsum
 
                         If isButchery Then
+                            barcode_textbox.Clear()
                             AmtPanel.Visible = True
-                            quantity_textbox.Visible = True
                             qty_viewLabel.Visible = True
+                            quantity_textbox.Visible = True
                             Accept_Quantity.Visible = True
-                            Me.AcceptButton = Accept_Quantity
+                            HideQuantityInputs()
+                            Me.AcceptButton = Me.Accept_Quantity
+                            quantity_textbox.TextAlign = HorizontalAlignment.Right
+                            quantity_textbox.Focus()
                         End If
                     Else
                         MsgBox("out of stock")
@@ -246,9 +250,11 @@ Public Class sales_form
         'YOU NEED TO USE THE TAX VALUE ON CALCULATING THE PRICE OF THE PRODUCT ON INVONTORY ADDITION FORM
         'ON THIS FORM ADD THE LABEL TO DISPAY THE TOTAL TAX FOR THE SALE
         Try
-            AddProductToGrid()
+            AddProductToGrid(barcode_textbox.Text)
+            If ok_button Is AcceptButton Then
+                barcode_textbox.Focus()
+            End If
             barcode_textbox.Clear()
-            barcode_textbox.Focus()
             iRowIndex = list_grid.RowCount
             'list_grid.Rows( iRowIndex).Cells(3).Value = quantity_textbox.Text
             list_grid.ClearSelection()
@@ -341,7 +347,7 @@ Public Class sales_form
                         With TransactionDetailCommand.Parameters
                             .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                            .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
+                            .Add("@QUANTITY", SqlDbType.Decimal).Value = row.Cells(3).Value
                             .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
 
                         End With
@@ -399,7 +405,7 @@ Public Class sales_form
                                 With salecommand.Parameters
                                     .Add("@TRANS_DATE", SqlDbType.Date).Value = Now.ToShortDateString
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                                    .Add("@QUANTITY", SqlDbType.Int).Value = row.Cells(3).Value
+                                    .Add("@QUANTITY", SqlDbType.Decimal).Value = row.Cells(3).Value
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(4).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
                                     .Add("@SALE_TYPE", SqlDbType.VarChar).Value = Transaction_type
@@ -659,6 +665,8 @@ Public Class sales_form
 
     Private Sub OtherPaymentButton_Click(sender As Object, e As EventArgs) Handles OtherPaymentButton.Click
         Try
+            AmtPanel.Visible = False
+            lookupPanel.Visible = False
             Transaction_type = "MULTIPLE"
             If method_label.Text = "FOREX" Then
                 Try
@@ -729,6 +737,8 @@ Public Class sales_form
 
     Private Sub Assign_Methods(sender As Object, e As EventArgs) Handles RTGS_button.Click, forex_button.Click, ecocash_button.Click, cash_button.Click
         Try
+            OtherPaymentsPanel.Visible = False
+            lookupPanel.Visible = False
             Dim TotalPayable As Decimal = 0
             If total_label.Text <= 0 Or total_label.Text = "" Then
                 MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -845,9 +855,16 @@ Public Class sales_form
     End Sub
 
     Private Sub enquiry_button_Click(sender As Object, e As EventArgs) Handles enquiry_button.Click
-        lookupPanel.Visible = True
-        searchbar.Focus()
-        lookupPanel.Top = list_grid.Top
+        Try
+            lookupPanel.Visible = True
+            searchbar.Clear()
+            searchbar.Focus()
+            lookupPanel.Top = list_grid.Top
+            OtherPaymentsPanel.Visible = False
+            AmtPanel.Visible = False
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub Headings()
@@ -868,7 +885,7 @@ Public Class sales_form
                     search_grid.DataSource = table
                     Headings()
                 Else
-                    MessageBox.Show("There is no related product in the inventory!!", "Lookup Results", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    search_grid.DataSource = table
                 End If
             End Using
             connection.Close()
@@ -925,9 +942,6 @@ Public Class sales_form
     End Sub
 
     Private Sub sales_Form_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If e.KeyCode = Keys.Down Then
-            MsgBox("down")
-        End If
 
         If e.KeyCode = Keys.F2 Then
             Try
@@ -1296,11 +1310,14 @@ Public Class sales_form
     End Sub
 
     Private Sub list_grid_Click(sender As Object, e As EventArgs) Handles list_grid.Click
-        If isButchery Then
-        Else
-            lookupPanel.Visible = False
-            AmtPanel.Visible = False
-        End If
+
+        lookupPanel.Visible = False
+        AmtPanel.Visible = False
+        OtherPaymentsPanel.Visible = False
+
+        barcode_textbox.Focus()
+        Me.AcceptButton = Me.ok_button
+
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -1476,9 +1493,16 @@ Public Class sales_form
     End Sub
 
     Private Sub f6_button_Click(sender As Object, e As EventArgs) Handles f6_button.Click
-        lookupPanel.Visible = True
-        AmtPanel.Visible = False
-        OtherPaymentsPanel.Visible = False
+        Try
+            lookupPanel.Visible = True
+            searchbar.Clear()
+            searchbar.Focus()
+            lookupPanel.Top = list_grid.Top
+            OtherPaymentsPanel.Visible = False
+            AmtPanel.Visible = False
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub f7_button_Click(sender As Object, e As EventArgs) Handles f7_button.Click
@@ -1893,5 +1917,61 @@ Public Class sales_form
             MessageBox.Show(ex.Message, "An Error Occured Adding the split tender", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+
+    Private Sub search_grid_KeyDown(sender As Object, e As KeyEventArgs) Handles search_grid.KeyDown
+        Try
+
+            Dim dgv As DataGridView = TryCast(sender, DataGridView)
+            Dim dt As DataTable = TryCast(dgv.DataSource, DataTable)
+
+            If dgv.Rows.Count > 0 Then
+                Dim index As Integer = dgv.CurrentRow.Index
+
+                If e.KeyData = (Keys.Control + Keys.Up) Then
+                    dgv.CurrentCell = Nothing
+                    Dim dgvr As DataGridViewRow() = New DataGridViewRow(1) {dgv.Rows(index), dgv.Rows(index - 1)}
+
+                    For Each row In dgvr
+                        dgv.Rows.Remove(row)
+                    Next
+
+                    dgv.Rows.InsertRange(index, dgvr)
+                ElseIf e.KeyData = (Keys.Control Or Keys.Down) Then
+                    dgv.CurrentCell = Nothing
+                    Dim dgvr As DataGridViewRow() = New DataGridViewRow(1) {dgv.Rows(index + 1), dgv.Rows(index)}
+
+                    For Each row In dgvr
+                        dgv.Rows.Remove(row)
+                    Next
+
+                    dgv.Rows.InsertRange(index, dgvr)
+                ElseIf e.KeyData = (Keys.Control + Keys.Enter) Then
+                    AddProductToGrid(search_grid.SelectedRows.Item(0).Cells(0).Value.ToString)
+                    lookupPanel.Hide()
+                    barcode_textbox.Clear()
+                    barcode_textbox.Focus()
+                End If
+
+                dgv.DataSource = dt
+                dgv.Rows(index).Selected = True
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub searchbar_KeyDown(sender As Object, e As KeyEventArgs) Handles searchbar.KeyDown
+        Try
+            If e.KeyData = Keys.Down Then
+                If search_grid.RowCount > 0 Then
+                    search_grid.Focus()
+                    search_grid.Rows(0).Selected = True
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
