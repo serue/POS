@@ -47,7 +47,9 @@ Partial Class DayEndReportForm
         Me.ClientSize = New System.Drawing.Size(767, 416)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "DayEndReportForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DayEndReportForm"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

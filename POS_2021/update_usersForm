@@ -70,14 +70,16 @@ Public Class update_users
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
         'UPDATING USER
         Try
-            If EMP_ID <> 1 Or EMP_ID <> "" Then
+            If EMP_ID = "1" Or EMP_ID = "" Then
+
+                MessageBox.Show("You are trying to edit a super user whith Employee id of 1 or you hav not selected a user to edit, please make sure you select the right user", "Editing User", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
                 user_registration.Employee = EMP_ID
                 user_registration.ShowDialog()
-            Else
-                MessageBox.Show("You are trying to edit a super user whith Employee id of 1 or you hav not selected a user to edit, please make sure you select the right user", "Editing User", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            MsgBox(ex.StackTrace)
         End Try
     End Sub
 
@@ -122,7 +124,7 @@ Public Class update_users
                             MessageBox.Show("The user was activated successfully", "Activating user", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         End Using
                     Else
-                        MessageBox.Show("Please select a user to activate, you cannot activate or deactivate system superuser with Employee ID 1", "ACtivating user")
+                        MessageBox.Show("Please select a user to activate, you cannot activate or deactivate system superuser with Employee ID 1", "Activating user")
                     End If
                 Else
                     MessageBox.Show("You don't have the permission to activate or deactivate users", "Activating user", MessageBoxButtons.OK, MessageBoxIcon.Warning)

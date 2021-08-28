@@ -157,6 +157,10 @@ Public Class ScheduledReportForm
         End If
     End Sub
 
+    Private Sub CrystalReportViewer1_Load(sender As Object, e As EventArgs) Handles CrystalReportViewer1.Load
+
+    End Sub
+
     Private Sub filter_toggler_CheckedChanged(sender As Object, e As EventArgs) Handles filter_toggler.CheckedChanged
         If filter_toggler.Checked Then
             GroupBox1.Enabled = True

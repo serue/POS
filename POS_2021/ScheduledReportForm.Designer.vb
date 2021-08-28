@@ -159,7 +159,7 @@ Partial Class ScheduledReportForm
         '
         Me.cash_check.AutoSize = True
         Me.cash_check.Depth = 0
-        Me.cash_check.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.cash_check.Font = New System.Drawing.Font("Roboto", 10.0!)
         Me.cash_check.Location = New System.Drawing.Point(14, 23)
         Me.cash_check.Margin = New System.Windows.Forms.Padding(0)
         Me.cash_check.MouseLocation = New System.Drawing.Point(-1, -1)
@@ -248,9 +248,6 @@ Partial Class ScheduledReportForm
         'BackgroundWorker1
         '
         '
-        'BackgroundWorker2
-        '
-        '
         'ScheduledReportForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -263,6 +260,7 @@ Partial Class ScheduledReportForm
         Me.Name = "ScheduledReportForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Scheduled Sales Reports"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)

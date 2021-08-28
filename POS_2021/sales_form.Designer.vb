@@ -24,13 +24,13 @@ Partial Class sales_form
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(sales_form))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -113,6 +113,25 @@ Partial Class sales_form
         Me.btn3 = New System.Windows.Forms.Button()
         Me.btn9 = New System.Windows.Forms.Button()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.AmtPanel = New System.Windows.Forms.Panel()
+        Me.FinaliseTransaction = New System.Windows.Forms.Button()
+        Me.Accept_Quantity = New System.Windows.Forms.Button()
+        Me.Cancel_Payment = New System.Windows.Forms.Button()
+        Me.OtherPaymentsPanel = New System.Windows.Forms.Panel()
+        Me.SplitTotal_label = New System.Windows.Forms.Label()
+        Me.totLabel = New System.Windows.Forms.Label()
+        Me.CancelTransactionButton = New System.Windows.Forms.Button()
+        Me.ProcessTrsactionButton = New System.Windows.Forms.Button()
+        Me.txtForex = New System.Windows.Forms.TextBox()
+        Me.txtCard = New System.Windows.Forms.TextBox()
+        Me.txtEcoCash = New System.Windows.Forms.TextBox()
+        Me.txtCash = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.lookupPanel = New System.Windows.Forms.Panel()
         Me.lookPan = New System.Windows.Forms.Panel()
         Me.search_grid = New System.Windows.Forms.DataGridView()
@@ -129,28 +148,11 @@ Partial Class sales_form
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OtherPaymentsPanel = New System.Windows.Forms.Panel()
-        Me.SplitTotal_label = New System.Windows.Forms.Label()
-        Me.totLabel = New System.Windows.Forms.Label()
-        Me.CancelTransactionButton = New System.Windows.Forms.Button()
-        Me.ProcessTrsactionButton = New System.Windows.Forms.Button()
-        Me.txtForex = New System.Windows.Forms.TextBox()
-        Me.txtCard = New System.Windows.Forms.TextBox()
-        Me.txtEcoCash = New System.Windows.Forms.TextBox()
-        Me.txtCash = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.AmtPanel = New System.Windows.Forms.Panel()
-        Me.FinaliseTransaction = New System.Windows.Forms.Button()
-        Me.Accept_Quantity = New System.Windows.Forms.Button()
-        Me.Cancel_Payment = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Form_Thread = New System.ComponentModel.BackgroundWorker()
         Me.ManagementInstaller1 = New System.Management.Instrumentation.ManagementInstaller()
+        Me.logout = New System.Windows.Forms.Button()
+        Me.dayEnd_rpt = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,14 +165,14 @@ Partial Class sales_form
         Me.Panel15.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
+        Me.AmtPanel.SuspendLayout()
+        Me.OtherPaymentsPanel.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.lookupPanel.SuspendLayout()
         Me.lookPan.SuspendLayout()
         CType(Me.search_grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.OtherPaymentsPanel.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        Me.AmtPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -338,6 +340,7 @@ Partial Class sales_form
         '
         'Panel13
         '
+        Me.Panel13.Controls.Add(Me.logout)
         Me.Panel13.Controls.Add(Me.Label19)
         Me.Panel13.Controls.Add(Me.method_label)
         Me.Panel13.Controls.Add(Me.Label7)
@@ -689,6 +692,7 @@ Partial Class sales_form
         '
         'Panel7
         '
+        Me.Panel7.Controls.Add(Me.dayEnd_rpt)
         Me.Panel7.Controls.Add(Me.f11_button)
         Me.Panel7.Controls.Add(Me.f9_button)
         Me.Panel7.Controls.Add(Me.fast_other_button)
@@ -1056,7 +1060,7 @@ Partial Class sales_form
         Me.backoffice_button.Location = New System.Drawing.Point(17, 420)
         Me.backoffice_button.Margin = New System.Windows.Forms.Padding(2)
         Me.backoffice_button.Name = "backoffice_button"
-        Me.backoffice_button.Size = New System.Drawing.Size(317, 55)
+        Me.backoffice_button.Size = New System.Drawing.Size(188, 55)
         Me.backoffice_button.TabIndex = 40
         Me.backoffice_button.Text = "BACK OFFICE"
         Me.backoffice_button.UseVisualStyleBackColor = False
@@ -1362,231 +1366,59 @@ Partial Class sales_form
         Me.Panel8.Size = New System.Drawing.Size(775, 541)
         Me.Panel8.TabIndex = 7
         '
-        'lookupPanel
+        'AmtPanel
         '
-        Me.lookupPanel.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.lookupPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lookupPanel.Controls.Add(Me.lookPan)
-        Me.lookupPanel.Controls.Add(Me.Panel4)
-        Me.lookupPanel.Location = New System.Drawing.Point(2, 55)
-        Me.lookupPanel.Margin = New System.Windows.Forms.Padding(2)
-        Me.lookupPanel.Name = "lookupPanel"
-        Me.lookupPanel.Size = New System.Drawing.Size(766, 480)
-        Me.lookupPanel.TabIndex = 3
-        Me.lookupPanel.Visible = False
+        Me.AmtPanel.BackColor = System.Drawing.SystemColors.Control
+        Me.AmtPanel.Controls.Add(Me.qty_paid_textbox)
+        Me.AmtPanel.Controls.Add(Me.View_AmtPaid_Label)
+        Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
+        Me.AmtPanel.Controls.Add(Me.Accept_Quantity)
+        Me.AmtPanel.Controls.Add(Me.quantity_textbox)
+        Me.AmtPanel.Controls.Add(Me.Cancel_Payment)
+        Me.AmtPanel.Controls.Add(Me.qty_viewLabel)
+        Me.AmtPanel.Location = New System.Drawing.Point(288, 282)
+        Me.AmtPanel.Margin = New System.Windows.Forms.Padding(2)
+        Me.AmtPanel.Name = "AmtPanel"
+        Me.AmtPanel.Size = New System.Drawing.Size(454, 109)
+        Me.AmtPanel.TabIndex = 4
+        Me.AmtPanel.Visible = False
         '
-        'lookPan
+        'FinaliseTransaction
         '
-        Me.lookPan.Controls.Add(Me.search_grid)
-        Me.lookPan.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lookPan.Location = New System.Drawing.Point(0, 46)
-        Me.lookPan.Margin = New System.Windows.Forms.Padding(2)
-        Me.lookPan.Name = "lookPan"
-        Me.lookPan.Size = New System.Drawing.Size(762, 428)
-        Me.lookPan.TabIndex = 4
+        Me.FinaliseTransaction.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FinaliseTransaction.ForeColor = System.Drawing.Color.Indigo
+        Me.FinaliseTransaction.Location = New System.Drawing.Point(185, 59)
+        Me.FinaliseTransaction.Margin = New System.Windows.Forms.Padding(2)
+        Me.FinaliseTransaction.Name = "FinaliseTransaction"
+        Me.FinaliseTransaction.Size = New System.Drawing.Size(128, 35)
+        Me.FinaliseTransaction.TabIndex = 13
+        Me.FinaliseTransaction.Text = "Accept Payment"
+        Me.FinaliseTransaction.UseVisualStyleBackColor = True
         '
-        'search_grid
+        'Accept_Quantity
         '
-        Me.search_grid.AllowUserToAddRows = False
-        Me.search_grid.BackgroundColor = System.Drawing.Color.Gainsboro
-        Me.search_grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.search_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.search_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
-        Me.search_grid.ColumnHeadersHeight = 35
-        Me.search_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.search_grid.DefaultCellStyle = DataGridViewCellStyle14
-        Me.search_grid.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.search_grid.GridColor = System.Drawing.Color.WhiteSmoke
-        Me.search_grid.Location = New System.Drawing.Point(0, 0)
-        Me.search_grid.MultiSelect = False
-        Me.search_grid.Name = "search_grid"
-        Me.search_grid.ReadOnly = True
-        Me.search_grid.RowHeadersWidth = 15
-        Me.search_grid.RowTemplate.Height = 35
-        Me.search_grid.Size = New System.Drawing.Size(762, 428)
-        Me.search_grid.TabIndex = 0
+        Me.Accept_Quantity.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Accept_Quantity.ForeColor = System.Drawing.Color.Indigo
+        Me.Accept_Quantity.Location = New System.Drawing.Point(186, 59)
+        Me.Accept_Quantity.Margin = New System.Windows.Forms.Padding(2)
+        Me.Accept_Quantity.Name = "Accept_Quantity"
+        Me.Accept_Quantity.Size = New System.Drawing.Size(128, 35)
+        Me.Accept_Quantity.TabIndex = 15
+        Me.Accept_Quantity.Text = "Accept Quantity"
+        Me.Accept_Quantity.UseVisualStyleBackColor = True
+        Me.Accept_Quantity.Visible = False
         '
-        'Panel4
+        'Cancel_Payment
         '
-        Me.Panel4.Controls.Add(Me.searchbar)
-        Me.Panel4.Controls.Add(Me.Button1)
-        Me.Panel4.Controls.Add(Me.Panel5)
-        Me.Panel4.Controls.Add(Me.Panel2)
-        Me.Panel4.Controls.Add(Me.Label17)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(762, 46)
-        Me.Panel4.TabIndex = 3
-        '
-        'searchbar
-        '
-        Me.searchbar.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.searchbar.ForeColor = System.Drawing.Color.Indigo
-        Me.searchbar.Location = New System.Drawing.Point(141, 2)
-        Me.searchbar.Name = "searchbar"
-        Me.searchbar.Size = New System.Drawing.Size(521, 33)
-        Me.searchbar.TabIndex = 7
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.Indigo
-        Me.Button1.Location = New System.Drawing.Point(667, 3)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(86, 34)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Search"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Panel5
-        '
-        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel5.Location = New System.Drawing.Point(136, 0)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(4, 32)
-        Me.Panel5.TabIndex = 4
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.IndianRed
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 42)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(762, 4)
-        Me.Panel2.TabIndex = 1
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Sienna
-        Me.Label17.Location = New System.Drawing.Point(2, 2)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(130, 25)
-        Me.Label17.TabIndex = 0
-        Me.Label17.Text = "Stock Look Up"
-        '
-        'list_grid
-        '
-        Me.list_grid.AllowUserToAddRows = False
-        Me.list_grid.AllowUserToResizeRows = False
-        Me.list_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.list_grid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.list_grid.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
-        Me.list_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.list_grid.ColumnHeadersHeight = 40
-        Me.list_grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle11
-        Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.list_grid.EnableHeadersVisualStyles = False
-        Me.list_grid.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.list_grid.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.list_grid.Location = New System.Drawing.Point(0, 0)
-        Me.list_grid.Margin = New System.Windows.Forms.Padding(2)
-        Me.list_grid.Name = "list_grid"
-        Me.list_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
-        Me.list_grid.RowHeadersWidth = 10
-        Me.list_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.list_grid.RowTemplate.Height = 30
-        Me.list_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.list_grid.Size = New System.Drawing.Size(775, 541)
-        Me.list_grid.TabIndex = 1
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.HeaderText = "#"
-        Me.Column1.MinimumWidth = 6
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 42
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column2.HeaderText = "Barcode"
-        Me.Column2.MinimumWidth = 6
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 95
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column3.HeaderText = "Description"
-        Me.Column3.MinimumWidth = 6
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle9
-        Me.Column4.HeaderText = "Qty"
-        Me.Column4.MinimumWidth = 6
-        Me.Column4.Name = "Column4"
-        Me.Column4.Width = 60
-        '
-        'Column5
-        '
-        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column5.HeaderText = "Price"
-        Me.Column5.MinimumWidth = 6
-        Me.Column5.Name = "Column5"
-        Me.Column5.Width = 71
-        '
-        'Column6
-        '
-        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle10
-        Me.Column6.HeaderText = "Amount"
-        Me.Column6.MinimumWidth = 6
-        Me.Column6.Name = "Column6"
-        Me.Column6.Width = 95
+        Me.Cancel_Payment.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel_Payment.ForeColor = System.Drawing.Color.Indigo
+        Me.Cancel_Payment.Location = New System.Drawing.Point(320, 59)
+        Me.Cancel_Payment.Margin = New System.Windows.Forms.Padding(2)
+        Me.Cancel_Payment.Name = "Cancel_Payment"
+        Me.Cancel_Payment.Size = New System.Drawing.Size(65, 35)
+        Me.Cancel_Payment.TabIndex = 14
+        Me.Cancel_Payment.Text = "Cancel"
+        Me.Cancel_Payment.UseVisualStyleBackColor = True
         '
         'OtherPaymentsPanel
         '
@@ -1785,65 +1617,266 @@ Partial Class sales_form
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Other Payment Methods"
         '
-        'AmtPanel
+        'lookupPanel
         '
-        Me.AmtPanel.BackColor = System.Drawing.SystemColors.Control
-        Me.AmtPanel.Controls.Add(Me.qty_paid_textbox)
-        Me.AmtPanel.Controls.Add(Me.View_AmtPaid_Label)
-        Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
-        Me.AmtPanel.Controls.Add(Me.Accept_Quantity)
-        Me.AmtPanel.Controls.Add(Me.quantity_textbox)
-        Me.AmtPanel.Controls.Add(Me.Cancel_Payment)
-        Me.AmtPanel.Controls.Add(Me.qty_viewLabel)
-        Me.AmtPanel.Location = New System.Drawing.Point(288, 282)
-        Me.AmtPanel.Margin = New System.Windows.Forms.Padding(2)
-        Me.AmtPanel.Name = "AmtPanel"
-        Me.AmtPanel.Size = New System.Drawing.Size(454, 109)
-        Me.AmtPanel.TabIndex = 4
-        Me.AmtPanel.Visible = False
+        Me.lookupPanel.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.lookupPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lookupPanel.Controls.Add(Me.lookPan)
+        Me.lookupPanel.Controls.Add(Me.Panel4)
+        Me.lookupPanel.Location = New System.Drawing.Point(2, 55)
+        Me.lookupPanel.Margin = New System.Windows.Forms.Padding(2)
+        Me.lookupPanel.Name = "lookupPanel"
+        Me.lookupPanel.Size = New System.Drawing.Size(766, 480)
+        Me.lookupPanel.TabIndex = 3
+        Me.lookupPanel.Visible = False
         '
-        'FinaliseTransaction
+        'lookPan
         '
-        Me.FinaliseTransaction.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FinaliseTransaction.ForeColor = System.Drawing.Color.Indigo
-        Me.FinaliseTransaction.Location = New System.Drawing.Point(185, 59)
-        Me.FinaliseTransaction.Margin = New System.Windows.Forms.Padding(2)
-        Me.FinaliseTransaction.Name = "FinaliseTransaction"
-        Me.FinaliseTransaction.Size = New System.Drawing.Size(128, 35)
-        Me.FinaliseTransaction.TabIndex = 13
-        Me.FinaliseTransaction.Text = "Accept Payment"
-        Me.FinaliseTransaction.UseVisualStyleBackColor = True
+        Me.lookPan.Controls.Add(Me.search_grid)
+        Me.lookPan.Dock = System.Windows.Forms.DockStyle.Top
+        Me.lookPan.Location = New System.Drawing.Point(0, 46)
+        Me.lookPan.Margin = New System.Windows.Forms.Padding(2)
+        Me.lookPan.Name = "lookPan"
+        Me.lookPan.Size = New System.Drawing.Size(762, 428)
+        Me.lookPan.TabIndex = 4
         '
-        'Accept_Quantity
+        'search_grid
         '
-        Me.Accept_Quantity.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Accept_Quantity.ForeColor = System.Drawing.Color.Indigo
-        Me.Accept_Quantity.Location = New System.Drawing.Point(186, 59)
-        Me.Accept_Quantity.Margin = New System.Windows.Forms.Padding(2)
-        Me.Accept_Quantity.Name = "Accept_Quantity"
-        Me.Accept_Quantity.Size = New System.Drawing.Size(128, 35)
-        Me.Accept_Quantity.TabIndex = 15
-        Me.Accept_Quantity.Text = "Accept Quantity"
-        Me.Accept_Quantity.UseVisualStyleBackColor = True
-        Me.Accept_Quantity.Visible = False
+        Me.search_grid.AllowUserToAddRows = False
+        Me.search_grid.BackgroundColor = System.Drawing.Color.Gainsboro
+        Me.search_grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.search_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.search_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        Me.search_grid.ColumnHeadersHeight = 35
+        Me.search_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.search_grid.DefaultCellStyle = DataGridViewCellStyle9
+        Me.search_grid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.search_grid.GridColor = System.Drawing.Color.WhiteSmoke
+        Me.search_grid.Location = New System.Drawing.Point(0, 0)
+        Me.search_grid.MultiSelect = False
+        Me.search_grid.Name = "search_grid"
+        Me.search_grid.ReadOnly = True
+        Me.search_grid.RowHeadersWidth = 15
+        Me.search_grid.RowTemplate.Height = 35
+        Me.search_grid.Size = New System.Drawing.Size(762, 428)
+        Me.search_grid.TabIndex = 0
         '
-        'Cancel_Payment
+        'Panel4
         '
-        Me.Cancel_Payment.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Cancel_Payment.ForeColor = System.Drawing.Color.Indigo
-        Me.Cancel_Payment.Location = New System.Drawing.Point(320, 59)
-        Me.Cancel_Payment.Margin = New System.Windows.Forms.Padding(2)
-        Me.Cancel_Payment.Name = "Cancel_Payment"
-        Me.Cancel_Payment.Size = New System.Drawing.Size(65, 35)
-        Me.Cancel_Payment.TabIndex = 14
-        Me.Cancel_Payment.Text = "Cancel"
-        Me.Cancel_Payment.UseVisualStyleBackColor = True
+        Me.Panel4.Controls.Add(Me.searchbar)
+        Me.Panel4.Controls.Add(Me.Button1)
+        Me.Panel4.Controls.Add(Me.Panel5)
+        Me.Panel4.Controls.Add(Me.Panel2)
+        Me.Panel4.Controls.Add(Me.Label17)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(762, 46)
+        Me.Panel4.TabIndex = 3
+        '
+        'searchbar
+        '
+        Me.searchbar.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.searchbar.ForeColor = System.Drawing.Color.Indigo
+        Me.searchbar.Location = New System.Drawing.Point(141, 2)
+        Me.searchbar.Name = "searchbar"
+        Me.searchbar.Size = New System.Drawing.Size(521, 33)
+        Me.searchbar.TabIndex = 7
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.Indigo
+        Me.Button1.Location = New System.Drawing.Point(667, 3)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(86, 34)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Search"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Panel5
+        '
+        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel5.Location = New System.Drawing.Point(136, 0)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(4, 32)
+        Me.Panel5.TabIndex = 4
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.IndianRed
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(0, 42)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(762, 4)
+        Me.Panel2.TabIndex = 1
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Sienna
+        Me.Label17.Location = New System.Drawing.Point(2, 2)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(130, 25)
+        Me.Label17.TabIndex = 0
+        Me.Label17.Text = "Stock Look Up"
+        '
+        'list_grid
+        '
+        Me.list_grid.AllowUserToAddRows = False
+        Me.list_grid.AllowUserToResizeRows = False
+        Me.list_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.list_grid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.list_grid.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.list_grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        Me.list_grid.ColumnHeadersHeight = 40
+        Me.list_grid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle13
+        Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.list_grid.EnableHeadersVisualStyles = False
+        Me.list_grid.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.list_grid.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.list_grid.Location = New System.Drawing.Point(0, 0)
+        Me.list_grid.Margin = New System.Windows.Forms.Padding(2)
+        Me.list_grid.Name = "list_grid"
+        Me.list_grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        Me.list_grid.RowHeadersWidth = 10
+        Me.list_grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.list_grid.RowTemplate.Height = 30
+        Me.list_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.list_grid.Size = New System.Drawing.Size(775, 541)
+        Me.list_grid.TabIndex = 1
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column1.HeaderText = "#"
+        Me.Column1.MinimumWidth = 6
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 42
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column2.HeaderText = "Barcode"
+        Me.Column2.MinimumWidth = 6
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 95
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column3.HeaderText = "Description"
+        Me.Column3.MinimumWidth = 6
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle11
+        Me.Column4.HeaderText = "Qty"
+        Me.Column4.MinimumWidth = 6
+        Me.Column4.Name = "Column4"
+        Me.Column4.Width = 60
+        '
+        'Column5
+        '
+        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column5.HeaderText = "Price"
+        Me.Column5.MinimumWidth = 6
+        Me.Column5.Name = "Column5"
+        Me.Column5.Width = 71
+        '
+        'Column6
+        '
+        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle12
+        Me.Column6.HeaderText = "Amount"
+        Me.Column6.MinimumWidth = 6
+        Me.Column6.Name = "Column6"
+        Me.Column6.Width = 95
         '
         'Timer1
         '
         '
         'Form_Thread
         '
+        '
+        'logout
+        '
+        Me.logout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.logout.BackColor = System.Drawing.Color.Firebrick
+        Me.logout.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.logout.ForeColor = System.Drawing.Color.White
+        Me.logout.Location = New System.Drawing.Point(682, 0)
+        Me.logout.Name = "logout"
+        Me.logout.Size = New System.Drawing.Size(65, 42)
+        Me.logout.TabIndex = 55
+        Me.logout.Text = "Logout"
+        Me.logout.UseVisualStyleBackColor = False
+        '
+        'dayEnd_rpt
+        '
+        Me.dayEnd_rpt.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.dayEnd_rpt.BackColor = System.Drawing.Color.Indigo
+        Me.dayEnd_rpt.FlatAppearance.BorderSize = 0
+        Me.dayEnd_rpt.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.dayEnd_rpt.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dayEnd_rpt.ForeColor = System.Drawing.Color.White
+        Me.dayEnd_rpt.Location = New System.Drawing.Point(210, 420)
+        Me.dayEnd_rpt.Margin = New System.Windows.Forms.Padding(2)
+        Me.dayEnd_rpt.Name = "dayEnd_rpt"
+        Me.dayEnd_rpt.Size = New System.Drawing.Size(124, 55)
+        Me.dayEnd_rpt.TabIndex = 68
+        Me.dayEnd_rpt.Text = "End Of Day rpt"
+        Me.dayEnd_rpt.UseVisualStyleBackColor = False
         '
         'sales_form
         '
@@ -1883,18 +1916,18 @@ Partial Class sales_form
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
+        Me.AmtPanel.ResumeLayout(False)
+        Me.AmtPanel.PerformLayout()
+        Me.OtherPaymentsPanel.ResumeLayout(False)
+        Me.OtherPaymentsPanel.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.lookupPanel.ResumeLayout(False)
         Me.lookPan.ResumeLayout(False)
         CType(Me.search_grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.OtherPaymentsPanel.ResumeLayout(False)
-        Me.OtherPaymentsPanel.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
-        Me.AmtPanel.ResumeLayout(False)
-        Me.AmtPanel.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2019,4 +2052,6 @@ Partial Class sales_form
     Friend WithEvents totLabel As Label
     Friend WithEvents searchbar As TextBox
     Friend WithEvents search_grid As DataGridView
+    Friend WithEvents logout As Button
+    Friend WithEvents dayEnd_rpt As Button
 End Class

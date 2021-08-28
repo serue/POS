@@ -57,7 +57,8 @@ Public Class ConnectionAndPermissions
                         adapter.Fill(table)
                         Full_name = table(0)(0)
                     End Using
-                    Using CM As New SqlCommand("SELECT * FROM ACCOUNTS WHERE STATUS='1'", conn)
+                    Using CM As New SqlCommand("SELECT * FROM ACCOUNTS WHERE STATUS='1' AND USERNAME=@USERNAME", conn)
+                        CM.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username
                         Dim reader As New SqlDataAdapter(CM)
                         Dim AccTable As New DataTable
                         reader.Fill(AccTable)

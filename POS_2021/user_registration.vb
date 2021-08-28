@@ -110,7 +110,7 @@ Public Class user_registration
                     .Add("@ADDRESS", SqlDbType.VarChar).Value = address.Text
                     .Add("@CONTACT", SqlDbType.VarChar).Value = phone.Text
                     .Add("@GENDER", SqlDbType.VarChar).Value = gender.Text
-                    .Add("@EMP_ID", SqlDbType.VarChar).Value = EMP_ID
+                    .Add("@EMP_ID", SqlDbType.VarChar).Value = employee_id.Text
                     '.Add("@PASSWORD", SqlDbType.VarChar).Value = Encrypt(password.Text, "Abc")
                 End With
 
@@ -127,7 +127,7 @@ Public Class user_registration
 
     Private Sub update_button_Click(sender As Object, e As EventArgs) Handles update_button.Click
         Try
-            If Not IsDBNull(user) Or user <> "" Then
+            If Not EMP_ID = "" Then
                 connection = myPermissions.getConnection()
                 connection.Open()
                 Dim query As String = "insert into users(name,id_no,address,age,gender,contact,username,password) values(@name,@id_no,@address,@age ,@gender,@CONTACT,@username,@password) "
@@ -138,7 +138,7 @@ Public Class user_registration
                     command.CommandType = CommandType.StoredProcedure
 
                     With command.Parameters
-                        .Add("@ID", SqlDbType.Int).Value = user
+                        .Add("@ID", SqlDbType.Int).Value = EMP_ID
                         .Add("@NAME", SqlDbType.VarChar).Value = name_textbox.Text
                         .Add("@ID_NO", SqlDbType.VarChar).Value = id_number.Text
                         .Add("@ADDRESS", SqlDbType.Int).Value = age.Text

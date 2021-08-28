@@ -181,6 +181,23 @@
     <Compile Include="cancel_transaction_form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="cashUpDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cashUpDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="cashUpReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cashUpReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cash_up_reportForm.Designer.vb">
+      <DependentUpon>cash_up_reportForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cash_up_reportForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="categories.Designer.vb">
       <DependentUpon>categories.vb</DependentUpon>
     </Compile>
@@ -389,10 +406,10 @@
     <Compile Include="transaction_log.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="update_users.Designer.vb">
-      <DependentUpon>update_users.vb</DependentUpon>
+    <Compile Include="update_userForm.Designer.vb">
+      <DependentUpon>update_userForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="update_users.vb">
+    <Compile Include="update_userForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="update_user_accounts.Designer.vb">
@@ -426,6 +443,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cancel_transaction_form.resx">
       <DependentUpon>cancel_transaction_form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cashUpReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cashUpReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cash_up_reportForm.resx">
+      <DependentUpon>cash_up_reportForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="categories.resx">
       <DependentUpon>categories.vb</DependentUpon>
@@ -518,8 +542,8 @@
     <EmbeddedResource Include="transaction_log.resx">
       <DependentUpon>transaction_log.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="update_users.resx">
-      <DependentUpon>update_users.vb</DependentUpon>
+    <EmbeddedResource Include="update_userForm.resx">
+      <DependentUpon>update_userForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="update_user_accounts.resx">
       <DependentUpon>update_user_accounts.vb</DependentUpon>
@@ -533,6 +557,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />
+    <None Include="cashUpDataset.xsc">
+      <DependentUpon>cashUpDataset.xsd</DependentUpon>
+    </None>
+    <None Include="cashUpDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cashUpDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="cashUpDataset.xss">
+      <DependentUpon>cashUpDataset.xsd</DependentUpon>
+    </None>
     <None Include="loaderData.xsc">
       <DependentUpon>loaderData.xsd</DependentUpon>
     </None>

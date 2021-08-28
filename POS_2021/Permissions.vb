@@ -73,6 +73,7 @@ Public Class Permissions
             connection = myPermissions.getConnection()
             connection.Open()
             Using cmd As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME", connection)
+                cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = txtUsername.Text
                 Dim reader As New SqlDataAdapter(cmd)
                 Dim table As New DataTable
                 reader.Fill(table)
@@ -155,17 +156,7 @@ Public Class Permissions
                 If table.Rows.Count > 0 Then
                     employee_id.Text = table(0)(0)
                     txtUsername.Text = table(0)(1)
-                    Using cmd As New SqlCommand("SELECT PERMISSION FROM USER_PERMISSIONS WHERE EMP_ID=@USERNAME AND STATUS='1'", connection)
-                        cmd.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = employee_id.Text
-                        adapter = New SqlDataAdapter(cmd)
-                        table = New DataTable
-                        adapter.Fill(table)
-                        If table.Rows.Count > 0 Then
-                            For Each item As CheckBox In table.Rows
-                                item.Checked = True
-                            Next
-                        End If
-                    End Using
+                    CheckPermissions()
                 Else
                     MsgBox("NO EMPLOYEE FOUND")
                 End If
@@ -176,5 +167,88 @@ Public Class Permissions
             MessageBox.Show(ex.Message, "The following Error Ocuured while loading the user permissions", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+    Private Sub CheckPermissions()
+        Try
+            connection = myPermissions.getConnection
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            connection.Open()
+            Using command As New SqlCommand("SELECT PERMISSION FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND STATUS='1'", connection)
+                command.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = txtUsername.Text
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    For Each item As DataRow In table.Rows
+                        If item(0).ToString = "transaction_logs" Then
+                            transaction_logs.Checked = True
+                        End If
+                        If item(0).ToString = "cashup_balances" Then
+                            cashup_balances.Checked = True
+                        End If
+                        If item(0).ToString = "cancel_transactions" Then
+                            cancel_transactions.Checked = True
+                        End If
+                        '''''''''
+                        If item(0).ToString = "view_sales" Then
+                            view_sales.Checked = True
+                        End If
+                        If item(0).ToString = "return_sales" Then
+                            return_sales.Checked = True
+                        End If
+                        If item(0).ToString = "stock_reports" Then
+                            stock_reports.Checked = True
+                        End If
+                        ''''''
+                        If item(0).ToString = "profit_reports" Then
+                            profit_reports.Checked = True
+                        End If
+                        If item(0).ToString = "dayEnd_reports" Then
+                            dayEnd_reports.Checked = True
+                        End If
+                        If item(0).ToString = "scheduled_reports" Then
+                            scheduled_reports.Checked = True
+                        End If
+                        '''''''''
+                        If item(0).ToString = "add_inventory" Then
+                            add_inventory.Checked = True
+                        End If
+                        If item(0).ToString = "edit_inventory" Then
+                            edit_inventory.Checked = True
+                        End If
+                        If item(0).ToString = "is_admin" Then
+                            is_admin.Checked = True
+                        End If
+
+                        ''''''' macheso power
+                        If item(0).ToString = "backup_database" Then
+                            backup_database.Checked = True
+                        End If
+                        If item(0).ToString = "activate_users" Then
+                            activate_users.Checked = True
+                        End If
+                        If item(0).ToString = "edit_settings" Then
+                            edit_settings.Checked = True
+                        End If
+                        '''''''''
+                        If item(0).ToString = "register_users" Then
+                            register_users.Checked = True
+                        End If
+                        If item(0).ToString = "update_users" Then
+                            update_users.Checked = True
+                        End If
+                        If item(0).ToString = "Give_permissions" Then
+                            Give_permissions.Checked = True
+                        End If
+                    Next
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An error occured while checking the user permissions ", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

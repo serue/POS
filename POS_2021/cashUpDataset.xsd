@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="cashUpDataset" targetNamespace="http://tempuri.org/cashUpDataset.xsd" xmlns:mstns="http://tempuri.org/cashUpDataset.xsd" xmlns="http://tempuri.org/cashUpDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="POS_DATABASEConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="POS_DATABASEConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.POS_2021.My.MySettings.GlobalReference.Default.POS_DATABASEConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="cashUpDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="cashUpDataset" msprop:Generator_UserDSName="cashUpDataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CASHUP" msprop:Generator_TableClassName="CASHUPDataTable" msprop:Generator_TableVarName="tableCASHUP" msprop:Generator_TablePropName="CASHUP" msprop:Generator_RowDeletingName="CASHUPRowDeleting" msprop:Generator_RowChangingName="CASHUPRowChanging" msprop:Generator_RowEvHandlerName="CASHUPRowChangeEventHandler" msprop:Generator_RowDeletedName="CASHUPRowDeleted" msprop:Generator_UserTableName="CASHUP" msprop:Generator_RowChangedName="CASHUPRowChanged" msprop:Generator_RowEvArgName="CASHUPRowChangeEvent" msprop:Generator_RowClassName="CASHUPRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="TRANS_DATE" msprop:Generator_ColumnVarNameInTable="columnTRANS_DATE" msprop:Generator_ColumnPropNameInRow="TRANS_DATE" msprop:Generator_ColumnPropNameInTable="TRANS_DATEColumn" msprop:Generator_UserColumnName="TRANS_DATE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="USERNAME" msprop:Generator_ColumnVarNameInTable="columnUSERNAME" msprop:Generator_ColumnPropNameInRow="USERNAME" msprop:Generator_ColumnPropNameInTable="USERNAMEColumn" msprop:Generator_UserColumnName="USERNAME">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="METHOD" msprop:Generator_ColumnVarNameInTable="columnMETHOD" msprop:Generator_ColumnPropNameInRow="METHOD" msprop:Generator_ColumnPropNameInTable="METHODColumn" msprop:Generator_UserColumnName="METHOD">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AMOUNT" msprop:Generator_ColumnVarNameInTable="columnAMOUNT" msprop:Generator_ColumnPropNameInRow="AMOUNT" msprop:Generator_ColumnPropNameInTable="AMOUNTColumn" msprop:Generator_UserColumnName="AMOUNT" type="xs:decimal" />
+              <xs:element name="TILL" msprop:Generator_ColumnVarNameInTable="columnTILL" msprop:Generator_ColumnPropNameInRow="TILL" msprop:Generator_ColumnPropNameInTable="TILLColumn" msprop:Generator_UserColumnName="TILL">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CASHUP" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

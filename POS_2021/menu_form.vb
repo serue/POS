@@ -83,7 +83,6 @@ Public Class menu_form
         reports_panel.Size = reports_panel.MinimumSize
         Timer4.Start()
         active_user.Text = ActiveUser
-
         'tulpet notifications
 
         Notice.HeaderColor = Color.DarkBlue
@@ -471,7 +470,7 @@ Public Class menu_form
                 End With
                 Dim reader As SqlDataReader = command.ExecuteReader
                 If reader.HasRows Then
-                    destinition.Show()
+                    destinition.ShowDialog()
                 Else
                     MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If
@@ -519,7 +518,7 @@ Public Class menu_form
     End Sub
 
     Private Sub scheduled_reports_Click(sender As Object, e As EventArgs) Handles scheduled_reports.Click
-        checkPermission(username, scheduled_reports.Name, New ScheduledReportForm)
+        checkPermissions(username, scheduled_reports.Name, New ScheduledReportForm)
         dashboard_label.Text = ScheduledReportForm.Text.ToUpper
     End Sub
 
@@ -532,12 +531,17 @@ Public Class menu_form
     End Sub
 
     Private Sub update_users_Click(sender As Object, e As EventArgs) Handles update_users.Click
-        checkPermission(username, update_users.Name, New update_users)
+        checkPermission(username, update_users.Name, New update_userForm)
         If hasPermission = True Then
-            Design.OpenChildSmall(Me.mainPanel, New update_users)
-            Design.activeButton(add_inventory)
+            Design.OpenChildSmall(Me.mainPanel, New update_userForm)
+            Design.activeButton(update_users)
             subPanel.Visible = False
             dashboard_label.Text = "MANAGE REGISTERED USERS".ToUpper
         End If
+    End Sub
+
+    Private Sub change_password_Click(sender As Object, e As EventArgs) Handles change_password.Click
+        update_user_accounts.ShowDialog()
+
     End Sub
 End Class
