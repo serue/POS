@@ -400,11 +400,31 @@
     <Compile Include="test.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="transactions_logReport.Designer.vb">
+      <DependentUpon>transactions_logReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="transactions_logReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="transaction_log.Designer.vb">
       <DependentUpon>transaction_log.vb</DependentUpon>
     </Compile>
     <Compile Include="transaction_log.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transaction_logDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>transaction_logDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="transaction_logDataset.vb">
+      <DependentUpon>transaction_logDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="transactio_logRpt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>transactio_logRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="update_userForm.Designer.vb">
       <DependentUpon>update_userForm.vb</DependentUpon>
@@ -539,8 +559,15 @@
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="transactions_logReport.resx">
+      <DependentUpon>transactions_logReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="transaction_log.resx">
       <DependentUpon>transaction_log.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="transactio_logRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>transactio_logRpt.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="update_userForm.resx">
       <DependentUpon>update_userForm.vb</DependentUpon>
@@ -625,6 +652,17 @@
     </None>
     <None Include="StockReportDataset.xss">
       <DependentUpon>StockReportDataset.xsd</DependentUpon>
+    </None>
+    <None Include="transaction_logDataset.xsc">
+      <DependentUpon>transaction_logDataset.xsd</DependentUpon>
+    </None>
+    <None Include="transaction_logDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>transaction_logDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="transaction_logDataset.xss">
+      <DependentUpon>transaction_logDataset.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

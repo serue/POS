@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="transaction_logDataset" targetNamespace="http://tempuri.org/transaction_logDataset.xsd" xmlns:mstns="http://tempuri.org/transaction_logDataset.xsd" xmlns="http://tempuri.org/transaction_logDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="POS_DATABASEConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="POS_DATABASEConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.POS_2021.My.MySettings.GlobalReference.Default.POS_DATABASEConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="transaction_logDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="transaction_logDataset" msprop:Generator_UserDSName="transaction_logDataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TRANSACTIONS" msprop:Generator_TableClassName="TRANSACTIONSDataTable" msprop:Generator_TableVarName="tableTRANSACTIONS" msprop:Generator_TablePropName="TRANSACTIONS" msprop:Generator_RowDeletingName="TRANSACTIONSRowDeleting" msprop:Generator_RowChangingName="TRANSACTIONSRowChanging" msprop:Generator_RowEvHandlerName="TRANSACTIONSRowChangeEventHandler" msprop:Generator_RowDeletedName="TRANSACTIONSRowDeleted" msprop:Generator_UserTableName="TRANSACTIONS" msprop:Generator_RowChangedName="TRANSACTIONSRowChanged" msprop:Generator_RowEvArgName="TRANSACTIONSRowChangeEvent" msprop:Generator_RowClassName="TRANSACTIONSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="TRANSACTION_ID" msprop:Generator_ColumnVarNameInTable="columnTRANSACTION_ID" msprop:Generator_ColumnPropNameInRow="TRANSACTION_ID" msprop:Generator_ColumnPropNameInTable="TRANSACTION_IDColumn" msprop:Generator_UserColumnName="TRANSACTION_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRANS_DATE" msprop:Generator_ColumnVarNameInTable="columnTRANS_DATE" msprop:Generator_ColumnPropNameInRow="TRANS_DATE" msprop:Generator_ColumnPropNameInTable="TRANS_DATEColumn" msprop:Generator_UserColumnName="TRANS_DATE" type="xs:dateTime" />
+              <xs:element name="AMOUNT" msprop:Generator_ColumnVarNameInTable="columnAMOUNT" msprop:Generator_ColumnPropNameInRow="AMOUNT" msprop:Generator_ColumnPropNameInTable="AMOUNTColumn" msprop:Generator_UserColumnName="AMOUNT" type="xs:decimal" />
+              <xs:element name="PAID" msprop:Generator_ColumnVarNameInTable="columnPAID" msprop:Generator_ColumnPropNameInRow="PAID" msprop:Generator_ColumnPropNameInTable="PAIDColumn" msprop:Generator_UserColumnName="PAID" type="xs:decimal" />
+              <xs:element name="TOTAL" msprop:Generator_ColumnVarNameInTable="columnTOTAL" msprop:Generator_ColumnPropNameInRow="TOTAL" msprop:Generator_ColumnPropNameInTable="TOTALColumn" msprop:Generator_UserColumnName="TOTAL" type="xs:decimal" />
+              <xs:element name="CHANGE" msprop:Generator_ColumnVarNameInTable="columnCHANGE" msprop:Generator_ColumnPropNameInRow="CHANGE" msprop:Generator_ColumnPropNameInTable="CHANGEColumn" msprop:Generator_UserColumnName="CHANGE" type="xs:decimal" />
+              <xs:element name="TAX" msprop:Generator_ColumnVarNameInTable="columnTAX" msprop:Generator_ColumnPropNameInRow="TAX" msprop:Generator_ColumnPropNameInTable="TAXColumn" msprop:Generator_UserColumnName="TAX" type="xs:decimal" />
+              <xs:element name="PAYMENT" msprop:Generator_ColumnVarNameInTable="columnPAYMENT" msprop:Generator_ColumnPropNameInRow="PAYMENT" msprop:Generator_ColumnPropNameInTable="PAYMENTColumn" msprop:Generator_UserColumnName="PAYMENT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CASHIER" msprop:Generator_ColumnVarNameInTable="columnCASHIER" msprop:Generator_ColumnPropNameInRow="CASHIER" msprop:Generator_ColumnPropNameInTable="CASHIERColumn" msprop:Generator_UserColumnName="CASHIER">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TILL" msprop:Generator_ColumnVarNameInTable="columnTILL" msprop:Generator_ColumnPropNameInRow="TILL" msprop:Generator_ColumnPropNameInTable="TILLColumn" msprop:Generator_UserColumnName="TILL">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TOTAL_ITEMS" msprop:Generator_ColumnVarNameInTable="columnTOTAL_ITEMS" msprop:Generator_ColumnPropNameInRow="TOTAL_ITEMS" msprop:Generator_ColumnPropNameInTable="TOTAL_ITEMSColumn" msprop:Generator_UserColumnName="TOTAL_ITEMS" type="xs:int" />
+              <xs:element name="STATUS" msprop:Generator_ColumnVarNameInTable="columnSTATUS" msprop:Generator_ColumnPropNameInRow="STATUS" msprop:Generator_ColumnPropNameInTable="STATUSColumn" msprop:Generator_UserColumnName="STATUS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TRANSACTIONS" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

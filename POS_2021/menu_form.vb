@@ -453,11 +453,11 @@ Public Class menu_form
     End Sub
 
     Private Sub dayEnd_sales_Click(sender As Object, e As EventArgs) Handles dayEnd_sales.Click
-        checkPermissions(username, dayEnd_sales.Name, New Add_inventory)
+        checkPermissions(username, dayEnd_sales.Name, New DayEndReportForm)
     End Sub
 
     Private Sub cashup_balances_Click(sender As Object, e As EventArgs) Handles cashup_balances.Click
-        checkPermissions(username, cashup_balances.Name, New Add_inventory)
+        checkPermissions(username, cashup_balances.Name, New cash_up_reportForm)
     End Sub
     Private Sub checkPermissions(account As String, permit As String, destinition As Form)
         Try
@@ -510,7 +510,7 @@ Public Class menu_form
     End Sub
 
     Private Sub transaction_logs_Click(sender As Object, e As EventArgs) Handles transaction_logs.Click
-        checkPermissions(username, transaction_logs.Name, New Add_inventory)
+        checkPermissions(username, transaction_logs.Name, New transactions_logReport)
     End Sub
 
     Private Sub profit_reports_Click(sender As Object, e As EventArgs) Handles profit_reports.Click

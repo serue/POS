@@ -21,7 +21,7 @@ Public Class cash_up_reportForm
             Dim CoTable As New DataTable
             Using command As New SqlCommand("SELECT * FROM CASHUP WHERE TRANS_DATE BETWEEN @TRANS_DATE AND @TO AND USERNAME=@USERNAME", connection)
                 command.Parameters.Add("@TRANS_DATE", SqlDbType.VarChar).Value = current_date.Text
-                command.Parameters.Add("@TO", SqlDbType.VarChar).Value = Now.ToShortDateString
+                command.Parameters.Add("@TO", SqlDbType.VarChar).Value = TO_DATE.Text
                 command.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username_text.Text
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(CoTable)
@@ -82,13 +82,17 @@ Public Class cash_up_reportForm
 
     Private Sub show_report_Click(sender As Object, e As EventArgs) Handles show_report.Click
         isFilter = True
+        show_report.Enabled = False
         BackgroundWorker1.RunWorkerAsync()
+        show_report.Enabled = True
         isFilter = False
     End Sub
 
     Private Sub day_report_Click(sender As Object, e As EventArgs) Handles day_report.Click
         isFilter = False
+        day_report.Enabled = False
         BackgroundWorker1.RunWorkerAsync()
+        day_report.Enabled = True
     End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork

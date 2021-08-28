@@ -24,11 +24,11 @@ Partial Class menu_form
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim Panel8 As System.Windows.Forms.Panel
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.subPanel = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -313,39 +313,39 @@ Partial Class menu_form
         Me.Chart1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        ChartArea2.AxisX.Interval = 1.0R
-        ChartArea2.AxisX.IsLabelAutoFit = False
-        ChartArea2.AxisX.LabelStyle.Angle = -90
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.AxisX.Interval = 1.0R
+        ChartArea1.AxisX.IsLabelAutoFit = False
+        ChartArea1.AxisX.LabelStyle.Angle = -90
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(12, 252)
         Me.Chart1.Name = "Chart1"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series4.Color = System.Drawing.Color.SeaGreen
-        Series4.IsValueShownAsLabel = True
-        Series4.LabelForeColor = System.Drawing.Color.SeaGreen
-        Series4.Legend = "Legend1"
-        Series4.Name = "Series1"
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series5.Color = System.Drawing.Color.Purple
-        Series5.IsValueShownAsLabel = True
-        Series5.LabelForeColor = System.Drawing.Color.Purple
-        Series5.Legend = "Legend1"
-        Series5.Name = "Series2"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series6.Color = System.Drawing.Color.SteelBlue
-        Series6.IsValueShownAsLabel = True
-        Series6.LabelForeColor = System.Drawing.Color.SteelBlue
-        Series6.Legend = "Legend1"
-        Series6.Name = "Series3"
-        Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Series.Add(Series5)
-        Me.Chart1.Series.Add(Series6)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series1.Color = System.Drawing.Color.SeaGreen
+        Series1.IsValueShownAsLabel = True
+        Series1.LabelForeColor = System.Drawing.Color.SeaGreen
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series2.Color = System.Drawing.Color.Purple
+        Series2.IsValueShownAsLabel = True
+        Series2.LabelForeColor = System.Drawing.Color.Purple
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series2"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series3.Color = System.Drawing.Color.SteelBlue
+        Series3.IsValueShownAsLabel = True
+        Series3.LabelForeColor = System.Drawing.Color.SteelBlue
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series3"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
         Me.Chart1.Size = New System.Drawing.Size(878, 296)
         Me.Chart1.TabIndex = 7
         Me.Chart1.Text = "Chart1"
@@ -440,7 +440,7 @@ Partial Class menu_form
         Me.users_panel.Controls.Add(Me.register_users)
         Me.users_panel.Controls.Add(Me.IconButton4)
         Me.users_panel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.users_panel.Location = New System.Drawing.Point(0, 283)
+        Me.users_panel.Location = New System.Drawing.Point(0, 314)
         Me.users_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.users_panel.MaximumSize = New System.Drawing.Size(197, 142)
         Me.users_panel.MinimumSize = New System.Drawing.Size(197, 45)
@@ -784,7 +784,7 @@ Partial Class menu_form
         '
         Me.Panel2.Controls.Add(Me.Category_button)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 328)
+        Me.Panel2.Location = New System.Drawing.Point(0, 359)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(213, 45)
@@ -1000,12 +1000,12 @@ Partial Class menu_form
         Me.reports_panel.Controls.Add(Me.profit_reports)
         Me.reports_panel.Controls.Add(Me.reports_menu)
         Me.reports_panel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.reports_panel.Location = New System.Drawing.Point(0, 138)
+        Me.reports_panel.Location = New System.Drawing.Point(0, 269)
         Me.reports_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.reports_panel.MaximumSize = New System.Drawing.Size(197, 145)
         Me.reports_panel.MinimumSize = New System.Drawing.Size(197, 45)
         Me.reports_panel.Name = "reports_panel"
-        Me.reports_panel.Size = New System.Drawing.Size(197, 145)
+        Me.reports_panel.Size = New System.Drawing.Size(197, 45)
         Me.reports_panel.TabIndex = 10
         '
         'stock_reports
@@ -1124,7 +1124,7 @@ Partial Class menu_form
         Me.sales_panel.MaximumSize = New System.Drawing.Size(197, 176)
         Me.sales_panel.MinimumSize = New System.Drawing.Size(197, 45)
         Me.sales_panel.Name = "sales_panel"
-        Me.sales_panel.Size = New System.Drawing.Size(197, 45)
+        Me.sales_panel.Size = New System.Drawing.Size(197, 176)
         Me.sales_panel.TabIndex = 8
         '
         'cashup_balances
