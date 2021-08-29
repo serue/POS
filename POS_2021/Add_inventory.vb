@@ -3,7 +3,7 @@
 Public Class Add_inventory
     Dim connection As SqlConnection
     Dim myPermissions As New ConnectionAndPermissions
-
+    Dim tax As Decimal = 0
 
     'getters and setters
 
@@ -16,29 +16,29 @@ Public Class Add_inventory
             productID = value
         End Set
     End Property
-
-    Private Sub loadCategories()
-
-        Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
-            Dim adapter As New SqlDataAdapter(command)
-            Dim table As New DataTable
-            adapter.Fill(table)
-            category_combo.Items.Clear()
-            subCategory_combo1.Items.Clear()
-            subCategory_combo2.Items.Clear()
-            SubCategory_combo3.Items.Clear()
-            If table.Rows.Count > 0 Then
-                For Each cat As DataRow In table.Rows
-                    category_combo.Items.Add(cat(0).ToString)
-                    subCategory_combo1.Items.Add(cat(1))
-                    subCategory_combo2.Items.Add(cat(2))
-                    SubCategory_combo3.Items.Add(cat(3))
-                Next
-            End If
-        End Using
-        connection.Close()
-
+    Private Sub getTax()
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT VAT FROM TAX", connection)
+                Dim table As New DataTable
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    tax = table(0)(0) * CDec(cost_textbox.Text)
+                    tax = Math.Round(TAX, 2)
+                Else
+                    MessageBox.Show("There is no VAT set for the organisation", "Retrieving VAT", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "The following error occured while retrieving the VAT", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
+
+
     Private Sub LoadData()
         Using Command As New SqlCommand("SELECT ID,BARCODE,NAME,QUANTITY,SALE_QTY,MARGIN,PRICE FROM INVENTORY WHERE PRODUCT_STATUS='1'", connection)
             Dim adapter As New SqlDataAdapter(Command)
@@ -57,7 +57,26 @@ Public Class Add_inventory
             connection = myPermissions.getConnection()
             connection.Open()
             LoadData()
-            loadCategories()
+
+            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                category_combo.Items.Clear()
+                subCategory_combo1.Items.Clear()
+                subCategory_combo2.Items.Clear()
+                SubCategory_combo3.Items.Clear()
+                If table.Rows.Count > 0 Then
+                    For Each cat As DataRow In table.Rows
+                        category_combo.Items.Add(cat(0).ToString)
+                        subCategory_combo1.Items.Add(cat(1))
+                        subCategory_combo2.Items.Add(cat(2))
+                        SubCategory_combo3.Items.Add(cat(3))
+                    Next
+                End If
+            End Using
+
+
             HeaderText()
             connection.Close()
         Catch ex As Exception
@@ -80,11 +99,13 @@ Public Class Add_inventory
 
     Private Sub margin_textbox_LostFocus(sender As Object, e As EventArgs) Handles margin_textbox.LostFocus
         If margin_textbox.Text <> "" Then
+            getTax()
+
             Try
                 Dim cost As Decimal = cost_textbox.Text
                 Dim number As Decimal = (margin_textbox.Text / 100)
                 margin_textbox.Text = number
-                selling_textbox.Text = (number * cost) + cost
+                selling_textbox.Text = (number * cost) + cost + tax
 
             Catch ex As Exception
                 MessageBox.Show("Margin is empty or in wrong format", "Margin calculation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -174,7 +195,7 @@ Public Class Add_inventory
             MessageBox.Show("Product has been added successfully !!", "Adding new  Product", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadData()
             connection.Close()
-
+            CLEAR()
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -228,7 +249,11 @@ Public Class Add_inventory
                     command.CommandType = CommandType.StoredProcedure
                     With command.Parameters
                         .Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
+                        .Add("@DATE", SqlDbType.Date).Value = Now
                         .Add("@CATEGORY", SqlDbType.VarChar).Value = category_combo.Text
+                        .Add("@SUB_CATEGORY1", SqlDbType.VarChar).Value = subCategory_combo1.Text
+                        .Add("@SUB_CATEGORY2", SqlDbType.VarChar).Value = subCategory_combo2.Text
+                        .Add("@SUB_CATEGORY3", SqlDbType.VarChar).Value = subCategory_combo1.Text
                         .Add("@BARCODE", SqlDbType.VarChar).Value = barcode_textbox.Text
                         .Add("@NAME", SqlDbType.VarChar).Value = name_textbox.Text
                         .Add("@QUANTITY", SqlDbType.Decimal).Value = quantity_textbox.Text
@@ -236,9 +261,15 @@ Public Class Add_inventory
                         .Add("@SALE_QTY", SqlDbType.Decimal).Value = sale_qty_textbox.Text
                         .Add("@COST", SqlDbType.Decimal).Value = cost_textbox.Text
                         .Add("@PRICE", SqlDbType.Decimal).Value = selling_textbox.Text
+                        .Add("@W_PRICE", SqlDbType.Decimal).Value = 0
+                        .Add("@W_QTY", SqlDbType.Decimal).Value = 0
                         .Add("@MARGIN", SqlDbType.Decimal).Value = margin_textbox.Text
                         .Add("@VENDOR_CODE", SqlDbType.VarChar).Value = vendorCode_textbox.Text
+                        .Add("@PRODUCT_STATUS", SqlDbType.Int).Value = 1
                         .Add("@SKU", SqlDbType.VarChar).Value = sku_textbox.Text
+                        .Add("@EXTRA1", SqlDbType.VarChar).Value = ""
+                        .Add("@EXTRA2", SqlDbType.VarChar).Value = ""
+                        .Add("@EXTRA3", SqlDbType.VarChar).Value = ""
 
                     End With
                     command.ExecuteNonQuery()
@@ -246,7 +277,7 @@ Public Class Add_inventory
                 LoadData()
                 MessageBox.Show("Product has been updated suuccessfully !!", "Updating Product", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 connection.Close()
-
+                CLEAR()
             Catch ex As Exception
                 connection.Close()
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -272,8 +303,14 @@ Public Class Add_inventory
         margin_textbox.Clear()
         vendorCode_textbox.Clear()
         sku_textbox.Clear()
-        category_combo.Focus()
-        End Sub
+
+        category_combo.Items.Clear()
+        subCategory_combo1.Items.Clear()
+        subCategory_combo2.Items.Clear()
+        SubCategory_combo3.Items.Clear()
+        barcode_textbox.Focus()
+
+    End Sub
 
     Private Sub quantity_textbox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles quantity_textbox.KeyPress
         If (Asc(e.KeyChar) < 48 And Asc(e.KeyChar) > 57) Then
@@ -433,6 +470,93 @@ Public Class Add_inventory
     End Sub
 
     Private Sub Panel5_Paint(sender As Object, e As PaintEventArgs) Handles Panel5.Paint
+
+    End Sub
+
+    Private Sub category_combo_Click(sender As Object, e As EventArgs) Handles category_combo.Click
+        Try
+            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                category_combo.Items.Clear()
+
+                If table.Rows.Count > 0 Then
+                    For Each cat As DataRow In table.Rows
+                        category_combo.Items.Add(cat(0).ToString)
+
+                    Next
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+        End Try
+
+    End Sub
+
+    Private Sub subCategory_combo1_Click(sender As Object, e As EventArgs) Handles subCategory_combo1.Click
+        Try
+            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+
+                subCategory_combo1.Items.Clear()
+
+                If table.Rows.Count > 0 Then
+                    For Each cat As DataRow In table.Rows
+
+                        subCategory_combo1.Items.Add(cat(1))
+
+                    Next
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+        End Try
+
+    End Sub
+
+    Private Sub subCategory_combo2_Click(sender As Object, e As EventArgs) Handles subCategory_combo2.Click
+        Try
+            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+
+                subCategory_combo2.Items.Clear()
+
+                If table.Rows.Count > 0 Then
+                    For Each cat As DataRow In table.Rows
+
+                        subCategory_combo2.Items.Add(cat(2))
+
+                    Next
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+        End Try
+
+    End Sub
+
+    Private Sub SubCategory_combo3_Click(sender As Object, e As EventArgs) Handles SubCategory_combo3.Click
+        Try
+            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                SubCategory_combo3.Items.Clear()
+                If table.Rows.Count > 0 Then
+                    For Each cat As DataRow In table.Rows
+
+                        SubCategory_combo3.Items.Add(cat(3))
+                    Next
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+        End Try
 
     End Sub
 End Class

@@ -67,7 +67,7 @@ Public Class receipt_form
         '    'Me.CrystalReportViewer1.ReportSource = rep
         '    rep.PrintToPrinter(1, False, 0, 0)
 
-        '    Me.Close()
+        Me.Close()
         'Catch ex As Exception
         '    connection.Close()
         '    MessageBox.Show(ex.Message, "Operation Error")

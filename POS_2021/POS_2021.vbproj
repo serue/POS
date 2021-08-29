@@ -77,6 +77,9 @@
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Bunifu_UI_v1.5.3">
@@ -687,6 +690,7 @@
     <None Include="Resources\Curve-Loading.gif" />
     <None Include="Resources\loading %281%29.gif" />
     <None Include="Resources\loading-cargando.gif" />
+    <Content Include="logo.ico" />
     <Content Include="Resources\loading.gif" />
     <None Include="Resources\loading1.gif" />
     <None Include="Resources\logo-removebg-preview.png" />

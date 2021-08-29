@@ -90,12 +90,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property DBusername() As String
+        Public Property DBUsername() As String
             Get
-                Return CType(Me("DBusername"),String)
+                Return CType(Me("DBUsername"),String)
             End Get
             Set
-                Me("DBusername") = value
+                Me("DBUsername") = value
             End Set
         End Property
         
@@ -126,12 +126,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property backupConnection() As String
+        Public Property backupconnection() As String
             Get
-                Return CType(Me("backupConnection"),String)
+                Return CType(Me("backupconnection"),String)
             End Get
             Set
-                Me("backupConnection") = value
+                Me("backupconnection") = value
             End Set
         End Property
         
@@ -145,16 +145,6 @@ Namespace My
             Set
                 Me("auth_type") = value
             End Set
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=POS_DATABASE;Integrated Security=True")>  _
-        Public ReadOnly Property POS_DATABASEConnectionString() As String
-            Get
-                Return CType(Me("POS_DATABASEConnectionString"),String)
-            End Get
         End Property
     End Class
 End Namespace

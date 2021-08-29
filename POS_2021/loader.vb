@@ -22,6 +22,7 @@ Public Class loader
     End Sub
 
     Private Sub re_load_Click(sender As Object, e As EventArgs) Handles re_load.Click
+
         If BackgroundWorker1.IsBusy Then
             MsgBox("busy")
         Else
@@ -66,7 +67,8 @@ Public Class loader
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Operation Error")
-            connection.Close()
+
+            server_configuration.ShowDialog()
         End Try
     End Sub
     Private Sub ShowPanel(ByVal [panel] As Panel)

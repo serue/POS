@@ -4,7 +4,8 @@ Public Class inventory_list
     Dim connection As SqlConnection
     Dim myPermissions As New ConnectionAndPermissions
     Dim productID As Integer
-    Private Sub inventory_list_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Private Sub loadProducts()
         Try
             connection = myPermissions.getConnection()
             connection.Open()
@@ -25,6 +26,9 @@ Public Class inventory_list
             connection.Close()
             MessageBox.Show(ex.Message, "Error while retrieving data for Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
+    End Sub
+    Private Sub inventory_list_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        loadProducts()
     End Sub
     Private Sub HeaderText()
 
@@ -99,6 +103,8 @@ Public Class inventory_list
             End If
 
             connection.Close()
+            loadProducts()
+            quantity_box.Clear()
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Updating Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -157,6 +163,7 @@ Public Class inventory_list
                 MessageBox.Show("No Item is selected Please make sure you select a Product to Delete", "Deleting Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
             connection.Close()
+            loadProducts()
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Error while retrieving data for Inventory", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -167,7 +174,7 @@ Public Class inventory_list
         Try
             connection = myPermissions.getConnection()
             connection.Open()
-            Using Command As New SqlCommand("SELECT ID,BARCODE,NAME,QUANTITY,SALE_QTY,MARGIN,PRICE FROM INVENTORY WHERE BARCODE LIKE '%@VALUE%' OR NAME LIKE '%@VALUE%' AND PRODUCT_STATUS='1'", connection)
+            Using Command As New SqlCommand("SELECT ID,BARCODE,NAME,QUANTITY,SALE_QTY,MARGIN,PRICE FROM INVENTORY WHERE BARCODE LIKE '%" & SEARCH_BOX.Text & "%' OR NAME LIKE '%" & SEARCH_BOX.Text & "%' AND PRODUCT_STATUS='1'", connection)
                 Command.Parameters.Add("@VALUE", SqlDbType.VarChar).Value = SEARCH_BOX.Text
                 Dim adapter As New SqlDataAdapter(Command)
                 Dim table As New DataTable
@@ -175,6 +182,8 @@ Public Class inventory_list
                 If table.Rows.Count > 0 Then
                     list_grid.DataSource = table
                     HeaderText()
+                Else
+                    MsgBox("no product found")
                 End If
             End Using
             connection.Close()
@@ -201,6 +210,7 @@ Public Class inventory_list
                 MessageBox.Show("No Item is selected Please make sure you select a Product to update", "Updating Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
             connection.Close()
+            loadProducts()
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Error while retrieving data for Inventory", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -224,6 +234,7 @@ Public Class inventory_list
                 MessageBox.Show("No Item is selected Please make sure you select a Product to update", "Updating Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
             connection.Close()
+            loadProducts()
         Catch ex As Exception
             connection.Close()
             MessageBox.Show(ex.Message, "Error while retrieving data for Inventory", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -242,9 +253,37 @@ Public Class inventory_list
 
     Private Sub list_grid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles list_grid.CellClick
         Try
-            SEARCH_BOX.Text = list_grid.CurrentRow.Cells(0).Value
+            SEARCH_BOX.Text = list_grid.CurrentRow.Cells(1).Value
+            productID = list_grid.CurrentRow.Cells(0).Value
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub SEARCH_BOX_TextChanged(sender As Object, e As EventArgs) Handles SEARCH_BOX.TextChanged
+        Try
+            connection = myPermissions.getConnection()
+            connection.Open()
+            Using Command As New SqlCommand("SELECT ID,BARCODE,NAME,QUANTITY,SALE_QTY,MARGIN,PRICE FROM INVENTORY WHERE BARCODE LIKE '%" & SEARCH_BOX.Text & "%' OR NAME LIKE '%" & SEARCH_BOX.Text & "%' AND PRODUCT_STATUS='1'", connection)
+                Command.Parameters.Add("@VALUE", SqlDbType.VarChar).Value = SEARCH_BOX.Text
+                Dim adapter As New SqlDataAdapter(Command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    list_grid.DataSource = table
+                    HeaderText()
+                Else
+                    MsgBox("no product found")
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "Error while retrieving data for Inventory", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub update_product_Click(sender As Object, e As EventArgs) Handles update_product.Click
+        MessageBox.Show("You must edit the product in add inventory, Please Open Add inventory", "Editing The Product", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

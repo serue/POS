@@ -26,6 +26,8 @@ Public Class sales_form
     Dim hasValuePassed As Boolean = False
     Dim check As CheckBox
     Private isButchery = False
+    Dim isMultiple As Boolean = False
+
 
     Public Const WM_NCLBUTTONDOWN As Integer = &HA1
     Public Const HT_CAPTION As Integer = &H2
@@ -691,6 +693,29 @@ Public Class sales_form
 
                 'MessageBox.Show("Transaction is complete please wait for your receipt which is being printed from the pos printer", "Transaction succeeded", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 OtherPaymentsPanel.Visible = False
+                If ask_radio.Checked = True Then
+                    If MessageBox.Show("Do yo want to Print a Receipt for this transaction", "Receipt Printing", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                        Dim ReceiptForm As New receipt_form
+                        ReceiptForm.Transaction = 12
+                        ReceiptForm.Show()
+                        MessageBox.Show("Transaction was successful", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+                ElseIf yes_radio.Checked = True Then
+                    Dim ReceiptForm As New receipt_form
+                    ReceiptForm.Transaction = 234
+                    ReceiptForm.Show()
+                    MessageBox.Show("Transaction was successful", "Transaction status", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+                AmtPanel.Visible = False
+                list_grid.Rows.Clear()
+                barcode_textbox.Clear()
+                barcode_textbox.Focus()
+                change_label.Text = 0
+                total_label.Text = 0
+                cost_label.Text = 0
+                method_label.Text = "."
+
+
             Else
                 MessageBox.Show("The amount paid is less than the charged amount of the products", "Charging less amounts", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -757,21 +782,30 @@ Public Class sales_form
     End Sub
 
     Private Sub txtForex_LostFocus(sender As Object, e As EventArgs) Handles txtForex.LostFocus, txtEcoCash.LostFocus, txtCard.LostFocus, txtCash.LostFocus
+        Dim txt As TextBox = sender
         Try
-            Dim txt As TextBox = sender
+
             If txt.Text = "" Then
                 txt.Text = 0
             End If
         Catch ex As Exception
-
+            MsgBox("Probably you entered a character by mistake")
+            txt.Text = ""
         End Try
     End Sub
 
     Private Sub txtForex_GotFocus(sender As Object, e As EventArgs) Handles txtForex.GotFocus, txtEcoCash.GotFocus, txtCard.GotFocus, txtCash.GotFocus
         Dim txt As TextBox = sender
-        If txt.Text = 0 Then
+        Try
+
+            If txt.Text = 0 Then
+                txt.Text = ""
+            End If
+        Catch ex As Exception
+            MsgBox("Probably you entered a character by mistake")
             txt.Text = ""
-        End If
+        End Try
+
     End Sub
 
     Private Sub Assign_Methods(sender As Object, e As EventArgs) Handles RTGS_button.Click, forex_button.Click, ecocash_button.Click, cash_button.Click
@@ -1227,15 +1261,18 @@ Public Class sales_form
                 If change > 0 Then
                     change_label.Text = change
                 End If
-
-                getTax()
-                FindMaxID()
-                RegisterTransaction()
-                AmtPanel.Visible = False
-                Me.AcceptButton = Me.ok_button
-                qty_paid_textbox.Clear()
-                barcode_textbox.Focus()
-                hasValuePassed = True
+                If isMultiple = False Then
+                    getTax()
+                    FindMaxID()
+                    RegisterTransaction()
+                    AmtPanel.Visible = False
+                    Me.AcceptButton = Me.ok_button
+                    qty_paid_textbox.Clear()
+                    barcode_textbox.Focus()
+                    hasValuePassed = True
+                Else
+                    RegisterSplitTransaction()
+                End If
 
             ElseIf qty_paid_textbox.Text = "" Then
                 MessageBox.Show("You did not supply the amount paid by the customer, Please check if the amount is correct", "Error of the Payment amount", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -1910,7 +1947,7 @@ Public Class sales_form
                         End If
                     End Using
 
-                    Using cashupCommand As New SqlCommand("SELECT AMOUNT FROM CASHUP WHERE TRANSA_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
+                    Using cashupCommand As New SqlCommand("SELECT AMOUNT FROM CASHUP WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
                         With cashupCommand.Parameters
                             .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
                             .Add("@USERNAME", SqlDbType.VarChar).Value = username
@@ -1921,7 +1958,7 @@ Public Class sales_form
                         cashAdapter.Fill(cashTable)
                         If cashTable.Rows.Count > 0 Then
                             Dim amt As Decimal = cashTable(0)(0)
-                            Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
+                            Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
                                 With updateCashCommand.Parameters
                                     .Add("@AMOUNT", SqlDbType.VarChar).Value = amt + row.Cells(5).Value
                                     .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
@@ -1932,10 +1969,10 @@ Public Class sales_form
 
                             End Using
                         Else
-                            Dim amt As Decimal = cashTable(0)(0)
-                            Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
+
+                            Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUnT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
                                 With InsertCashCommand.Parameters
-                                    .Add("@AMOUNT", SqlDbType.VarChar).Value = amt + row.Cells(5).Value
+                                    .Add("@AMOUNT", SqlDbType.VarChar).Value = row.Cells(5).Value
                                     .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
                                     .Add("@USERNAME", SqlDbType.VarChar).Value = username
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
@@ -1949,7 +1986,7 @@ Public Class sales_form
 
                 Next
                 transaction.Commit()
-                MessageBox.Show("Transaction is complete !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Else
                 MessageBox.Show("No Products has been found on the list !!!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
