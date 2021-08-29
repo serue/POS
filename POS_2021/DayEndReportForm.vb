@@ -18,13 +18,19 @@ Public Class DayEndReportForm
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM SALES", connection)
+            Using command As New SqlCommand("SELECT * FROM SALES WHERE TRANS_DATE=@TO", connection)
+                command.Parameters.Add("@TO", SqlDbType.Date).Value = Now.ToShortDateString
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(CoTable)
             End Using
+            Dim invtable As New DataTable
+            Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(invtable)
+            End Using
             Dim rep As New DayEndSalesReport
             rep.Database.Tables("SALES").SetDataSource(CoTable)
-
+            rep.Database.Tables("INVENTORY").SetDataSource(invtable)
             If [crv].InvokeRequired Then
                 Dim myDelegate As New LoadRpt(AddressOf ReportLoading)
                 Me.Invoke(myDelegate, New Object() {crv})

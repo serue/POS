@@ -217,6 +217,14 @@
     <Compile Include="create_user_accounts.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DayEndDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DayEndDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DayEndDataset.vb">
+      <DependentUpon>DayEndDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DayEndReportForm.Designer.vb">
       <DependentUpon>DayEndReportForm.vb</DependentUpon>
     </Compile>
@@ -366,11 +374,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cancel_transaction_module.vb" />
-    <Compile Include="DayEndDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DayEndDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="StockReport.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -595,6 +598,17 @@
     <None Include="cashUpDataset.xss">
       <DependentUpon>cashUpDataset.xsd</DependentUpon>
     </None>
+    <None Include="DayEndDataset.xsc">
+      <DependentUpon>DayEndDataset.xsd</DependentUpon>
+    </None>
+    <None Include="DayEndDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DayEndDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DayEndDataset.xss">
+      <DependentUpon>DayEndDataset.xsd</DependentUpon>
+    </None>
     <None Include="loaderData.xsc">
       <DependentUpon>loaderData.xsd</DependentUpon>
     </None>
@@ -618,17 +632,6 @@
     <None Include="App.config" />
     <None Include="packages.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="DayEndDataSet.xsc">
-      <DependentUpon>DayEndDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DayEndDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DayEndDataSet.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="DayEndDataSet.xss">
-      <DependentUpon>DayEndDataSet.xsd</DependentUpon>
     </None>
     <None Include="ScheduledReportDataset.xsc">
       <DependentUpon>ScheduledReportDataset.xsd</DependentUpon>

@@ -53,7 +53,7 @@ Public Class returns
             ''End Using
             Using command As New SqlCommand("INSERT INTO P_RETURNS(BARCODE,QUANTITY,AMOUNT,TRSANSACTION_ID,DATE,REASON,CUSTOMER,CONTACT) VALUES(@BARCODE,@QUANTITY,@AMOUNT,@TRANS,@DATE,@REASON,@CUSTOMER,@CONTACT)", connection, transaction)
                 With command.Parameters
-                    .Add("@BARCODE,,,,  ", SqlDbType.VarChar).Value = barcode_textbox.Text
+                    .Add("@BARCODE", SqlDbType.VarChar).Value = barcode_textbox.Text
                     .Add("@QUANTITY", SqlDbType.Decimal).Value = quantity_textbox.Text
                     .Add("@AMOUNT", SqlDbType.Decimal).Value = AMOUNT_TEXTBOX.Text
                     .Add("@DATE", SqlDbType.DateTime).Value = Now
@@ -62,6 +62,11 @@ Public Class returns
                     .Add("@CUSTOMER", SqlDbType.VarChar).Value = customer_textbox.Text
                     .Add("@CONTACT", SqlDbType.VarChar).Value = contact_textbox.Text
                 End With
+                command.ExecuteNonQuery()
+            End Using
+            Using command As New SqlCommand("UPDATE INVENTORY SET QUANTITY=QUANTITY + @QUANTITY WHERE BARCODE=@BARCODE", connection, transaction)
+                command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = barcode_textbox.Text
+                command.Parameters.Add("@QUANTITY", SqlDbType.Decimal).Value = quantity_textbox.Text
                 command.ExecuteNonQuery()
             End Using
             transaction.Commit()

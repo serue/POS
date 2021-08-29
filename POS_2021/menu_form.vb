@@ -75,6 +75,195 @@ Public Class menu_form
 
     End Sub
 
+    Private Sub CheckStock()
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT * FROM INVENTORY WHERE QUANTITY >= RE_ORDER", connection)
+                Dim TABLE As New DataTable
+                Dim adapter As New SqlDataAdapter(command)
+                adapter.Fill(TABLE)
+                If TABLE.Rows.Count > 0 Then
+                    'tulpet notifications
+
+                    Notice.HeaderColor = Color.DarkBlue
+                    Notice.Image = My.Resources.Company_Logo 'Image.FromFile(Application.StartupPath & "\information.jpg")
+                    Notice.ImageSize = New Size(40, 40)
+                    Notice.ImagePadding = New Padding(10)
+                    Notice.TitleText = "Stock Level Alert"
+                    Notice.TitleFont = New Font("Arial", 14, FontStyle.Bold)
+                    Notice.TitleColor = Color.DarkRed
+                    Notice.ContentText = " Your stock level is low, Click here for more Information !!!"
+                    Notice.ContentFont = New Font("Arial", 9, FontStyle.Regular)
+                    Notice.ContentColor = Color.Purple
+                    Notice.ContentPadding = New Padding(10)
+                    Notice.AnimationDuration = 5000
+                    Notice.Delay = 10000
+                    Notice.ShowOptionsButton = True
+                    Notice.Size = New Size(700, 200)
+                    Notice.Popup()
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An error occured while checking stock levels", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub LoadControls()
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    products_label.Text = table.Rows.Count
+                Else
+                    products_label.Text = 0
+                End If
+            End Using
+            Using command As New SqlCommand("SELECT * FROM USERS", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    users_label.Text = table.Rows.Count
+                Else
+                    users_label.Text = 0
+                End If
+            End Using
+
+            Using command As New SqlCommand("SELECT * FROM CATEGORY", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    categories_label.Text = table.Rows.Count
+                Else
+                    categories_label.Text = 0
+                End If
+            End Using
+            Using command As New SqlCommand("SELECT TOTAL FROM TRANSACTIONS WHERE TRANS_DATE BETWEEN @FROM AND @TO", connection)
+                Dim date2 As Date = Now.ToShortDateString & " 00:00:01.000"
+                command.Parameters.Add("@FROM", SqlDbType.DateTime).Value = date2
+                command.Parameters.Add("@TO", SqlDbType.DateTime).Value = Now.ToLongDateString
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    Dim total As Decimal = 0
+                    For Each item As DataRow In table.Rows
+                        total += item(0)
+                    Next
+                    daily_sales_label.Text = total
+                Else
+                    daily_sales_label.Text = 0
+                End If
+            End Using
+
+            Using command As New SqlCommand("SELECT AMOUNT FROM SUMMARY_SALES WHERE SALE_MONTH=@TO", connection)
+
+                command.Parameters.Add("@TO", SqlDbType.DateTime).Value = MonthName(Now.Date.Month(), False) & " " & Now.Year
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    Dim total As Decimal = 0
+                    For Each item As DataRow In table.Rows
+                        total += item(0)
+                    Next
+                    monthlySalesLabel.Text = total
+                Else
+                    monthlySalesLabel.Text = 0
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An error occured while loading the admin dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub PlotGraph()
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+
+            Chart1.ChartAreas(0).AxisX.LineWidth = 1
+            Chart1.ChartAreas(0).AxisY.LineWidth = 1
+            'Chart1.ChartAreas(0).AxisX.LabelStyle.Enabled = False
+            'Chart1.ChartAreas(0).AxisY.LabelStyle.Enabled = False
+            'Chart1.ChartAreas(0).AxisX.MajorGrid.Enabled = False
+            Chart1.ChartAreas(0).AxisY.MajorGrid.Enabled = False
+            'Chart1.ChartAreas(0).AxisX.MinorGrid.Enabled = False
+            'Chart1.ChartAreas(0).AxisY.MinorGrid.Enabled = False
+            'Chart1.ChartAreas(0).AxisX.MajorTickMark.Enabled = False
+            'Chart1.ChartAreas(0).AxisY.MajorTickMark.Enabled = False
+            'Chart1.ChartAreas(0).AxisX.MinorTickMark.Enabled = False
+            'Chart1.ChartAreas(0).AxisY.MinorTickMark.Enabled = False
+            Chart1.ChartAreas(0).BackColor = SystemColors.Control
+            Me.Refresh()
+            Chart1.ChartAreas(0).AxisX.IsMarginVisible = False
+            Using command As New SqlCommand("SELECT SALE_MONTH,AMOUNT FROM SUMMARY_SALES WHERE METHOD='CASH'", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    For Each item As DataRow In table.Rows
+                        Me.Chart1.Series("Cash").Points.AddXY(item(0), item(1))
+                    Next
+                End If
+            End Using
+            Using command As New SqlCommand("SELECT SALE_MONTH,AMOUNT FROM SUMMARY_SALES WHERE METHOD='ECOCASH'", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    For Each item As DataRow In table.Rows
+                        Me.Chart1.Series("Ecocash").Points.AddXY(item(0), item(1))
+                    Next
+                End If
+            End Using
+
+            Using command As New SqlCommand("SELECT SALE_MONTH,AMOUNT FROM SUMMARY_SALES WHERE METHOD='CARD'", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    For Each item As DataRow In table.Rows
+                        Me.Chart1.Series("Card").Points.AddXY(item(0), item(1))
+                    Next
+                End If
+            End Using
+            Using command As New SqlCommand("SELECT SALE_MONTH,AMOUNT FROM SUMMARY_SALES WHERE METHOD='FOREX'", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    For Each item As DataRow In table.Rows
+                        Me.Chart1.Series("Forex").Points.AddXY(item(0), item(1))
+                    Next
+                End If
+            End Using
+            Using command As New SqlCommand("SELECT SALE_MONTH,AMOUNT FROM SUMMARY_SALES WHERE METHOD='MULTIPLE'", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    For Each item As DataRow In table.Rows
+                        Me.Chart1.Series("Multiple").Points.AddXY(item(0), item(1))
+                    Next
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An error occured while Ploting the graph", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Sub menu_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Design.OpenChildForeign(Me.mainPanel, nyuwani)
         inventoy_panel.Size = inventoy_panel.MinimumSize
@@ -83,86 +272,10 @@ Public Class menu_form
         reports_panel.Size = reports_panel.MinimumSize
         Timer4.Start()
         active_user.Text = ActiveUser
-        'tulpet notifications
 
-        Notice.HeaderColor = Color.DarkBlue
-        Notice.Image = My.Resources.Company_Logo 'Image.FromFile(Application.StartupPath & "\information.jpg")
-        Notice.ImageSize = New Size(40, 40)
-        Notice.ImagePadding = New Padding(10)
-        Notice.TitleText = "Stock Level Alert"
-        Notice.TitleFont = New Font("Arial", 14, FontStyle.Bold)
-        Notice.TitleColor = Color.DarkRed
-        Notice.ContentText = " Your stock level is low, Click here for more Information !!!"
-        Notice.ContentFont = New Font("Arial", 9, FontStyle.Regular)
-        Notice.ContentColor = Color.Purple
-        Notice.ContentPadding = New Padding(10)
-        Notice.AnimationDuration = 5000
-        Notice.Delay = 10000
-        Notice.ShowOptionsButton = True
-        Notice.Size = New Size(700, 200)
-        Notice.Popup()
-
-
-        Chart1.ChartAreas(0).AxisX.LineWidth = 1
-        Chart1.ChartAreas(0).AxisY.LineWidth = 1
-        'Chart1.ChartAreas(0).AxisX.LabelStyle.Enabled = False
-        'Chart1.ChartAreas(0).AxisY.LabelStyle.Enabled = False
-        'Chart1.ChartAreas(0).AxisX.MajorGrid.Enabled = False
-        Chart1.ChartAreas(0).AxisY.MajorGrid.Enabled = False
-        'Chart1.ChartAreas(0).AxisX.MinorGrid.Enabled = False
-        'Chart1.ChartAreas(0).AxisY.MinorGrid.Enabled = False
-        'Chart1.ChartAreas(0).AxisX.MajorTickMark.Enabled = False
-        'Chart1.ChartAreas(0).AxisY.MajorTickMark.Enabled = False
-        'Chart1.ChartAreas(0).AxisX.MinorTickMark.Enabled = False
-        'Chart1.ChartAreas(0).AxisY.MinorTickMark.Enabled = False
-        Chart1.ChartAreas(0).BackColor = SystemColors.Control
-        Me.Refresh()
-        Chart1.ChartAreas(0).AxisX.IsMarginVisible = False
-        Me.Chart1.Series("Series1").Points.AddXY("collen", 110)
-        Me.Chart1.Series("Series1").Points.AddXY("kabote", 99)
-        Me.Chart1.Series("Series1").Points.AddXY("dhinda", 9)
-        Me.Chart1.Series("Series1").Points.AddXY("seru", 56)
-
-        Me.Chart1.Series("Series2").Points.AddXY("collen", 90)
-        Me.Chart1.Series("Series2").Points.AddXY("kabote", 69)
-        Me.Chart1.Series("Series2").Points.AddXY("dhinda", 89)
-        Me.Chart1.Series("Series2").Points.AddXY("seru", 40)
-
-        Me.Chart1.Series("Series3").Points.AddXY("collen", 60)
-        Me.Chart1.Series("Series3").Points.AddXY("kabote", 40)
-        Me.Chart1.Series("Series3").Points.AddXY("dhinda", 50)
-        Me.Chart1.Series("Series3").Points.AddXY("seru", 76)
-
-
-        Me.Chart1.Series("Series1").Points.AddXY("zindove", 75)
-        Me.Chart1.Series("Series1").Points.AddXY("jebwe", 60)
-        Me.Chart1.Series("Series1").Points.AddXY("raika", 34)
-        Me.Chart1.Series("Series1").Points.AddXY("chamakore", 55)
-
-        Me.Chart1.Series("Series2").Points.AddXY("zindove", 30)
-        Me.Chart1.Series("Series2").Points.AddXY("jebwe", 38)
-        Me.Chart1.Series("Series2").Points.AddXY("raika", 10)
-        Me.Chart1.Series("Series2").Points.AddXY("chamakore", 98)
-
-        Me.Chart1.Series("Series3").Points.AddXY("zindove", 90)
-        Me.Chart1.Series("Series3").Points.AddXY("jebwe", 25)
-        Me.Chart1.Series("Series3").Points.AddXY("raika", 60)
-        Me.Chart1.Series("Series3").Points.AddXY("chamakore", 40)
-
-        Me.Chart1.Series("Series1").Points.AddXY("zind", 87)
-        Me.Chart1.Series("Series1").Points.AddXY("jeb", 50)
-        Me.Chart1.Series("Series1").Points.AddXY("rai", 60)
-        Me.Chart1.Series("Series1").Points.AddXY("cham", 70)
-
-        Me.Chart1.Series("Series2").Points.AddXY("zin", 50)
-        Me.Chart1.Series("Series2").Points.AddXY("jeb", 65)
-        Me.Chart1.Series("Series2").Points.AddXY("rai", 33)
-        Me.Chart1.Series("Series2").Points.AddXY("cham", 40)
-
-        Me.Chart1.Series("Series3").Points.AddXY("zin", 70)
-        Me.Chart1.Series("Series3").Points.AddXY("jeb", 80)
-        Me.Chart1.Series("Series3").Points.AddXY("rai", 40)
-        Me.Chart1.Series("Series3").Points.AddXY("cham", 34)
+        CheckStock()
+        LoadControls()
+        PlotGraph()
     End Sub
 
     Private Sub close_button_Click(sender As Object, e As EventArgs) Handles close_button.Click
@@ -452,8 +565,8 @@ Public Class menu_form
 
     End Sub
 
-    Private Sub dayEnd_sales_Click(sender As Object, e As EventArgs) Handles dayEnd_sales.Click
-        checkPermissions(username, dayEnd_sales.Name, New DayEndReportForm)
+    Private Sub dayEnd_sales_Click(sender As Object, e As EventArgs) Handles dayEnd_reports.Click
+        checkPermissions(username, dayEnd_reports.Name, New DayEndReportForm)
     End Sub
 
     Private Sub cashup_balances_Click(sender As Object, e As EventArgs) Handles cashup_balances.Click
@@ -506,7 +619,7 @@ Public Class menu_form
         End Try
     End Sub
     Private Sub return_sales_Click(sender As Object, e As EventArgs) Handles return_sales.Click
-        checkPermissions(username, return_sales.Name, New DayEndReportForm)
+        checkPermissions(username, return_sales.Name, New returns)
     End Sub
 
     Private Sub transaction_logs_Click(sender As Object, e As EventArgs) Handles transaction_logs.Click
@@ -543,5 +656,18 @@ Public Class menu_form
     Private Sub change_password_Click(sender As Object, e As EventArgs) Handles change_password.Click
         update_user_accounts.ShowDialog()
 
+    End Sub
+
+    Private Sub CANCEL_TRANS_Click(sender As Object, e As EventArgs) Handles cancel_transactions.Click
+        checkPermissions(username, cancel_transactions.Name, New cancel_transaction_form)
+    End Sub
+
+    Private Sub open_pos_Click(sender As Object, e As EventArgs) Handles open_pos.Click
+        If MessageBox.Show("Are u sure you want to open POS, this window will close immediately", "Open POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            sales_form.ActiveUser = user
+            sales_form.ActiveUsername = username
+            sales_form.Show()
+            Me.Close()
+        End If
     End Sub
 End Class
