@@ -16,7 +16,7 @@ Public Class loader
             e.Cancel = True
         Else
             ShowPanel([Panel2])
-            LoaderReportLoading([CrystalReportViewer1])
+            LoaderReportLoading()
         End If
 
     End Sub
@@ -39,7 +39,7 @@ Public Class loader
     Delegate Sub LoadRpt(ByVal [crv] As Object)
     Delegate Sub SetPanelVisible(ByVal [panel] As Panel)
 
-    Private Sub LoaderReportLoading(ByVal [crv] As Object)                     'use the same delegate LoadRpt 
+    Private Sub LoaderReportLoading()                     'use the same delegate LoadRpt 
         Try
             If My.Settings.connection = "" Then
                 server_configuration.ShowDialog()
@@ -51,22 +51,33 @@ Public Class loader
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(CoTable)
                 End Using
-                Dim rep As New loaderReport
-                rep.Database.Tables("COMPANY").SetDataSource(CoTable)
+                'Dim rep As New loaderReport
+                ''rep.Database.Tables("COMPANY").SetDataSource(CoTable)
 
-                If [crv].InvokeRequired Then
-                    Dim myDelegate As New LoadRpt(AddressOf LoaderReportLoading)
+                ''If [crv].InvokeRequired Then
+                ''    Dim myDelegate As New LoadRpt(AddressOf LoaderReportLoading)
 
-                    Me.Invoke(myDelegate, New Object() {crv})
+                ''    Me.Invoke(myDelegate, New Object() {crv})
 
-                Else
-                    [crv].ReportSource = rep
-                End If
+                ''Else
+                ''    [crv].ReportSource = rep
+                ''End If
                 connection.Close()
             End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Operation Error")
+            Dim source As String
+            Dim log As String
+            Dim eventname As String
+            source = "CRV"
+            log = "Application"
+            eventname = ex.ToString
+            If Not EventLog.SourceExists(source) Then
+                EventLog.CreateEventSource(source, log)
+            End If
+            EventLog.WriteEntry(source, eventname)
+            EventLog.WriteEntry(source, eventname, EventLogEntryType.Error)
 
             server_configuration.ShowDialog()
         End Try

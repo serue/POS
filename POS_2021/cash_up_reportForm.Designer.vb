@@ -24,17 +24,17 @@ Partial Class cash_up_reportForm
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.day_report = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TO_DATE = New MetroFramework.Controls.MetroDateTime()
         Me.show_report = New System.Windows.Forms.Button()
         Me.username_text = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.current_date = New MetroFramework.Controls.MetroDateTime()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TO_DATE = New MetroFramework.Controls.MetroDateTime()
-        Me.day_report = New System.Windows.Forms.Button()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -63,6 +63,34 @@ Partial Class cash_up_reportForm
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(824, 85)
         Me.Panel2.TabIndex = 1
+        '
+        'day_report
+        '
+        Me.day_report.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.day_report.Location = New System.Drawing.Point(658, 45)
+        Me.day_report.Name = "day_report"
+        Me.day_report.Size = New System.Drawing.Size(138, 27)
+        Me.day_report.TabIndex = 7
+        Me.day_report.Text = "Show Day Report"
+        Me.day_report.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(12, 52)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(64, 17)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "End Date:"
+        '
+        'TO_DATE
+        '
+        Me.TO_DATE.Location = New System.Drawing.Point(94, 45)
+        Me.TO_DATE.MinimumSize = New System.Drawing.Size(0, 29)
+        Me.TO_DATE.Name = "TO_DATE"
+        Me.TO_DATE.Size = New System.Drawing.Size(200, 29)
+        Me.TO_DATE.TabIndex = 5
         '
         'show_report
         '
@@ -112,54 +140,23 @@ Partial Class cash_up_reportForm
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.CrystalReportViewer1)
+        Me.Panel3.Controls.Add(Me.ReportViewer1)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 88)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(824, 309)
         Me.Panel3.TabIndex = 2
         '
-        'CrystalReportViewer1
-        '
-        Me.CrystalReportViewer1.ActiveViewIndex = -1
-        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
-        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(824, 309)
-        Me.CrystalReportViewer1.TabIndex = 0
-        '
         'BackgroundWorker1
         '
         '
-        'Label3
+        'ReportViewer1
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(12, 52)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(64, 17)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "End Date:"
-        '
-        'TO_DATE
-        '
-        Me.TO_DATE.Location = New System.Drawing.Point(94, 45)
-        Me.TO_DATE.MinimumSize = New System.Drawing.Size(0, 29)
-        Me.TO_DATE.Name = "TO_DATE"
-        Me.TO_DATE.Size = New System.Drawing.Size(200, 29)
-        Me.TO_DATE.TabIndex = 5
-        '
-        'day_report
-        '
-        Me.day_report.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.day_report.Location = New System.Drawing.Point(658, 45)
-        Me.day_report.Name = "day_report"
-        Me.day_report.Size = New System.Drawing.Size(138, 27)
-        Me.day_report.TabIndex = 7
-        Me.day_report.Text = "Show Day Report"
-        Me.day_report.UseVisualStyleBackColor = True
+        Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(824, 309)
+        Me.ReportViewer1.TabIndex = 0
         '
         'cash_up_reportForm
         '
@@ -189,9 +186,9 @@ Partial Class cash_up_reportForm
     Friend WithEvents Label1 As Label
     Friend WithEvents current_date As MetroFramework.Controls.MetroDateTime
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents day_report As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents TO_DATE As MetroFramework.Controls.MetroDateTime
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

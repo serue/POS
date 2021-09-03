@@ -477,7 +477,7 @@ Public Class sales_form
                         cashAdapter.Fill(cashTable)
                         If cashTable.Rows.Count > 0 Then
                             Dim amt As Decimal = cashTable(0)(0)
-                            Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
+                            Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
                                 With updateCashCommand.Parameters
                                     .Add("@AMOUNT", SqlDbType.VarChar).Value = amt + row.Cells(5).Value
                                     .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
@@ -1970,7 +1970,7 @@ Public Class sales_form
                             End Using
                         Else
 
-                            Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUnT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
+                            Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUNT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
                                 With InsertCashCommand.Parameters
                                     .Add("@AMOUNT", SqlDbType.VarChar).Value = row.Cells(5).Value
                                     .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString

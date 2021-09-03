@@ -1,11 +1,32 @@
 ﻿Imports System.Data.SqlClient
+Imports Microsoft.Reporting.WinForms
 
 Public Class StockReportForm
     Dim connection As SqlConnection
     Dim myPermissions As New ConnectionAndPermissions
     Private Sub StockReportForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         category_combo.Enabled = False
-        BackgroundWorker1.RunWorkerAsync()
+        'BackgroundWorker1.RunWorkerAsync()
+        'Me.ReportViewer1.RefreshReport()
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Dim CoTable As New DataTable
+            Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
+                Dim adapter As New SqlDataAdapter(command)
+                Dim DataSet1 As New DataSet
+                adapter.Fill(DataSet1, "DataSet1")
+                Me.ReportViewer1.LocalReport.ReportPath = "Stock_Report.rdlc"
+                Me.ReportViewer1.LocalReport.DataSources.Clear()
+                Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
+                Me.ReportViewer1.RefreshReport()
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Operation Error")
+            connection.Close()
+
+        End Try
     End Sub
 
     Private Sub category_check_CheckedChanged(sender As Object, e As EventArgs) Handles category_check.CheckedChanged
@@ -18,37 +39,37 @@ Public Class StockReportForm
     Delegate Sub LoadRpt(ByVal [crv] As Object)
     Delegate Sub SetPanelVisible(ByVal [panel] As Panel)
 
-    Private Sub ReportLoading(ByVal [crv] As Object)                     'use the same delegate LoadRpt 
-        Try
-            connection = myPermissions.getConnection
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-            connection.Open()
-            Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(CoTable)
-            End Using
-            Dim rep As New StockReport
-            rep.Database.Tables("INVENTORY").SetDataSource(CoTable)
+    'Private Sub ReportLoading(ByVal [crv] As Object)                     'use the same delegate LoadRpt 
+    '    Try
+    '        connection = myPermissions.getConnection
+    '        If connection.State = ConnectionState.Open Then
+    '            connection.Close()
+    '        End If
+    '        connection.Open()
+    '        Dim CoTable As New DataTable
+    '        Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
+    '            Dim adapter As New SqlDataAdapter(command)
+    '            adapter.Fill(CoTable)
+    '        End Using
+    '        Dim rep As New StockReport
+    '        rep.Database.Tables("INVENTORY").SetDataSource(CoTable)
 
-            If [crv].InvokeRequired Then
-                Dim myDelegate As New LoadRpt(AddressOf ReportLoading)
-                Me.Invoke(myDelegate, New Object() {crv})
+    '        If [crv].InvokeRequired Then
+    '            Dim myDelegate As New LoadRpt(AddressOf ReportLoading)
+    '            Me.Invoke(myDelegate, New Object() {crv})
 
-            Else
-                [crv].ReportSource = rep
-            End If
-            connection.Close()
+    '        Else
+    '            [crv].ReportSource = rep
+    '        End If
+    '        connection.Close()
 
 
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Operation Error")
-            MsgBox(ex.StackTrace)
-            connection.Close()
-        End Try
-    End Sub
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message, "Operation Error")
+    '        MsgBox(ex.StackTrace)
+    '        connection.Close()
+    '    End Try
+    'End Sub
     Private Sub ShowPanel(ByVal [panel] As Panel)
         If [panel].InvokeRequired Then
             Dim myDelegate As New SetPanelVisible(AddressOf ShowPanel)
@@ -65,7 +86,7 @@ Public Class StockReportForm
             e.Cancel = True
         Else
             'ShowPanel([Panel2])
-            ReportLoading([CrystalReportViewer1])
+            'ReportLoading([CrystalReportViewer1])
         End If
     End Sub
 End Class

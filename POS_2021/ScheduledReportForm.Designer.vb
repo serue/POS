@@ -37,11 +37,13 @@ Partial Class ScheduledReportForm
         Me.date_to = New MetroFramework.Controls.MetroDateTime()
         Me.date_from = New MetroFramework.Controls.MetroDateTime()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -234,26 +236,32 @@ Partial Class ScheduledReportForm
         Me.Panel3.Size = New System.Drawing.Size(1047, 2)
         Me.Panel3.TabIndex = 0
         '
-        'CrystalReportViewer1
-        '
-        Me.CrystalReportViewer1.ActiveViewIndex = -1
-        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 84)
-        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(1047, 365)
-        Me.CrystalReportViewer1.TabIndex = 2
-        '
         'BackgroundWorker1
         '
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.ReportViewer1)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel4.Location = New System.Drawing.Point(0, 84)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(1047, 365)
+        Me.Panel4.TabIndex = 2
+        '
+        'ReportViewer1
+        '
+        Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(1047, 365)
+        Me.ReportViewer1.TabIndex = 0
         '
         'ScheduledReportForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1047, 449)
-        Me.Controls.Add(Me.CrystalReportViewer1)
+        Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -265,6 +273,7 @@ Partial Class ScheduledReportForm
         Me.Panel2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -277,7 +286,6 @@ Partial Class ScheduledReportForm
     Friend WithEvents MaterialLabel1 As MaterialSkin.Controls.MaterialLabel
     Friend WithEvents show_report As MaterialSkin.Controls.MaterialRaisedButton
     Friend WithEvents date_to As MetroFramework.Controls.MetroDateTime
-    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents cash_check As MaterialSkin.Controls.MaterialCheckBox
     Friend WithEvents Label1 As Label
     Friend WithEvents filter_toggler As MetroFramework.Controls.MetroToggle
@@ -287,4 +295,6 @@ Partial Class ScheduledReportForm
     Friend WithEvents card_check As MaterialSkin.Controls.MaterialCheckBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

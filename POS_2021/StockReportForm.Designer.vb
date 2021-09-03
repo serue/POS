@@ -28,8 +28,9 @@ Partial Class StockReportForm
         Me.category_combo = New MetroFramework.Controls.MetroComboBox()
         Me.show_report = New MaterialSkin.Controls.MaterialRaisedButton()
         Me.category_check = New MaterialSkin.Controls.MaterialCheckBox()
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -108,26 +109,32 @@ Partial Class StockReportForm
         Me.category_check.Text = "View By Main Category"
         Me.category_check.UseVisualStyleBackColor = True
         '
-        'CrystalReportViewer1
-        '
-        Me.CrystalReportViewer1.ActiveViewIndex = -1
-        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 80)
-        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(907, 359)
-        Me.CrystalReportViewer1.TabIndex = 2
-        '
         'BackgroundWorker1
         '
+        '
+        'ReportViewer1
+        '
+        Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ReportViewer1.Location = New System.Drawing.Point(0, 80)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(907, 359)
+        Me.ReportViewer1.TabIndex = 3
+        '
+        'Panel3
+        '
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(0, 80)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(907, 359)
+        Me.Panel3.TabIndex = 0
         '
         'StockReportForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(907, 439)
-        Me.Controls.Add(Me.CrystalReportViewer1)
+        Me.Controls.Add(Me.ReportViewer1)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -147,6 +154,7 @@ Partial Class StockReportForm
     Friend WithEvents show_report As MaterialSkin.Controls.MaterialRaisedButton
     Friend WithEvents category_check As MaterialSkin.Controls.MaterialCheckBox
     Friend WithEvents MaterialLabel1 As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents Panel3 As Panel
 End Class

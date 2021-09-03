@@ -73,4 +73,5 @@ Public Class receipt_form
         '    MessageBox.Show(ex.Message, "Operation Error")
         'End Try
     End Sub
+
 End Class

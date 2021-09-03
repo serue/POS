@@ -34,8 +34,8 @@ Partial Class transactions_logReport
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -158,26 +158,23 @@ Partial Class transactions_logReport
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.CrystalReportViewer1)
+        Me.Panel3.Controls.Add(Me.ReportViewer1)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 92)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(932, 405)
         Me.Panel3.TabIndex = 2
         '
-        'CrystalReportViewer1
-        '
-        Me.CrystalReportViewer1.ActiveViewIndex = -1
-        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
-        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(932, 405)
-        Me.CrystalReportViewer1.TabIndex = 0
-        '
         'BackgroundWorker1
         '
+        '
+        'ReportViewer1
+        '
+        Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(932, 405)
+        Me.ReportViewer1.TabIndex = 0
         '
         'transactions_logReport
         '
@@ -211,6 +208,6 @@ Partial Class transactions_logReport
     Friend WithEvents normal_report As Button
     Friend WithEvents filtered_report As Button
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

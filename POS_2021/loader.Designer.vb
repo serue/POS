@@ -23,7 +23,6 @@ Partial Class loader
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.loadingPic = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -41,17 +40,6 @@ Partial Class loader
         'BackgroundWorker1
         '
         Me.BackgroundWorker1.WorkerSupportsCancellation = True
-        '
-        'CrystalReportViewer1
-        '
-        Me.CrystalReportViewer1.ActiveViewIndex = -1
-        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(17, 135)
-        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(10, 44)
-        Me.CrystalReportViewer1.TabIndex = 2
-        Me.CrystalReportViewer1.Visible = False
         '
         'Label1
         '
@@ -157,7 +145,6 @@ Partial Class loader
         Me.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.ClientSize = New System.Drawing.Size(299, 364)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.re_load)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -181,7 +168,6 @@ Partial Class loader
 
     Friend WithEvents loadingPic As PictureBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel

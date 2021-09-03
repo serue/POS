@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports Microsoft.Reporting.WinForms
 
 Public Class ScheduledReportForm
     Dim connection As SqlConnection
@@ -7,17 +8,23 @@ Public Class ScheduledReportForm
     Dim forCash, ForCard, ForEco, ForForex As String
 
     Private Sub ScheduledReportForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        BackgroundWorker1.RunWorkerAsync()
+        ' BackgroundWorker1.RunWorkerAsync()
         GroupBox1.Enabled = False
         forCash = ""
         ForCard = ""
         ForEco = ""
         ForForex = ""
+        If filter_toggler.Checked = True Then
+            'ShowPanel([Panel2])
+            FilterReport()
+        Else
+            ReportLoading()
+        End If
     End Sub
     Delegate Sub LoadRpt(ByVal [crv] As Object)
     Delegate Sub SetPanelVisible(ByVal [panel] As Panel)
 
-    Private Sub ReportLoading(ByVal [crv] As Object)                     'use the same delegate LoadRpt 
+    Private Sub ReportLoading()                     'use the same delegate LoadRpt 
         Try
             connection = myPermissions.getConnection
             If connection.State = ConnectionState.Open Then
@@ -25,29 +32,16 @@ Public Class ScheduledReportForm
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM SALES", connection)
+            Using command As New SqlCommand("SELECT * FROM SALES_REPORT", connection)
                 Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(CoTable)
+                Dim DataSet1 As New DataSet
+                adapter.Fill(DataSet1, "DataSet1")
+                Me.ReportViewer1.LocalReport.ReportPath = "Sheduled_Report.rdlc"
+                Me.ReportViewer1.LocalReport.DataSources.Clear()
+                Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
+                Me.ReportViewer1.RefreshReport()
             End Using
-
-            Dim INVENTORY As New DataTable
-            Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(INVENTORY)
-            End Using
-            Dim rep As New ScheduledReport
-            rep.Database.Tables("SALES").SetDataSource(CoTable)
-            rep.Database.Tables("INVENTORY").SetDataSource(INVENTORY)
-
-            If [crv].InvokeRequired Then
-                Dim myDelegate As New LoadRpt(AddressOf ReportLoading)
-                Me.Invoke(myDelegate, New Object() {crv})
-
-            Else
-                [crv].ReportSource = rep
-            End If
             connection.Close()
-
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Operation Error")
@@ -55,7 +49,7 @@ Public Class ScheduledReportForm
             connection.Close()
         End Try
     End Sub
-    Private Sub FilterReport(ByVal [crv] As Object)                     'use the same delegate LoadRpt 
+    Private Sub FilterReport()                     'use the same delegate LoadRpt 
         Try
             connection = myPermissions.getConnection
             If connection.State = ConnectionState.Open Then
@@ -73,25 +67,13 @@ Public Class ScheduledReportForm
                     .Add("@FOREX", SqlDbType.VarChar).Value = ForForex
                 End With
                 Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(CoTable)
+                Dim DataSet1 As New DataSet
+                adapter.Fill(DataSet1, "DataSet1")
+                Me.ReportViewer1.LocalReport.ReportPath = "Sheduled_Report.rdlc"
+                Me.ReportViewer1.LocalReport.DataSources.Clear()
+                Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
+                Me.ReportViewer1.RefreshReport()
             End Using
-
-            Dim INVENTORY As New DataTable
-            Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(INVENTORY)
-            End Using
-            Dim rep As New ScheduledReport
-            rep.Database.Tables("SALES").SetDataSource(CoTable)
-            rep.Database.Tables("INVENTORY").SetDataSource(INVENTORY)
-
-            If [crv].InvokeRequired Then
-                Dim myDelegate As New LoadRpt(AddressOf FilterReport)
-                Me.Invoke(myDelegate, New Object() {crv})
-
-            Else
-                [crv].ReportSource = rep
-            End If
             connection.Close()
 
 
@@ -150,14 +132,18 @@ Public Class ScheduledReportForm
         Else
             If filter_toggler.Checked = True Then
                 'ShowPanel([Panel2])
-                FilterReport([CrystalReportViewer1])
+                FilterReport()
             Else
-                ReportLoading(CrystalReportViewer1)
+                ReportLoading()
             End If
         End If
     End Sub
 
-    Private Sub CrystalReportViewer1_Load(sender As Object, e As EventArgs) Handles CrystalReportViewer1.Load
+    Private Sub CrystalReportViewer1_Load(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub MetroButton1_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -171,7 +157,13 @@ Public Class ScheduledReportForm
 
     Private Sub show_report_Click(sender As Object, e As EventArgs) Handles show_report.Click
         show_report.Enabled = False
-        BackgroundWorker1.RunWorkerAsync()
+        If filter_toggler.Checked = True Then
+            'ShowPanel([Panel2])
+            FilterReport()
+        Else
+            ReportLoading()
+        End If
+        show_report.Enabled = True
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted

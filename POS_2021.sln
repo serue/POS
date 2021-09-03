@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "POS_2021", "POS_2021\POS_2021.vbproj", "{55095B68-12FA-40B9-BF48-91B5D8E9FD84}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DeploySetup", "DeploySetup\DeploySetup.vdproj", "{716AA033-399A-4616-9036-784D50B5A51D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{55095B68-12FA-40B9-BF48-91B5D8E9FD84}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55095B68-12FA-40B9-BF48-91B5D8E9FD84}.Release|x86.ActiveCfg = Release|Any CPU
 		{55095B68-12FA-40B9-BF48-91B5D8E9FD84}.Release|x86.Build.0 = Release|Any CPU
+		{716AA033-399A-4616-9036-784D50B5A51D}.Debug|Any CPU.ActiveCfg = Debug
+		{716AA033-399A-4616-9036-784D50B5A51D}.Debug|x86.ActiveCfg = Debug
+		{716AA033-399A-4616-9036-784D50B5A51D}.Release|Any CPU.ActiveCfg = Release
+		{716AA033-399A-4616-9036-784D50B5A51D}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

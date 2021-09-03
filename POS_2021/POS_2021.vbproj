@@ -85,10 +85,6 @@
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>D:\serudzai\d drive\Projects\Shopwise suite\packages\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FontAwesome.Sharp, Version=5.15.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.1\lib\net45\FontAwesome.Sharp.dll</HintPath>
       <Private>True</Private>
@@ -115,6 +111,8 @@
     <Reference Include="Microsoft.PointOfService.ControlBase, Version=1.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\POSForDotNet.SDK.1.14.1\lib\net40\Microsoft.PointOfService.ControlBase.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -189,12 +187,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cashUpDataset.xsd</DependentUpon>
     </Compile>
-    <Compile Include="cashUpReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cashUpReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="cash_up_reportForm.Designer.vb">
       <DependentUpon>cash_up_reportForm.vb</DependentUpon>
     </Compile>
@@ -234,12 +226,6 @@
     <Compile Include="DayEndReportForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DayEndSalesReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DayEndSalesReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="IntefaceDesign.vb" />
     <Compile Include="inventory_list.Designer.vb">
       <DependentUpon>inventory_list.vb</DependentUpon>
@@ -260,12 +246,6 @@
     </Compile>
     <Compile Include="loaderData.vb">
       <DependentUpon>loaderData.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="loaderReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>loaderReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="look_up.Designer.vb">
       <DependentUpon>look_up.vb</DependentUpon>
@@ -332,12 +312,6 @@
     <Compile Include="sale_form.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScheduledReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ScheduledReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ScheduledReportDataset.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -351,6 +325,11 @@
     </Compile>
     <Compile Include="ScheduledReportForm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scheduled_Dataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Scheduled_Dataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="server_configuration.Designer.vb">
       <DependentUpon>server_configuration.vb</DependentUpon>
@@ -377,12 +356,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cancel_transaction_module.vb" />
-    <Compile Include="StockReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StockReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="StockReportDataset.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -426,12 +399,6 @@
     <Compile Include="transaction_logDataset.vb">
       <DependentUpon>transaction_logDataset.xsd</DependentUpon>
     </Compile>
-    <Compile Include="transactio_logRpt.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>transactio_logRpt.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="update_userForm.Designer.vb">
       <DependentUpon>update_userForm.vb</DependentUpon>
     </Compile>
@@ -470,9 +437,8 @@
     <EmbeddedResource Include="cancel_transaction_form.resx">
       <DependentUpon>cancel_transaction_form.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="cashUpReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>cashUpReport.vb</LastGenOutput>
+    <EmbeddedResource Include="Cashup_Report.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="cash_up_reportForm.resx">
       <DependentUpon>cash_up_reportForm.vb</DependentUpon>
@@ -489,19 +455,14 @@
     <EmbeddedResource Include="DayEndReportForm.resx">
       <DependentUpon>DayEndReportForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DayEndSalesReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>DayEndSalesReport.vb</LastGenOutput>
+    <EmbeddedResource Include="DayEnd_Report.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="inventory_list.resx">
       <DependentUpon>inventory_list.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loader.resx">
       <DependentUpon>loader.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="loaderReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>loaderReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="look_up.resx">
       <DependentUpon>look_up.vb</DependentUpon>
@@ -533,10 +494,6 @@
     <EmbeddedResource Include="sale_form.resx">
       <DependentUpon>sale_form.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScheduledReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ScheduledReport.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ScheduledReportForm.resx">
       <DependentUpon>ScheduledReportForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -546,18 +503,20 @@
     <EmbeddedResource Include="settings.resx">
       <DependentUpon>settings.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sheduled_Report.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="sign_in.resx">
       <DependentUpon>sign_in.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="splash1.resx">
       <DependentUpon>splash1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StockReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>StockReport.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="StockReportForm.resx">
       <DependentUpon>StockReportForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock_Report.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="temporary.resx">
       <DependentUpon>temporary.vb</DependentUpon>
@@ -568,12 +527,11 @@
     <EmbeddedResource Include="transactions_logReport.resx">
       <DependentUpon>transactions_logReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="transaction_log.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="transaction_log.resx">
       <DependentUpon>transaction_log.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="transactio_logRpt.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>transactio_logRpt.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="update_userForm.resx">
       <DependentUpon>update_userForm.vb</DependentUpon>
@@ -646,6 +604,17 @@
     </None>
     <None Include="ScheduledReportDataset.xss">
       <DependentUpon>ScheduledReportDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Scheduled_Dataset.xsc">
+      <DependentUpon>Scheduled_Dataset.xsd</DependentUpon>
+    </None>
+    <None Include="Scheduled_Dataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Scheduled_Dataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Scheduled_Dataset.xss">
+      <DependentUpon>Scheduled_Dataset.xsd</DependentUpon>
     </None>
     <None Include="sqls\POS_DATABASE.bak" />
     <None Include="StockReportDataset.xsc">

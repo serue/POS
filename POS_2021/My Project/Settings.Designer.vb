@@ -146,6 +146,16 @@ Namespace My
                 Me("auth_type") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=beymo\seru;Initial Catalog=POS_DATABASE;Integrated Security=True")>  _
+        Public ReadOnly Property POS_DATABASEConnectionString() As String
+            Get
+                Return CType(Me("POS_DATABASEConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
