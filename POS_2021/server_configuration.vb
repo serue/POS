@@ -130,8 +130,41 @@ Public Class server_configuration
         End Try
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         Application.Restart()
 
+    End Sub
+
+    Private Sub server_configuration_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If My.Settings.connection = "" Then
+
+            If MessageBox.Show("The setting was not saved do you want to Exit System", "Exit Application", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                Application.Exit()
+            Else
+                e.Cancel = True
+            End If
+        Else
+            Try
+                createconnection = New SqlConnection(My.Settings.connection)
+                createconnection.Open()
+                If MessageBox.Show("Connection was Created successfully, Do you want continue", "Closing Server Configuration", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    createconnection.Close()
+                    loader.Show()
+                    Me.Close()
+                ElseIf DialogResult = DialogResult.No Then
+                    createconnection.Close()
+                    Application.Exit()
+                Else
+                    createconnection.Close()
+                    e.Cancel = True
+                End If
+            Catch ex As Exception
+                If MessageBox.Show("There was an error saving the connection, Do you want to resave the connection", "Save Connection", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    e.Cancel = True
+                Else
+                    e.Cancel = False
+                End If
+            End Try
+        End If
     End Sub
 End Class

@@ -30,16 +30,20 @@ Partial Class categories
         Me.edit_details = New FontAwesome.Sharp.IconButton()
         Me.clear_button = New FontAwesome.Sharp.IconButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cmb_subCategory1 = New MetroFramework.Controls.MetroComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.cmb_category = New System.Windows.Forms.ComboBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.cmb_subcategory2 = New System.Windows.Forms.ComboBox()
-        Me.cmb_subcategory3 = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.IconButton1 = New FontAwesome.Sharp.IconButton()
+        Me.IconButton2 = New FontAwesome.Sharp.IconButton()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -49,7 +53,7 @@ Partial Class categories
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(530, 3)
+        Me.Panel1.Size = New System.Drawing.Size(808, 3)
         Me.Panel1.TabIndex = 0
         '
         'Label1
@@ -100,7 +104,7 @@ Partial Class categories
         Me.save_item.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.save_item.IconSize = 25
         Me.save_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_item.Location = New System.Drawing.Point(37, 180)
+        Me.save_item.Location = New System.Drawing.Point(313, 159)
         Me.save_item.Margin = New System.Windows.Forms.Padding(2)
         Me.save_item.Name = "save_item"
         Me.save_item.Rotation = 0R
@@ -123,7 +127,7 @@ Partial Class categories
         Me.edit_details.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.edit_details.IconSize = 25
         Me.edit_details.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.edit_details.Location = New System.Drawing.Point(211, 180)
+        Me.edit_details.Location = New System.Drawing.Point(154, 159)
         Me.edit_details.Margin = New System.Windows.Forms.Padding(2)
         Me.edit_details.Name = "edit_details"
         Me.edit_details.Rotation = 0R
@@ -146,7 +150,7 @@ Partial Class categories
         Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.clear_button.IconSize = 25
         Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(371, 180)
+        Me.clear_button.Location = New System.Drawing.Point(372, 89)
         Me.clear_button.Margin = New System.Windows.Forms.Padding(2)
         Me.clear_button.Name = "clear_button"
         Me.clear_button.Rotation = 0R
@@ -161,74 +165,17 @@ Partial Class categories
         Me.GroupBox1.Controls.Add(Me.cmb_category)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.edit_details)
+        Me.GroupBox1.Controls.Add(Me.save_item)
         Me.GroupBox1.Controls.Add(Me.notes_textbox)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
         Me.GroupBox1.Location = New System.Drawing.Point(9, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(509, 164)
+        Me.GroupBox1.Size = New System.Drawing.Size(509, 202)
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Mandatory Main Categories"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.cmb_subcategory3)
-        Me.GroupBox2.Controls.Add(Me.cmb_subcategory2)
-        Me.GroupBox2.Controls.Add(Me.clear_button)
-        Me.GroupBox2.Controls.Add(Me.cmb_subCategory1)
-        Me.GroupBox2.Controls.Add(Me.edit_details)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.save_item)
-        Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.ForeColor = System.Drawing.Color.Maroon
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 169)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(506, 236)
-        Me.GroupBox2.TabIndex = 30
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Optional Sub Categories"
-        '
-        'cmb_subCategory1
-        '
-        Me.cmb_subCategory1.FormattingEnabled = True
-        Me.cmb_subCategory1.ItemHeight = 23
-        Me.cmb_subCategory1.Items.AddRange(New Object() {"weighed"})
-        Me.cmb_subCategory1.Location = New System.Drawing.Point(158, 32)
-        Me.cmb_subCategory1.Name = "cmb_subCategory1"
-        Me.cmb_subCategory1.PromptText = "Enter  New Category"
-        Me.cmb_subCategory1.Size = New System.Drawing.Size(322, 29)
-        Me.cmb_subCategory1.TabIndex = 3
-        Me.cmb_subCategory1.UseSelectable = True
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(15, 118)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 17)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Text = "Sub Category 3:"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 75)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(101, 17)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Text = "Sub Category 2:"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(15, 37)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(119, 17)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Weighed Category:"
         '
         'cmb_category
         '
@@ -238,27 +185,135 @@ Partial Class categories
         Me.cmb_category.Size = New System.Drawing.Size(320, 25)
         Me.cmb_category.TabIndex = 5
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.IconButton2)
+        Me.GroupBox2.Controls.Add(Me.IconButton1)
+        Me.GroupBox2.Controls.Add(Me.cmb_subcategory2)
+        Me.GroupBox2.Controls.Add(Me.clear_button)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.Maroon
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 213)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(506, 153)
+        Me.GroupBox2.TabIndex = 30
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Optional Sub Categories"
+        '
         'cmb_subcategory2
         '
         Me.cmb_subcategory2.FormattingEnabled = True
-        Me.cmb_subcategory2.Location = New System.Drawing.Point(158, 73)
+        Me.cmb_subcategory2.Location = New System.Drawing.Point(158, 28)
         Me.cmb_subcategory2.Name = "cmb_subcategory2"
         Me.cmb_subcategory2.Size = New System.Drawing.Size(322, 25)
         Me.cmb_subcategory2.TabIndex = 28
         '
-        'cmb_subcategory3
+        'Label4
         '
-        Me.cmb_subcategory3.FormattingEnabled = True
-        Me.cmb_subcategory3.Location = New System.Drawing.Point(158, 117)
-        Me.cmb_subcategory3.Name = "cmb_subcategory3"
-        Me.cmb_subcategory3.Size = New System.Drawing.Size(320, 25)
-        Me.cmb_subcategory3.TabIndex = 29
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(15, 30)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(94, 17)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Sub Category :"
+        '
+        'IconButton1
+        '
+        Me.IconButton1.BackColor = System.Drawing.Color.SeaGreen
+        Me.IconButton1.FlatAppearance.BorderSize = 0
+        Me.IconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.IconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.IconButton1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.IconButton1.ForeColor = System.Drawing.Color.Gainsboro
+        Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.Plus
+        Me.IconButton1.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.IconButton1.IconSize = 25
+        Me.IconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.IconButton1.Location = New System.Drawing.Point(38, 89)
+        Me.IconButton1.Margin = New System.Windows.Forms.Padding(2)
+        Me.IconButton1.Name = "IconButton1"
+        Me.IconButton1.Rotation = 0R
+        Me.IconButton1.Size = New System.Drawing.Size(170, 28)
+        Me.IconButton1.TabIndex = 29
+        Me.IconButton1.Text = "Save Sub Category"
+        Me.IconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.IconButton1.UseVisualStyleBackColor = False
+        '
+        'IconButton2
+        '
+        Me.IconButton2.BackColor = System.Drawing.Color.Olive
+        Me.IconButton2.FlatAppearance.BorderSize = 0
+        Me.IconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.IconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.IconButton2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.IconButton2.ForeColor = System.Drawing.Color.Gainsboro
+        Me.IconButton2.IconChar = FontAwesome.Sharp.IconChar.Edit
+        Me.IconButton2.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.IconButton2.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.IconButton2.IconSize = 25
+        Me.IconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.IconButton2.Location = New System.Drawing.Point(213, 89)
+        Me.IconButton2.Margin = New System.Windows.Forms.Padding(2)
+        Me.IconButton2.Name = "IconButton2"
+        Me.IconButton2.Rotation = 0R
+        Me.IconButton2.Size = New System.Drawing.Size(155, 28)
+        Me.IconButton2.TabIndex = 26
+        Me.IconButton2.Text = "Edit Category"
+        Me.IconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.IconButton2.UseVisualStyleBackColor = False
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.ListBox1)
+        Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.ForeColor = System.Drawing.Color.SaddleBrown
+        Me.GroupBox3.Location = New System.Drawing.Point(524, 8)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(275, 199)
+        Me.GroupBox3.TabIndex = 31
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Added Main Categories"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.ListBox2)
+        Me.GroupBox4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.ForeColor = System.Drawing.Color.SaddleBrown
+        Me.GroupBox4.Location = New System.Drawing.Point(524, 213)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(275, 153)
+        Me.GroupBox4.TabIndex = 32
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Added Sub Categories"
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 17
+        Me.ListBox1.Location = New System.Drawing.Point(14, 29)
+        Me.ListBox1.MultiColumn = True
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(247, 157)
+        Me.ListBox1.TabIndex = 0
+        '
+        'ListBox2
+        '
+        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.ItemHeight = 17
+        Me.ListBox2.Location = New System.Drawing.Point(15, 21)
+        Me.ListBox2.Name = "ListBox2"
+        Me.ListBox2.Size = New System.Drawing.Size(246, 123)
+        Me.ListBox2.TabIndex = 0
         '
         'categories
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(530, 413)
+        Me.ClientSize = New System.Drawing.Size(808, 371)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel1)
@@ -274,6 +329,8 @@ Partial Class categories
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -287,11 +344,13 @@ Partial Class categories
     Friend WithEvents clear_button As FontAwesome.Sharp.IconButton
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents cmb_subCategory1 As MetroFramework.Controls.MetroComboBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
     Friend WithEvents cmb_category As ComboBox
     Friend WithEvents cmb_subcategory2 As ComboBox
-    Friend WithEvents cmb_subcategory3 As ComboBox
+    Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
+    Friend WithEvents IconButton2 As FontAwesome.Sharp.IconButton
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents ListBox2 As ListBox
 End Class

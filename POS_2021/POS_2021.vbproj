@@ -656,6 +656,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sqls\VIEWS.sql" />
     <None Include="Resources\Curve-Loading.gif" />
     <None Include="Resources\loading %281%29.gif" />
     <None Include="Resources\loading-cargando.gif" />

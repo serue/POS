@@ -670,4 +670,8 @@ Public Class menu_form
             Me.Close()
         End If
     End Sub
+
+    Private Sub calculator_Click(sender As Object, e As EventArgs) Handles calculator_button.Click
+        calculator.ShowDialog()
+    End Sub
 End Class

@@ -58,25 +58,6 @@ Public Class Add_inventory
             connection.Open()
             LoadData()
 
-            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
-                Dim adapter As New SqlDataAdapter(command)
-                Dim table As New DataTable
-                adapter.Fill(table)
-                category_combo.Items.Clear()
-                subCategory_combo1.Items.Clear()
-                subCategory_combo2.Items.Clear()
-                SubCategory_combo3.Items.Clear()
-                If table.Rows.Count > 0 Then
-                    For Each cat As DataRow In table.Rows
-                        category_combo.Items.Add(cat(0).ToString)
-                        subCategory_combo1.Items.Add(cat(1))
-                        subCategory_combo2.Items.Add(cat(2))
-                        SubCategory_combo3.Items.Add(cat(3))
-                    Next
-                End If
-            End Using
-
-
             HeaderText()
             connection.Close()
         Catch ex As Exception
@@ -475,7 +456,7 @@ Public Class Add_inventory
 
     Private Sub category_combo_Click(sender As Object, e As EventArgs) Handles category_combo.Click
         Try
-            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+            Using command As New SqlCommand("SELECT CATEGORY FROM CATEGORY ", connection)
                 Dim adapter As New SqlDataAdapter(command)
                 Dim table As New DataTable
                 adapter.Fill(table)
@@ -495,31 +476,12 @@ Public Class Add_inventory
     End Sub
 
     Private Sub subCategory_combo1_Click(sender As Object, e As EventArgs) Handles subCategory_combo1.Click
-        Try
-            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
-                Dim adapter As New SqlDataAdapter(command)
-                Dim table As New DataTable
-                adapter.Fill(table)
-
-                subCategory_combo1.Items.Clear()
-
-                If table.Rows.Count > 0 Then
-                    For Each cat As DataRow In table.Rows
-
-                        subCategory_combo1.Items.Add(cat(1))
-
-                    Next
-                End If
-            End Using
-            connection.Close()
-        Catch ex As Exception
-        End Try
 
     End Sub
 
     Private Sub subCategory_combo2_Click(sender As Object, e As EventArgs) Handles subCategory_combo2.Click
         Try
-            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+            Using command As New SqlCommand("SELECT CATEGORY FROM SUB_CATEGORY ", connection)
                 Dim adapter As New SqlDataAdapter(command)
                 Dim table As New DataTable
                 adapter.Fill(table)
@@ -529,7 +491,7 @@ Public Class Add_inventory
                 If table.Rows.Count > 0 Then
                     For Each cat As DataRow In table.Rows
 
-                        subCategory_combo2.Items.Add(cat(2))
+                        subCategory_combo2.Items.Add(cat(0))
 
                     Next
                 End If
@@ -542,7 +504,7 @@ Public Class Add_inventory
 
     Private Sub SubCategory_combo3_Click(sender As Object, e As EventArgs) Handles SubCategory_combo3.Click
         Try
-            Using command As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3 FROM CATEGORY ", connection)
+            Using command As New SqlCommand("SELECT CATEGORY FROM SUB_CATEGORY ", connection)
                 Dim adapter As New SqlDataAdapter(command)
                 Dim table As New DataTable
                 adapter.Fill(table)
@@ -550,7 +512,7 @@ Public Class Add_inventory
                 If table.Rows.Count > 0 Then
                     For Each cat As DataRow In table.Rows
 
-                        SubCategory_combo3.Items.Add(cat(3))
+                        SubCategory_combo3.Items.Add(cat(0))
                     Next
                 End If
             End Using

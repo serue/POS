@@ -39,6 +39,7 @@ Partial Class sign_in
         '
         'username_textbox
         '
+        Me.username_textbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '
@@ -77,6 +78,7 @@ Partial Class sign_in
         '
         'password_textbox
         '
+        Me.password_textbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '

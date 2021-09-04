@@ -32,6 +32,7 @@ Partial Class loader
         Me.Label4 = New System.Windows.Forms.Label()
         Me.re_load = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cancel = New System.Windows.Forms.Button()
         CType(Me.loadingPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -45,11 +46,11 @@ Partial Class loader
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.SystemColors.InactiveCaption
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Indigo
-        Me.Label1.Location = New System.Drawing.Point(60, 12)
+        Me.Label1.Location = New System.Drawing.Point(60, 10)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(215, 21)
+        Me.Label1.Size = New System.Drawing.Size(245, 25)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Beymo Point Of Sale System"
         '
@@ -80,28 +81,28 @@ Partial Class loader
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(299, 42)
+        Me.Panel1.Size = New System.Drawing.Size(360, 42)
         Me.Panel1.TabIndex = 5
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.SlateBlue
-        Me.Label2.Location = New System.Drawing.Point(97, 144)
+        Me.Label2.Location = New System.Drawing.Point(118, 144)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(90, 20)
+        Me.Label2.Size = New System.Drawing.Size(117, 30)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "version 1.0.1"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Indigo
-        Me.Label3.Location = New System.Drawing.Point(36, 179)
+        Me.Label3.Location = New System.Drawing.Point(69, 179)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(227, 21)
+        Me.Label3.Size = New System.Drawing.Size(217, 21)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Licensed by Beymo Tecnologies"
         '
@@ -121,9 +122,9 @@ Partial Class loader
         Me.re_load.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.re_load.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.re_load.ForeColor = System.Drawing.Color.Indigo
-        Me.re_load.Location = New System.Drawing.Point(212, 334)
+        Me.re_load.Location = New System.Drawing.Point(261, 392)
         Me.re_load.Name = "re_load"
-        Me.re_load.Size = New System.Drawing.Size(75, 25)
+        Me.re_load.Size = New System.Drawing.Size(75, 33)
         Me.re_load.TabIndex = 9
         Me.re_load.Text = "Re load"
         Me.re_load.UseVisualStyleBackColor = True
@@ -132,18 +133,31 @@ Partial Class loader
         '
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.loadingPic)
-        Me.Panel2.Location = New System.Drawing.Point(44, 236)
+        Me.Panel2.Location = New System.Drawing.Point(80, 253)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(200, 68)
         Me.Panel2.TabIndex = 11
         Me.Panel2.Visible = False
+        '
+        'cancel
+        '
+        Me.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cancel.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cancel.ForeColor = System.Drawing.Color.Indigo
+        Me.cancel.Location = New System.Drawing.Point(123, 392)
+        Me.cancel.Name = "cancel"
+        Me.cancel.Size = New System.Drawing.Size(121, 33)
+        Me.cancel.TabIndex = 12
+        Me.cancel.Text = "Cancel Loading"
+        Me.cancel.UseVisualStyleBackColor = True
         '
         'loader
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.InactiveCaption
-        Me.ClientSize = New System.Drawing.Size(299, 364)
+        Me.ClientSize = New System.Drawing.Size(360, 437)
+        Me.Controls.Add(Me.cancel)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.re_load)
         Me.Controls.Add(Me.Label3)
@@ -176,4 +190,5 @@ Partial Class loader
     Friend WithEvents Label4 As Label
     Friend WithEvents re_load As Button
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents cancel As Button
 End Class

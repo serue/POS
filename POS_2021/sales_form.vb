@@ -297,12 +297,13 @@ Public Class sales_form
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
-                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
+                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,TRANS_TIME,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,@TRANS_TIME,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
 
                 Using regcommand As New SqlCommand(RegisterTransactionQuery, connection, transaction)
                     With regcommand.Parameters
                         .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                        .Add("@TRANS_DATE", SqlDbType.DateTime).Value = Format(Now, "General Date")
+                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                        .Add("@TRANS_TIME", SqlDbType.VarChar).Value = Now.ToShortTimeString
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = CDec(total_label.Text)
                         .Add("@PAID", SqlDbType.Decimal).Value = qty_paid_textbox.Text
                         .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - TAX, 2)
@@ -408,7 +409,7 @@ Public Class sales_form
                                     .Add("@TRANS_DATE", SqlDbType.Date).Value = Now.ToShortDateString
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                     .Add("@QUANTITY", SqlDbType.Decimal).Value = row.Cells(3).Value
-                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(4).Value
+                                    .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
                                     .Add("@SALE_TYPE", SqlDbType.VarChar).Value = Transaction_type
                                 End With
@@ -1776,12 +1777,13 @@ Public Class sales_form
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
-                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
+                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,TRANS_TIME,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,TRANS_TIME,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
 
                 Using regcommand As New SqlCommand(RegisterTransactionQuery, connection, transaction)
                     With regcommand.Parameters
                         .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
-                        .Add("@TRANS_DATE", SqlDbType.DateTime).Value = Format(Now, "General Date")
+                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                        .Add("@TRANS_TIME", SqlDbType.VarChar).Value = Now.ToShortTimeString
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = CDec(total_label.Text)
                         .Add("@PAID", SqlDbType.Decimal).Value = SplitTotal_label.Text
                         .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - TAX, 2)
@@ -1925,6 +1927,7 @@ Public Class sales_form
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                     .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                    'to display use date January and dateNow 
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
                             End Using
@@ -2119,5 +2122,9 @@ Public Class sales_form
             connection.Close()
             MessageBox.Show(ex.Message, "An Error occured while processing dayend Reports", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub Panel7_Paint(sender As Object, e As PaintEventArgs) Handles Panel7.Paint
+
     End Sub
 End Class

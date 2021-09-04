@@ -140,6 +140,7 @@ Partial Class create_user_accounts
         '
         'employee_id
         '
+        Me.employee_id.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '
@@ -219,6 +220,7 @@ Partial Class create_user_accounts
         '
         'confirm_password
         '
+        Me.confirm_password.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '
@@ -333,6 +335,7 @@ Partial Class create_user_accounts
         '
         'password
         '
+        Me.password.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '
@@ -369,6 +372,7 @@ Partial Class create_user_accounts
         '
         'username
         '
+        Me.username.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '

@@ -70,9 +70,9 @@ Public Class transactions_logReport
             connection.Open()
             Dim CoTable As New DataTable
             Dim date2 As Date = Now.ToShortDateString & " 00:00:01.000"
-            Using command As New SqlCommand("SELECT * FROM TRANSACTIONS WHERE TRANS_DATE  BETWEEN @TRANS_DATE AND @TO", connection)
-                command.Parameters.Add("@TRANS_DATE", SqlDbType.DateTime).Value = date2
-                command.Parameters.Add("@TO", SqlDbType.DateTime).Value = Now.ToLongDateString
+            Using command As New SqlCommand("SELECT * FROM TRANSACTIONS WHERE TRANS_DATE = @TRANS_DATE", connection)
+                command.Parameters.Add("@TRANS_DATE", SqlDbType.DateTime).Value = Now.ToShortDateString
+                'command.Parameters.Add("@TO", SqlDbType.DateTime).Value = Now.ToLongDateString
                 Dim adapter As New SqlDataAdapter(command)
                 Dim DataSet1 As New DataSet
                 adapter.Fill(DataSet1, "DataSet1")

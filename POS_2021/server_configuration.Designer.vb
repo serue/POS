@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class server_configuration
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class server_configuration
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -42,7 +42,6 @@ Partial Class server_configuration
         Me.txtSavedPrinter = New System.Windows.Forms.TextBox()
         Me.cmbPrinter = New MetroFramework.Controls.MetroComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox6.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -192,7 +191,6 @@ Partial Class server_configuration
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Button1)
         Me.GroupBox3.Controls.Add(Me.clear_printer)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.save_printer)
@@ -295,15 +293,6 @@ Partial Class server_configuration
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Select New Printer :"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(154, 149)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 34
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'server_configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -347,5 +336,4 @@ Partial Class server_configuration
     Friend WithEvents txtSavedPrinter As TextBox
     Friend WithEvents cmbPrinter As MetroFramework.Controls.MetroComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents Button1 As Button
 End Class

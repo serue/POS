@@ -22,16 +22,25 @@ Partial Class Add_inventory
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.list_grid = New System.Windows.Forms.DataGridView()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Delete_button = New FontAwesome.Sharp.IconButton()
+        Me.save_item = New FontAwesome.Sharp.IconButton()
+        Me.clear_button = New FontAwesome.Sharp.IconButton()
+        Me.edit_details = New FontAwesome.Sharp.IconButton()
+        Me.NEW_STOCK = New FontAwesome.Sharp.IconButton()
+        Me.edit_price = New FontAwesome.Sharp.IconButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.quantity_textbox = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -61,31 +70,23 @@ Partial Class Add_inventory
         Me.vendorCode_textbox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.barcode_textbox = New System.Windows.Forms.TextBox()
-        Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.PRODUCT_ID_LABEL = New System.Windows.Forms.Label()
         Me.SEARCH_BOX = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Delete_button = New FontAwesome.Sharp.IconButton()
-        Me.clear_button = New FontAwesome.Sharp.IconButton()
-        Me.NEW_STOCK = New FontAwesome.Sharp.IconButton()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.PRODUCT_ID_LABEL = New System.Windows.Forms.Label()
-        Me.edit_price = New FontAwesome.Sharp.IconButton()
-        Me.save_item = New FontAwesome.Sharp.IconButton()
-        Me.edit_details = New FontAwesome.Sharp.IconButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel9.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel7.SuspendLayout()
-        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -109,47 +110,47 @@ Partial Class Add_inventory
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1028, 601)
+        Me.Panel1.Size = New System.Drawing.Size(814, 601)
         Me.Panel1.TabIndex = 1
         '
         'Panel6
         '
         Me.Panel6.Controls.Add(Me.list_grid)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(0, 299)
+        Me.Panel6.Location = New System.Drawing.Point(0, 325)
         Me.Panel6.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1028, 302)
+        Me.Panel6.Size = New System.Drawing.Size(814, 276)
         Me.Panel6.TabIndex = 30
         '
         'list_grid
         '
         Me.list_grid.AllowUserToAddRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.SaddleBrown
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue
-        Me.list_grid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.SaddleBrown
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue
+        Me.list_grid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.list_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.list_grid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.list_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.CadetBlue
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.list_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.list_grid.ColumnHeadersHeight = 35
         Me.list_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.list_grid.DefaultCellStyle = DataGridViewCellStyle3
         Me.list_grid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.list_grid.EnableHeadersVisualStyles = False
         Me.list_grid.Location = New System.Drawing.Point(0, 0)
@@ -159,36 +160,201 @@ Partial Class Add_inventory
         Me.list_grid.RowHeadersWidth = 8
         Me.list_grid.RowTemplate.Height = 28
         Me.list_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.list_grid.Size = New System.Drawing.Size(1028, 302)
+        Me.list_grid.Size = New System.Drawing.Size(814, 276)
         Me.list_grid.TabIndex = 0
         '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Panel5)
-        Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 2)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1028, 297)
+        Me.Panel3.Size = New System.Drawing.Size(814, 323)
         Me.Panel3.TabIndex = 29
         '
         'Panel5
         '
+        Me.Panel5.Controls.Add(Me.Panel9)
         Me.Panel5.Controls.Add(Me.GroupBox3)
         Me.Panel5.Controls.Add(Me.GroupBox1)
         Me.Panel5.Controls.Add(Me.GroupBox2)
-        Me.Panel5.Controls.Add(Me.Panel8)
         Me.Panel5.Controls.Add(Me.Panel7)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(856, 297)
+        Me.Panel5.Size = New System.Drawing.Size(814, 323)
         Me.Panel5.TabIndex = 24
+        '
+        'Panel9
+        '
+        Me.Panel9.Controls.Add(Me.Panel8)
+        Me.Panel9.Controls.Add(Me.Delete_button)
+        Me.Panel9.Controls.Add(Me.save_item)
+        Me.Panel9.Controls.Add(Me.clear_button)
+        Me.Panel9.Controls.Add(Me.edit_details)
+        Me.Panel9.Controls.Add(Me.NEW_STOCK)
+        Me.Panel9.Controls.Add(Me.edit_price)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel9.Location = New System.Drawing.Point(0, 256)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(814, 39)
+        Me.Panel9.TabIndex = 27
+        '
+        'Panel8
+        '
+        Me.Panel8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel8.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.Panel8.Location = New System.Drawing.Point(799, 2)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(6, 34)
+        Me.Panel8.TabIndex = 31
+        '
+        'Delete_button
+        '
+        Me.Delete_button.BackColor = System.Drawing.Color.Maroon
+        Me.Delete_button.FlatAppearance.BorderSize = 0
+        Me.Delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Delete_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.Delete_button.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Delete_button.ForeColor = System.Drawing.Color.Gainsboro
+        Me.Delete_button.IconChar = FontAwesome.Sharp.IconChar.Trash
+        Me.Delete_button.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.Delete_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.Delete_button.IconSize = 20
+        Me.Delete_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Delete_button.Location = New System.Drawing.Point(571, 2)
+        Me.Delete_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.Delete_button.Name = "Delete_button"
+        Me.Delete_button.Rotation = 0R
+        Me.Delete_button.Size = New System.Drawing.Size(112, 34)
+        Me.Delete_button.TabIndex = 30
+        Me.Delete_button.Text = "DELETE ITEM"
+        Me.Delete_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Delete_button.UseVisualStyleBackColor = False
+        '
+        'save_item
+        '
+        Me.save_item.BackColor = System.Drawing.Color.SeaGreen
+        Me.save_item.FlatAppearance.BorderSize = 0
+        Me.save_item.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.save_item.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.save_item.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.save_item.ForeColor = System.Drawing.Color.Gainsboro
+        Me.save_item.IconChar = FontAwesome.Sharp.IconChar.Plus
+        Me.save_item.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.save_item.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.save_item.IconSize = 25
+        Me.save_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.save_item.Location = New System.Drawing.Point(4, 2)
+        Me.save_item.Margin = New System.Windows.Forms.Padding(2)
+        Me.save_item.Name = "save_item"
+        Me.save_item.Rotation = 0R
+        Me.save_item.Size = New System.Drawing.Size(139, 34)
+        Me.save_item.TabIndex = 23
+        Me.save_item.Text = "SAVE NEW ITEM"
+        Me.save_item.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.save_item.UseVisualStyleBackColor = False
+        '
+        'clear_button
+        '
+        Me.clear_button.BackColor = System.Drawing.Color.Purple
+        Me.clear_button.FlatAppearance.BorderSize = 0
+        Me.clear_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.clear_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.clear_button.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.clear_button.ForeColor = System.Drawing.Color.Gainsboro
+        Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
+        Me.clear_button.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.clear_button.IconSize = 25
+        Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.clear_button.Location = New System.Drawing.Point(686, 2)
+        Me.clear_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.clear_button.Name = "clear_button"
+        Me.clear_button.Rotation = 0R
+        Me.clear_button.Size = New System.Drawing.Size(110, 34)
+        Me.clear_button.TabIndex = 26
+        Me.clear_button.Text = "CLEAR"
+        Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.clear_button.UseVisualStyleBackColor = False
+        '
+        'edit_details
+        '
+        Me.edit_details.BackColor = System.Drawing.Color.Olive
+        Me.edit_details.FlatAppearance.BorderSize = 0
+        Me.edit_details.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.edit_details.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.edit_details.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.edit_details.ForeColor = System.Drawing.Color.Gainsboro
+        Me.edit_details.IconChar = FontAwesome.Sharp.IconChar.Edit
+        Me.edit_details.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.edit_details.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.edit_details.IconSize = 25
+        Me.edit_details.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.edit_details.Location = New System.Drawing.Point(147, 2)
+        Me.edit_details.Margin = New System.Windows.Forms.Padding(2)
+        Me.edit_details.Name = "edit_details"
+        Me.edit_details.Rotation = 0R
+        Me.edit_details.Size = New System.Drawing.Size(126, 34)
+        Me.edit_details.TabIndex = 24
+        Me.edit_details.Text = "EDIT  DETAILS"
+        Me.edit_details.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.edit_details.UseVisualStyleBackColor = False
+        '
+        'NEW_STOCK
+        '
+        Me.NEW_STOCK.BackColor = System.Drawing.Color.SteelBlue
+        Me.NEW_STOCK.FlatAppearance.BorderSize = 0
+        Me.NEW_STOCK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.NEW_STOCK.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.NEW_STOCK.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NEW_STOCK.ForeColor = System.Drawing.Color.Gainsboro
+        Me.NEW_STOCK.IconChar = FontAwesome.Sharp.IconChar.ShoppingBasket
+        Me.NEW_STOCK.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.NEW_STOCK.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.NEW_STOCK.IconSize = 25
+        Me.NEW_STOCK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.NEW_STOCK.Location = New System.Drawing.Point(442, 2)
+        Me.NEW_STOCK.Margin = New System.Windows.Forms.Padding(2)
+        Me.NEW_STOCK.Name = "NEW_STOCK"
+        Me.NEW_STOCK.Rotation = 0R
+        Me.NEW_STOCK.Size = New System.Drawing.Size(126, 34)
+        Me.NEW_STOCK.TabIndex = 29
+        Me.NEW_STOCK.Text = "NEW STOCK"
+        Me.NEW_STOCK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.NEW_STOCK.UseVisualStyleBackColor = False
+        '
+        'edit_price
+        '
+        Me.edit_price.BackColor = System.Drawing.Color.DarkKhaki
+        Me.edit_price.FlatAppearance.BorderSize = 0
+        Me.edit_price.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.edit_price.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.edit_price.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.edit_price.ForeColor = System.Drawing.Color.Gainsboro
+        Me.edit_price.IconChar = FontAwesome.Sharp.IconChar.CashRegister
+        Me.edit_price.IconColor = System.Drawing.SystemColors.ControlLight
+        Me.edit_price.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.edit_price.IconSize = 25
+        Me.edit_price.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.edit_price.Location = New System.Drawing.Point(277, 2)
+        Me.edit_price.Margin = New System.Windows.Forms.Padding(2)
+        Me.edit_price.Name = "edit_price"
+        Me.edit_price.Rotation = 0R
+        Me.edit_price.Size = New System.Drawing.Size(161, 34)
+        Me.edit_price.TabIndex = 25
+        Me.edit_price.Text = "EDIT PRICE + QTY"
+        Me.edit_price.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.edit_price.UseVisualStyleBackColor = False
         '
         'GroupBox3
         '
+        Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox3.Controls.Add(Me.Panel4)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.quantity_textbox)
         Me.GroupBox3.Controls.Add(Me.Label5)
@@ -205,10 +371,20 @@ Partial Class Add_inventory
         Me.GroupBox3.ForeColor = System.Drawing.Color.Maroon
         Me.GroupBox3.Location = New System.Drawing.Point(4, 164)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(840, 88)
+        Me.GroupBox3.Size = New System.Drawing.Size(800, 88)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Price and Quantity"
+        '
+        'Panel4
+        '
+        Me.Panel4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.Panel4.Location = New System.Drawing.Point(783, 17)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(15, 64)
+        Me.Panel4.TabIndex = 19
         '
         'Label4
         '
@@ -362,7 +538,7 @@ Partial Class Add_inventory
         Me.GroupBox1.ForeColor = System.Drawing.Color.Maroon
         Me.GroupBox1.Location = New System.Drawing.Point(3, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(380, 155)
+        Me.GroupBox1.Size = New System.Drawing.Size(367, 155)
         Me.GroupBox1.TabIndex = 26
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Categories"
@@ -375,7 +551,7 @@ Partial Class Add_inventory
         Me.SubCategory_combo3.Location = New System.Drawing.Point(108, 118)
         Me.SubCategory_combo3.Name = "SubCategory_combo3"
         Me.SubCategory_combo3.PromptText = "Select Category"
-        Me.SubCategory_combo3.Size = New System.Drawing.Size(266, 29)
+        Me.SubCategory_combo3.Size = New System.Drawing.Size(253, 29)
         Me.SubCategory_combo3.TabIndex = 9
         Me.SubCategory_combo3.UseSelectable = True
         '
@@ -387,7 +563,7 @@ Partial Class Add_inventory
         Me.subCategory_combo2.Location = New System.Drawing.Point(109, 84)
         Me.subCategory_combo2.Name = "subCategory_combo2"
         Me.subCategory_combo2.PromptText = "Select Category"
-        Me.subCategory_combo2.Size = New System.Drawing.Size(266, 29)
+        Me.subCategory_combo2.Size = New System.Drawing.Size(253, 29)
         Me.subCategory_combo2.TabIndex = 8
         Me.subCategory_combo2.UseSelectable = True
         '
@@ -396,10 +572,11 @@ Partial Class Add_inventory
         Me.subCategory_combo1.ForeColor = System.Drawing.Color.Maroon
         Me.subCategory_combo1.FormattingEnabled = True
         Me.subCategory_combo1.ItemHeight = 23
+        Me.subCategory_combo1.Items.AddRange(New Object() {"weighed"})
         Me.subCategory_combo1.Location = New System.Drawing.Point(110, 51)
         Me.subCategory_combo1.Name = "subCategory_combo1"
         Me.subCategory_combo1.PromptText = "Select Weighed Category"
-        Me.subCategory_combo1.Size = New System.Drawing.Size(266, 29)
+        Me.subCategory_combo1.Size = New System.Drawing.Size(253, 29)
         Me.subCategory_combo1.TabIndex = 7
         Me.subCategory_combo1.UseSelectable = True
         '
@@ -438,12 +615,14 @@ Partial Class Add_inventory
         Me.category_combo.Location = New System.Drawing.Point(110, 18)
         Me.category_combo.Name = "category_combo"
         Me.category_combo.PromptText = "Select Category"
-        Me.category_combo.Size = New System.Drawing.Size(266, 29)
+        Me.category_combo.Size = New System.Drawing.Size(253, 29)
         Me.category_combo.TabIndex = 3
         Me.category_combo.UseSelectable = True
         '
         'GroupBox2
         '
+        Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Me.sku_textbox)
         Me.GroupBox2.Controls.Add(Me.Label11)
         Me.GroupBox2.Controls.Add(Me.Label10)
@@ -454,21 +633,23 @@ Partial Class Add_inventory
         Me.GroupBox2.Controls.Add(Me.barcode_textbox)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Maroon
-        Me.GroupBox2.Location = New System.Drawing.Point(389, 5)
+        Me.GroupBox2.Location = New System.Drawing.Point(376, 5)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(454, 156)
+        Me.GroupBox2.Size = New System.Drawing.Size(428, 156)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Product Descriptions"
         '
         'sku_textbox
         '
+        Me.sku_textbox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.sku_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.sku_textbox.ForeColor = System.Drawing.Color.Maroon
         Me.sku_textbox.Location = New System.Drawing.Point(96, 108)
         Me.sku_textbox.Margin = New System.Windows.Forms.Padding(2)
         Me.sku_textbox.Name = "sku_textbox"
-        Me.sku_textbox.Size = New System.Drawing.Size(353, 25)
+        Me.sku_textbox.Size = New System.Drawing.Size(327, 25)
         Me.sku_textbox.TabIndex = 22
         '
         'Label11
@@ -488,7 +669,7 @@ Partial Class Add_inventory
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Maroon
-        Me.Label10.Location = New System.Drawing.Point(-1, 82)
+        Me.Label10.Location = New System.Drawing.Point(3, 82)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(88, 17)
@@ -497,12 +678,14 @@ Partial Class Add_inventory
         '
         'name_textbox
         '
+        Me.name_textbox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.name_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.name_textbox.ForeColor = System.Drawing.Color.Maroon
         Me.name_textbox.Location = New System.Drawing.Point(98, 50)
         Me.name_textbox.Margin = New System.Windows.Forms.Padding(2)
         Me.name_textbox.Name = "name_textbox"
-        Me.name_textbox.Size = New System.Drawing.Size(351, 25)
+        Me.name_textbox.Size = New System.Drawing.Size(325, 25)
         Me.name_textbox.TabIndex = 6
         '
         'Label2
@@ -519,12 +702,14 @@ Partial Class Add_inventory
         '
         'vendorCode_textbox
         '
+        Me.vendorCode_textbox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.vendorCode_textbox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.vendorCode_textbox.ForeColor = System.Drawing.Color.Maroon
         Me.vendorCode_textbox.Location = New System.Drawing.Point(98, 79)
         Me.vendorCode_textbox.Margin = New System.Windows.Forms.Padding(2)
         Me.vendorCode_textbox.Name = "vendorCode_textbox"
-        Me.vendorCode_textbox.Size = New System.Drawing.Size(351, 25)
+        Me.vendorCode_textbox.Size = New System.Drawing.Size(325, 25)
         Me.vendorCode_textbox.TabIndex = 21
         '
         'Label3
@@ -541,36 +726,58 @@ Partial Class Add_inventory
         '
         'barcode_textbox
         '
+        Me.barcode_textbox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.barcode_textbox.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.barcode_textbox.ForeColor = System.Drawing.Color.Maroon
         Me.barcode_textbox.Location = New System.Drawing.Point(98, 20)
         Me.barcode_textbox.Margin = New System.Windows.Forms.Padding(2)
         Me.barcode_textbox.Name = "barcode_textbox"
-        Me.barcode_textbox.Size = New System.Drawing.Size(351, 27)
+        Me.barcode_textbox.Size = New System.Drawing.Size(325, 27)
         Me.barcode_textbox.TabIndex = 4
-        '
-        'Panel8
-        '
-        Me.Panel8.BackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(117, Byte), Integer))
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(852, 0)
-        Me.Panel8.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(4, 269)
-        Me.Panel8.TabIndex = 25
         '
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(91, Byte), Integer), CType(CType(117, Byte), Integer))
+        Me.Panel7.Controls.Add(Me.Label12)
+        Me.Panel7.Controls.Add(Me.PRODUCT_ID_LABEL)
         Me.Panel7.Controls.Add(Me.SEARCH_BOX)
         Me.Panel7.Controls.Add(Me.Label14)
         Me.Panel7.Controls.Add(Me.Label13)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(0, 269)
+        Me.Panel7.Location = New System.Drawing.Point(0, 295)
         Me.Panel7.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(856, 28)
+        Me.Panel7.Size = New System.Drawing.Size(814, 28)
         Me.Panel7.TabIndex = 24
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.SaddleBrown
+        Me.Label12.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.Snow
+        Me.Label12.Location = New System.Drawing.Point(715, 6)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(29, 16)
+        Me.Label12.TabIndex = 27
+        Me.Label12.Text = " ID:"
+        '
+        'PRODUCT_ID_LABEL
+        '
+        Me.PRODUCT_ID_LABEL.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PRODUCT_ID_LABEL.AutoSize = True
+        Me.PRODUCT_ID_LABEL.BackColor = System.Drawing.Color.SaddleBrown
+        Me.PRODUCT_ID_LABEL.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PRODUCT_ID_LABEL.ForeColor = System.Drawing.Color.Snow
+        Me.PRODUCT_ID_LABEL.Location = New System.Drawing.Point(748, 5)
+        Me.PRODUCT_ID_LABEL.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.PRODUCT_ID_LABEL.Name = "PRODUCT_ID_LABEL"
+        Me.PRODUCT_ID_LABEL.Size = New System.Drawing.Size(56, 18)
+        Me.PRODUCT_ID_LABEL.TabIndex = 28
+        Me.PRODUCT_ID_LABEL.Text = "449876"
         '
         'SEARCH_BOX
         '
@@ -578,10 +785,10 @@ Partial Class Add_inventory
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SEARCH_BOX.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SEARCH_BOX.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.SEARCH_BOX.Location = New System.Drawing.Point(426, 2)
+        Me.SEARCH_BOX.Location = New System.Drawing.Point(350, 2)
         Me.SEARCH_BOX.Margin = New System.Windows.Forms.Padding(2)
         Me.SEARCH_BOX.Name = "SEARCH_BOX"
-        Me.SEARCH_BOX.Size = New System.Drawing.Size(316, 25)
+        Me.SEARCH_BOX.Size = New System.Drawing.Size(274, 25)
         Me.SEARCH_BOX.TabIndex = 3
         '
         'Label14
@@ -589,7 +796,7 @@ Partial Class Add_inventory
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.SeaShell
-        Me.Label14.Location = New System.Drawing.Point(365, 5)
+        Me.Label14.Location = New System.Drawing.Point(289, 5)
         Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(57, 18)
@@ -608,187 +815,6 @@ Partial Class Add_inventory
         Me.Label13.TabIndex = 23
         Me.Label13.Text = "View Added Products"
         '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.Delete_button)
-        Me.Panel4.Controls.Add(Me.clear_button)
-        Me.Panel4.Controls.Add(Me.NEW_STOCK)
-        Me.Panel4.Controls.Add(Me.Label12)
-        Me.Panel4.Controls.Add(Me.PRODUCT_ID_LABEL)
-        Me.Panel4.Controls.Add(Me.edit_price)
-        Me.Panel4.Controls.Add(Me.save_item)
-        Me.Panel4.Controls.Add(Me.edit_details)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(856, 0)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(172, 297)
-        Me.Panel4.TabIndex = 23
-        '
-        'Delete_button
-        '
-        Me.Delete_button.BackColor = System.Drawing.Color.Maroon
-        Me.Delete_button.FlatAppearance.BorderSize = 0
-        Me.Delete_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Delete_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.Delete_button.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Delete_button.ForeColor = System.Drawing.Color.Gainsboro
-        Me.Delete_button.IconChar = FontAwesome.Sharp.IconChar.Trash
-        Me.Delete_button.IconColor = System.Drawing.SystemColors.ControlLight
-        Me.Delete_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.Delete_button.IconSize = 20
-        Me.Delete_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Delete_button.Location = New System.Drawing.Point(8, 200)
-        Me.Delete_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.Delete_button.Name = "Delete_button"
-        Me.Delete_button.Rotation = 0R
-        Me.Delete_button.Size = New System.Drawing.Size(158, 34)
-        Me.Delete_button.TabIndex = 30
-        Me.Delete_button.Text = "DELETE STOCK ITEM"
-        Me.Delete_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Delete_button.UseVisualStyleBackColor = False
-        '
-        'clear_button
-        '
-        Me.clear_button.BackColor = System.Drawing.Color.Purple
-        Me.clear_button.FlatAppearance.BorderSize = 0
-        Me.clear_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.clear_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.clear_button.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.clear_button.ForeColor = System.Drawing.Color.Gainsboro
-        Me.clear_button.IconChar = FontAwesome.Sharp.IconChar.Times
-        Me.clear_button.IconColor = System.Drawing.SystemColors.ControlLight
-        Me.clear_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.clear_button.IconSize = 25
-        Me.clear_button.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.clear_button.Location = New System.Drawing.Point(8, 239)
-        Me.clear_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.clear_button.Name = "clear_button"
-        Me.clear_button.Rotation = 0R
-        Me.clear_button.Size = New System.Drawing.Size(158, 34)
-        Me.clear_button.TabIndex = 26
-        Me.clear_button.Text = "CLEAR ALL TEXT"
-        Me.clear_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.clear_button.UseVisualStyleBackColor = False
-        '
-        'NEW_STOCK
-        '
-        Me.NEW_STOCK.BackColor = System.Drawing.Color.SteelBlue
-        Me.NEW_STOCK.FlatAppearance.BorderSize = 0
-        Me.NEW_STOCK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.NEW_STOCK.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.NEW_STOCK.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NEW_STOCK.ForeColor = System.Drawing.Color.Gainsboro
-        Me.NEW_STOCK.IconChar = FontAwesome.Sharp.IconChar.ShoppingBasket
-        Me.NEW_STOCK.IconColor = System.Drawing.SystemColors.ControlLight
-        Me.NEW_STOCK.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.NEW_STOCK.IconSize = 25
-        Me.NEW_STOCK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.NEW_STOCK.Location = New System.Drawing.Point(8, 160)
-        Me.NEW_STOCK.Margin = New System.Windows.Forms.Padding(2)
-        Me.NEW_STOCK.Name = "NEW_STOCK"
-        Me.NEW_STOCK.Rotation = 0R
-        Me.NEW_STOCK.Size = New System.Drawing.Size(158, 34)
-        Me.NEW_STOCK.TabIndex = 29
-        Me.NEW_STOCK.Text = "NEW STOCK"
-        Me.NEW_STOCK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.NEW_STOCK.UseVisualStyleBackColor = False
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.BackColor = System.Drawing.Color.SaddleBrown
-        Me.Label12.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.Snow
-        Me.Label12.Location = New System.Drawing.Point(5, 11)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(85, 16)
-        Me.Label12.TabIndex = 27
-        Me.Label12.Text = "PRODUCT ID:"
-        '
-        'PRODUCT_ID_LABEL
-        '
-        Me.PRODUCT_ID_LABEL.AutoSize = True
-        Me.PRODUCT_ID_LABEL.BackColor = System.Drawing.Color.SaddleBrown
-        Me.PRODUCT_ID_LABEL.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PRODUCT_ID_LABEL.ForeColor = System.Drawing.Color.Snow
-        Me.PRODUCT_ID_LABEL.Location = New System.Drawing.Point(94, 11)
-        Me.PRODUCT_ID_LABEL.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.PRODUCT_ID_LABEL.Name = "PRODUCT_ID_LABEL"
-        Me.PRODUCT_ID_LABEL.Size = New System.Drawing.Size(56, 18)
-        Me.PRODUCT_ID_LABEL.TabIndex = 28
-        Me.PRODUCT_ID_LABEL.Text = "449876"
-        '
-        'edit_price
-        '
-        Me.edit_price.BackColor = System.Drawing.Color.DarkKhaki
-        Me.edit_price.FlatAppearance.BorderSize = 0
-        Me.edit_price.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.edit_price.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.edit_price.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.edit_price.ForeColor = System.Drawing.Color.Gainsboro
-        Me.edit_price.IconChar = FontAwesome.Sharp.IconChar.CashRegister
-        Me.edit_price.IconColor = System.Drawing.SystemColors.ControlLight
-        Me.edit_price.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.edit_price.IconSize = 25
-        Me.edit_price.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.edit_price.Location = New System.Drawing.Point(8, 119)
-        Me.edit_price.Margin = New System.Windows.Forms.Padding(2)
-        Me.edit_price.Name = "edit_price"
-        Me.edit_price.Rotation = 0R
-        Me.edit_price.Size = New System.Drawing.Size(158, 34)
-        Me.edit_price.TabIndex = 25
-        Me.edit_price.Text = "EDIT PRICE + QTY"
-        Me.edit_price.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.edit_price.UseVisualStyleBackColor = False
-        '
-        'save_item
-        '
-        Me.save_item.BackColor = System.Drawing.Color.SeaGreen
-        Me.save_item.FlatAppearance.BorderSize = 0
-        Me.save_item.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.save_item.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.save_item.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.save_item.ForeColor = System.Drawing.Color.Gainsboro
-        Me.save_item.IconChar = FontAwesome.Sharp.IconChar.Plus
-        Me.save_item.IconColor = System.Drawing.SystemColors.ControlLight
-        Me.save_item.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.save_item.IconSize = 25
-        Me.save_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.save_item.Location = New System.Drawing.Point(8, 41)
-        Me.save_item.Margin = New System.Windows.Forms.Padding(2)
-        Me.save_item.Name = "save_item"
-        Me.save_item.Rotation = 0R
-        Me.save_item.Size = New System.Drawing.Size(158, 34)
-        Me.save_item.TabIndex = 23
-        Me.save_item.Text = "SAVE NEW ITEM"
-        Me.save_item.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.save_item.UseVisualStyleBackColor = False
-        '
-        'edit_details
-        '
-        Me.edit_details.BackColor = System.Drawing.Color.Olive
-        Me.edit_details.FlatAppearance.BorderSize = 0
-        Me.edit_details.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.edit_details.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.edit_details.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.edit_details.ForeColor = System.Drawing.Color.Gainsboro
-        Me.edit_details.IconChar = FontAwesome.Sharp.IconChar.Edit
-        Me.edit_details.IconColor = System.Drawing.SystemColors.ControlLight
-        Me.edit_details.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.edit_details.IconSize = 25
-        Me.edit_details.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.edit_details.Location = New System.Drawing.Point(8, 80)
-        Me.edit_details.Margin = New System.Windows.Forms.Padding(2)
-        Me.edit_details.Name = "edit_details"
-        Me.edit_details.Rotation = 0R
-        Me.edit_details.Size = New System.Drawing.Size(158, 34)
-        Me.edit_details.TabIndex = 24
-        Me.edit_details.Text = "EDIT  DETAILS"
-        Me.edit_details.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.edit_details.UseVisualStyleBackColor = False
-        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.IndianRed
@@ -796,14 +822,14 @@ Partial Class Add_inventory
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1028, 2)
+        Me.Panel2.Size = New System.Drawing.Size(814, 2)
         Me.Panel2.TabIndex = 1
         '
         'Add_inventory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1028, 601)
+        Me.ClientSize = New System.Drawing.Size(814, 601)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Margin = New System.Windows.Forms.Padding(2)
@@ -816,6 +842,7 @@ Partial Class Add_inventory
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
+        Me.Panel9.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -824,8 +851,6 @@ Partial Class Add_inventory
         Me.GroupBox2.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -863,12 +888,10 @@ Partial Class Add_inventory
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Label13 As Label
-    Friend WithEvents Panel4 As Panel
     Friend WithEvents Delete_button As FontAwesome.Sharp.IconButton
     Friend WithEvents NEW_STOCK As FontAwesome.Sharp.IconButton
     Friend WithEvents Panel7 As Panel
     Friend WithEvents list_grid As DataGridView
-    Friend WithEvents Panel8 As Panel
     Friend WithEvents SEARCH_BOX As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents GroupBox1 As GroupBox
@@ -881,4 +904,7 @@ Partial Class Add_inventory
     Friend WithEvents Label16 As Label
     Friend WithEvents Label15 As Label
     Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel8 As Panel
 End Class

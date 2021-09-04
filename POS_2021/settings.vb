@@ -254,7 +254,7 @@ Public Class settings
                             End With
                             command.ExecuteNonQuery()
                         End Using
-                        MessageBox.Show("Till has been set successfully", "Setting Currency", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("Tax has been set successfully", "Setting Tax", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 End Using
             End If
@@ -332,18 +332,8 @@ Public Class settings
             End Using
 
             'loading tills
-
-            Using command As New SqlCommand("SELECT ID,TILL_NAME,TILL_NUMBER FROM TILLS", connection)
-                Dim table As New DataTable
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(table)
-                If table.Rows.Count > 0 Then
-                    till_id = table(0)(0)
-                    txtTillName.Text = table(0)(1)
-                    txtTillNumber.Text = table(0)(2)
-                End If
-
-            End Using
+            Dim name As String = Dns.GetHostName
+            txtTillName.Text = name
 
             'load tax
 

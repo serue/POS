@@ -33,8 +33,15 @@ Public Class loader
     End Sub
 
     Private Sub BackgroundWorker1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
-        sign_in.Show()
-        Me.Close()
+        If e.Error Is Nothing Then
+            sign_in.Show()
+            Me.Close()
+        Else
+            MessageBox.Show("There was an Error, Try to configure settings and proceed", "Operation Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            server_configuration.Show()
+            Me.Close()
+        End If
+
     End Sub
     Delegate Sub LoadRpt(ByVal [crv] As Object)
     Delegate Sub SetPanelVisible(ByVal [panel] As Panel)
@@ -43,6 +50,7 @@ Public Class loader
         Try
             If My.Settings.connection = "" Then
                 server_configuration.ShowDialog()
+                Me.Close()
             Else
                 connection = New SqlConnection(My.Settings.connection)
                 connection.Open()
@@ -80,6 +88,7 @@ Public Class loader
             EventLog.WriteEntry(source, eventname, EventLogEntryType.Error)
 
             server_configuration.ShowDialog()
+            Me.Close()
         End Try
     End Sub
     Private Sub ShowPanel(ByVal [panel] As Panel)
@@ -93,4 +102,9 @@ Public Class loader
         End If
     End Sub
 
+    Private Sub cancel_Click(sender As Object, e As EventArgs) Handles cancel.Click
+        If MessageBox.Show("Confirm Exit", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            Application.Exit()
+        End If
+    End Sub
 End Class

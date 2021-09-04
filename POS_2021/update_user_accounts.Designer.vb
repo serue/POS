@@ -135,6 +135,7 @@ Partial Class update_user_accounts
         '
         'confirm_password
         '
+        Me.confirm_password.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '
@@ -223,6 +224,7 @@ Partial Class update_user_accounts
         '
         'password
         '
+        Me.password.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '
@@ -259,6 +261,7 @@ Partial Class update_user_accounts
         '
         'username
         '
+        Me.username.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
         '
         '
         '
