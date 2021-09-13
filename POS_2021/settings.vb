@@ -8,10 +8,11 @@ Public Class settings
     Dim MyID As Integer = 0
     Dim company As String = ""
     Private user As String
-
+    Dim EditID As Integer = 0
     'data variables
 
     Dim currency_id As Integer = 0
+    Dim currencyID As String = "1"
     Dim till_id As Integer = 0
     Dim tax_id As Integer = 0
     Dim forex_id As Integer = 0
@@ -59,6 +60,18 @@ Public Class settings
             connection = myPermissions.getConnection
             connection.Open()
             SelectCompany()
+            Using command As New SqlCommand("SELECT CURRENCY FROM CURRENCIES", connection)
+                Dim ADAPTER As New SqlDataAdapter(command)
+                Dim TABLE As New DataTable
+                ADAPTER.Fill(TABLE)
+                If TABLE.Rows.Count > 0 Then
+                    currency_combo.Items.Clear()
+
+                    For Each row As DataRow In TABLE.Rows
+                        currency_combo.Items.Add(row(0))
+                    Next
+                End If
+            End Using
 
             If company = "" Then
 
@@ -289,30 +302,46 @@ Public Class settings
         Try
             connection = myPermissions.getConnection
             connection.Open()
-            Using cmd As New SqlCommand("SELECT * FROM CURRENCIES", connection)
+            Using cmd As New SqlCommand("SELECT CURRENCY FROM CURRENCIES WHERE CURRENCY=@CURRENCY", connection)
+                cmd.Parameters.Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(cmd)
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
                     MessageBox.Show("The forex was already saved Please you can only edit it", "Seting foreign currency for the system", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
-                    Using command As New SqlCommand("INSERT INTO CURRENCIES(CURRENCY,SYMBOL,RATE) VALUES(@CURRENCY,@SYMBOL,@RATE)", connection)
+                    Using command As New SqlCommand("INSERT INTO CURRENCIES(CURRENCY,SYMBOL,RATE,RTGS_RATE) VALUES(@CURRENCY,@SYMBOL,@RATE,@RTGS_RATE)", connection)
                         With command.Parameters
                             .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
                             .Add("@SYMBOL", SqlDbType.VarChar).Value = FOREX_SYMBOL.Text
                             .Add("@RATE", SqlDbType.Decimal).Value = rate_textbox.Text
+                            .Add("@RTGS_RATE", SqlDbType.Decimal).Value = rtgs_rate.Text
                         End With
                         command.ExecuteNonQuery()
                     End Using
+                    MessageBox.Show("CURRENCY ADDED SUCCESSFULLY!!", "ADDING CURRENCY SETTING", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End Using
-            MessageBox.Show("CURRENCY ADDED SUCCESSFULLY!!", "ADDING CURRENCY SETTING", MessageBoxButtons.OK, MessageBoxIcon.Information)
             connection.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "FOLLOWING ERROR ENCOUNTERED DURNG THE ADDITION OF CURRENCY", MessageBoxButtons.OK, MessageBoxIcon.Error)
             connection.Close()
         End Try
     End Sub
+    Private Function GetCurrencyID() As String
+        Using command As New SqlCommand("SELECT CURRENCY FROM FOREX_CURRENCY", connection)
+            Using c_adapter As New SqlDataAdapter(command)
+                Using c_table As New DataTable
+                    c_adapter.Fill(c_table)
+                    If c_table.Rows.Count > 0 Then
+                        currencyID = c_table(0)(0)
+                        Return currencyID
+                        Exit Function
+                    End If
+                End Using
+            End Using
+        End Using
+    End Function
     Private Sub loadSettings()
         Try
             connection = myPermissions.getConnection
@@ -351,8 +380,10 @@ Public Class settings
             End Using
 
             'load forex
+            GetCurrencyID()
 
-            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL,RATE FROM CURRENCIES", connection)
+            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL,RATE,RTGS_RATE FROM CURRENCIES WHERE CURRENCY=@ID", connection)
+                command.Parameters.Add("@ID", SqlDbType.VarChar).Value = currencyID
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(table)
@@ -361,8 +392,20 @@ Public Class settings
                     currency_combo.Text = table(0)(1)
                     FOREX_SYMBOL.Text = table(0)(2)
                     rate_textbox.Text = table(0)(3)
+                    rtgs_rate.Text = table(0)(4)
 
                 End If
+            End Using
+            Using command As New SqlCommand("SELECT CURRENCY,SYMBOL,RATE,RTGS_RATE FROM CURRENCIES", connection)
+                Using adapter As New SqlDataAdapter(command)
+                    Using table As New DataTable
+                        adapter.Fill(table)
+                        search_grid.DataSource = table
+                        If search_grid.RowCount > 0 Then
+                            SearchHeaders()
+                        End If
+                    End Using
+                End Using
             End Using
             connection.Close()
         Catch ex As Exception
@@ -372,14 +415,30 @@ Public Class settings
         End Try
     End Sub
 
+    Private Sub SearchHeaders()
+        search_grid.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnsMode.Fill
+        search_grid.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
+        search_grid.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
+        search_grid.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
+
+        search_grid.Columns(0).HeaderText = "Currency Name"
+        search_grid.Columns(1).HeaderText = "Symbol"
+        search_grid.Columns(2).HeaderText = "Cash Rate"
+        search_grid.Columns(3).HeaderText = "RTGS Rate"
+        search_grid.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        search_grid.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        search_grid.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        search_grid.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+    End Sub
     Private Sub UPDATE_FOREX_Click(sender As Object, e As EventArgs) Handles UPDATE_FOREX.Click
         Try
             connection = myPermissions.getConnection
             connection.Open()
-            If forex_id > 0 Then
+            If EditID > 0 Then
                 Using command As New SqlCommand("UPDATE CURRENCIES SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL,RATE=@RATE WHERE ID=@ID", connection)
                     With command.Parameters
-                        .Add("@ID", SqlDbType.VarChar).Value = currency_combo.Text
+                        .Add("@ID", SqlDbType.VarChar).Value = EditID
                         .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
                         .Add("@SYMBOL", SqlDbType.VarChar).Value = FOREX_SYMBOL.Text
                         .Add("@RATE", SqlDbType.Decimal).Value = rate_textbox.Text
@@ -500,5 +559,53 @@ Public Class settings
             connection.Close()
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub currency_combo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles currency_combo.SelectedIndexChanged
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT ID FROM CURRENCIES WHERE CURRENCY=@CURRENCY", connection)
+                command.Parameters.Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
+                Dim ADAPTER As New SqlDataAdapter(command)
+                Dim TABLE As New DataTable
+                ADAPTER.Fill(TABLE)
+                If TABLE.Rows.Count > 0 Then
+                    EditID = TABLE(0)(0)
+                Else
+                    EditID = 0
+                End If
+            End Using
+            connection.Close()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Dim transaction As SqlTransaction = connection.BeginTransaction()
+
+            Using command As New SqlCommand("DROP PROCEDURE IF EXISTS UPDATE_INVENTORY;", connection, transaction)
+                command.ExecuteNonQuery()
+            End Using
+            Using command As New SqlCommand("CREATE PROCEDURE UPDATE_INVENTORY	@ID INT ,@CATEGORY VARCHAR(50),@SUB_CATEGORY1 VARCHAR(200),@SUB_CATEGORY2 VARCHAR(200),@SUB_CATEGORY3 VARCHAR(200),@BARCODE VARCHAR(50) ,@NAME VARCHAR(500), @QUANTITY DECIMAL(18,2) ,@RE_ORDER DECIMAL(18,2),@SALE_QTY DECIMAL(18,2),@COST DECIMAL(18,2),@PRICE DECIMAL(18,2),@MARGIN DECIMAL(18,2) AS BEGIN UPDATE INVENTORY SET CATEGORY=@CATEGORY,BARCODE=@BARCODE,NAME=@NAME,QUANTITY=@QUANTITY,RE_ORDER=@RE_ORDER,SALE_QTY=@SALE_QTY,COST=@COST,PRICE=@PRICE,MARGIN=@MARGIN,SUB_CATEGORY1=@SUB_CATEGORY1,SUB_CATEGORY2=@SUB_CATEGORY2,SUB_CATEGORY3=@SUB_CATEGORY3 WHERE ID=@ID END ", connection, transaction)
+                command.ExecuteNonQuery()
+            End Using
+            transaction.Commit()
+            connection.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
+
     End Sub
 End Class

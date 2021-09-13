@@ -149,8 +149,8 @@ Public Class server_configuration
                 createconnection.Open()
                 If MessageBox.Show("Connection was Created successfully, Do you want continue", "Closing Server Configuration", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) = DialogResult.Yes Then
                     createconnection.Close()
-                    loader.Show()
-                    Me.Close()
+                    sign_in.Show()
+                    e.Cancel = False
                 ElseIf DialogResult = DialogResult.No Then
                     createconnection.Close()
                     Application.Exit()

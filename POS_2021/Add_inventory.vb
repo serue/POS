@@ -57,8 +57,16 @@ Public Class Add_inventory
             connection = myPermissions.getConnection()
             connection.Open()
             LoadData()
-
             HeaderText()
+            Dim transaction As SqlTransaction = connection.BeginTransaction()
+
+            Using command As New SqlCommand("DROP PROCEDURE IF EXISTS UPDATE_INVENTORY;", connection, transaction)
+                command.ExecuteNonQuery()
+            End Using
+            Using command As New SqlCommand("CREATE PROCEDURE UPDATE_INVENTORY	@ID INT ,@CATEGORY VARCHAR(50),@SUB_CATEGORY1 VARCHAR(200),@SUB_CATEGORY2 VARCHAR(200),@SUB_CATEGORY3 VARCHAR(200),@BARCODE VARCHAR(50) ,@NAME VARCHAR(500), @QUANTITY DECIMAL(18,2) ,@RE_ORDER DECIMAL(18,2),@SALE_QTY DECIMAL(18,2),@COST DECIMAL(18,2),@PRICE DECIMAL(18,2),@MARGIN DECIMAL(18,2) AS BEGIN UPDATE INVENTORY SET CATEGORY=@CATEGORY,BARCODE=@BARCODE,NAME=@NAME,QUANTITY=@QUANTITY,RE_ORDER=@RE_ORDER,SALE_QTY=@SALE_QTY,COST=@COST,PRICE=@PRICE,MARGIN=@MARGIN,SUB_CATEGORY1=@SUB_CATEGORY1,SUB_CATEGORY2=@SUB_CATEGORY2,SUB_CATEGORY3=@SUB_CATEGORY3 WHERE ID=@ID END ", connection, transaction)
+                command.ExecuteNonQuery()
+            End Using
+            transaction.Commit()
             connection.Close()
         Catch ex As Exception
             connection.Close()
@@ -230,7 +238,6 @@ Public Class Add_inventory
                     command.CommandType = CommandType.StoredProcedure
                     With command.Parameters
                         .Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
-                        .Add("@DATE", SqlDbType.Date).Value = Now
                         .Add("@CATEGORY", SqlDbType.VarChar).Value = category_combo.Text
                         .Add("@SUB_CATEGORY1", SqlDbType.VarChar).Value = subCategory_combo1.Text
                         .Add("@SUB_CATEGORY2", SqlDbType.VarChar).Value = subCategory_combo2.Text
@@ -242,15 +249,8 @@ Public Class Add_inventory
                         .Add("@SALE_QTY", SqlDbType.Decimal).Value = sale_qty_textbox.Text
                         .Add("@COST", SqlDbType.Decimal).Value = cost_textbox.Text
                         .Add("@PRICE", SqlDbType.Decimal).Value = selling_textbox.Text
-                        .Add("@W_PRICE", SqlDbType.Decimal).Value = 0
-                        .Add("@W_QTY", SqlDbType.Decimal).Value = 0
                         .Add("@MARGIN", SqlDbType.Decimal).Value = margin_textbox.Text
-                        .Add("@VENDOR_CODE", SqlDbType.VarChar).Value = vendorCode_textbox.Text
-                        .Add("@PRODUCT_STATUS", SqlDbType.Int).Value = 1
-                        .Add("@SKU", SqlDbType.VarChar).Value = sku_textbox.Text
-                        .Add("@EXTRA1", SqlDbType.VarChar).Value = ""
-                        .Add("@EXTRA2", SqlDbType.VarChar).Value = ""
-                        .Add("@EXTRA3", SqlDbType.VarChar).Value = ""
+
 
                     End With
                     command.ExecuteNonQuery()
@@ -314,23 +314,26 @@ Public Class Add_inventory
     Private Sub list_grid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles list_grid.CellClick
         Try
             PRODUCT_ID_LABEL.Text = list_grid.CurrentRow.Cells(0).Value.ToString
-            Using cmd As New SqlCommand("SELECT CATEGORY,RE_ORDER,COST,VENDOR_CODE,SKU FROM INVENTORY WHERE ID=@ID", connection)
+            Using cmd As New SqlCommand("SELECT CATEGORY,SUB_CATEGORY1,SUB_CATEGORY2,SUB_CATEGORY3,RE_ORDER,COST,VENDOR_CODE,SKU FROM INVENTORY WHERE ID=@ID", connection)
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(cmd)
                 adapter.Fill(table)
                 If table.Rows.Count > 0 Then
-                    category_combo.SelectedItem = table(0)(0).ToString
+                    category_combo.Text = table(0)(0).ToString
+                    subCategory_combo1.Text = table(0)(1)
+                    subCategory_combo2.Text = table(0)(2)
+                    SubCategory_combo3.Text = table(0)(3)
                     barcode_textbox.Text = list_grid.CurrentRow.Cells(1).Value.ToString
                     name_textbox.Text = list_grid.CurrentRow.Cells(2).Value.ToString
                     quantity_textbox.Text = list_grid.CurrentRow.Cells(3).Value.ToString
-                    re_order_textbox.Text = table(0)(1).ToString
+                    re_order_textbox.Text = table(0)(4).ToString
                     sale_qty_textbox.Text = list_grid.CurrentRow.Cells(4).Value.ToString
-                    cost_textbox.Text = table(0)(2).ToString
+                    cost_textbox.Text = table(0)(5).ToString
                     selling_textbox.Text = list_grid.CurrentRow.Cells(6).Value.ToString
                     margin_textbox.Text = list_grid.CurrentRow.Cells(5).Value.ToString
-                    vendorCode_textbox.Text = table(0)(3).ToString
-                    sku_textbox.Text = table(0)(4).ToString
+                    vendorCode_textbox.Text = table(0)(6).ToString
+                    sku_textbox.Text = table(0)(7).ToString
                 Else
                     MessageBox.Show("Product has no Category", "Product Categories")
                 End If

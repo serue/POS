@@ -2,6 +2,7 @@
 Imports System.Runtime.InteropServices
 Imports FontAwesome.Sharp
 Imports Tulpep.NotificationWindow
+Imports System.IO
 
 Public Class menu_form
     Public Const WM_NCLBUTTONDOWN As Integer = &HA1
@@ -79,7 +80,7 @@ Public Class menu_form
         Try
             connection = myPermissions.getConnection
             connection.Open()
-            Using command As New SqlCommand("SELECT * FROM INVENTORY WHERE QUANTITY >= RE_ORDER", connection)
+            Using command As New SqlCommand("SELECT * FROM INVENTORY WHERE QUANTITY <= RE_ORDER", connection)
                 Dim TABLE As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
                 adapter.Fill(TABLE)
@@ -148,9 +149,9 @@ Public Class menu_form
                 End If
             End Using
             Using command As New SqlCommand("SELECT TOTAL FROM TRANSACTIONS WHERE TRANS_DATE BETWEEN @FROM AND @TO", connection)
-                Dim date2 As Date = Now.ToShortDateString & " 00:00:01.000"
+                Dim date2 As Date = Now.ToShortDateString
                 command.Parameters.Add("@FROM", SqlDbType.DateTime).Value = date2
-                command.Parameters.Add("@TO", SqlDbType.DateTime).Value = Now.ToLongDateString
+                command.Parameters.Add("@TO", SqlDbType.DateTime).Value = Now.ToShortDateString
                 Dim adapter As New SqlDataAdapter(command)
                 Dim table As New DataTable
                 adapter.Fill(table)
@@ -275,7 +276,7 @@ Public Class menu_form
 
         CheckStock()
         LoadControls()
-        PlotGraph()
+        ' PlotGraph()
     End Sub
 
     Private Sub close_button_Click(sender As Object, e As EventArgs) Handles close_button.Click
@@ -507,58 +508,89 @@ Public Class menu_form
     End Sub
     Private Sub Backup_button_Click(sender As Object, e As EventArgs) Handles backup_database.Click
         If MessageBox.Show("Are sure you want to backup your database, Please make sure that no operation is going to be interupted and then proceed", "System Database Backup", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK Then
-            Try
-                connection = myPermissions.getConnection
-                connection.Open()
-                Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
-                    With command.Parameters
-                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
-                        .Add("@PERMISSION", SqlDbType.VarChar).Value = backup_database.Name
-                    End With
-                    Dim reader As SqlDataReader = command.ExecuteReader
-                    If reader.HasRows Then
-                        Using cmd As New SqlCommand("BACKUP DATABASE POS_DATABASE TO DISK=@DISK WITH init;", connection)
-                            cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
-                            cmd.ExecuteNonQuery()
-                            MessageBox.Show("System Database Backup was successful", "Back Up System Database", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        End Using
-                    Else
-                        MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    End If
-                End Using
-                connection.Close()
-            Catch ex As Exception
-                connection.Close()
-                MessageBox.Show(ex.Message, "Backup Failed with the following  Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+            If Not Directory.Exists(Application.StartupPath & "\backup") Then
+                Directory.CreateDirectory(Application.StartupPath & "\backup")
+            End If
+            If Directory.Exists(Application.StartupPath & "\backup") Then
+
+                Try
+                    connection = myPermissions.getConnection
+                    connection.Open()
+                    Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
+                        With command.Parameters
+                            .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                            .Add("@PERMISSION", SqlDbType.VarChar).Value = backup_database.Name
+                        End With
+                        Dim adapter As New SqlDataAdapter(command)
+                        Dim table As New DataTable
+                        adapter.Fill(table)
+                        If table.Rows.Count > 0 Then
+                            Using cmd As New SqlCommand("BACKUP DATABASE POS_DATABASE TO DISK=@DISK WITH init;", connection)
+                                cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\backup\POS_DB.bak"
+                                cmd.ExecuteNonQuery()
+                                MessageBox.Show("System Database Backup was successful", "Back Up System Database", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            End Using
+                        Else
+                            MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
+                    End Using
+                    connection.Close()
+                Catch ex As Exception
+                    connection.Close()
+                    MessageBox.Show(ex.Message, "Backup Failed with the following  Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Else
+                MessageBox.Show("Backup Folder does not exist Please Create it manually", "Backup")
+            End If
         End If
     End Sub
 
     Private Sub restore_button_Click(sender As Object, e As EventArgs) Handles restore_button.Click
-        Try
-            connection = New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
-            connection.Open()
-            Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", connection)
-                With command.Parameters
-                    .Add("@USERNAME", SqlDbType.VarChar).Value = username
-                    .Add("@PERMISSION", SqlDbType.VarChar).Value = backup_database.Name
-                End With
-                Dim reader As SqlDataReader = command.ExecuteReader
-                If reader.HasRows Then
-                    Using cmd As New SqlCommand("RESTORE DATABASE POS_DATABASE FROM DISK=@DISK WITH replace;", connection)
-                        cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\back\POS_DB.bak"
-                        cmd.ExecuteNonQuery()
-                        MessageBox.Show("Database Restore was successful", "Restoring a database from backup", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If MessageBox.Show("Are sure you want to restore your database, Please make sure that no operation is going to be interupted and then proceed", "System Database Backup", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = DialogResult.OK Then
+
+            If Directory.Exists(Application.StartupPath & "\backup") Then
+                Try
+
+                    Dim co As SqlConnection = myPermissions.getConnection
+                    co.Open()
+
+                    Using command As New SqlCommand("SELECT * FROM USER_PERMISSIONS WHERE USERNAME=@USERNAME AND PERMISSION=@PERMISSION AND STATUS='1'", co)
+                        With command.Parameters
+                            .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                            .Add("@PERMISSION", SqlDbType.VarChar).Value = backup_database.Name
+                        End With
+                        Dim adapter As New SqlDataAdapter(command)
+                        Dim table As New DataTable
+                        adapter.Fill(table)
+                        co.Close()
+                        connection = myPermissions.getBackupConnection
+                        connection.Open()
+                        If table.Rows.Count > 0 Then
+                            Using com As New SqlCommand("ALTER DATABASE POS_DATABASE SET SINGLE_USER WITH ROLLBACK IMMEDIATE", connection)
+                                com.ExecuteNonQuery()
+                            End Using
+                            Using cmd As New SqlCommand("RESTORE DATABASE POS_DATABASE FROM DISK=@DISK WITH replace;", connection)
+                                cmd.Parameters.Add("@DISK", SqlDbType.VarChar).Value = Application.StartupPath & "\backup\POS_DB.bak"
+                                cmd.ExecuteNonQuery()
+                                MessageBox.Show("Database Restore was successful", "Restoring a database from backup", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            End Using
+                            Using com As New SqlCommand("ALTER DATABASE POS_DATABASE SET MULTI_USER WITH ROLLBACK IMMEDIATE", connection)
+                                com.ExecuteNonQuery()
+                            End Using
+                        Else
+                            MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
                     End Using
-                Else
-                    MessageBox.Show("You are not permitted to do this operation, Please contact your Supervisor for assistance", "Checking User Permissions For the operation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                End If
-            End Using
-            connection.Close()
-        Catch ex As Exception
-            connection.Close()
-            MessageBox.Show(ex.Message, "An Error Occured on restoring the database", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+                    connection.Close()
+                Catch ex As Exception
+
+                    connection.Close()
+                    MessageBox.Show(ex.Message, "An Error Occured on restoring the database", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            Else
+                MessageBox.Show("Directory for Backup does not exists", "Restore database")
+            End If
+        End If
     End Sub
 
     Private Sub Label10_Click(sender As Object, e As EventArgs) Handles users_label.Click, monthlySalesLabel.Click

@@ -76,7 +76,7 @@ Partial Class Permissions
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(965, 609)
+        Me.Panel1.Size = New System.Drawing.Size(667, 627)
         Me.Panel1.TabIndex = 0
         '
         'Button2
@@ -86,12 +86,12 @@ Partial Class Permissions
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button2.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Olive
-        Me.Button2.Location = New System.Drawing.Point(672, 567)
+        Me.Button2.Location = New System.Drawing.Point(490, 557)
         Me.Button2.Margin = New System.Windows.Forms.Padding(2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(274, 35)
+        Me.Button2.Size = New System.Drawing.Size(155, 35)
         Me.Button2.TabIndex = 14
-        Me.Button2.Text = "Update Permissions for Existing User"
+        Me.Button2.Text = "Update Permission "
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button1
@@ -101,12 +101,12 @@ Partial Class Permissions
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button1.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.Olive
-        Me.Button1.Location = New System.Drawing.Point(379, 567)
+        Me.Button1.Location = New System.Drawing.Point(327, 557)
         Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(289, 35)
+        Me.Button1.Size = New System.Drawing.Size(159, 35)
         Me.Button1.TabIndex = 13
-        Me.Button1.Text = "Create Permissions For New User"
+        Me.Button1.Text = "Save Permissions"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'GroupBox5
@@ -118,9 +118,9 @@ Partial Class Permissions
         Me.GroupBox5.Controls.Add(Me.stock_reports)
         Me.GroupBox5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.GroupBox5.Location = New System.Drawing.Point(10, 371)
+        Me.GroupBox5.Location = New System.Drawing.Point(18, 371)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(466, 172)
+        Me.GroupBox5.Size = New System.Drawing.Size(303, 172)
         Me.GroupBox5.TabIndex = 12
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "4. Reports"
@@ -177,9 +177,9 @@ Partial Class Permissions
         Me.GroupBox3.Controls.Add(Me.Give_permissions)
         Me.GroupBox3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.GroupBox3.Location = New System.Drawing.Point(484, 185)
+        Me.GroupBox3.Location = New System.Drawing.Point(327, 185)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(466, 167)
+        Me.GroupBox3.Size = New System.Drawing.Size(315, 228)
         Me.GroupBox3.TabIndex = 9
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "3. Administration Rights"
@@ -187,7 +187,7 @@ Partial Class Permissions
         'backup_database
         '
         Me.backup_database.AutoSize = True
-        Me.backup_database.Location = New System.Drawing.Point(265, 49)
+        Me.backup_database.Location = New System.Drawing.Point(49, 193)
         Me.backup_database.Name = "backup_database"
         Me.backup_database.Size = New System.Drawing.Size(196, 21)
         Me.backup_database.TabIndex = 9
@@ -197,7 +197,7 @@ Partial Class Permissions
         'is_admin
         '
         Me.is_admin.AutoSize = True
-        Me.is_admin.Location = New System.Drawing.Point(265, 22)
+        Me.is_admin.Location = New System.Drawing.Point(49, 166)
         Me.is_admin.Name = "is_admin"
         Me.is_admin.Size = New System.Drawing.Size(81, 21)
         Me.is_admin.TabIndex = 8
@@ -261,9 +261,9 @@ Partial Class Permissions
         Me.GroupBox2.Controls.Add(Me.add_inventory)
         Me.GroupBox2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.GroupBox2.Location = New System.Drawing.Point(484, 371)
+        Me.GroupBox2.Location = New System.Drawing.Point(327, 431)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(466, 106)
+        Me.GroupBox2.Size = New System.Drawing.Size(315, 106)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "2. Inventory Rights"
@@ -298,9 +298,9 @@ Partial Class Permissions
         Me.GroupBox1.Controls.Add(Me.transaction_logs)
         Me.GroupBox1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.SaddleBrown
-        Me.GroupBox1.Location = New System.Drawing.Point(10, 185)
+        Me.GroupBox1.Location = New System.Drawing.Point(18, 185)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(466, 167)
+        Me.GroupBox1.Size = New System.Drawing.Size(303, 167)
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "1. Transactions Rights"
@@ -359,10 +359,10 @@ Partial Class Permissions
         '
         Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Panel2.BackColor = System.Drawing.Color.Bisque
-        Me.Panel2.Location = New System.Drawing.Point(10, 162)
+        Me.Panel2.Location = New System.Drawing.Point(18, 163)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(937, 3)
+        Me.Panel2.Size = New System.Drawing.Size(625, 3)
         Me.Panel2.TabIndex = 8
         '
         'GroupBox4
@@ -375,9 +375,9 @@ Partial Class Permissions
         Me.GroupBox4.Controls.Add(Me.Label3)
         Me.GroupBox4.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.ForeColor = System.Drawing.Color.Firebrick
-        Me.GroupBox4.Location = New System.Drawing.Point(10, 3)
+        Me.GroupBox4.Location = New System.Drawing.Point(18, 3)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(937, 156)
+        Me.GroupBox4.Size = New System.Drawing.Size(624, 156)
         Me.GroupBox4.TabIndex = 7
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "User Personal Details "
@@ -430,7 +430,7 @@ Partial Class Permissions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(965, 609)
+        Me.ClientSize = New System.Drawing.Size(667, 627)
         Me.Controls.Add(Me.Panel1)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Permissions"

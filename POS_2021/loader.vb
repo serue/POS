@@ -5,7 +5,7 @@ Public Class loader
     Dim connection As SqlConnection
     Dim myPermissions As New ConnectionAndPermissions
     Private Sub loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '   Control.CheckForIllegalCrossThreadCalls = False
+        '   Control.CheckForIllegalCrossThreadCalls = 
         re_load.Enabled = False
         BackgroundWorker1.RunWorkerAsync()
         re_load.Enabled = True

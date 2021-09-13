@@ -4,7 +4,7 @@ Imports System.Text
 
 Public Class ConnectionAndPermissions
     Private connection As SqlConnection = New SqlConnection("Data Source=192.168.43.223,1433;Network Library=DBMSSOCN;Initial Catalog=POS_DATABASE;User ID=sa;Password=2556b11j;")
-    Dim con As New SqlConnection("Data Source=BEYMO\SERU; Initial Catalog=POS_DATABASE; Integrated Security=True;")
+    Dim backCon As New SqlConnection(My.Settings.backupconnection)
     Dim connect As New SqlConnection(My.Settings.connection)
 
     ' password harshing using md5
@@ -120,6 +120,9 @@ Public Class ConnectionAndPermissions
 
     Public Function getConnection() As SqlConnection
         Return connect
+    End Function
+    Public Function getBackupConnection() As SqlConnection
+        Return backCon
     End Function
     Public Sub savePermissions(user As String, employee As String, permission As String, status As Integer, conString As SqlConnection, trans As SqlTransaction)
         Using Command As New SqlCommand("INSERT INTO USER_PERMISSIONS(USERNAME,EMP_ID,PERMISSION,STATUS) values(@user,@EMP_ID,@permission,@status)", conString, trans)

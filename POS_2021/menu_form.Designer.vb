@@ -24,13 +24,13 @@ Partial Class menu_form
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim Panel8 As System.Windows.Forms.Panel
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.mainPanel = New System.Windows.Forms.Panel()
         Me.subPanel = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -70,6 +70,8 @@ Partial Class menu_form
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.SideMenu_panel = New System.Windows.Forms.Panel()
         Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.calculator_button = New FontAwesome.Sharp.IconButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Category_button = New FontAwesome.Sharp.IconButton()
         Me.database_panel = New System.Windows.Forms.Panel()
@@ -101,8 +103,6 @@ Partial Class menu_form
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.calculator_button = New FontAwesome.Sharp.IconButton()
         Panel8 = New System.Windows.Forms.Panel()
         Panel8.SuspendLayout()
         Me.mainPanel.SuspendLayout()
@@ -120,6 +120,7 @@ Partial Class menu_form
         Me.Panel6.SuspendLayout()
         Me.SideMenu_panel.SuspendLayout()
         Me.Panel10.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.database_panel.SuspendLayout()
         Me.Panel12.SuspendLayout()
@@ -127,7 +128,6 @@ Partial Class menu_form
         Me.reports_panel.SuspendLayout()
         Me.sales_panel.SuspendLayout()
         Me.Home_panel.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel8
@@ -297,55 +297,55 @@ Partial Class menu_form
         Me.Chart1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        ChartArea2.AxisX.Interval = 1.0R
-        ChartArea2.AxisX.IsLabelAutoFit = False
-        ChartArea2.AxisX.LabelStyle.Angle = -90
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.AxisX.Interval = 1.0R
+        ChartArea1.AxisX.IsLabelAutoFit = False
+        ChartArea1.AxisX.LabelStyle.Angle = -90
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(12, 252)
         Me.Chart1.Name = "Chart1"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series6.Color = System.Drawing.Color.SeaGreen
-        Series6.IsValueShownAsLabel = True
-        Series6.LabelForeColor = System.Drawing.Color.SeaGreen
-        Series6.Legend = "Legend1"
-        Series6.Name = "Cash"
-        Series7.ChartArea = "ChartArea1"
-        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series7.Color = System.Drawing.Color.Purple
-        Series7.IsValueShownAsLabel = True
-        Series7.LabelForeColor = System.Drawing.Color.Purple
-        Series7.Legend = "Legend1"
-        Series7.Name = "Ecocash"
-        Series8.ChartArea = "ChartArea1"
-        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series8.Color = System.Drawing.Color.SteelBlue
-        Series8.IsValueShownAsLabel = True
-        Series8.LabelForeColor = System.Drawing.Color.SteelBlue
-        Series8.Legend = "Legend1"
-        Series8.Name = "Card"
-        Series9.ChartArea = "ChartArea1"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series9.Color = System.Drawing.Color.Gray
-        Series9.IsValueShownAsLabel = True
-        Series9.LabelForeColor = System.Drawing.Color.Gray
-        Series9.Legend = "Legend1"
-        Series9.Name = "Forex"
-        Series10.ChartArea = "ChartArea1"
-        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series10.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Series10.IsValueShownAsLabel = True
-        Series10.LabelForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Series10.Legend = "Legend1"
-        Series10.Name = "Multiple"
-        Me.Chart1.Series.Add(Series6)
-        Me.Chart1.Series.Add(Series7)
-        Me.Chart1.Series.Add(Series8)
-        Me.Chart1.Series.Add(Series9)
-        Me.Chart1.Series.Add(Series10)
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series1.Color = System.Drawing.Color.SeaGreen
+        Series1.IsValueShownAsLabel = True
+        Series1.LabelForeColor = System.Drawing.Color.SeaGreen
+        Series1.Legend = "Legend1"
+        Series1.Name = "Cash"
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series2.Color = System.Drawing.Color.Purple
+        Series2.IsValueShownAsLabel = True
+        Series2.LabelForeColor = System.Drawing.Color.Purple
+        Series2.Legend = "Legend1"
+        Series2.Name = "Ecocash"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series3.Color = System.Drawing.Color.SteelBlue
+        Series3.IsValueShownAsLabel = True
+        Series3.LabelForeColor = System.Drawing.Color.SteelBlue
+        Series3.Legend = "Legend1"
+        Series3.Name = "Card"
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series4.Color = System.Drawing.Color.Gray
+        Series4.IsValueShownAsLabel = True
+        Series4.LabelForeColor = System.Drawing.Color.Gray
+        Series4.Legend = "Legend1"
+        Series4.Name = "Forex"
+        Series5.ChartArea = "ChartArea1"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series5.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series5.IsValueShownAsLabel = True
+        Series5.LabelForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series5.Legend = "Legend1"
+        Series5.Name = "Multiple"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Series.Add(Series3)
+        Me.Chart1.Series.Add(Series4)
+        Me.Chart1.Series.Add(Series5)
         Me.Chart1.Size = New System.Drawing.Size(663, 296)
         Me.Chart1.TabIndex = 7
         Me.Chart1.Text = "Chart1"
@@ -733,9 +733,9 @@ Partial Class menu_form
         Me.Label6.Location = New System.Drawing.Point(40, 11)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(489, 23)
+        Me.Label6.Size = New System.Drawing.Size(474, 23)
         Me.Label6.TabIndex = 11
-        Me.Label6.Text = "Shopwise Inventory Management and  Point Sale System"
+        Me.Label6.Text = "BeyPOS Inventory Management and  Point Sale System"
         '
         'Panel6
         '
@@ -780,6 +780,39 @@ Partial Class menu_form
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(213, 595)
         Me.Panel10.TabIndex = 3
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.calculator_button)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 273)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(213, 45)
+        Me.Panel3.TabIndex = 11
+        '
+        'calculator_button
+        '
+        Me.calculator_button.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.calculator_button.FlatAppearance.BorderSize = 0
+        Me.calculator_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.calculator_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.calculator_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.calculator_button.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.calculator_button.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.calculator_button.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.calculator_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.calculator_button.IconSize = 35
+        Me.calculator_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.calculator_button.Location = New System.Drawing.Point(0, 0)
+        Me.calculator_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.calculator_button.Name = "calculator_button"
+        Me.calculator_button.Rotation = 0R
+        Me.calculator_button.Size = New System.Drawing.Size(213, 45)
+        Me.calculator_button.TabIndex = 2
+        Me.calculator_button.Text = "Calculator"
+        Me.calculator_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.calculator_button.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -1368,39 +1401,6 @@ Partial Class menu_form
         'Timer4
         '
         '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.calculator_button)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 273)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(213, 45)
-        Me.Panel3.TabIndex = 11
-        '
-        'calculator_button
-        '
-        Me.calculator_button.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.calculator_button.FlatAppearance.BorderSize = 0
-        Me.calculator_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.calculator_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
-        Me.calculator_button.Font = New System.Drawing.Font("Tahoma", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.calculator_button.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.calculator_button.IconChar = FontAwesome.Sharp.IconChar.None
-        Me.calculator_button.IconColor = System.Drawing.Color.WhiteSmoke
-        Me.calculator_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.calculator_button.IconSize = 35
-        Me.calculator_button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.calculator_button.Location = New System.Drawing.Point(0, 0)
-        Me.calculator_button.Margin = New System.Windows.Forms.Padding(2)
-        Me.calculator_button.Name = "calculator_button"
-        Me.calculator_button.Rotation = 0R
-        Me.calculator_button.Size = New System.Drawing.Size(213, 45)
-        Me.calculator_button.TabIndex = 2
-        Me.calculator_button.Text = "Calculator"
-        Me.calculator_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.calculator_button.UseVisualStyleBackColor = True
-        '
         'menu_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1436,6 +1436,7 @@ Partial Class menu_form
         Me.SideMenu_panel.ResumeLayout(False)
         Me.SideMenu_panel.PerformLayout()
         Me.Panel10.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.database_panel.ResumeLayout(False)
         Me.Panel12.ResumeLayout(False)
@@ -1443,7 +1444,6 @@ Partial Class menu_form
         Me.reports_panel.ResumeLayout(False)
         Me.sales_panel.ResumeLayout(False)
         Me.Home_panel.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
