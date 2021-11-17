@@ -33,8 +33,8 @@ Partial Class cash_up_reportForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.current_date = New MetroFramework.Controls.MetroDateTime()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -86,6 +86,7 @@ Partial Class cash_up_reportForm
         '
         'TO_DATE
         '
+        Me.TO_DATE.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.TO_DATE.Location = New System.Drawing.Point(94, 45)
         Me.TO_DATE.MinimumSize = New System.Drawing.Size(0, 29)
         Me.TO_DATE.Name = "TO_DATE"
@@ -132,6 +133,7 @@ Partial Class cash_up_reportForm
         '
         'current_date
         '
+        Me.current_date.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.current_date.Location = New System.Drawing.Point(94, 10)
         Me.current_date.MinimumSize = New System.Drawing.Size(0, 29)
         Me.current_date.Name = "current_date"
@@ -147,9 +149,6 @@ Partial Class cash_up_reportForm
         Me.Panel3.Size = New System.Drawing.Size(824, 309)
         Me.Panel3.TabIndex = 2
         '
-        'BackgroundWorker1
-        '
-        '
         'ReportViewer1
         '
         Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -157,6 +156,9 @@ Partial Class cash_up_reportForm
         Me.ReportViewer1.Name = "ReportViewer1"
         Me.ReportViewer1.Size = New System.Drawing.Size(824, 309)
         Me.ReportViewer1.TabIndex = 0
+        '
+        'BackgroundWorker1
+        '
         '
         'cash_up_reportForm
         '

@@ -166,9 +166,10 @@ Public Class menu_form
                 End If
             End Using
 
-            Using command As New SqlCommand("SELECT AMOUNT FROM SUMMARY_SALES WHERE SALE_MONTH=@TO", connection)
+            Using command As New SqlCommand("SELECT AMOUNT FROM SUMMARY_SALES WHERE SALE_MONTH=@TO AND SALE_YEAR=@YEAR", connection)
 
-                command.Parameters.Add("@TO", SqlDbType.DateTime).Value = MonthName(Now.Date.Month(), False) & " " & Now.Year
+                command.Parameters.Add("@TO", SqlDbType.VarChar).Value = MonthName(Now.Date.Month(), False)
+                command.Parameters.Add("@YEAR", SqlDbType.Int).Value = Now.Year
                 Dim adapter As New SqlDataAdapter(command)
                 Dim table As New DataTable
                 adapter.Fill(table)

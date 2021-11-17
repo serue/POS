@@ -16,6 +16,7 @@ Public Class settings
     Dim till_id As Integer = 0
     Dim tax_id As Integer = 0
     Dim forex_id As Integer = 0
+    Dim UpdateForexCurrency As String = ""
 
     Public Property ActiveUser() As String
         Get
@@ -382,7 +383,7 @@ Public Class settings
             'load forex
             GetCurrencyID()
 
-            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL,RATE,RTGS_RATE FROM CURRENCIES WHERE CURRENCY=@ID", connection)
+            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL,RATE,RTGS_RATE FROM CURRENCIES WHERE ID=@ID", connection)
                 command.Parameters.Add("@ID", SqlDbType.VarChar).Value = currencyID
                 Dim table As New DataTable
                 Dim adapter As New SqlDataAdapter(command)
@@ -396,7 +397,7 @@ Public Class settings
 
                 End If
             End Using
-            Using command As New SqlCommand("SELECT CURRENCY,SYMBOL,RATE,RTGS_RATE FROM CURRENCIES", connection)
+            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL,RATE,RTGS_RATE FROM CURRENCIES", connection)
                 Using adapter As New SqlDataAdapter(command)
                     Using table As New DataTable
                         adapter.Fill(table)
@@ -416,25 +417,28 @@ Public Class settings
     End Sub
 
     Private Sub SearchHeaders()
-        search_grid.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnsMode.Fill
-        search_grid.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
+        search_grid.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
+        search_grid.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnsMode.Fill
         search_grid.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
         search_grid.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
+        search_grid.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
 
-        search_grid.Columns(0).HeaderText = "Currency Name"
-        search_grid.Columns(1).HeaderText = "Symbol"
-        search_grid.Columns(2).HeaderText = "Cash Rate"
-        search_grid.Columns(3).HeaderText = "RTGS Rate"
-        search_grid.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        search_grid.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        search_grid.Columns(0).HeaderText = "#"
+        search_grid.Columns(1).HeaderText = "Currency Name"
+        search_grid.Columns(2).HeaderText = "Symbol"
+        search_grid.Columns(3).HeaderText = "Cash Rate"
+        search_grid.Columns(4).HeaderText = "RTGS Rate"
+        search_grid.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        search_grid.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
         search_grid.Columns(2).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         search_grid.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-
+        search_grid.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
     Private Sub UPDATE_FOREX_Click(sender As Object, e As EventArgs) Handles UPDATE_FOREX.Click
         Try
             connection = myPermissions.getConnection
             connection.Open()
+            GetDefaultForex
             If EditID > 0 Then
                 Using command As New SqlCommand("UPDATE CURRENCIES SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL,RATE=@RATE WHERE ID=@ID", connection)
                     With command.Parameters
@@ -601,11 +605,66 @@ Public Class settings
         End Try
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+    Private Sub Panel9_Paint(sender As Object, e As PaintEventArgs) Handles Panel9.Paint
 
     End Sub
 
-    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
+    Private Sub search_grid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles search_grid.CellClick
+        Try
+            Name_textbox.Text = search_grid.CurrentRow.Cells(1).Value
+            currency_rate.Text = search_grid.CurrentRow.Cells(2).Value
+            the_symbol.Text = search_grid.CurrentRow.Cells(1).Value
+        Catch ex As Exception
 
+        End Try
+    End Sub
+
+    Private Sub Default_button_Click(sender As Object, e As EventArgs) Handles Default_button.Click
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT * FROM FOREX_CURRENCY", connection)
+                Using ADAPTER As New SqlDataAdapter(command)
+                    Dim table As New DataTable
+                    ADAPTER.Fill(table)
+                    If table.Rows.Count > 0 Then
+                        Using cmd As New SqlCommand("UPDATE FOREX_CURRENCY SET CURRENCY=@CURRENCY", connection)
+                            cmd.Parameters.Add("@CURRENCY", SqlDbType.VarChar).Value = search_grid.CurrentRow.Cells(0).Value
+                            cmd.ExecuteNonQuery()
+                            MessageBox.Show("Currency was set as default currency", "Default Foreign Currency", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End Using
+                    Else
+                        Using cmd As New SqlCommand("INSERT INTO FOREX_CURRENCY (CURRENCY) VALUES(@CURRENCY)", connection)
+                            cmd.Parameters.Add("@CURRENCY", SqlDbType.VarChar).Value = search_grid.CurrentRow.Cells(0).Value
+                            cmd.ExecuteNonQuery()
+                            MessageBox.Show("Currency was set as default currency", "Default Foreign Currency", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End Using
+                    End If
+                End Using
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+        End Try
+    End Sub
+
+    Private Sub delete_button_Click(sender As Object, e As EventArgs) Handles delete_button.Click
+        Dim RATE As Decimal = GetForexRate("CARD")
+
+        MessageBox.Show(RATE)
+    End Sub
+
+    Private Sub GetDefaultForex()
+        Using command As New SqlCommand("SELECT CURRENCY FROM FOREX_CURRENCY", connection)
+            Using adapter As New SqlDataAdapter(command)
+                Dim table As New DataTable
+                adapter.Fill(table)
+                If table.Rows.Count > 0 Then
+                    UpdateForexCurrency = table(0)(0)
+                Else
+                    UpdateForexCurrency = ""
+                End If
+            End Using
+        End Using
     End Sub
 End Class

@@ -213,6 +213,7 @@ Partial Class ScheduledReportForm
         '
         'date_to
         '
+        Me.date_to.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.date_to.Location = New System.Drawing.Point(75, 46)
         Me.date_to.MinimumSize = New System.Drawing.Size(0, 29)
         Me.date_to.Name = "date_to"
@@ -221,6 +222,7 @@ Partial Class ScheduledReportForm
         '
         'date_from
         '
+        Me.date_from.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.date_from.Location = New System.Drawing.Point(75, 9)
         Me.date_from.MinimumSize = New System.Drawing.Size(0, 29)
         Me.date_from.Name = "date_from"

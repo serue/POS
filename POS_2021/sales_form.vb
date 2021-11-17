@@ -27,7 +27,14 @@ Public Class sales_form
     Dim check As CheckBox
     Private isButchery = False
     Dim isMultiple As Boolean = False
+    Dim localMethod As String
+    Dim EcocashRate As Decimal
+    'FOREX RATE FOR THE DAY
+    Dim DailyCurrencyRate As Decimal
+    Dim currency As String = ""
 
+    'GETTING CURRENCIES FOR USE
+    Dim BaseCurrency, Forex As String
 
     Public Const WM_NCLBUTTONDOWN As Integer = &HA1
     Public Const HT_CAPTION As Integer = &H2
@@ -86,10 +93,34 @@ Public Class sales_form
 
         End If
     End Sub
+    Private Sub ForexCurrency()
+        connection = myPermissions.getConnection
+        connection.Open()
+        Using command As New SqlCommand("SELECT CURRENCY FROM FOREX_CURRENCY", connection)
+            Using ADAPTER As New SqlDataAdapter(command)
+                Dim TABLE As New DataTable
+                ADAPTER.Fill(TABLE)
+                If TABLE.Rows.Count > 0 Then
+                    Using cmd As New SqlCommand("SELECT CURRENCY FROM CURRENCIES WHERE ID=@CURRENCY", connection)
+                        cmd.Parameters.Add("@CURRENCY", SqlDbType.VarChar).Value = TABLE(0)(0)
+                        Dim AD As New SqlDataAdapter(cmd)
+                        Dim CTAB As New DataTable
+                        AD.Fill(CTAB)
+                        currency = CTAB(0)(0)
+                        forex_button.Text = currency.ToUpper
 
+                    End Using
+                End If
+                TABLE.Dispose()
+            End Using
+        End Using
+        connection.Close()
+    End Sub
     Private Sub sales_form_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         Try
+            ForexCurrency()
+
             Timer1.Start()
             active_account_label.Text = ActiveUser
 
@@ -419,10 +450,11 @@ Public Class sales_form
                     End Using
                     month = MonthName(Now.Date.Month(), False)
 
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_DATE AND METHOD=@METHOD", connection, transaction)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_DATE AND SALE_YEAR=@SALE_YEAR AND METHOD=@METHOD", connection, transaction)
                         With saleSelectCommand.Parameters
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                            .Add("@TRANS_DATE", SqlDbType.VarChar).Value = month & " " & Now.Year
+                            .Add("@TRANS_DATE", SqlDbType.VarChar).Value = month
+                            .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
                             .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
                         End With
 
@@ -437,24 +469,25 @@ Public Class sales_form
                             updateQuantity = updateQuantity + row.Cells(3).Value
                             updateProfit = updateProfit + profit
                             'updating a sale in db
-                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT,AMOUNT=@AMOUNT WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANSDATE AND METHOD=@METHOD", connection, transaction)
+                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT,AMOUNT=@AMOUNT WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANSDATE AND SALE_YEAR=@SALE_YEAR AND METHOD=@METHOD", connection, transaction)
 
                                 With saleUpdateCommand.Parameters
                                     .Add("@QUANTITY", SqlDbType.Decimal).Value = updateQuantity
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = updateProfit
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                                    .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
+                                    .Add("@TRANSDATE", SqlDbType.VarChar).Value = month
+                                    .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
                             End Using
                         Else
                             'registering a summar sale into the db
-                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD) Values(@SALE_MONTH,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD)", connection, transaction)
+                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,SALE_YEAR,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD) Values(@SALE_MONTH,@SALE_YEAR,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD)", connection, transaction)
                                 With salecommand.Parameters
-                                    .Add("@SALE_MONTH", SqlDbType.VarChar).Value = month & " " & Now.Year
-                                    ' .Add("@trans_id", sqldbtype.VarChar).Value = Register_Transaction
+                                    .Add("@SALE_MONTH", SqlDbType.VarChar).Value = month
+                                    .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                     '.Add("@destion", SqlDbType.VarChar).Value = row.Cells(2).Value
                                     .Add("@QUANTITY", SqlDbType.Decimal).Value = row.Cells(3).Value
@@ -733,41 +766,10 @@ Public Class sales_form
             AmtPanel.Visible = False
             lookupPanel.Visible = False
             Transaction_type = "MULTIPLE"
-            If method_label.Text = "FOREX" Then
-                Try
-                    connection = myPermissions.getConnection
-                    connection.Open()
-                    Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                        Dim currencyTable As New DataTable
-                        Dim adapter As New SqlDataAdapter(command)
-                        adapter.Fill(currencyTable)
-                        If currencyTable.Rows.Count > 0 Then
-                            totalsum = 0
-                            For row As Integer = 0 To list_grid.Rows.Count - 1
-                                totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-                            Next
-                            total_label.Text = totalsum
-                        End If
-                    End Using
-                    connection.Close()
-                Catch ex As Exception
-                    connection.Close()
-                    MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-                End Try
-            Else
-                AmtPanel.Visible = False
-                AmtPanel.Visible = False
-                lookupPanel.Visible = False
-                OtherPaymentsPanel.Visible = True
-                txtCash.Focus()
-                Me.AcceptButton = Me.ProcessTrsactionButton
-                method_label.Text = "MULTIPLE"
+            localMethod = method_label.Text
+            MultiplePayments()
 
-            End If
-
-            connection.Close()
         Catch ex As Exception
-            connection.Close()
             MessageBox.Show(ex.Message, "An Errore Occured on Split Tender", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
@@ -820,84 +822,25 @@ Public Class sales_form
                 Dim btn As Button = sender
                 Transaction_type = btn.Text
                 Me.AcceptButton = Me.FinaliseTransaction
-                Dim localMethod As String
+
+                BaseCurrency = GetBaseCurrency()
+                If BaseCurrency IsNot Transaction_type And Transaction_type IsNot "CASH" And Transaction_type IsNot "CARD" And Transaction_type IsNot "ECOCASH" And Transaction_type IsNot "MULTIPLE" Then
+                    Transaction_type = "FOREX"
+                End If
                 localMethod = method_label.Text
-
-
+                method_label.Text = Transaction_type
                 If Transaction_type = "FOREX" Then
-                    If localMethod = "CARD" Or localMethod = "CASH" Or localMethod = "ECOCASH" Or localMethod = "." Or localMethod = "" Then
-                        Try
-                            connection = myPermissions.getConnection
-                            connection.Open()
-                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                                Dim currencyTable As New DataTable
-                                Dim adapter As New SqlDataAdapter(command)
-                                adapter.Fill(currencyTable)
-                                If currencyTable.Rows.Count > 0 Then
+                    'THIS IMPLEMENTS ONLY CASH RATE
+                    ForexPayments()
 
-                                    totalsum = 0
-                                    For row As Integer = 0 To list_grid.Rows.Count - 1
-                                        totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-                                    Next
-                                    total_label.Text = totalsum
+                    'implementing the cash payment method 
+                ElseIf Transaction_type = "CASH" Or Transaction_type = "MULTIPLE" Then
+                    'converting from forex.to cash price
+                    CashPayments()
 
-
-
-                                End If
-                            End Using
-                            connection.Close()
-                        Catch ex As Exception
-                            connection.Close()
-                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
-                        End Try
-                    Else
-
-                    End If
-
-                    AmtPanel.Visible = True
-                    qty_viewLabel.Visible = False
-                    quantity_textbox.Visible = False
-                    Accept_Quantity.Visible = False
-                    HideQuantityInputs()
-                    Me.AcceptButton = Me.FinaliseTransaction
-                    method_label.Text = btn.Text
-                    AmtPanel.Visible = True
-                    qty_paid_textbox.ReadOnly = False
-                    qty_paid_textbox.Focus()
-
-                ElseIf Transaction_type = "CASH" Or Transaction_type = "ECOCASH" Or Transaction_type = "CARD" Or method_label.Text = "MULTIPLE" Then
-                    If localMethod = "FOREX" Or localMethod = "" Or localMethod = "." Then
-                        Try
-                            connection = myPermissions.getConnection
-                            connection.Open()
-                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                                Dim currencyTable As New DataTable
-                                Dim adapter As New SqlDataAdapter(command)
-                                adapter.Fill(currencyTable)
-                                If currencyTable.Rows.Count > 0 Then
-                                    CurrencyRate = currencyTable(0)(0)
-                                    Dim temporaryValue As Decimal = CDec(total_label.Text) * CurrencyRate
-                                    total_label.Text = Math.Round(temporaryValue, 2)
-                                End If
-                            End Using
-                            connection.Close()
-                        Catch ex As Exception
-                            connection.Close()
-                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-                        End Try
-                    End If
-                    AmtPanel.Visible = True
-                    qty_viewLabel.Visible = False
-                    quantity_textbox.Visible = False
-                    Accept_Quantity.Visible = False
-                    HideQuantityInputs()
-                    Me.AcceptButton = Me.FinaliseTransaction
-                    AmtPanel.Visible = True
-                    method_label.Text = btn.Text
-                    qty_paid_textbox.ReadOnly = False
-                    qty_paid_textbox.Text = ""
-                    qty_paid_textbox.Focus()
-
+                    'CHANGING  THE PRICE FROM FOREX TO ECOCASH OR CARD BY TAKING THE CASH PRICE AND ADD THE LOCAL RTGS RATE.
+                ElseIf Transaction_type = "ECOCASH" Or method_label.Text = "CARD" Then
+                    CardEcocashPayments()
                 End If
                 If btn.Text = "CARD" Or btn.Text = "ECOCASH" Then
                     qty_paid_textbox.ReadOnly = True
@@ -922,7 +865,7 @@ Public Class sales_form
                 menu_form.ActiveUser = active_account_label.Text
                 menu_form.ActiveUsername = username
                 menu_form.Show()
-                Me.Hide()
+                Me.Close()
             Else
                 MessageBox.Show("You are restricted from accessing BackOffice", "User right restriction", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
@@ -1017,97 +960,252 @@ Public Class sales_form
 
     End Sub
 
+    Private Sub CashPayments()
+        'converting from forex.to cash price
+        If localMethod = "FOREX" Then
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                totalsum = 0
+                For Each row As DataGridViewRow In list_grid.Rows
+                    Using command As New SqlCommand("SELECT PRICE FROM INVENTORY WHERE BARCODE=@BARCODE", connection)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                        Dim currencyTable As New DataTable
+                        Dim adapter As New SqlDataAdapter(command)
+                        adapter.Fill(currencyTable)
+                        If currencyTable.Rows.Count > 0 Then
+                            CurrencyRate = currencyTable(0)(0)
+                            row.Cells(4).Value = CurrencyRate
+                            row.Cells(5).Value = Math.Round((row.Cells(4).Value * row.Cells(3).Value), 2)
+                            totalsum += row.Cells(5).Value
+                        Else
+                            MessageBox.Show("There was an error when trying to switch currency from forex to local currency")
+                        End If
+                    End Using
+                Next
+                total_label.Text = Math.Round(totalsum, 2)
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+            End Try
+
+            'convert from cash price to ecocash or card rate
+        ElseIf localMethod = "CARD" Or localMethod = "ECOCASH" Then
+            Dim localRTGS As Decimal = LocalRTGSRate()
+            totalsum = 0
+            For row As Integer = 0 To list_grid.Rows.Count - 1
+                list_grid.Rows(row).Cells(4).Value = CDec(Math.Round((list_grid.Rows(row).Cells(4).Value / localRTGS), 2))
+                list_grid.Rows(row).Cells(5).Value = CDec(Math.Round((list_grid.Rows(row).Cells(5).Value / localRTGS), 2))
+                totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+            Next
+            total_label.Text = Math.Round(totalsum, 2)
+        End If
+        AmtPanel.Visible = True
+        qty_viewLabel.Visible = False
+        quantity_textbox.Visible = False
+        Accept_Quantity.Visible = False
+        HideQuantityInputs()
+        Me.AcceptButton = Me.FinaliseTransaction
+        AmtPanel.Visible = True
+        method_label.Text = Transaction_type
+        qty_paid_textbox.ReadOnly = False
+        qty_paid_textbox.Text = ""
+        qty_paid_textbox.Focus()
+
+    End Sub
+    Private Sub MultiplePayments()
+        If localMethod = "FOREX" Then
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                totalsum = 0
+                For Each row As DataGridViewRow In list_grid.Rows
+                    Using command As New SqlCommand("SELECT PRICE FROM INVENTORY WHERE BARCODE=@BARCODE", connection)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                        Dim currencyTable As New DataTable
+                        Dim adapter As New SqlDataAdapter(command)
+                        adapter.Fill(currencyTable)
+                        If currencyTable.Rows.Count > 0 Then
+                            CurrencyRate = currencyTable(0)(0)
+                            row.Cells(4).Value = CurrencyRate
+                            row.Cells(5).Value = Math.Round((row.Cells(4).Value * row.Cells(3).Value), 2)
+                            totalsum += row.Cells(5).Value
+                        Else
+                            MessageBox.Show("There was an error when trying to switch currency from forex to local currency")
+                        End If
+                    End Using
+                Next
+                total_label.Text = Math.Round(totalsum, 2)
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+            End Try
+
+            'convert from cash price to ecocash or card rate
+        ElseIf localMethod = "CARD" Or localMethod = "ECOCASH" Then
+            Dim localRTGS As Decimal = LocalRTGSRate()
+            totalsum = 0
+            For row As Integer = 0 To list_grid.Rows.Count - 1
+                list_grid.Rows(row).Cells(4).Value = Math.Round((list_grid.Rows(row).Cells(4).Value / localRTGS), 2)
+                list_grid.Rows(row).Cells(5).Value = Math.Round((list_grid.Rows(row).Cells(5).Value / localRTGS), 2)
+                totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+            Next
+            total_label.Text = Math.Round(totalsum, 2)
+        End If
+        'AmtPanel.Visible = True
+        qty_viewLabel.Visible = False
+        quantity_textbox.Visible = False
+        Accept_Quantity.Visible = False
+        HideQuantityInputs()
+        Me.AcceptButton = Me.FinaliseTransaction
+        OtherPaymentsPanel.Visible = True
+        method_label.Text = Transaction_type
+        qty_paid_textbox.ReadOnly = False
+        qty_paid_textbox.Text = ""
+        qty_paid_textbox.Focus()
+    End Sub
+    Private Sub CardEcocashPayments()
+        If localMethod = "FOREX" Then
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                totalsum = 0
+                For Each row As DataGridViewRow In list_grid.Rows
+                    Using command As New SqlCommand("SELECT PRICE FROM INVENTORY WHERE BARCODE=@BARCODE", connection)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value.ToString
+                        Dim currencyTable As New DataTable
+                        Dim adapter As New SqlDataAdapter(command)
+                        adapter.Fill(currencyTable)
+                        If currencyTable.Rows.Count > 0 Then
+                            CurrencyRate = currencyTable(0)(0)
+                            Dim r As Decimal = LocalRTGSRate()
+                            row.Cells(4).Value = Math.Round(CurrencyRate * r, 2)
+                            ' Dim ra = r * row.Cells(3).Value
+                            row.Cells(5).Value = Math.Round((row.Cells(4).Value * row.Cells(3).Value), 2)
+                            totalsum += row.Cells(5).Value
+                        Else
+                            MessageBox.Show("There was an error when trying to switch currency from forex to local currency")
+                        End If
+                    End Using
+                Next
+                total_label.Text = totalsum
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+            End Try
+
+            'convert from cash price  ecocash or card rate
+        ElseIf localMethod = "CASH" Or localMethod = "MULTIPLE" Or localMethod = "" Or localMethod = "." Then
+            Dim localRTGS As Decimal = LocalRTGSRate()
+            totalsum = 0
+            For row As Integer = 0 To list_grid.Rows.Count - 1
+                list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value * localRTGS, 2)
+                list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value * localRTGS, 2)
+                totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+            Next
+            total_label.Text = Math.Round(totalsum, 2)
+        End If
+        AmtPanel.Visible = True
+        qty_viewLabel.Visible = False
+        quantity_textbox.Visible = False
+        Accept_Quantity.Visible = False
+        HideQuantityInputs()
+        Me.AcceptButton = Me.FinaliseTransaction
+        AmtPanel.Visible = True
+        method_label.Text = Transaction_type
+        qty_paid_textbox.ReadOnly = True
+        qty_paid_textbox.Text = ""
+        qty_paid_textbox.Focus()
+
+    End Sub
+    Private Sub ForexPayments()
+        If localMethod = "CASH" Or localMethod = "MULTIPLE" Or localMethod = "." Or localMethod = "" Or localMethod = "ECOCASH" Or localMethod = "CARD" Then
+            Try
+                Forex = GetForex()
+                If Forex.ToUpper = BaseCurrency.ToUpper Then
+                    totalsum = 0
+                    For row As Integer = 0 To list_grid.Rows.Count - 1
+                        totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                    Next
+                    total_label.Text = Math.Round(totalsum, 2)
+                Else
+                    'CHECKS IF THE LOCAL CURRENCY IS NOT EMPTY AND SELECT RATE EITHER  CASH
+                    If localMethod = "CASH" Or localMethod = "MULTIPLE" Or localMethod = "" Or localMethod = "." Then
+                        DailyCurrencyRate = GetForexRate("CASH")
+                        totalsum = 0
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value * DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value * DailyCurrencyRate, 2)
+                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                        Next
+                        total_label.Text = Math.Round(totalsum, 2)
+                    End If
+
+                    'checks if the local method is ecocash or card then first return the price   to a cash price before converting  the ecocash rate to forex
+                    If localMethod = "CARD" Or localMethod = "ECOCASH" Then
+                        'initially get the local rtgs rate for division and devide the current price with local rtgs rate to get cash price.
+                        Dim localRTGS As Decimal = LocalRTGSRate()
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value / localRTGS, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value / localRTGS, 2)
+                        Next
+                        DailyCurrencyRate = GetForexRate(localMethod)
+                        totalsum = 0
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value * DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value * DailyCurrencyRate, 2)
+                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                        Next
+                        total_label.Text = Math.Round(totalsum, 2)
+                    End If
+                End If
+                connection.Close()
+            Catch ex As Exception
+                connection.Close()
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
+            End Try
+            'implements the ecocash and swipe rate
+        Else
+        End If
+
+        AmtPanel.Visible = True
+        qty_viewLabel.Visible = False
+        quantity_textbox.Visible = False
+        Accept_Quantity.Visible = False
+        HideQuantityInputs()
+        Me.AcceptButton = Me.FinaliseTransaction
+
+        AmtPanel.Visible = True
+        qty_paid_textbox.ReadOnly = False
+        qty_paid_textbox.Focus()
+
+    End Sub
     Private Sub sales_Form_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
 
+        'cash transactions
         If e.KeyCode = Keys.F2 Then
+            Transaction_type = "CASH"
             Try
                 If total_label.Text <= 0 Or total_label.Text = "" Then
                     MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
-                    If method_label.Text = "FOREX" Or method_label.Text = "." Then
+                    CashPayments()
 
-                        Try
-                            connection = myPermissions.getConnection
-                            connection.Open()
-                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                                Dim currencyTable As New DataTable
-                                Dim adapter As New SqlDataAdapter(command)
-                                adapter.Fill(currencyTable)
-                                If currencyTable.Rows.Count > 0 Then
-                                    CurrencyRate = currencyTable(0)(0)
-                                    Dim temporaryValue As Decimal = Math.Round(CDec(total_label.Text) * CurrencyRate, 2)
-                                    total_label.Text = temporaryValue
-                                Else
-                                    MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                                    connection.Close()
-                                    Exit Sub
-                                End If
-                            End Using
-                            connection.Close()
-                        Catch ex As Exception
-                            connection.Close()
-                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-                        End Try
-                    End If
-                    AmtPanel.Visible = True
-                        qty_viewLabel.Visible = False
-                        quantity_textbox.Visible = False
-                        Accept_Quantity.Visible = False
-                        HideQuantityInputs()
-                        Me.AcceptButton = Me.FinaliseTransaction
-                        Transaction_type = "CASH"
-                        AmtPanel.Visible = True
-                        method_label.Text = "CASH"
-                        qty_paid_textbox.ReadOnly = False
-                        qty_paid_textbox.Focus()
-
-
-                    End If
+                End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "An error occured on cash transaction", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
         ElseIf e.KeyCode = Keys.F4 Then
+            Transaction_type = "CARD"
             Try
                 If total_label.Text <= 0 Or total_label.Text = "" Then
                     MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
-                    If method_label.Text = "FOREX" Or method_label.Text = "." Then
-
-                        Try
-                            connection = myPermissions.getConnection
-                            connection.Open()
-                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                                Dim currencyTable As New DataTable
-                                Dim adapter As New SqlDataAdapter(command)
-                                adapter.Fill(currencyTable)
-                                If currencyTable.Rows.Count > 0 Then
-                                    CurrencyRate = currencyTable(0)(0)
-                                    Dim temporaryValue As Decimal = Math.Round(CDec(total_label.Text) * CurrencyRate, 2)
-                                    total_label.Text = temporaryValue
-                                Else
-                                    MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                                    connection.Close()
-                                    Exit Sub
-                                End If
-                            End Using
-                            connection.Close()
-                        Catch ex As Exception
-                            connection.Close()
-                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-                        End Try
-                    End If
-                    AmtPanel.Visible = True
-                        qty_viewLabel.Visible = False
-                        quantity_textbox.Visible = False
-                        Accept_Quantity.Visible = False
-                        HideQuantityInputs()
-                        Me.AcceptButton = Me.FinaliseTransaction
-                        Transaction_type = "CARD"
-                        AmtPanel.Visible = True
-                        method_label.Text = "CARD"
-                        qty_paid_textbox.Text = total_label.Text
-                        qty_paid_textbox.ReadOnly = True
+                    CardEcocashPayments()
 
                 End If
 
@@ -1116,93 +1214,26 @@ Public Class sales_form
             End Try
 
         ElseIf e.KeyCode = Keys.F3 Then
+            Transaction_type = "ECOCASH"
             Try
                 If total_label.Text <= 0 Or total_label.Text = "" Then
                     MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
-                    If method_label.Text = "FOREX" Or method_label.Text = "." Then
-
-                        Try
-                            connection = myPermissions.getConnection
-                            connection.Open()
-                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                                Dim currencyTable As New DataTable
-                                Dim adapter As New SqlDataAdapter(command)
-                                adapter.Fill(currencyTable)
-                                If currencyTable.Rows.Count > 0 Then
-                                    CurrencyRate = currencyTable(0)(0)
-                                    Dim temporaryValue As Decimal = Math.Round(CDec(total_label.Text) * CurrencyRate, 2)
-                                    total_label.Text = temporaryValue
-                                Else
-                                    MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                                    connection.Close()
-                                    Exit Sub
-                                End If
-                            End Using
-
-                            connection.Close()
-                        Catch ex As Exception
-                            connection.Close()
-                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-                        End Try
-                    End If
-                    AmtPanel.Visible = True
-                        qty_viewLabel.Visible = False
-                        quantity_textbox.Visible = False
-                        Accept_Quantity.Visible = False
-                        HideQuantityInputs()
-                        Me.AcceptButton = Me.FinaliseTransaction
-                        Transaction_type = "ECOCASH"
-                        AmtPanel.Visible = True
-                        method_label.Text = "ECOCASH"
-                        qty_paid_textbox.Text = total_label.Text
-                        qty_paid_textbox.ReadOnly = True
-
+                    'function calling
+                    CardEcocashPayments()
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error happened On Ecocash Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
         ElseIf e.KeyCode = Keys.F5 Then
+            Transaction_type = "FOREX"
             Try
                 If total_label.Text <= 0 Or total_label.Text = "" Then
                     MessageBox.Show("You cannot proceed to payment since there is no product in the list", "No Product on the list", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
-                    If method_label.Text = "CASH" Or method_label.Text = "CARD" Or method_label.Text = "ECOCASH" Or method_label.Text = "MULTIPLE" Or method_label.Text = "." Then
-
-                        Try
-                            connection = myPermissions.getConnection
-                            connection.Open()
-                            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                                Dim currencyTable As New DataTable
-                                Dim adapter As New SqlDataAdapter(command)
-                                adapter.Fill(currencyTable)
-                                If currencyTable.Rows.Count > 0 Then
-                                    totalsum = 0
-                                    For row As Integer = 0 To list_grid.Rows.Count - 1
-                                        totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-                                    Next
-                                    total_label.Text = totalsum
-                                End If
-                            End Using
-                            connection.Close()
-                        Catch ex As Exception
-                            connection.Close()
-                            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
-                        End Try
-                    End If
-                    AmtPanel.Visible = True
-                        qty_viewLabel.Visible = False
-                        quantity_textbox.Visible = False
-                        Accept_Quantity.Visible = False
-                        HideQuantityInputs()
-                        Me.AcceptButton = Me.FinaliseTransaction
-                        Transaction_type = "FOREX"
-                        method_label.Text = "FOREX"
-                        AmtPanel.Visible = True
-                        qty_paid_textbox.ReadOnly = False
-                        qty_paid_textbox.Focus()
-
+                    'function calling
+                    ForexPayments()
                 End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "An Error happenened while processing Forex Transaction", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1429,158 +1460,23 @@ Public Class sales_form
     End Sub
 
     Private Sub f2_button_Click(sender As Object, e As EventArgs) Handles f2_button.Click
-        If method_label.Text = "FOREX" Or method_label.Text = "." Then
-
-            Try
-                connection = myPermissions.getConnection
-                connection.Open()
-                Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                    Dim currencyTable As New DataTable
-                    Dim adapter As New SqlDataAdapter(command)
-                    adapter.Fill(currencyTable)
-                    If currencyTable.Rows.Count > 0 Then
-                        CurrencyRate = currencyTable(0)(0)
-                        Dim temporaryValue As Decimal = Math.Round(CDec(total_label.Text) * CurrencyRate, 2)
-                        total_label.Text = temporaryValue
-                    Else
-                        MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        connection.Close()
-                        Exit Sub
-                    End If
-                End Using
-                connection.Close()
-            Catch ex As Exception
-                connection.Close()
-                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-            End Try
-        End If
-        AmtPanel.Visible = True
-            qty_viewLabel.Visible = False
-            quantity_textbox.Visible = False
-            Accept_Quantity.Visible = False
-        HideQuantityInputs()
-        Me.AcceptButton = Me.FinaliseTransaction
-            Transaction_type = "CASH"
-            AmtPanel.Visible = True
-            method_label.Text = "CASH"
-            qty_paid_textbox.ReadOnly = False
-            qty_paid_textbox.Focus()
-
-
+        Transaction_type = "CASH"
+        CashPayments()
     End Sub
 
     Private Sub f3_button_Click(sender As Object, e As EventArgs) Handles f3_button.Click
-        If method_label.Text = "FOREX" Or method_label.Text = "." Then
-
-            Try
-                connection = myPermissions.getConnection
-                connection.Open()
-                Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                    Dim currencyTable As New DataTable
-                    Dim adapter As New SqlDataAdapter(command)
-                    adapter.Fill(currencyTable)
-                    If currencyTable.Rows.Count > 0 Then
-                        CurrencyRate = currencyTable(0)(0)
-                        Dim temporaryValue As Decimal = Math.Round(CDec(total_label.Text) * CurrencyRate, 2)
-                        total_label.Text = temporaryValue
-                    Else
-                        MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        connection.Close()
-                        Exit Sub
-                    End If
-                End Using
-                connection.Close()
-            Catch ex As Exception
-                connection.Close()
-                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-            End Try
-        End If
-        AmtPanel.Visible = True
-            qty_viewLabel.Visible = False
-            quantity_textbox.Visible = False
-            Accept_Quantity.Visible = False
-            HideQuantityInputs()
-            Me.AcceptButton = Me.FinaliseTransaction
-            Transaction_type = "ECOCASH"
-            AmtPanel.Visible = True
-            method_label.Text = "ECOCASH"
-            qty_paid_textbox.Text = total_label.Text
-            qty_paid_textbox.ReadOnly = True
-
+        Transaction_type = "ECOCASH"
+        CardEcocashPayments()
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles f5_button.Click
-        Try
-            connection = myPermissions.getConnection
-            connection.Open()
-
-            Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                Dim currencyTable As New DataTable
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(currencyTable)
-                If currencyTable.Rows.Count > 0 Then
-                    totalsum = 0
-                    For row As Integer = 0 To list_grid.Rows.Count - 1
-                        totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-                    Next
-                    total_label.Text = totalsum
-                End If
-            End Using
-            connection.Close()
-        Catch ex As Exception
-            connection.Close()
-            MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
-        End Try
-        AmtPanel.Visible = True
-        qty_viewLabel.Visible = False
-        quantity_textbox.Visible = False
-        Accept_Quantity.Visible = False
-        HideQuantityInputs()
-        Me.AcceptButton = Me.FinaliseTransaction
         Transaction_type = "FOREX"
-        method_label.Text = "FOREX"
-        AmtPanel.Visible = True
-        qty_paid_textbox.ReadOnly = False
-        qty_paid_textbox.Focus()
+        ForexPayments()
     End Sub
 
     Private Sub f4_button_Click(sender As Object, e As EventArgs) Handles f4_button.Click
-        If method_label.Text = "FOREX" Or method_label.Text = "." Then
-
-            Try
-                connection = myPermissions.getConnection
-                connection.Open()
-                Using command As New SqlCommand("SELECT RATE FROM CURRENCIES", connection)
-                    Dim currencyTable As New DataTable
-                    Dim adapter As New SqlDataAdapter(command)
-                    adapter.Fill(currencyTable)
-                    If currencyTable.Rows.Count > 0 Then
-                        CurrencyRate = currencyTable(0)(0)
-                        Dim temporaryValue As Decimal = Math.Round(CDec(total_label.Text) * CurrencyRate, 2)
-                        total_label.Text = temporaryValue
-                    Else
-                        MessageBox.Show("Some critical Settings are not applied please go to your settings and check if all settings are correct", "Settings not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        connection.Close()
-                        Exit Sub
-                    End If
-                End Using
-                connection.Close()
-            Catch ex As Exception
-                connection.Close()
-                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
-            End Try
-        End If
-        AmtPanel.Visible = True
-            qty_viewLabel.Visible = False
-            quantity_textbox.Visible = False
-            Accept_Quantity.Visible = False
-        HideQuantityInputs()
-        Me.AcceptButton = Me.FinaliseTransaction
-            Transaction_type = "CARD"
-            AmtPanel.Visible = True
-        method_label.Text = "CARD"
-        qty_paid_textbox.Text = total_label.Text
-            qty_paid_textbox.ReadOnly = True
+        Transaction_type = "CARD"
+        CardEcocashPayments()
 
     End Sub
 
@@ -1792,7 +1688,7 @@ Public Class sales_form
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
-                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,TRANS_TIME,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,TRANS_TIME,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
+                Dim RegisterTransactionQuery As String = "INSERT INTO TRANSACTIONS(TRANSACTION_ID,TRANS_DATE,TRANS_TIME,AMOUNT,PAID,TOTAL,CHANGE,TAX,PAYMENT,CASHIER,TILL,TOTAL_ITEMS,STATUS) Values(@TRANSACTION_ID,@TRANS_DATE,@TRANS_TIME,@AMOUNT,@PAID,@TOTAL,@CHANGE,@TAX,@PAYMENT,@CASHIER,@TILL,@TOTAL_ITEMS,@STATUS)"
 
                 Using regcommand As New SqlCommand(RegisterTransactionQuery, connection, transaction)
                     With regcommand.Parameters
@@ -1915,10 +1811,11 @@ Public Class sales_form
                     End Using
                     month = MonthName(Now.Date.Month(), False)
 
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_DATE AND METHOD=@METHOD", connection, transaction)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_TIME AND SALE_YEAR=@TRANS_DATE AND METHOD=@METHOD", connection, transaction)
                         With saleSelectCommand.Parameters
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                            .Add("@TRANS_DATE", SqlDbType.VarChar).Value = month & " " & Now.Year
+                            .Add("@TRANS_TIME", SqlDbType.VarChar).Value = month
+                            .Add("@TRANS_DATE", SqlDbType.Int).Value = Now.Year
                             .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
                         End With
 
@@ -1933,14 +1830,15 @@ Public Class sales_form
                             updateQuantity = updateQuantity + row.Cells(3).Value
                             updateProfit = updateProfit + profit
                             'updating a sale in db
-                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT,AMOUNT=@AMOUNT WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANSDATE AND METHOD=@METHOD", connection, transaction)
+                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT,AMOUNT=@AMOUNT WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANSDATE AND SALE_YEAR=@SALE_YEAR AND METHOD=@METHOD", connection, transaction)
 
                                 With saleUpdateCommand.Parameters
                                     .Add("@QUANTITY", SqlDbType.Decimal).Value = updateQuantity
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = updateProfit
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                                    .Add("@TRANSDATE", SqlDbType.VarChar).Value = month & " " & Now.Year
+                                    .Add("@TRANSDATE", SqlDbType.VarChar).Value = month
+                                    .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
                                     'to display use date January and dateNow 
                                 End With
@@ -1948,10 +1846,10 @@ Public Class sales_form
                             End Using
                         Else
                             'registering a summar sale into the db
-                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD) Values(@SALE_MONTH,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD)", connection, transaction)
+                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,SALE_YEAR,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD) Values(@SALE_MONTH,@SALE_YEAR,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD)", connection, transaction)
                                 With salecommand.Parameters
-                                    .Add("@SALE_MONTH", SqlDbType.VarChar).Value = month & " " & Now.Year
-                                    ' .Add("@trans_id", sqldbtype.VarChar).Value = Register_Transaction
+                                    .Add("@SALE_MONTH", SqlDbType.VarChar).Value = month
+                                    .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
                                     .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                                     '.Add("@destion", SqlDbType.VarChar).Value = row.Cells(2).Value
                                     .Add("@QUANTITY", SqlDbType.Decimal).Value = row.Cells(3).Value
@@ -1964,45 +1862,86 @@ Public Class sales_form
                             End Using
                         End If
                     End Using
-
-                    Using cashupCommand As New SqlCommand("SELECT AMOUNT FROM CASHUP WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
-                        With cashupCommand.Parameters
-                            .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
-                            .Add("@USERNAME", SqlDbType.VarChar).Value = username
-                            .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
-                        End With
-                        Dim cashTable As New DataTable
-                        Dim cashAdapter As New SqlDataAdapter(cashupCommand)
-                        cashAdapter.Fill(cashTable)
-                        If cashTable.Rows.Count > 0 Then
-                            Dim amt As Decimal = cashTable(0)(0)
-                            Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
-                                With updateCashCommand.Parameters
-                                    .Add("@AMOUNT", SqlDbType.VarChar).Value = amt + row.Cells(5).Value
-                                    .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
-                                    .Add("@USERNAME", SqlDbType.VarChar).Value = username
-                                    .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
-                                End With
-                                updateCashCommand.ExecuteNonQuery()
-
-                            End Using
-                        Else
-
-                            Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUNT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
-                                With InsertCashCommand.Parameters
-                                    .Add("@AMOUNT", SqlDbType.VarChar).Value = row.Cells(5).Value
-                                    .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
-                                    .Add("@USERNAME", SqlDbType.VarChar).Value = username
-                                    .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
-                                    .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
-                                End With
-                                InsertCashCommand.ExecuteNonQuery()
-
-                            End Using
-                        End If
-                    End Using
-
                 Next
+                'creating an array for all used methods which will be used to save the amount into the other methods for tressing of payment method per sale
+                Dim txtBoxArray() As TextBox = {txtCard, txtCash, txtEcoCash, txtForex}
+
+                Using cashupCommand As New SqlCommand("SELECT AMOUNT FROM CASHUP WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
+                    With cashupCommand.Parameters
+                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                    End With
+                    Dim cashTable As New DataTable
+                    Dim cashAdapter As New SqlDataAdapter(cashupCommand)
+                    cashAdapter.Fill(cashTable)
+                    If cashTable.Rows.Count > 0 Then
+                        Dim amt As Decimal = cashTable(0)(0)
+                        Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
+                            With updateCashCommand.Parameters
+                                .Add("@AMOUNT", SqlDbType.VarChar).Value = amt + CDec(total_label.Text)
+                                .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                            End With
+                            updateCashCommand.ExecuteNonQuery()
+
+                        End Using
+                        'iterating through the array
+                        For Each element As TextBox In txtBoxArray
+
+                            If element.Text > 0 Or element.Text <> "" Then    'checking the quantity in the textbox
+                                'ASSOCIATE A METHOD WITH A TEXTBOX
+                                If element Is txtCard Then Transaction_type = "CARD"
+                                If element Is txtCash Then Transaction_type = "CASH"
+                                If element Is txtEcoCash Then Transaction_type = "ECOCASH"
+                                If element Is txtForex Then Transaction_type = "FOREX"
+                                Using splitCommand As New SqlCommand("INSERT INTO OTHER_METHODS(TRANSACTION_ID,METHOD,AMOUNT) VALUES(@TRANSACTION_ID,@METHOD,@AMOUNT)", connection, transaction)
+                                    With splitCommand.Parameters
+                                        .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
+                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                        .Add("@AMOUNT", SqlDbType.Decimal).Value = element.Text
+                                    End With
+                                    splitCommand.ExecuteNonQuery()
+                                End Using
+                            End If
+                        Next
+                    Else
+
+                        Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUNT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
+                            With InsertCashCommand.Parameters
+                                .Add("@AMOUNT", SqlDbType.VarChar).Value = CDec(total_label.Text)
+                                .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
+                            End With
+                            InsertCashCommand.ExecuteNonQuery()
+
+                        End Using
+
+                        'iterating through the array
+                        For Each element As TextBox In txtBoxArray
+
+                            If element.Text > 0 Or element.Text <> "" Then    'checking the quantity in the textbox
+                                'ASSOCIATE A METHOD WITH A TEXTBOX
+                                If element Is txtCard Then Transaction_type = "CARD"
+                                If element Is txtCash Then Transaction_type = "CASH"
+                                If element Is txtEcoCash Then Transaction_type = "ECOCASH"
+                                If element Is txtForex Then Transaction_type = "FOREX"
+                                Using splitCommand As New SqlCommand("INSERT INTO OTHER_METHODS(TRANSACTION_ID,METHOD,AMOUNT) VALUES(@TRANSACTION_ID,@METHOD,@AMOUNT)", connection, transaction)
+                                    With splitCommand.Parameters
+                                        .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
+                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                        .Add("@AMOUNT", SqlDbType.Decimal).Value = element.Text
+                                    End With
+                                    splitCommand.ExecuteNonQuery()
+                                End Using
+                            End If
+                        Next
+                    End If
+                End Using
+
                 transaction.Commit()
 
             Else

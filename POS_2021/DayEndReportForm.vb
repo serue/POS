@@ -9,7 +9,9 @@ Public Class DayEndReportForm
             connection = myPermissions.getConnection
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM SALES_REPORT", connection)
+            Using command As New SqlCommand("SELECT * FROM SALES WHERE SALE_TYPE != 'MULTIPLE' AND TRANS_DATE=@TRANS_DATE ", connection)
+                'command.Parameters.Add("@TRANS_DATE", SqlDbType.Date).Value = Now.ToShortDateString
+
                 Dim adapter As New SqlDataAdapter(command)
                 Dim DataSet1 As New DataSet
                 adapter.Fill(DataSet1, "DataSet1")

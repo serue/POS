@@ -34,8 +34,8 @@ Partial Class transactions_logReport
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -112,6 +112,7 @@ Partial Class transactions_logReport
         '
         'to_date
         '
+        Me.to_date.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.to_date.Location = New System.Drawing.Point(102, 41)
         Me.to_date.MinimumSize = New System.Drawing.Size(0, 29)
         Me.to_date.Name = "to_date"
@@ -120,6 +121,7 @@ Partial Class transactions_logReport
         '
         'from_date
         '
+        Me.from_date.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.from_date.Location = New System.Drawing.Point(102, 6)
         Me.from_date.MinimumSize = New System.Drawing.Size(0, 29)
         Me.from_date.Name = "from_date"
@@ -165,9 +167,6 @@ Partial Class transactions_logReport
         Me.Panel3.Size = New System.Drawing.Size(932, 405)
         Me.Panel3.TabIndex = 2
         '
-        'BackgroundWorker1
-        '
-        '
         'ReportViewer1
         '
         Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -175,6 +174,9 @@ Partial Class transactions_logReport
         Me.ReportViewer1.Name = "ReportViewer1"
         Me.ReportViewer1.Size = New System.Drawing.Size(932, 405)
         Me.ReportViewer1.TabIndex = 0
+        '
+        'BackgroundWorker1
+        '
         '
         'transactions_logReport
         '

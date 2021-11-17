@@ -114,6 +114,10 @@ Partial Class sales_form
         Me.btn3 = New System.Windows.Forms.Button()
         Me.btn9 = New System.Windows.Forms.Button()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.AmtPanel = New System.Windows.Forms.Panel()
+        Me.FinaliseTransaction = New System.Windows.Forms.Button()
+        Me.Accept_Quantity = New System.Windows.Forms.Button()
+        Me.Cancel_Payment = New System.Windows.Forms.Button()
         Me.OtherPaymentsPanel = New System.Windows.Forms.Panel()
         Me.SplitTotal_label = New System.Windows.Forms.Label()
         Me.totLabel = New System.Windows.Forms.Label()
@@ -129,10 +133,6 @@ Partial Class sales_form
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.AmtPanel = New System.Windows.Forms.Panel()
-        Me.FinaliseTransaction = New System.Windows.Forms.Button()
-        Me.Accept_Quantity = New System.Windows.Forms.Button()
-        Me.Cancel_Payment = New System.Windows.Forms.Button()
         Me.lookupPanel = New System.Windows.Forms.Panel()
         Me.lookPan = New System.Windows.Forms.Panel()
         Me.search_grid = New System.Windows.Forms.DataGridView()
@@ -164,9 +164,9 @@ Partial Class sales_form
         Me.Panel15.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
+        Me.AmtPanel.SuspendLayout()
         Me.OtherPaymentsPanel.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.AmtPanel.SuspendLayout()
         Me.lookupPanel.SuspendLayout()
         Me.lookPan.SuspendLayout()
         CType(Me.search_grid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1380,6 +1380,61 @@ Partial Class sales_form
         Me.Panel8.Size = New System.Drawing.Size(544, 528)
         Me.Panel8.TabIndex = 7
         '
+        'AmtPanel
+        '
+        Me.AmtPanel.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.AmtPanel.BackColor = System.Drawing.SystemColors.Control
+        Me.AmtPanel.Controls.Add(Me.qty_paid_textbox)
+        Me.AmtPanel.Controls.Add(Me.View_AmtPaid_Label)
+        Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
+        Me.AmtPanel.Controls.Add(Me.Accept_Quantity)
+        Me.AmtPanel.Controls.Add(Me.quantity_textbox)
+        Me.AmtPanel.Controls.Add(Me.Cancel_Payment)
+        Me.AmtPanel.Controls.Add(Me.qty_viewLabel)
+        Me.AmtPanel.Location = New System.Drawing.Point(81, 282)
+        Me.AmtPanel.Margin = New System.Windows.Forms.Padding(2)
+        Me.AmtPanel.Name = "AmtPanel"
+        Me.AmtPanel.Size = New System.Drawing.Size(437, 109)
+        Me.AmtPanel.TabIndex = 4
+        Me.AmtPanel.Visible = False
+        '
+        'FinaliseTransaction
+        '
+        Me.FinaliseTransaction.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FinaliseTransaction.ForeColor = System.Drawing.Color.Indigo
+        Me.FinaliseTransaction.Location = New System.Drawing.Point(185, 59)
+        Me.FinaliseTransaction.Margin = New System.Windows.Forms.Padding(2)
+        Me.FinaliseTransaction.Name = "FinaliseTransaction"
+        Me.FinaliseTransaction.Size = New System.Drawing.Size(128, 35)
+        Me.FinaliseTransaction.TabIndex = 13
+        Me.FinaliseTransaction.Text = "Accept Payment"
+        Me.FinaliseTransaction.UseVisualStyleBackColor = True
+        '
+        'Accept_Quantity
+        '
+        Me.Accept_Quantity.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Accept_Quantity.ForeColor = System.Drawing.Color.Indigo
+        Me.Accept_Quantity.Location = New System.Drawing.Point(186, 59)
+        Me.Accept_Quantity.Margin = New System.Windows.Forms.Padding(2)
+        Me.Accept_Quantity.Name = "Accept_Quantity"
+        Me.Accept_Quantity.Size = New System.Drawing.Size(128, 35)
+        Me.Accept_Quantity.TabIndex = 15
+        Me.Accept_Quantity.Text = "Accept Quantity"
+        Me.Accept_Quantity.UseVisualStyleBackColor = True
+        Me.Accept_Quantity.Visible = False
+        '
+        'Cancel_Payment
+        '
+        Me.Cancel_Payment.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel_Payment.ForeColor = System.Drawing.Color.Indigo
+        Me.Cancel_Payment.Location = New System.Drawing.Point(320, 59)
+        Me.Cancel_Payment.Margin = New System.Windows.Forms.Padding(2)
+        Me.Cancel_Payment.Name = "Cancel_Payment"
+        Me.Cancel_Payment.Size = New System.Drawing.Size(65, 35)
+        Me.Cancel_Payment.TabIndex = 14
+        Me.Cancel_Payment.Text = "Cancel"
+        Me.Cancel_Payment.UseVisualStyleBackColor = True
+        '
         'OtherPaymentsPanel
         '
         Me.OtherPaymentsPanel.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -1577,61 +1632,6 @@ Partial Class sales_form
         Me.Label9.Size = New System.Drawing.Size(181, 21)
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Other Payment Methods"
-        '
-        'AmtPanel
-        '
-        Me.AmtPanel.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.AmtPanel.BackColor = System.Drawing.SystemColors.Control
-        Me.AmtPanel.Controls.Add(Me.qty_paid_textbox)
-        Me.AmtPanel.Controls.Add(Me.View_AmtPaid_Label)
-        Me.AmtPanel.Controls.Add(Me.FinaliseTransaction)
-        Me.AmtPanel.Controls.Add(Me.Accept_Quantity)
-        Me.AmtPanel.Controls.Add(Me.quantity_textbox)
-        Me.AmtPanel.Controls.Add(Me.Cancel_Payment)
-        Me.AmtPanel.Controls.Add(Me.qty_viewLabel)
-        Me.AmtPanel.Location = New System.Drawing.Point(81, 282)
-        Me.AmtPanel.Margin = New System.Windows.Forms.Padding(2)
-        Me.AmtPanel.Name = "AmtPanel"
-        Me.AmtPanel.Size = New System.Drawing.Size(437, 109)
-        Me.AmtPanel.TabIndex = 4
-        Me.AmtPanel.Visible = False
-        '
-        'FinaliseTransaction
-        '
-        Me.FinaliseTransaction.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FinaliseTransaction.ForeColor = System.Drawing.Color.Indigo
-        Me.FinaliseTransaction.Location = New System.Drawing.Point(185, 59)
-        Me.FinaliseTransaction.Margin = New System.Windows.Forms.Padding(2)
-        Me.FinaliseTransaction.Name = "FinaliseTransaction"
-        Me.FinaliseTransaction.Size = New System.Drawing.Size(128, 35)
-        Me.FinaliseTransaction.TabIndex = 13
-        Me.FinaliseTransaction.Text = "Accept Payment"
-        Me.FinaliseTransaction.UseVisualStyleBackColor = True
-        '
-        'Accept_Quantity
-        '
-        Me.Accept_Quantity.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Accept_Quantity.ForeColor = System.Drawing.Color.Indigo
-        Me.Accept_Quantity.Location = New System.Drawing.Point(186, 59)
-        Me.Accept_Quantity.Margin = New System.Windows.Forms.Padding(2)
-        Me.Accept_Quantity.Name = "Accept_Quantity"
-        Me.Accept_Quantity.Size = New System.Drawing.Size(128, 35)
-        Me.Accept_Quantity.TabIndex = 15
-        Me.Accept_Quantity.Text = "Accept Quantity"
-        Me.Accept_Quantity.UseVisualStyleBackColor = True
-        Me.Accept_Quantity.Visible = False
-        '
-        'Cancel_Payment
-        '
-        Me.Cancel_Payment.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Cancel_Payment.ForeColor = System.Drawing.Color.Indigo
-        Me.Cancel_Payment.Location = New System.Drawing.Point(320, 59)
-        Me.Cancel_Payment.Margin = New System.Windows.Forms.Padding(2)
-        Me.Cancel_Payment.Name = "Cancel_Payment"
-        Me.Cancel_Payment.Size = New System.Drawing.Size(65, 35)
-        Me.Cancel_Payment.TabIndex = 14
-        Me.Cancel_Payment.Text = "Cancel"
-        Me.Cancel_Payment.UseVisualStyleBackColor = True
         '
         'lookupPanel
         '
@@ -1907,12 +1907,12 @@ Partial Class sales_form
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
+        Me.AmtPanel.ResumeLayout(False)
+        Me.AmtPanel.PerformLayout()
         Me.OtherPaymentsPanel.ResumeLayout(False)
         Me.OtherPaymentsPanel.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        Me.AmtPanel.ResumeLayout(False)
-        Me.AmtPanel.PerformLayout()
         Me.lookupPanel.ResumeLayout(False)
         Me.lookPan.ResumeLayout(False)
         CType(Me.search_grid, System.ComponentModel.ISupportInitialize).EndInit()
