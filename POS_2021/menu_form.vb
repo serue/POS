@@ -148,7 +148,7 @@ Public Class menu_form
                     categories_label.Text = 0
                 End If
             End Using
-            Using command As New SqlCommand("SELECT TOTAL FROM TRANSACTIONS WHERE TRANS_DATE BETWEEN @FROM AND @TO", connection)
+            Using command As New SqlCommand("SELECT AMOUNT FROM TRANSACTIONS WHERE TRANS_DATE BETWEEN @FROM AND @TO", connection)
                 Dim date2 As Date = Now.ToShortDateString
                 command.Parameters.Add("@FROM", SqlDbType.DateTime).Value = date2
                 command.Parameters.Add("@TO", SqlDbType.DateTime).Value = Now.ToShortDateString

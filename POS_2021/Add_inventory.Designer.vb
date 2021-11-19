@@ -77,6 +77,8 @@ Partial Class Add_inventory
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.tax_textbox = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.list_grid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,10 +119,10 @@ Partial Class Add_inventory
         '
         Me.Panel6.Controls.Add(Me.list_grid)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(0, 325)
+        Me.Panel6.Location = New System.Drawing.Point(0, 390)
         Me.Panel6.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(814, 276)
+        Me.Panel6.Size = New System.Drawing.Size(814, 211)
         Me.Panel6.TabIndex = 30
         '
         'list_grid
@@ -160,7 +162,7 @@ Partial Class Add_inventory
         Me.list_grid.RowHeadersWidth = 8
         Me.list_grid.RowTemplate.Height = 28
         Me.list_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.list_grid.Size = New System.Drawing.Size(814, 276)
+        Me.list_grid.Size = New System.Drawing.Size(814, 211)
         Me.list_grid.TabIndex = 0
         '
         'Panel3
@@ -170,7 +172,7 @@ Partial Class Add_inventory
         Me.Panel3.Location = New System.Drawing.Point(0, 2)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(814, 323)
+        Me.Panel3.Size = New System.Drawing.Size(814, 388)
         Me.Panel3.TabIndex = 29
         '
         'Panel5
@@ -184,7 +186,7 @@ Partial Class Add_inventory
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(814, 323)
+        Me.Panel5.Size = New System.Drawing.Size(814, 388)
         Me.Panel5.TabIndex = 24
         '
         'Panel9
@@ -197,7 +199,7 @@ Partial Class Add_inventory
         Me.Panel9.Controls.Add(Me.NEW_STOCK)
         Me.Panel9.Controls.Add(Me.edit_price)
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel9.Location = New System.Drawing.Point(0, 256)
+        Me.Panel9.Location = New System.Drawing.Point(0, 315)
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(814, 39)
         Me.Panel9.TabIndex = 27
@@ -354,6 +356,8 @@ Partial Class Add_inventory
         '
         Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox3.Controls.Add(Me.Label18)
+        Me.GroupBox3.Controls.Add(Me.tax_textbox)
         Me.GroupBox3.Controls.Add(Me.Panel4)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.quantity_textbox)
@@ -371,7 +375,7 @@ Partial Class Add_inventory
         Me.GroupBox3.ForeColor = System.Drawing.Color.Maroon
         Me.GroupBox3.Location = New System.Drawing.Point(4, 164)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(800, 88)
+        Me.GroupBox3.Size = New System.Drawing.Size(800, 145)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Price and Quantity"
@@ -745,10 +749,10 @@ Partial Class Add_inventory
         Me.Panel7.Controls.Add(Me.Label14)
         Me.Panel7.Controls.Add(Me.Label13)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(0, 295)
+        Me.Panel7.Location = New System.Drawing.Point(0, 354)
         Me.Panel7.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(814, 28)
+        Me.Panel7.Size = New System.Drawing.Size(814, 34)
         Me.Panel7.TabIndex = 24
         '
         'Label12
@@ -824,6 +828,29 @@ Partial Class Add_inventory
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(814, 2)
         Me.Panel2.TabIndex = 1
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.Maroon
+        Me.Label18.Location = New System.Drawing.Point(32, 95)
+        Me.Label18.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(33, 17)
+        Me.Label18.TabIndex = 20
+        Me.Label18.Text = "TAX:"
+        '
+        'tax_textbox
+        '
+        Me.tax_textbox.Font = New System.Drawing.Font("Tahoma", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tax_textbox.ForeColor = System.Drawing.Color.Maroon
+        Me.tax_textbox.Location = New System.Drawing.Point(116, 88)
+        Me.tax_textbox.Margin = New System.Windows.Forms.Padding(2)
+        Me.tax_textbox.Name = "tax_textbox"
+        Me.tax_textbox.Size = New System.Drawing.Size(136, 30)
+        Me.tax_textbox.TabIndex = 21
+        Me.tax_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Add_inventory
         '
@@ -907,4 +934,6 @@ Partial Class Add_inventory
     Friend WithEvents Panel9 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel8 As Panel
+    Friend WithEvents Label18 As Label
+    Friend WithEvents tax_textbox As TextBox
 End Class

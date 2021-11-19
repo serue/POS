@@ -32,7 +32,7 @@ Public Class sales_form
     'FOREX RATE FOR THE DAY
     Dim DailyCurrencyRate As Decimal
     Dim currency As String = ""
-
+    Private AddedTaxValue As Decimal = 0
     'GETTING CURRENCIES FOR USE
     Dim BaseCurrency, Forex As String
 
@@ -297,34 +297,90 @@ Public Class sales_form
         End Try
 
     End Sub
-
-    Private Sub getTax()
+    Private Function getTaxes(code As String) As Decimal
         Try
-            connection = myPermissions.getConnection
-            connection.Open()
-            Using command As New SqlCommand("SELECT VAT FROM TAX", connection)
-                Dim table As New DataTable
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(table)
-                If table.Rows.Count > 0 Then
-                    TAX = table(0)(0) * total_label.Text
-                    TAX = Math.Round(TAX, 2)
-                Else
-                    MessageBox.Show("There is no VAT set for the organisation", "Retrieving VAT", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                End If
+
+            Using command As New SqlCommand("SELECT TAX FROM INVENTORY WHERE BARCODE=@BARCODE", connection)
+                command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = code
+                Using taxTable As New DataTable
+                    Using taxadapter As New SqlDataAdapter(command)
+                        taxadapter.Fill(taxTable)
+                        If taxTable.Rows.Count > 0 Then
+                            TAX = taxTable(0)(0)
+                        Else
+                            TAX = 0
+
+                        End If
+                    End Using
+                End Using
             End Using
-            connection.Close()
+
+
         Catch ex As Exception
             connection.Close()
-            MessageBox.Show(ex.Message, "The following error occured while retrieving the VAT", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(ex.Message, "An error while retrieving the tax", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
+    End Function
+
+
+    Private Function AddedTax() As Decimal
+        Try
+
+            If list_grid.Rows.Count > 0 Then
+                AddedTaxValue = 0
+                For Each row In list_grid.Rows
+                    Using command As New SqlCommand("SELECT TAX FROM INVENTORY WHERE BARCODE=@BARCODE", connection)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.cells(1).value
+                        Using taxTable As New DataTable
+                            Using taxadapter As New SqlDataAdapter(command)
+                                taxadapter.Fill(taxTable)
+                                If taxTable.Rows.Count > 0 Then
+                                    TAX = taxTable(0)(0)
+                                    If TAX > 0 Then
+                                        TAX = Math.Round(TAX * row.cells(5).value, 2)
+                                        AddedTaxValue += TAX
+                                        Return AddedTaxValue
+                                    End If
+                                End If
+                            End Using
+                        End Using
+                    End Using
+                Next
+            End If
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message, "An Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
     Private Sub RegisterTransaction()
 
         Try
             connection = myPermissions.getConnection()
             connection.Open()
             Dim transaction As SqlTransaction = connection.BeginTransaction
+
+            If list_grid.Rows.Count > 0 Then
+                AddedTaxValue = 0
+                For Each row In list_grid.Rows
+                    Using command As New SqlCommand("SELECT TAX FROM INVENTORY WHERE BARCODE=@BARCODE", connection, transaction)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.cells(1).value
+                        Using taxTable As New DataTable
+                            Using taxadapter As New SqlDataAdapter(command)
+                                taxadapter.Fill(taxTable)
+                                If taxTable.Rows.Count > 0 Then
+                                    TAX = taxTable(0)(0)
+                                    If TAX > 0 Then
+                                        TAX = Math.Round(TAX * row.cells(5).value, 2)
+                                        AddedTaxValue += TAX
+
+                                    End If
+                                End If
+                            End Using
+                        End Using
+                    End Using
+                Next
+            End If
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
@@ -337,9 +393,9 @@ Public Class sales_form
                         .Add("@TRANS_TIME", SqlDbType.VarChar).Value = Now.ToShortTimeString
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = CDec(total_label.Text)
                         .Add("@PAID", SqlDbType.Decimal).Value = qty_paid_textbox.Text
-                        .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - TAX, 2)
+                        .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - AddedTaxValue, 2)
                         .Add("@CHANGE", SqlDbType.Decimal).Value = CDec(change_label.Text)
-                        .Add("@TAX", SqlDbType.Decimal).Value = TAX
+                        .Add("@TAX", SqlDbType.Decimal).Value = AddedTaxValue
                         .Add("@PAYMENT", SqlDbType.VarChar).Value = Transaction_type
                         .Add("@CASHIER", SqlDbType.VarChar).Value = username
                         .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
@@ -393,8 +449,30 @@ Public Class sales_form
                     Dim updateQuantity As Integer
                     Dim updateProfit As Decimal
 
+
+                    Using command As New SqlCommand("SELECT TAX FROM INVENTORY WHERE BARCODE=@BARCODE", connection, transaction)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                        Using taxTable As New DataTable
+                            Using taxadapter As New SqlDataAdapter(command)
+                                taxadapter.Fill(taxTable)
+                                If taxTable.Rows.Count > 0 Then
+                                    TAX = taxTable(0)(0)
+                                Else
+                                    TAX = 0
+
+                                End If
+                            End Using
+                        End Using
+                    End Using
+
+                    If TAX > 0 Then
+                        TAX = TAX * row.Cells(5).Value
+                    Else
+                        TAX = 0
+                    End If
+
                     'SELECT SALE FROM TH
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SALES WHERE BARCODE=@BARCODE AND TRANS_DATE=@trans_date AND SALE_TYPE=@sale", connection, transaction)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT,TAX FROM SALES WHERE BARCODE=@BARCODE AND TRANS_DATE=@trans_date AND SALE_TYPE=@sale", connection, transaction)
 
                         With saleSelectCommand.Parameters
 
@@ -412,6 +490,7 @@ Public Class sales_form
                         If saleSelectTable.Rows.Count > 0 Then
 
                             'set quantity and profit
+                            Dim localTax = saleSelectTable(0)(3) + TAX
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
@@ -419,7 +498,7 @@ Public Class sales_form
                             updateProfit = updateProfit + profit
 
                             'updating a sale in db SALE_TYPE
-                            Using saleUpdateCommand As New SqlCommand("UPDATE SALES SET QUANTITY=@quantity,PROFIT=@profit,AMOUNT=@AMOUNT WHERE BARCODE=@product_code and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
+                            Using saleUpdateCommand As New SqlCommand("UPDATE SALES SET QUANTITY=@quantity,PROFIT=@profit,AMOUNT=@AMOUNT,TAX=@TAX WHERE BARCODE=@product_code and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
 
                                 With saleUpdateCommand.Parameters
                                     .Add("@quantity", SqlDbType.Decimal).Value = updateQuantity
@@ -427,6 +506,7 @@ Public Class sales_form
                                     .Add("@product_code", SqlDbType.VarChar).Value = row.Cells(1).Value
                                     .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
+                                    .Add("@TAX", SqlDbType.Decimal).Value = localTax
                                     .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
@@ -434,7 +514,7 @@ Public Class sales_form
                         Else
                             'registering a sale into the db
 
-                            Using salecommand As New SqlCommand("INSERT INTO SALES(TRANS_DATE,BARCODE,QUANTITY,AMOUNT,PROFIT,SALE_TYPE) Values(@TRANS_DATE,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@SALE_TYPE)", connection, transaction)
+                            Using salecommand As New SqlCommand("INSERT INTO SALES(TRANS_DATE,BARCODE,QUANTITY,AMOUNT,PROFIT,SALE_TYPE,TAX) Values(@TRANS_DATE,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@SALE_TYPE,@TAX)", connection, transaction)
 
                                 With salecommand.Parameters
                                     .Add("@TRANS_DATE", SqlDbType.Date).Value = Now.ToShortDateString
@@ -443,6 +523,7 @@ Public Class sales_form
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
                                     .Add("@SALE_TYPE", SqlDbType.VarChar).Value = Transaction_type
+                                    .Add("@TAX", SqlDbType.Decimal).Value = TAX
                                 End With
                                 salecommand.ExecuteNonQuery()
                             End Using
@@ -450,7 +531,7 @@ Public Class sales_form
                     End Using
                     month = MonthName(Now.Date.Month(), False)
 
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_DATE AND SALE_YEAR=@SALE_YEAR AND METHOD=@METHOD", connection, transaction)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT,TAX FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_DATE AND SALE_YEAR=@SALE_YEAR AND METHOD=@METHOD", connection, transaction)
                         With saleSelectCommand.Parameters
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                             .Add("@TRANS_DATE", SqlDbType.VarChar).Value = month
@@ -463,13 +544,14 @@ Public Class sales_form
                         saleSelectAdapter.Fill(saleSelectTable)
                         If saleSelectTable.Rows.Count > 0 Then
                             'set quantity and profit
+                            Dim localTax = saleSelectTable(0)(3) + TAX
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
                             updateQuantity = updateQuantity + row.Cells(3).Value
                             updateProfit = updateProfit + profit
                             'updating a sale in db
-                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT,AMOUNT=@AMOUNT WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANSDATE AND SALE_YEAR=@SALE_YEAR AND METHOD=@METHOD", connection, transaction)
+                            Using saleUpdateCommand As New SqlCommand("UPDATE SUMMARY_SALES SET QUANTITY=@QUANTITY,PROFIT=@PROFIT,AMOUNT=@AMOUNT,TAX=@TAX WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANSDATE AND SALE_YEAR=@SALE_YEAR AND METHOD=@METHOD", connection, transaction)
 
                                 With saleUpdateCommand.Parameters
                                     .Add("@QUANTITY", SqlDbType.Decimal).Value = updateQuantity
@@ -479,12 +561,13 @@ Public Class sales_form
                                     .Add("@TRANSDATE", SqlDbType.VarChar).Value = month
                                     .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                    .Add("@TAX", SqlDbType.Decimal).Value = localTax
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
                             End Using
                         Else
                             'registering a summar sale into the db
-                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,SALE_YEAR,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD) Values(@SALE_MONTH,@SALE_YEAR,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD)", connection, transaction)
+                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,SALE_YEAR,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD,TAX) Values(@SALE_MONTH,@SALE_YEAR,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD,@TAX)", connection, transaction)
                                 With salecommand.Parameters
                                     .Add("@SALE_MONTH", SqlDbType.VarChar).Value = month
                                     .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
@@ -495,6 +578,7 @@ Public Class sales_form
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                    .Add("@TAX", SqlDbType.Decimal).Value = TAX
                                 End With
                                 salecommand.ExecuteNonQuery()
                             End Using
@@ -706,7 +790,7 @@ Public Class sales_form
                 If change > 0 Then
                     change_label.Text = change
                 End If
-                getTax()
+
                 FindMaxID()
                 RegisterSplitTransaction()
                 OtherPaymentsPanel.Visible = False
@@ -1306,7 +1390,7 @@ Public Class sales_form
                     change_label.Text = change
                 End If
                 If isMultiple = False Then
-                    getTax()
+
                     FindMaxID()
                     RegisterTransaction()
                     AmtPanel.Visible = False
@@ -1684,7 +1768,31 @@ Public Class sales_form
         Try
             connection = myPermissions.getConnection()
             connection.Open()
+
             Dim transaction As SqlTransaction = connection.BeginTransaction
+
+            If list_grid.Rows.Count > 0 Then
+                AddedTaxValue = 0
+                For Each row In list_grid.Rows
+                    Using command As New SqlCommand("SELECT TAX FROM INVENTORY WHERE BARCODE=@BARCODE", connection, transaction)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.cells(1).value
+                        Using taxTable As New DataTable
+                            Using taxadapter As New SqlDataAdapter(command)
+                                taxadapter.Fill(taxTable)
+                                If taxTable.Rows.Count > 0 Then
+                                    TAX = taxTable(0)(0)
+                                    If TAX > 0 Then
+                                        TAX = Math.Round(TAX * row.cells(5).value, 2)
+                                        AddedTaxValue += TAX
+
+                                    End If
+                                End If
+                            End Using
+                        End Using
+                    End Using
+                Next
+            End If
+
             If list_grid.Rows.Count >= 0 Then      ' checking if the datagridview is empty
                 ' Registering the transaction to the database
 
@@ -1697,9 +1805,9 @@ Public Class sales_form
                         .Add("@TRANS_TIME", SqlDbType.VarChar).Value = Now.ToShortTimeString
                         .Add("@AMOUNT", SqlDbType.Decimal).Value = CDec(total_label.Text)
                         .Add("@PAID", SqlDbType.Decimal).Value = SplitTotal_label.Text
-                        .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - TAX, 2)
+                        .Add("@TOTAL", SqlDbType.Decimal).Value = Math.Round(CDec(total_label.Text) - AddedTaxValue, 2)
                         .Add("@CHANGE", SqlDbType.Decimal).Value = CDec(change_label.Text)
-                        .Add("@TAX", SqlDbType.Decimal).Value = TAX
+                        .Add("@TAX", SqlDbType.Decimal).Value = AddedTaxValue
                         .Add("@PAYMENT", SqlDbType.VarChar).Value = Transaction_type
                         .Add("@CASHIER", SqlDbType.VarChar).Value = username
                         .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
@@ -1754,8 +1862,29 @@ Public Class sales_form
                     Dim updateQuantity As Integer
                     Dim updateProfit As Decimal
 
+                    Using command As New SqlCommand("SELECT TAX FROM INVENTORY WHERE BARCODE=@BARCODE", connection, transaction)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                        Using taxTable As New DataTable
+                            Using taxadapter As New SqlDataAdapter(command)
+                                taxadapter.Fill(taxTable)
+                                If taxTable.Rows.Count > 0 Then
+                                    TAX = taxTable(0)(0)
+                                Else
+                                    TAX = 0
+
+                                End If
+                            End Using
+                        End Using
+                    End Using
+
+                    If TAX > 0 Then
+                        TAX = TAX * row.Cells(5).Value
+                    Else
+                        TAX = 0
+                    End If
+
                     'SELECT SALE FROM TH
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SALES WHERE BARCODE=@BARCODE and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT,TAX FROM SALES WHERE BARCODE=@BARCODE and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
 
                         With saleSelectCommand.Parameters
 
@@ -1773,6 +1902,7 @@ Public Class sales_form
                         If saleSelectTable.Rows.Count > 0 Then
 
                             'set quantity and profit
+                            Dim LocalTax = saleSelectTable(0)(3) + TAX
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
@@ -1780,7 +1910,7 @@ Public Class sales_form
                             updateProfit = updateProfit + profit
 
                             'updating a sale in db SALE_TYPE
-                            Using saleUpdateCommand As New SqlCommand("UPDATE SALES SET QUANTITY=@quantity,PROFIT=@profit,AMOUNT=@AMOUNT WHERE BARCODE=@product_code and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
+                            Using saleUpdateCommand As New SqlCommand("UPDATE SALES SET QUANTITY=@quantity,PROFIT=@profit,AMOUNT=@AMOUNT,TAX=@TAX WHERE BARCODE=@product_code and TRANS_DATE=@trans_date and SALE_TYPE=@sale", connection, transaction)
 
                                 With saleUpdateCommand.Parameters
                                     .Add("@quantity", SqlDbType.Decimal).Value = updateQuantity
@@ -1789,13 +1919,14 @@ Public Class sales_form
                                     .Add("@trans_date", SqlDbType.Date).Value = Now.ToShortDateString
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = UpAmount + CDec(total_label.Text)
                                     .Add("@sale", SqlDbType.VarChar).Value = Transaction_type
+                                    .Add("@TAX", SqlDbType.Decimal).Value = LocalTax
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
                             End Using
                         Else
                             'registering a sale into the db
 
-                            Using salecommand As New SqlCommand("INSERT INTO SALES(TRANS_DATE,BARCODE,QUANTITY,AMOUNT,PROFIT,SALE_TYPE) Values(@TRANS_DATE,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@SALE_TYPE)", connection, transaction)
+                            Using salecommand As New SqlCommand("INSERT INTO SALES(TRANS_DATE,BARCODE,QUANTITY,AMOUNT,PROFIT,SALE_TYPE,TAX) Values(@TRANS_DATE,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@SALE_TYPE,@TAX)", connection, transaction)
 
                                 With salecommand.Parameters
                                     .Add("@TRANS_DATE", SqlDbType.Date).Value = Now.ToShortDateString
@@ -1804,6 +1935,7 @@ Public Class sales_form
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
                                     .Add("@SALE_TYPE", SqlDbType.VarChar).Value = Transaction_type
+                                    .Add("@TAX", SqlDbType.Decimal).Value = TAX
                                 End With
                                 salecommand.ExecuteNonQuery()
                             End Using
@@ -1811,7 +1943,7 @@ Public Class sales_form
                     End Using
                     month = MonthName(Now.Date.Month(), False)
 
-                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_TIME AND SALE_YEAR=@TRANS_DATE AND METHOD=@METHOD", connection, transaction)
+                    Using saleSelectCommand As New SqlCommand("SELECT QUANTITY,PROFIT,AMOUNT,TAX FROM SUMMARY_SALES WHERE BARCODE=@BARCODE AND SALE_MONTH=@TRANS_TIME AND SALE_YEAR=@TRANS_DATE AND METHOD=@METHOD", connection, transaction)
                         With saleSelectCommand.Parameters
                             .Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
                             .Add("@TRANS_TIME", SqlDbType.VarChar).Value = month
@@ -1824,6 +1956,7 @@ Public Class sales_form
                         saleSelectAdapter.Fill(saleSelectTable)
                         If saleSelectTable.Rows.Count > 0 Then
                             'set quantity and profit
+                            Dim LocalTax = saleSelectTable(0)(3) + TAX
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
@@ -1840,13 +1973,14 @@ Public Class sales_form
                                     .Add("@TRANSDATE", SqlDbType.VarChar).Value = month
                                     .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                    .Add("@TAX", SqlDbType.Decimal).Value = LocalTax
                                     'to display use date January and dateNow 
                                 End With
                                 saleUpdateCommand.ExecuteNonQuery()
                             End Using
                         Else
                             'registering a summar sale into the db
-                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,SALE_YEAR,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD) Values(@SALE_MONTH,@SALE_YEAR,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD)", connection, transaction)
+                            Using salecommand As New SqlCommand("INSERT INTO SUMMARY_SALES(SALE_MONTH,SALE_YEAR,BARCODE,QUANTITY,AMOUNT,PROFIT,METHOD,TAX) Values(@SALE_MONTH,@SALE_YEAR,@BARCODE,@QUANTITY,@AMOUNT,@PROFIT,@METHOD,@TAX)", connection, transaction)
                                 With salecommand.Parameters
                                     .Add("@SALE_MONTH", SqlDbType.VarChar).Value = month
                                     .Add("@SALE_YEAR", SqlDbType.Int).Value = Now.Year
@@ -1857,6 +1991,7 @@ Public Class sales_form
                                     .Add("@AMOUNT", SqlDbType.Decimal).Value = row.Cells(5).Value
                                     .Add("@PROFIT", SqlDbType.Decimal).Value = profit
                                     .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                    .Add("@TAX", SqlDbType.Decimal).Value = TAX
                                 End With
                                 salecommand.ExecuteNonQuery()
                             End Using

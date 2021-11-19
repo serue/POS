@@ -177,6 +177,7 @@ Public Class Add_inventory
                     .Add("@EXTRA1", SqlDbType.VarChar).Value = ""
                     .Add("@EXTRA2", SqlDbType.VarChar).Value = ""
                     .Add("@EXTRA3", SqlDbType.VarChar).Value = ""
+                    .Add("@TAX", SqlDbType.Decimal).Value = tax_textbox.Text
 
                 End With
                 command.ExecuteNonQuery()
@@ -234,7 +235,7 @@ Public Class Add_inventory
                 Using command As New SqlCommand()
                     command.Connection = connection
 
-                    command.CommandText = "UPDATE_INVENTORY"
+                    command.CommandText = "UPDATE_INVENTORYS"
                     command.CommandType = CommandType.StoredProcedure
                     With command.Parameters
                         .Add("@ID", SqlDbType.Int).Value = PRODUCT_ID_LABEL.Text
@@ -250,6 +251,7 @@ Public Class Add_inventory
                         .Add("@COST", SqlDbType.Decimal).Value = cost_textbox.Text
                         .Add("@PRICE", SqlDbType.Decimal).Value = selling_textbox.Text
                         .Add("@MARGIN", SqlDbType.Decimal).Value = margin_textbox.Text
+                        .Add("@TAX", SqlDbType.Decimal).Value = tax_textbox.Text
 
 
                     End With
