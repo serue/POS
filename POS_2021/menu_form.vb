@@ -707,4 +707,12 @@ Public Class menu_form
     Private Sub calculator_Click(sender As Object, e As EventArgs) Handles calculator_button.Click
         calculator.ShowDialog()
     End Sub
+
+    Private Sub multi_button_Click(sender As Object, e As EventArgs) Handles multi_button.Click
+        checkPermissions(username, stock_reports.Name, New multi_payment_report)
+    End Sub
+
+    Private Sub multi_cashup_Click(sender As Object, e As EventArgs) Handles multi_cashup.Click
+        checkPermissions(username, stock_reports.Name, New further_cashup)
+    End Sub
 End Class

@@ -8,25 +8,7 @@ Public Class StockReportForm
         category_combo.Enabled = False
         'BackgroundWorker1.RunWorkerAsync()
         'Me.ReportViewer1.RefreshReport()
-        Try
-            connection = myPermissions.getConnection
-            connection.Open()
-            Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
-                Dim adapter As New SqlDataAdapter(command)
-                Dim DataSet1 As New DataSet
-                adapter.Fill(DataSet1, "DataSet1")
-                Me.ReportViewer1.LocalReport.ReportPath = "Stock_Report.rdlc"
-                Me.ReportViewer1.LocalReport.DataSources.Clear()
-                Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
-                Me.ReportViewer1.RefreshReport()
-            End Using
-            connection.Close()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Operation Error")
-            connection.Close()
-
-        End Try
+        ReportLoading()
     End Sub
 
     Private Sub category_check_CheckedChanged(sender As Object, e As EventArgs) Handles category_check.CheckedChanged
@@ -39,37 +21,52 @@ Public Class StockReportForm
     Delegate Sub LoadRpt(ByVal [crv] As Object)
     Delegate Sub SetPanelVisible(ByVal [panel] As Panel)
 
-    'Private Sub ReportLoading(ByVal [crv] As Object)                     'use the same delegate LoadRpt 
-    '    Try
-    '        connection = myPermissions.getConnection
-    '        If connection.State = ConnectionState.Open Then
-    '            connection.Close()
-    '        End If
-    '        connection.Open()
-    '        Dim CoTable As New DataTable
-    '        Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
-    '            Dim adapter As New SqlDataAdapter(command)
-    '            adapter.Fill(CoTable)
-    '        End Using
-    '        Dim rep As New StockReport
-    '        rep.Database.Tables("INVENTORY").SetDataSource(CoTable)
+    Private Sub ReportLoading()                     'use the same delegate LoadRpt 
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Dim CoTable As New DataTable
+            If category_check.Checked And category_combo.Text = "" Then
+                Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
+                    Dim adapter As New SqlDataAdapter(command)
+                    Dim DataSet1 As New DataSet
+                    adapter.Fill(DataSet1, "DataSet1")
+                    Me.ReportViewer1.LocalReport.ReportPath = "Stock_Report.rdlc"
+                    Me.ReportViewer1.LocalReport.DataSources.Clear()
+                    Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
+                    Me.ReportViewer1.RefreshReport()
+                End Using
+            ElseIf category_check.Checked = False Then
+                Using command As New SqlCommand("SELECT * FROM INVENTORY", connection)
+                    Dim adapter As New SqlDataAdapter(command)
+                    Dim DataSet1 As New DataSet
+                    adapter.Fill(DataSet1, "DataSet1")
+                    Me.ReportViewer1.LocalReport.ReportPath = "Stock_Report.rdlc"
+                    Me.ReportViewer1.LocalReport.DataSources.Clear()
+                    Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
+                    Me.ReportViewer1.RefreshReport()
+                End Using
 
-    '        If [crv].InvokeRequired Then
-    '            Dim myDelegate As New LoadRpt(AddressOf ReportLoading)
-    '            Me.Invoke(myDelegate, New Object() {crv})
+            Else
+                Using command As New SqlCommand("SELECT * FROM INVENTORY WHERE CATEGORY=@CATEGORY", connection)
+                    command.Parameters.Add("@CATEGORY", SqlDbType.VarChar).Value = category_combo.Text
+                    Dim adapter As New SqlDataAdapter(command)
+                    Dim DataSet1 As New DataSet
+                    adapter.Fill(DataSet1, "DataSet1")
+                    Me.ReportViewer1.LocalReport.ReportPath = "Stock_Report.rdlc"
+                    Me.ReportViewer1.LocalReport.DataSources.Clear()
+                    Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
+                    Me.ReportViewer1.RefreshReport()
+                End Using
+            End If
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Operation Error")
+            connection.Close()
 
-    '        Else
-    '            [crv].ReportSource = rep
-    '        End If
-    '        connection.Close()
+        End Try
 
-
-    '    Catch ex As Exception
-    '        MessageBox.Show(ex.Message, "Operation Error")
-    '        MsgBox(ex.StackTrace)
-    '        connection.Close()
-    '    End Try
-    'End Sub
+    End Sub
     Private Sub ShowPanel(ByVal [panel] As Panel)
         If [panel].InvokeRequired Then
             Dim myDelegate As New SetPanelVisible(AddressOf ShowPanel)
@@ -89,4 +86,35 @@ Public Class StockReportForm
             'ReportLoading([CrystalReportViewer1])
         End If
     End Sub
+
+    Private Sub category_combo_Click(sender As Object, e As EventArgs) Handles category_combo.Click
+        Try
+            connection = myPermissions.getConnection
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            connection.Open()
+            Using command As New SqlCommand("SELECT CATEGORY FROM CATEGORY", connection)
+                Using adapter As New SqlDataAdapter(command)
+                    Using table As New DataTable
+                        adapter.Fill(table)
+                        category_combo.Items.Clear()
+
+                        For Each item In table.Rows
+                            category_combo.Items.Add(item(0))
+                        Next
+                    End Using
+                End Using
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An Error occurred", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub show_report_Click(sender As Object, e As EventArgs) Handles show_report.Click
+        ReportLoading()
+    End Sub
+
 End Class

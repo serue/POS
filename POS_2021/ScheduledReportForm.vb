@@ -57,7 +57,7 @@ Public Class ScheduledReportForm
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM SALES WHERE TRANS_DATE BETWEEN @FROM AND @TO AND (SALE_TYPE=@CASH OR SALE_TYPE=@ECOCASH OR SALE_TYPE=@CARD OR SALE_TYPE=@FOREX)", connection)
+            Using command As New SqlCommand("SELECT * FROM SALES_REPORT WHERE TRANS_DATE BETWEEN @FROM AND @TO AND (SALE_TYPE=@CASH OR SALE_TYPE=@ECOCASH OR SALE_TYPE=@CARD OR SALE_TYPE=@FOREX)", connection)
                 With command.Parameters
                     .Add("@FROM", SqlDbType.DateTime).Value = date_from.Text
                     .Add("@TO", SqlDbType.DateTime).Value = date_to.Text

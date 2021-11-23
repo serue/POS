@@ -91,9 +91,9 @@ Partial Class loader
         Me.Label2.ForeColor = System.Drawing.Color.SlateBlue
         Me.Label2.Location = New System.Drawing.Point(118, 144)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(117, 30)
+        Me.Label2.Size = New System.Drawing.Size(121, 30)
         Me.Label2.TabIndex = 6
-        Me.Label2.Text = "version 1.0.1"
+        Me.Label2.Text = "version 1.0.2"
         '
         'Label3
         '

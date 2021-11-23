@@ -88,4 +88,29 @@ Public Class returns
             e.Cancel = True
         End If
     End Sub
+
+    Private Sub TRANSACTION_ID_Click(sender As Object, e As EventArgs) Handles TRANSACTION_ID.Click
+        Try
+            connection = myPermissions.getConnection
+            connection.Open()
+            Using command As New SqlCommand("SELECT TRANSACTION_ID FROM TRANSACTIONS", connection)
+                Using ADAPTER As New SqlDataAdapter(command)
+                    Using table As New DataTable
+                        ADAPTER.Fill(table)
+                        TRANSACTION_ID.Items.Clear()
+
+                        If table.Rows.Count > 0 Then
+                            For Each row In table.Rows
+                                TRANSACTION_ID.Items.Add(row(0))
+                            Next
+                        End If
+                    End Using
+                End Using
+            End Using
+            connection.Close()
+        Catch ex As Exception
+            connection.Close()
+            MessageBox.Show(ex.Message, "An Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

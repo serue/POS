@@ -334,7 +334,7 @@ Partial Class calculator
         Me.times.Name = "times"
         Me.times.Size = New System.Drawing.Size(109, 106)
         Me.times.TabIndex = 3
-        Me.times.Text = "x"
+        Me.times.Text = "*"
         Me.times.UseVisualStyleBackColor = True
         '
         'nine

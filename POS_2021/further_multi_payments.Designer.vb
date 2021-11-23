@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class ScheduledReportForm
+Partial Class further_multi_payments
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -37,8 +37,6 @@ Partial Class ScheduledReportForm
         Me.date_to = New MetroFramework.Controls.MetroDateTime()
         Me.date_from = New MetroFramework.Controls.MetroDateTime()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel2.SuspendLayout()
@@ -48,11 +46,11 @@ Partial Class ScheduledReportForm
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.OrangeRed
+        Me.Panel1.BackColor = System.Drawing.Color.Brown
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1047, 3)
+        Me.Panel1.Size = New System.Drawing.Size(1057, 3)
         Me.Panel1.TabIndex = 0
         '
         'Panel2
@@ -69,8 +67,8 @@ Partial Class ScheduledReportForm
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1047, 81)
-        Me.Panel2.TabIndex = 1
+        Me.Panel2.Size = New System.Drawing.Size(1057, 81)
+        Me.Panel2.TabIndex = 2
         '
         'Label1
         '
@@ -235,11 +233,8 @@ Partial Class ScheduledReportForm
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel3.Location = New System.Drawing.Point(0, 79)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1047, 2)
+        Me.Panel3.Size = New System.Drawing.Size(1057, 2)
         Me.Panel3.TabIndex = 0
-        '
-        'BackgroundWorker1
-        '
         '
         'Panel4
         '
@@ -247,29 +242,29 @@ Partial Class ScheduledReportForm
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 84)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1047, 365)
-        Me.Panel4.TabIndex = 2
+        Me.Panel4.Size = New System.Drawing.Size(1057, 366)
+        Me.Panel4.TabIndex = 3
         '
         'ReportViewer1
         '
         Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(1047, 365)
-        Me.ReportViewer1.TabIndex = 0
+        Me.ReportViewer1.Size = New System.Drawing.Size(1057, 366)
+        Me.ReportViewer1.TabIndex = 1
         '
-        'ScheduledReportForm
+        'further_multi_payments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1047, 449)
+        Me.ClientSize = New System.Drawing.Size(1057, 450)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Name = "ScheduledReportForm"
+        Me.Name = "further_multi_payments"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Scheduled Sales Reports"
+        Me.Text = "further_multi_payments"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -282,21 +277,19 @@ Partial Class ScheduledReportForm
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents date_from As MetroFramework.Controls.MetroDateTime
-    Friend WithEvents MaterialLabel2 As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents MaterialLabel1 As MaterialSkin.Controls.MaterialLabel
-    Friend WithEvents show_report As MaterialSkin.Controls.MaterialRaisedButton
-    Friend WithEvents date_to As MetroFramework.Controls.MetroDateTime
-    Friend WithEvents cash_check As MaterialSkin.Controls.MaterialCheckBox
     Friend WithEvents Label1 As Label
     Friend WithEvents filter_toggler As MetroFramework.Controls.MetroToggle
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents forex_check As MaterialSkin.Controls.MaterialCheckBox
     Friend WithEvents ecocash_check As MaterialSkin.Controls.MaterialCheckBox
     Friend WithEvents card_check As MaterialSkin.Controls.MaterialCheckBox
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents cash_check As MaterialSkin.Controls.MaterialCheckBox
+    Friend WithEvents MaterialLabel2 As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents MaterialLabel1 As MaterialSkin.Controls.MaterialLabel
+    Friend WithEvents show_report As MaterialSkin.Controls.MaterialRaisedButton
+    Friend WithEvents date_to As MetroFramework.Controls.MetroDateTime
+    Friend WithEvents date_from As MetroFramework.Controls.MetroDateTime
+    Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

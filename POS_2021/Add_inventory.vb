@@ -79,7 +79,7 @@ Public Class Add_inventory
         If cost_textbox.Text <> "" Then
             Try
                 Dim number As Decimal = cost_textbox.Text
-                cost_textbox.Text = number.ToString(" ###,###,###.00")
+                cost_textbox.Text = Math.Round(number, 2)
             Catch ex As Exception
                 MessageBox.Show("Cost Price is empty or in wrong format", "Cost Price", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End Try
@@ -140,7 +140,7 @@ Public Class Add_inventory
         If selling_textbox.Text <> "" Then
             Try
                 Dim number As Decimal = selling_textbox.Text
-                selling_textbox.Text = number.ToString(" ###,###,###.00")
+                selling_textbox.Text = Math.Round(number, 2)
             Catch ex As Exception
                 MessageBox.Show("Selling Price is empty or in wrong format", "Selling Price ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End Try
@@ -148,6 +148,13 @@ Public Class Add_inventory
     End Sub
 
     Private Sub save_item_Click(sender As Object, e As EventArgs) Handles save_item.Click
+        Dim tx As Decimal = 0
+
+        If tax_textbox.Text = "" Then
+            tx = 0
+        Else
+            tx = tax_textbox.Text
+        End If
         Try
             connection.Open()
             Using command As New SqlCommand()
@@ -177,7 +184,7 @@ Public Class Add_inventory
                     .Add("@EXTRA1", SqlDbType.VarChar).Value = ""
                     .Add("@EXTRA2", SqlDbType.VarChar).Value = ""
                     .Add("@EXTRA3", SqlDbType.VarChar).Value = ""
-                    .Add("@TAX", SqlDbType.Decimal).Value = tax_textbox.Text
+                    .Add("@TAX", SqlDbType.Decimal).Value = tx
 
                 End With
                 command.ExecuteNonQuery()
@@ -194,6 +201,8 @@ Public Class Add_inventory
 
     Private Sub edit_price_Click(sender As Object, e As EventArgs) Handles edit_price.Click
         If barcode_textbox.Text <> "" Or barcode_textbox.Text IsNot Nothing Then
+
+
 
             Try
                 connection.Open()
@@ -228,6 +237,13 @@ Public Class Add_inventory
     End Sub
 
     Private Sub edit_details_Click(sender As Object, e As EventArgs) Handles edit_details.Click
+        Dim tx As Decimal = 0
+
+        If tax_textbox.Text = "" Then
+            tx = 0
+        Else
+            tx = tax_textbox.Text
+        End If
         If PRODUCT_ID_LABEL.Text <> "" Or PRODUCT_ID_LABEL.Text IsNot Nothing Then
 
             Try
@@ -251,7 +267,7 @@ Public Class Add_inventory
                         .Add("@COST", SqlDbType.Decimal).Value = cost_textbox.Text
                         .Add("@PRICE", SqlDbType.Decimal).Value = selling_textbox.Text
                         .Add("@MARGIN", SqlDbType.Decimal).Value = margin_textbox.Text
-                        .Add("@TAX", SqlDbType.Decimal).Value = tax_textbox.Text
+                        .Add("@TAX", SqlDbType.Decimal).Value = tx
 
 
                     End With

@@ -84,6 +84,8 @@ Partial Class menu_form
         Me.edit_settings = New FontAwesome.Sharp.IconButton()
         Me.logout_button = New FontAwesome.Sharp.IconButton()
         Me.reports_panel = New System.Windows.Forms.Panel()
+        Me.multi_cashup = New FontAwesome.Sharp.IconButton()
+        Me.multi_button = New FontAwesome.Sharp.IconButton()
         Me.stock_reports = New FontAwesome.Sharp.IconButton()
         Me.scheduled_reports = New FontAwesome.Sharp.IconButton()
         Me.profit_reports = New FontAwesome.Sharp.IconButton()
@@ -440,7 +442,7 @@ Partial Class menu_form
         Me.users_panel.Controls.Add(Me.register_users)
         Me.users_panel.Controls.Add(Me.IconButton4)
         Me.users_panel.Dock = System.Windows.Forms.DockStyle.Top
-        Me.users_panel.Location = New System.Drawing.Point(0, 183)
+        Me.users_panel.Location = New System.Drawing.Point(0, 347)
         Me.users_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.users_panel.MaximumSize = New System.Drawing.Size(197, 142)
         Me.users_panel.MinimumSize = New System.Drawing.Size(197, 45)
@@ -785,10 +787,10 @@ Partial Class menu_form
         '
         Me.Panel3.Controls.Add(Me.calculator_button)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 273)
+        Me.Panel3.Location = New System.Drawing.Point(0, 437)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(213, 45)
+        Me.Panel3.Size = New System.Drawing.Size(196, 45)
         Me.Panel3.TabIndex = 11
         '
         'calculator_button
@@ -808,7 +810,7 @@ Partial Class menu_form
         Me.calculator_button.Margin = New System.Windows.Forms.Padding(2)
         Me.calculator_button.Name = "calculator_button"
         Me.calculator_button.Rotation = 0R
-        Me.calculator_button.Size = New System.Drawing.Size(213, 45)
+        Me.calculator_button.Size = New System.Drawing.Size(196, 45)
         Me.calculator_button.TabIndex = 2
         Me.calculator_button.Text = "Calculator"
         Me.calculator_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -818,10 +820,10 @@ Partial Class menu_form
         '
         Me.Panel2.Controls.Add(Me.Category_button)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 228)
+        Me.Panel2.Location = New System.Drawing.Point(0, 392)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(213, 45)
+        Me.Panel2.Size = New System.Drawing.Size(196, 45)
         Me.Panel2.TabIndex = 1
         '
         'Category_button
@@ -841,7 +843,7 @@ Partial Class menu_form
         Me.Category_button.Margin = New System.Windows.Forms.Padding(2)
         Me.Category_button.Name = "Category_button"
         Me.Category_button.Rotation = 0R
-        Me.Category_button.Size = New System.Drawing.Size(213, 45)
+        Me.Category_button.Size = New System.Drawing.Size(196, 45)
         Me.Category_button.TabIndex = 2
         Me.Category_button.Text = "Categories"
         Me.Category_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -853,7 +855,7 @@ Partial Class menu_form
         Me.database_panel.Controls.Add(Me.backup_database)
         Me.database_panel.Controls.Add(Me.database_button)
         Me.database_panel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.database_panel.Location = New System.Drawing.Point(0, 460)
+        Me.database_panel.Location = New System.Drawing.Point(0, 482)
         Me.database_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.database_panel.MaximumSize = New System.Drawing.Size(213, 110)
         Me.database_panel.MinimumSize = New System.Drawing.Size(213, 45)
@@ -941,10 +943,10 @@ Partial Class menu_form
         '
         Me.Panel12.Controls.Add(Me.give_permissions)
         Me.Panel12.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel12.Location = New System.Drawing.Point(0, 505)
+        Me.Panel12.Location = New System.Drawing.Point(0, 527)
         Me.Panel12.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(213, 45)
+        Me.Panel12.Size = New System.Drawing.Size(196, 45)
         Me.Panel12.TabIndex = 1
         '
         'give_permissions
@@ -964,7 +966,7 @@ Partial Class menu_form
         Me.give_permissions.Margin = New System.Windows.Forms.Padding(2)
         Me.give_permissions.Name = "give_permissions"
         Me.give_permissions.Rotation = 0R
-        Me.give_permissions.Size = New System.Drawing.Size(213, 45)
+        Me.give_permissions.Size = New System.Drawing.Size(196, 45)
         Me.give_permissions.TabIndex = 1
         Me.give_permissions.Text = "Permissions"
         Me.give_permissions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -975,10 +977,10 @@ Partial Class menu_form
         Me.Panel7.Controls.Add(Me.edit_settings)
         Me.Panel7.Controls.Add(Me.logout_button)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(0, 550)
+        Me.Panel7.Location = New System.Drawing.Point(0, 572)
         Me.Panel7.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(213, 45)
+        Me.Panel7.Size = New System.Drawing.Size(196, 45)
         Me.Panel7.TabIndex = 1
         '
         'edit_settings
@@ -997,7 +999,7 @@ Partial Class menu_form
         Me.edit_settings.Margin = New System.Windows.Forms.Padding(2)
         Me.edit_settings.Name = "edit_settings"
         Me.edit_settings.Rotation = 0R
-        Me.edit_settings.Size = New System.Drawing.Size(108, 45)
+        Me.edit_settings.Size = New System.Drawing.Size(91, 45)
         Me.edit_settings.TabIndex = 2
         Me.edit_settings.Text = "Settings"
         Me.edit_settings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -1029,6 +1031,8 @@ Partial Class menu_form
         'reports_panel
         '
         Me.reports_panel.BackColor = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.reports_panel.Controls.Add(Me.multi_cashup)
+        Me.reports_panel.Controls.Add(Me.multi_button)
         Me.reports_panel.Controls.Add(Me.stock_reports)
         Me.reports_panel.Controls.Add(Me.scheduled_reports)
         Me.reports_panel.Controls.Add(Me.profit_reports)
@@ -1036,11 +1040,63 @@ Partial Class menu_form
         Me.reports_panel.Dock = System.Windows.Forms.DockStyle.Top
         Me.reports_panel.Location = New System.Drawing.Point(0, 138)
         Me.reports_panel.Margin = New System.Windows.Forms.Padding(2)
-        Me.reports_panel.MaximumSize = New System.Drawing.Size(197, 145)
+        Me.reports_panel.MaximumSize = New System.Drawing.Size(197, 209)
         Me.reports_panel.MinimumSize = New System.Drawing.Size(197, 45)
         Me.reports_panel.Name = "reports_panel"
-        Me.reports_panel.Size = New System.Drawing.Size(197, 45)
+        Me.reports_panel.Size = New System.Drawing.Size(197, 209)
         Me.reports_panel.TabIndex = 10
+        '
+        'multi_cashup
+        '
+        Me.multi_cashup.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.multi_cashup.Dock = System.Windows.Forms.DockStyle.Top
+        Me.multi_cashup.FlatAppearance.BorderSize = 0
+        Me.multi_cashup.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.multi_cashup.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.multi_cashup.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.multi_cashup.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.multi_cashup.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.multi_cashup.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.multi_cashup.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.multi_cashup.IconSize = 30
+        Me.multi_cashup.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.multi_cashup.Location = New System.Drawing.Point(0, 173)
+        Me.multi_cashup.Margin = New System.Windows.Forms.Padding(2)
+        Me.multi_cashup.Name = "multi_cashup"
+        Me.multi_cashup.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.multi_cashup.Rotation = 0R
+        Me.multi_cashup.Size = New System.Drawing.Size(197, 32)
+        Me.multi_cashup.TabIndex = 5
+        Me.multi_cashup.Text = "Multi-Payment Cashup"
+        Me.multi_cashup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.multi_cashup.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.multi_cashup.UseVisualStyleBackColor = False
+        '
+        'multi_button
+        '
+        Me.multi_button.BackColor = System.Drawing.Color.FromArgb(CType(CType(77, Byte), Integer), CType(CType(96, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.multi_button.Dock = System.Windows.Forms.DockStyle.Top
+        Me.multi_button.FlatAppearance.BorderSize = 0
+        Me.multi_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.multi_button.Flip = FontAwesome.Sharp.FlipOrientation.Normal
+        Me.multi_button.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.multi_button.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.multi_button.IconChar = FontAwesome.Sharp.IconChar.None
+        Me.multi_button.IconColor = System.Drawing.Color.WhiteSmoke
+        Me.multi_button.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.multi_button.IconSize = 30
+        Me.multi_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.multi_button.Location = New System.Drawing.Point(0, 141)
+        Me.multi_button.Margin = New System.Windows.Forms.Padding(2)
+        Me.multi_button.Name = "multi_button"
+        Me.multi_button.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.multi_button.Rotation = 0R
+        Me.multi_button.Size = New System.Drawing.Size(197, 32)
+        Me.multi_button.TabIndex = 4
+        Me.multi_button.Text = "Multi-Payment Report"
+        Me.multi_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.multi_button.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.multi_button.UseVisualStyleBackColor = False
         '
         'stock_reports
         '
@@ -1350,7 +1406,7 @@ Partial Class menu_form
         Me.Home_panel.Location = New System.Drawing.Point(0, 3)
         Me.Home_panel.Margin = New System.Windows.Forms.Padding(2)
         Me.Home_panel.Name = "Home_panel"
-        Me.Home_panel.Size = New System.Drawing.Size(213, 45)
+        Me.Home_panel.Size = New System.Drawing.Size(196, 45)
         Me.Home_panel.TabIndex = 4
         '
         'home_button
@@ -1370,7 +1426,7 @@ Partial Class menu_form
         Me.home_button.Margin = New System.Windows.Forms.Padding(2)
         Me.home_button.Name = "home_button"
         Me.home_button.Rotation = 0R
-        Me.home_button.Size = New System.Drawing.Size(213, 45)
+        Me.home_button.Size = New System.Drawing.Size(196, 45)
         Me.home_button.TabIndex = 3
         Me.home_button.Text = "Home"
         Me.home_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1384,7 +1440,7 @@ Partial Class menu_form
         Me.Panel11.Location = New System.Drawing.Point(0, 0)
         Me.Panel11.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(213, 3)
+        Me.Panel11.Size = New System.Drawing.Size(196, 3)
         Me.Panel11.TabIndex = 3
         '
         'Timer1
@@ -1520,4 +1576,6 @@ Partial Class menu_form
     Friend WithEvents cancel_transactions As FontAwesome.Sharp.IconButton
     Friend WithEvents Panel3 As Panel
     Friend WithEvents calculator_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents multi_button As FontAwesome.Sharp.IconButton
+    Friend WithEvents multi_cashup As FontAwesome.Sharp.IconButton
 End Class

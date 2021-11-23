@@ -229,6 +229,23 @@
     <Compile Include="DayEndReportForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="further_cashup.Designer.vb">
+      <DependentUpon>further_cashup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="further_cashup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="further_dataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>further_dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="further_multi_payments.Designer.vb">
+      <DependentUpon>further_multi_payments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="further_multi_payments.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GetForexCurrency.vb" />
     <Compile Include="HandlePaymentMethods.vb" />
     <Compile Include="IntefaceDesign.vb" />
@@ -262,6 +279,28 @@
       <DependentUpon>menu_form.vb</DependentUpon>
     </Compile>
     <Compile Include="menu_form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="multiple_dataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>multiple_dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="multiple_dataset.vb">
+      <DependentUpon>multiple_dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MULTI_Dataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MULTI_Dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MULTI_Dataset.vb">
+      <DependentUpon>MULTI_Dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="multi_payment_report.Designer.vb">
+      <DependentUpon>multi_payment_report.vb</DependentUpon>
+    </Compile>
+    <Compile Include="multi_payment_report.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Permissions.Designer.vb">
@@ -463,6 +502,15 @@
     <EmbeddedResource Include="DayEnd_Report.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="further_cashup.resx">
+      <DependentUpon>further_cashup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="further_multi_payments.resx">
+      <DependentUpon>further_multi_payments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="futher_report.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="inventory_list.resx">
       <DependentUpon>inventory_list.vb</DependentUpon>
     </EmbeddedResource>
@@ -474,6 +522,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="menu_form.resx">
       <DependentUpon>menu_form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="multi_payments_report.rdlc" />
+    <EmbeddedResource Include="multi_payment_report.resx">
+      <DependentUpon>multi_payment_report.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="multi_report.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Permissions.resx">
       <DependentUpon>Permissions.vb</DependentUpon>
@@ -575,6 +630,17 @@
     <None Include="DayEndDataset.xss">
       <DependentUpon>DayEndDataset.xsd</DependentUpon>
     </None>
+    <None Include="further_dataset.xsc">
+      <DependentUpon>further_dataset.xsd</DependentUpon>
+    </None>
+    <None Include="further_dataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>further_dataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="further_dataset.xss">
+      <DependentUpon>further_dataset.xsd</DependentUpon>
+    </None>
     <None Include="loaderData.xsc">
       <DependentUpon>loaderData.xsd</DependentUpon>
     </None>
@@ -585,6 +651,28 @@
     </None>
     <None Include="loaderData.xss">
       <DependentUpon>loaderData.xsd</DependentUpon>
+    </None>
+    <None Include="multiple_dataset.xsc">
+      <DependentUpon>multiple_dataset.xsd</DependentUpon>
+    </None>
+    <None Include="multiple_dataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>multiple_dataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="multiple_dataset.xss">
+      <DependentUpon>multiple_dataset.xsd</DependentUpon>
+    </None>
+    <None Include="MULTI_Dataset.xsc">
+      <DependentUpon>MULTI_Dataset.xsd</DependentUpon>
+    </None>
+    <None Include="MULTI_Dataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MULTI_Dataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="MULTI_Dataset.xss">
+      <DependentUpon>MULTI_Dataset.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

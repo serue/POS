@@ -1,13 +1,15 @@
 ﻿Imports System.Data.SqlClient
 Imports Microsoft.Reporting.WinForms
-
-Public Class cash_up_reportForm
+Public Class further_cashup
     Dim connection As SqlConnection
     Dim myPermissions As New ConnectionAndPermissions
     Dim isFilter As Boolean = False
-
-    Private Sub cash_up_reportForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'BackgroundWorker1.RunWorkerAsync()
+    Dim forCash, ForCard, ForEco, ForForex As String
+    Private Sub further_cashup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        forCash = ""
+        ForCard = ""
+        ForEco = ""
+        ForForex = ""
         If isFilter = True Then
             'ShowPanel([Panel2])
             FilterLoading()
@@ -15,9 +17,6 @@ Public Class cash_up_reportForm
             ReportLoading()
         End If
     End Sub
-    Delegate Sub LoadRpt(ByVal [crv] As Object)
-    Delegate Sub SetPanelVisible(ByVal [panel] As Panel)
-
     Private Sub FilterLoading()                     'use the same delegate LoadRpt 
         Try
             connection = myPermissions.getConnection
@@ -26,14 +25,18 @@ Public Class cash_up_reportForm
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM CASHUP WHERE TRANS_DATE BETWEEN @TRANS_DATE AND @TO OR USERNAME=@USERNAME ORDER BY ID DESC", connection)
+            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS_SUMMARY WHERE TRANS_DATE BETWEEN @TRANS_DATE AND @TO AND USERNAME=@USERNAME OR METHOD=@CASH OR METHOD=@CARD OR METHOD=@ECOCASH OR METHOD=@FOREX ORDER BY ID DESC", connection)
                 command.Parameters.Add("@TRANS_DATE", SqlDbType.VarChar).Value = current_date.Text
                 command.Parameters.Add("@TO", SqlDbType.VarChar).Value = TO_DATE.Text
                 command.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username_text.Text
+                command.Parameters.Add("@CASH", SqlDbType.VarChar).Value = forCash
+                command.Parameters.Add("@CARD", SqlDbType.VarChar).Value = ForCard
+                command.Parameters.Add("@ECOCASH", SqlDbType.VarChar).Value = ForEco
+                command.Parameters.Add("@FOREX", SqlDbType.VarChar).Value = ForForex
                 Dim adapter As New SqlDataAdapter(command)
                 Dim DataSet1 As New DataSet
                 adapter.Fill(DataSet1, "DataSet1")
-                Me.ReportViewer1.LocalReport.ReportPath = "Cashup_Report.rdlc"
+                Me.ReportViewer1.LocalReport.ReportPath = "futher_report.rdlc"
                 Me.ReportViewer1.LocalReport.DataSources.Clear()
                 Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
                 Me.ReportViewer1.RefreshReport()
@@ -54,12 +57,12 @@ Public Class cash_up_reportForm
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM CASHUP WHERE TRANS_DATE=@TRANS_DATE ORDER BY ID DESC", connection)
+            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS_SUMMARY WHERE TRANS_DATE=@TRANS_DATE ORDER BY ID DESC", connection)
                 command.Parameters.Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
                 Dim adapter As New SqlDataAdapter(command)
                 Dim DataSet1 As New DataSet
                 adapter.Fill(DataSet1, "DataSet1")
-                Me.ReportViewer1.LocalReport.ReportPath = "Cashup_Report.rdlc"
+                Me.ReportViewer1.LocalReport.ReportPath = "futher_report.rdlc"
                 Me.ReportViewer1.LocalReport.DataSources.Clear()
                 Me.ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", DataSet1.Tables("DataSet1")))
                 Me.ReportViewer1.RefreshReport()
@@ -100,18 +103,35 @@ Public Class cash_up_reportForm
         day_report.Enabled = True
     End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        If BackgroundWorker1.CancellationPending Then
-            e.Cancel = True
+    Private Sub cash_check_CheckedChanged(sender As Object, e As EventArgs) Handles cash_check.CheckedChanged
+        If cash_check.Checked Then
+            forCash = "CASH"
         Else
-            If isFilter = True Then
-                'ShowPanel([Panel2])
-                FilterLoading()
-            Else
-                ReportLoading()
-            End If
+            forCash = ""
         End If
     End Sub
 
+    Private Sub card_check_CheckedChanged(sender As Object, e As EventArgs) Handles card_check.CheckedChanged
+        If card_check.Checked Then
+            ForCard = "CARD"
+        Else
+            ForCard = ""
+        End If
+    End Sub
 
+    Private Sub ecocash_check_CheckedChanged(sender As Object, e As EventArgs) Handles ecocash_check.CheckedChanged
+        If ecocash_check.Checked Then
+            ForEco = "ECOCASH"
+        Else
+            ForEco = ""
+        End If
+    End Sub
+
+    Private Sub forex_check_CheckedChanged(sender As Object, e As EventArgs) Handles forex_check.CheckedChanged
+        If forex_check.Checked Then
+            ForForex = "FOREX"
+        Else
+            ForForex = ""
+        End If
+    End Sub
 End Class

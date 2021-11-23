@@ -488,9 +488,14 @@ Public Class sales_form
                         saleSelectAdapter.Fill(saleSelectTable)
 
                         If saleSelectTable.Rows.Count > 0 Then
-
+                            Dim newTax As Decimal = 0
+                            If IsDBNull(saleSelectTable(0)(3)) Then
+                                newTax = 0
+                            Else
+                                newTax = saleSelectTable(0)(3) + TAX
+                            End If
                             'set quantity and profit
-                            Dim localTax = saleSelectTable(0)(3) + TAX
+                            Dim localTax = newTax
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
@@ -543,8 +548,14 @@ Public Class sales_form
                         Dim saleSelectTable As New DataTable
                         saleSelectAdapter.Fill(saleSelectTable)
                         If saleSelectTable.Rows.Count > 0 Then
+                            Dim newTax As Decimal = 0
+                            If IsDBNull(saleSelectTable(0)(3)) Then
+                                newTax = 0
+                            Else
+                                newTax = saleSelectTable(0)(3) + TAX
+                            End If
                             'set quantity and profit
-                            Dim localTax = saleSelectTable(0)(3) + TAX
+                            Dim localTax = newTax
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
@@ -1221,8 +1232,8 @@ Public Class sales_form
                         DailyCurrencyRate = GetForexRate("CASH")
                         totalsum = 0
                         For row As Integer = 0 To list_grid.Rows.Count - 1
-                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value * DailyCurrencyRate, 2)
-                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value * DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value / DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value / DailyCurrencyRate, 2)
                             totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
                         Next
                         total_label.Text = Math.Round(totalsum, 2)
@@ -1239,8 +1250,8 @@ Public Class sales_form
                         DailyCurrencyRate = GetForexRate(localMethod)
                         totalsum = 0
                         For row As Integer = 0 To list_grid.Rows.Count - 1
-                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value * DailyCurrencyRate, 2)
-                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value * DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value / DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value / DailyCurrencyRate, 2)
                             totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
                         Next
                         total_label.Text = Math.Round(totalsum, 2)
@@ -1869,9 +1880,10 @@ Public Class sales_form
                                 taxadapter.Fill(taxTable)
                                 If taxTable.Rows.Count > 0 Then
                                     TAX = taxTable(0)(0)
+                                ElseIf IsDBNull(taxTable(0)(0)) Then
+                                    TAX = 0
                                 Else
                                     TAX = 0
-
                                 End If
                             End Using
                         End Using
@@ -1900,9 +1912,15 @@ Public Class sales_form
                         saleSelectAdapter.Fill(saleSelectTable)
 
                         If saleSelectTable.Rows.Count > 0 Then
+                            Dim newTax As Decimal = 0
+                            If IsDBNull(saleSelectTable(0)(3)) Then
+                                newTax = 0
+                            Else
+                                newTax = saleSelectTable(0)(3)
 
+                            End If
                             'set quantity and profit
-                            Dim LocalTax = saleSelectTable(0)(3) + TAX
+                            Dim LocalTax = Newtax + TAX
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
@@ -1955,8 +1973,15 @@ Public Class sales_form
                         Dim saleSelectTable As New DataTable
                         saleSelectAdapter.Fill(saleSelectTable)
                         If saleSelectTable.Rows.Count > 0 Then
+                            Dim newTax As Decimal = 0
+                            If IsDBNull(saleSelectTable(0)(3)) Then
+                                newTax = 0
+                            Else
+                                newTax = saleSelectTable(0)(3)
+
+                            End If
                             'set quantity and profit
-                            Dim LocalTax = saleSelectTable(0)(3) + TAX
+                            Dim LocalTax = newTax + TAX
                             Dim UpAmount = saleSelectTable(0)(2)
                             updateQuantity = saleSelectTable(0)(0)
                             updateProfit = saleSelectTable(0)(1)
@@ -2012,17 +2037,17 @@ Public Class sales_form
                     cashAdapter.Fill(cashTable)
                     If cashTable.Rows.Count > 0 Then
                         Dim amt As Decimal = cashTable(0)(0)
-                        Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
-                            With updateCashCommand.Parameters
-                                .Add("@AMOUNT", SqlDbType.VarChar).Value = amt + CDec(total_label.Text)
-                                .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
-                                .Add("@USERNAME", SqlDbType.VarChar).Value = username
-                                .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
-                            End With
-                            updateCashCommand.ExecuteNonQuery()
+                        'Using updateCashCommand As New SqlCommand("UPDATE CASHUP SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND USERNAME=@USERNAME AND METHOD=@METHOD", connection, transaction)
+                        '    With updateCashCommand.Parameters
+                        '        .Add("@AMOUNT", SqlDbType.VarChar).Value = amt + CDec(total_label.Text)
+                        '        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                        '        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                        '        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                        '    End With
+                        '    updateCashCommand.ExecuteNonQuery()
 
-                        End Using
-                        'iterating through the array
+                        'End Using
+                        ''iterating through the array
                         For Each element As TextBox In txtBoxArray
 
                             If element.Text > 0 Or element.Text <> "" Then    'checking the quantity in the textbox
@@ -2031,29 +2056,64 @@ Public Class sales_form
                                 If element Is txtCash Then Transaction_type = "CASH"
                                 If element Is txtEcoCash Then Transaction_type = "ECOCASH"
                                 If element Is txtForex Then Transaction_type = "FOREX"
-                                Using splitCommand As New SqlCommand("INSERT INTO OTHER_METHODS(TRANSACTION_ID,METHOD,AMOUNT) VALUES(@TRANSACTION_ID,@METHOD,@AMOUNT)", connection, transaction)
+                                Using splitCommand As New SqlCommand("INSERT INTO OTHER_METHODS(TRANS_DATE,TRANSACTION_ID,METHOD,AMOUNT) VALUES(@TRANS_DATE,@TRANSACTION_ID,@METHOD,@AMOUNT)", connection, transaction)
                                     With splitCommand.Parameters
+                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
                                         .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
                                         .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
                                         .Add("@AMOUNT", SqlDbType.Decimal).Value = element.Text
                                     End With
                                     splitCommand.ExecuteNonQuery()
+                                End Using
+
+                                Using command As New SqlCommand("SELECT AMOUNT FROM OTHER_METHODS_SUMMARY WHERE TRANS_DATE=@TRANS_DATE AND METHOD=@METHOD AND USERNAME=@USERNAME", connection, transaction)
+                                    With command.Parameters
+                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                    End With
+                                    Using otherAdapter As New SqlDataAdapter(command)
+                                        Using otherTable As New DataTable
+                                            otherAdapter.Fill(otherTable)
+                                            If otherTable.Rows.Count > 0 Then
+                                                Using otherCommand As New SqlCommand("UPDATE OTHER_METHODS_SUMMARY SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND METHOD=@METHOD AND USERNAME=@USERNAME", connection, transaction)
+                                                    With otherCommand.Parameters
+                                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                                        .Add("@AMOUNT", SqlDbType.Decimal).Value = otherTable(0)(0) + element.Text
+                                                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                                    End With
+                                                    otherCommand.ExecuteNonQuery()
+                                                End Using
+                                            Else
+                                                Using otherCommand As New SqlCommand("INSERT INTO OTHER_METHODS_SUMMARY (TRANS_DATE,METHOD, AMOUNT, USERNAME) VALUES(@TRANS_DATE,@METHOD, @AMOUNT, @USERNAME)", connection, transaction)
+                                                    With otherCommand.Parameters
+                                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                                        .Add("@AMOUNT", SqlDbType.Decimal).Value = element.Text
+                                                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                                    End With
+                                                    otherCommand.ExecuteNonQuery()
+                                                End Using
+                                            End If
+                                        End Using
+                                    End Using
                                 End Using
                             End If
                         Next
                     Else
 
-                        Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUNT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
-                            With InsertCashCommand.Parameters
-                                .Add("@AMOUNT", SqlDbType.VarChar).Value = CDec(total_label.Text)
-                                .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
-                                .Add("@USERNAME", SqlDbType.VarChar).Value = username
-                                .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
-                                .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
-                            End With
-                            InsertCashCommand.ExecuteNonQuery()
+                        ''Using InsertCashCommand As New SqlCommand("INSERT INTO CASHUP(AMOUNT,TRANS_DATE,USERNAME,METHOD,TILL) VALUES(@AMOUNT,@TRANS_DATE,@USERNAME,@METHOD,@TILL)", connection, transaction)
+                        ''    With InsertCashCommand.Parameters
+                        ''        .Add("@AMOUNT", SqlDbType.VarChar).Value = CDec(total_label.Text)
+                        ''        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                        ''        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                        ''        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                        ''        .Add("@TILL", SqlDbType.VarChar).Value = till_label.Text
+                        ''    End With
+                        ''    InsertCashCommand.ExecuteNonQuery()
 
-                        End Using
+                        ''End Using
 
                         'iterating through the array
                         For Each element As TextBox In txtBoxArray
@@ -2064,14 +2124,52 @@ Public Class sales_form
                                 If element Is txtCash Then Transaction_type = "CASH"
                                 If element Is txtEcoCash Then Transaction_type = "ECOCASH"
                                 If element Is txtForex Then Transaction_type = "FOREX"
-                                Using splitCommand As New SqlCommand("INSERT INTO OTHER_METHODS(TRANSACTION_ID,METHOD,AMOUNT) VALUES(@TRANSACTION_ID,@METHOD,@AMOUNT)", connection, transaction)
+                                Using splitCommand As New SqlCommand("INSERT INTO OTHER_METHODS(TRANS_DATE,TRANSACTION_ID,METHOD,AMOUNT) VALUES(@TRANS_DATE,@TRANSACTION_ID,@METHOD,@AMOUNT)", connection, transaction)
                                     With splitCommand.Parameters
+                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
                                         .Add("@TRANSACTION_ID", SqlDbType.VarChar).Value = Register_Transaction
                                         .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
                                         .Add("@AMOUNT", SqlDbType.Decimal).Value = element.Text
                                     End With
                                     splitCommand.ExecuteNonQuery()
                                 End Using
+
+                                'MINI CASH UP
+
+                                Using command As New SqlCommand("SELECT AMOUNT FROM OTHER_METHODS_SUMMARY WHERE TRANS_DATE=@TRANS_DATE AND METHOD=@METHOD AND USERNAME=@USERNAME", connection, transaction)
+                                    With command.Parameters
+                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                    End With
+                                    Using otherAdapter As New SqlDataAdapter(command)
+                                        Using otherTable As New DataTable
+                                            otherAdapter.Fill(otherTable)
+                                            If otherTable.Rows.Count > 0 Then
+                                                Using otherCommand As New SqlCommand("UPDATE OTHER_METHODS_SUMMARY SET AMOUNT=@AMOUNT WHERE TRANS_DATE=@TRANS_DATE AND METHOD=@METHOD AND USERNAME=@USERNAME", connection, transaction)
+                                                    With otherCommand.Parameters
+                                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                                        .Add("@AMOUNT", SqlDbType.Decimal).Value = otherTable(0)(0) + element.Text
+                                                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                                    End With
+                                                    otherCommand.ExecuteNonQuery()
+                                                End Using
+                                            Else
+                                                Using otherCommand As New SqlCommand("INSERT INTO OTHER_METHODS_SUMMARY (TRANS_DATE,METHOD, AMOUNT, USERNAME) VALUES(@TRANS_DATE,@METHOD, @AMOUNT, @USERNAME)", connection, transaction)
+                                                    With otherCommand.Parameters
+                                                        .Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
+                                                        .Add("@METHOD", SqlDbType.VarChar).Value = Transaction_type
+                                                        .Add("@AMOUNT", SqlDbType.Decimal).Value = element.Text
+                                                        .Add("@USERNAME", SqlDbType.VarChar).Value = username
+                                                    End With
+                                                    otherCommand.ExecuteNonQuery()
+                                                End Using
+                                            End If
+                                        End Using
+                                    End Using
+                                End Using
+
                             End If
                         Next
                     End If

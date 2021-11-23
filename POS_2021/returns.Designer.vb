@@ -30,7 +30,6 @@ Partial Class returns
         Me.contact_textbox = New MetroFramework.Controls.MetroTextBox()
         Me.customer_textbox = New MetroFramework.Controls.MetroTextBox()
         Me.Reason_for_return = New MetroFramework.Controls.MetroTextBox()
-        Me.transaction_id = New MetroFramework.Controls.MetroComboBox()
         Me.quantity_textbox = New MetroFramework.Controls.MetroTextBox()
         Me.AMOUNT_TEXTBOX = New MetroFramework.Controls.MetroTextBox()
         Me.barcode_textbox = New MetroFramework.Controls.MetroTextBox()
@@ -41,6 +40,7 @@ Partial Class returns
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TRANSACTION_ID = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,13 +55,13 @@ Partial Class returns
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.TRANSACTION_ID)
         Me.GroupBox1.Controls.Add(Me.cancel_button)
         Me.GroupBox1.Controls.Add(Me.clear_button)
         Me.GroupBox1.Controls.Add(Me.transaction_button)
         Me.GroupBox1.Controls.Add(Me.contact_textbox)
         Me.GroupBox1.Controls.Add(Me.customer_textbox)
         Me.GroupBox1.Controls.Add(Me.Reason_for_return)
-        Me.GroupBox1.Controls.Add(Me.transaction_id)
         Me.GroupBox1.Controls.Add(Me.quantity_textbox)
         Me.GroupBox1.Controls.Add(Me.AMOUNT_TEXTBOX)
         Me.GroupBox1.Controls.Add(Me.barcode_textbox)
@@ -197,17 +197,6 @@ Partial Class returns
         Me.Reason_for_return.UseSelectable = True
         Me.Reason_for_return.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.Reason_for_return.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
-        '
-        'transaction_id
-        '
-        Me.transaction_id.DisplayFocus = True
-        Me.transaction_id.FormattingEnabled = True
-        Me.transaction_id.ItemHeight = 23
-        Me.transaction_id.Location = New System.Drawing.Point(211, 130)
-        Me.transaction_id.Name = "transaction_id"
-        Me.transaction_id.Size = New System.Drawing.Size(372, 29)
-        Me.transaction_id.TabIndex = 10
-        Me.transaction_id.UseSelectable = True
         '
         'quantity_textbox
         '
@@ -362,6 +351,14 @@ Partial Class returns
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Barcode:"
         '
+        'TRANSACTION_ID
+        '
+        Me.TRANSACTION_ID.FormattingEnabled = True
+        Me.TRANSACTION_ID.Location = New System.Drawing.Point(210, 133)
+        Me.TRANSACTION_ID.Name = "TRANSACTION_ID"
+        Me.TRANSACTION_ID.Size = New System.Drawing.Size(371, 25)
+        Me.TRANSACTION_ID.TabIndex = 17
+        '
         'returns
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -399,5 +396,5 @@ Partial Class returns
     Friend WithEvents contact_textbox As MetroFramework.Controls.MetroTextBox
     Friend WithEvents customer_textbox As MetroFramework.Controls.MetroTextBox
     Friend WithEvents Reason_for_return As MetroFramework.Controls.MetroTextBox
-    Friend WithEvents transaction_id As MetroFramework.Controls.MetroComboBox
+    Friend WithEvents TRANSACTION_ID As ComboBox
 End Class
