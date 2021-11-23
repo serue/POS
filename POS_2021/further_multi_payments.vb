@@ -78,7 +78,7 @@ Public Class further_multi_payments
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS", connection)
+            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS AMOUNT > 0 ", connection)
                 Dim adapter As New SqlDataAdapter(command)
                 Dim DataSet1 As New DataSet
                 adapter.Fill(DataSet1, "DataSet1")
@@ -103,7 +103,7 @@ Public Class further_multi_payments
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS WHERE TRANS_DATE BETWEEN @FROM AND @TO AND (METHOD=@CASH OR METHOD=@ECOCASH OR METHOD=@CARD OR METHOD=@FOREX)", connection)
+            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS WHERE AMOUNT > 0 AND TRANS_DATE BETWEEN @FROM AND @TO AND (METHOD=@CASH OR METHOD=@ECOCASH OR METHOD=@CARD OR METHOD=@FOREX)", connection)
                 With command.Parameters
                     .Add("@FROM", SqlDbType.DateTime).Value = date_from.Text
                     .Add("@TO", SqlDbType.DateTime).Value = date_to.Text

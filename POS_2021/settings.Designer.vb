@@ -22,8 +22,8 @@ Partial Class settings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -61,14 +61,10 @@ Partial Class settings
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.vatNotes_textbox = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.vat_number = New System.Windows.Forms.TextBox()
+        Me.BASE_RT_RATE = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.vat_textbox = New System.Windows.Forms.TextBox()
         Me.currency_symbol = New System.Windows.Forms.TextBox()
         Me.currency_name = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
@@ -90,16 +86,17 @@ Partial Class settings
         Me.save_currency = New FontAwesome.Sharp.IconButton()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.the_symbol = New System.Windows.Forms.TextBox()
+        Me.currency_rate = New System.Windows.Forms.TextBox()
+        Me.Name_textbox = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.delete_button = New System.Windows.Forms.Button()
         Me.Default_button = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.search_grid = New System.Windows.Forms.DataGridView()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Name_textbox = New System.Windows.Forms.TextBox()
-        Me.currency_rate = New System.Windows.Forms.TextBox()
-        Me.the_symbol = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.MetroTabControl1.SuspendLayout()
@@ -167,7 +164,7 @@ Partial Class settings
         Me.MetroTabControl1.Location = New System.Drawing.Point(0, 0)
         Me.MetroTabControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 3
+        Me.MetroTabControl1.SelectedIndex = 1
         Me.MetroTabControl1.Size = New System.Drawing.Size(962, 609)
         Me.MetroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.MetroTabControl1.TabIndex = 0
@@ -179,7 +176,7 @@ Partial Class settings
         Me.TabPage2.Location = New System.Drawing.Point(4, 44)
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(893, 561)
+        Me.TabPage2.Size = New System.Drawing.Size(954, 561)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Connection and Printer Settings"
         '
@@ -190,7 +187,7 @@ Partial Class settings
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(893, 561)
+        Me.Panel6.Size = New System.Drawing.Size(954, 561)
         Me.Panel6.TabIndex = 1
         '
         'GroupBox6
@@ -444,7 +441,7 @@ Partial Class settings
         Me.TabPage1.Location = New System.Drawing.Point(4, 44)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(893, 561)
+        Me.TabPage1.Size = New System.Drawing.Size(954, 561)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "General Settings"
         '
@@ -456,7 +453,7 @@ Partial Class settings
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(893, 561)
+        Me.Panel5.Size = New System.Drawing.Size(954, 561)
         Me.Panel5.TabIndex = 0
         '
         'GroupBox2
@@ -584,14 +581,11 @@ Partial Class settings
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.vatNotes_textbox)
-        Me.GroupBox1.Controls.Add(Me.Label13)
-        Me.GroupBox1.Controls.Add(Me.vat_number)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.BASE_RT_RATE)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.vat_textbox)
         Me.GroupBox1.Controls.Add(Me.currency_symbol)
         Me.GroupBox1.Controls.Add(Me.currency_name)
-        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -605,56 +599,27 @@ Partial Class settings
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Base Currency Settings"
         '
-        'vatNotes_textbox
+        'BASE_RT_RATE
         '
-        Me.vatNotes_textbox.Location = New System.Drawing.Point(183, 148)
-        Me.vatNotes_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.vatNotes_textbox.Multiline = True
-        Me.vatNotes_textbox.Name = "vatNotes_textbox"
-        Me.vatNotes_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.vatNotes_textbox.Size = New System.Drawing.Size(384, 47)
-        Me.vatNotes_textbox.TabIndex = 8
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(72, 158)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(88, 17)
-        Me.Label13.TabIndex = 7
-        Me.Label13.Text = "VAT NOTES :"
-        '
-        'vat_number
-        '
-        Me.vat_number.Location = New System.Drawing.Point(183, 90)
-        Me.vat_number.Margin = New System.Windows.Forms.Padding(2)
-        Me.vat_number.Name = "vat_number"
-        Me.vat_number.Size = New System.Drawing.Size(140, 24)
-        Me.vat_number.TabIndex = 5
+        Me.BASE_RT_RATE.Location = New System.Drawing.Point(215, 98)
+        Me.BASE_RT_RATE.Margin = New System.Windows.Forms.Padding(2)
+        Me.BASE_RT_RATE.Name = "BASE_RT_RATE"
+        Me.BASE_RT_RATE.Size = New System.Drawing.Size(114, 24)
+        Me.BASE_RT_RATE.TabIndex = 5
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(72, 93)
+        Me.Label8.Location = New System.Drawing.Point(52, 89)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(94, 17)
+        Me.Label8.Size = New System.Drawing.Size(122, 34)
         Me.Label8.TabIndex = 6
-        Me.Label8.Text = "VAT NUMBER:"
-        '
-        'vat_textbox
-        '
-        Me.vat_textbox.Location = New System.Drawing.Point(183, 119)
-        Me.vat_textbox.Margin = New System.Windows.Forms.Padding(2)
-        Me.vat_textbox.Name = "vat_textbox"
-        Me.vat_textbox.Size = New System.Drawing.Size(140, 24)
-        Me.vat_textbox.TabIndex = 6
-        Me.vat_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.Label8.Text = "Local Rate Cash to" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " Ecocash/ RTGS:"
         '
         'currency_symbol
         '
-        Me.currency_symbol.Location = New System.Drawing.Point(183, 62)
+        Me.currency_symbol.Location = New System.Drawing.Point(189, 62)
         Me.currency_symbol.Margin = New System.Windows.Forms.Padding(2)
         Me.currency_symbol.Name = "currency_symbol"
         Me.currency_symbol.Size = New System.Drawing.Size(140, 24)
@@ -662,21 +627,11 @@ Partial Class settings
         '
         'currency_name
         '
-        Me.currency_name.Location = New System.Drawing.Point(183, 32)
+        Me.currency_name.Location = New System.Drawing.Point(188, 32)
         Me.currency_name.Margin = New System.Windows.Forms.Padding(2)
         Me.currency_name.Name = "currency_name"
         Me.currency_name.Size = New System.Drawing.Size(384, 24)
         Me.currency_name.TabIndex = 3
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(72, 124)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(59, 17)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "VAT % :"
         '
         'Label2
         '
@@ -704,7 +659,7 @@ Partial Class settings
         Me.TabPage3.Location = New System.Drawing.Point(4, 44)
         Me.TabPage3.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(893, 561)
+        Me.TabPage3.Size = New System.Drawing.Size(954, 561)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Forex Rate Settings"
         '
@@ -719,7 +674,7 @@ Partial Class settings
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(893, 561)
+        Me.Panel4.Size = New System.Drawing.Size(954, 561)
         Me.Panel4.TabIndex = 0
         '
         'IconButton2
@@ -956,6 +911,63 @@ Partial Class settings
         Me.Panel9.Size = New System.Drawing.Size(316, 528)
         Me.Panel9.TabIndex = 6
         '
+        'the_symbol
+        '
+        Me.the_symbol.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.the_symbol.Location = New System.Drawing.Point(116, 127)
+        Me.the_symbol.Name = "the_symbol"
+        Me.the_symbol.ReadOnly = True
+        Me.the_symbol.Size = New System.Drawing.Size(137, 29)
+        Me.the_symbol.TabIndex = 7
+        '
+        'currency_rate
+        '
+        Me.currency_rate.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.currency_rate.Location = New System.Drawing.Point(117, 72)
+        Me.currency_rate.Name = "currency_rate"
+        Me.currency_rate.ReadOnly = True
+        Me.currency_rate.Size = New System.Drawing.Size(137, 29)
+        Me.currency_rate.TabIndex = 6
+        '
+        'Name_textbox
+        '
+        Me.Name_textbox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Name_textbox.Location = New System.Drawing.Point(116, 12)
+        Me.Name_textbox.Name = "Name_textbox"
+        Me.Name_textbox.ReadOnly = True
+        Me.Name_textbox.Size = New System.Drawing.Size(194, 29)
+        Me.Name_textbox.TabIndex = 5
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Location = New System.Drawing.Point(6, 130)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(109, 17)
+        Me.Label22.TabIndex = 4
+        Me.Label22.Text = "Currency Symbol:"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(6, 80)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(69, 17)
+        Me.Label21.TabIndex = 3
+        Me.Label21.Text = "Cash Rate:"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(1, 15)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(101, 17)
+        Me.Label20.TabIndex = 2
+        Me.Label20.Text = "Currency Name:"
+        '
         'delete_button
         '
         Me.delete_button.BackColor = System.Drawing.Color.SteelBlue
@@ -1002,24 +1014,24 @@ Partial Class settings
         Me.search_grid.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.search_grid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.search_grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Indigo
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.search_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Indigo
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.search_grid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.search_grid.ColumnHeadersHeight = 30
         Me.search_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.search_grid.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.search_grid.DefaultCellStyle = DataGridViewCellStyle2
         Me.search_grid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.search_grid.GridColor = System.Drawing.Color.WhiteSmoke
         Me.search_grid.Location = New System.Drawing.Point(2, 19)
@@ -1031,62 +1043,16 @@ Partial Class settings
         Me.search_grid.Size = New System.Drawing.Size(614, 524)
         Me.search_grid.TabIndex = 1
         '
-        'Label20
+        'Label3
         '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(1, 15)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(101, 17)
-        Me.Label20.TabIndex = 2
-        Me.Label20.Text = "Currency Name:"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(6, 80)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(69, 17)
-        Me.Label21.TabIndex = 3
-        Me.Label21.Text = "Cash Rate:"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(6, 130)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(109, 17)
-        Me.Label22.TabIndex = 4
-        Me.Label22.Text = "Currency Symbol:"
-        '
-        'Name_textbox
-        '
-        Me.Name_textbox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Name_textbox.Location = New System.Drawing.Point(116, 12)
-        Me.Name_textbox.Name = "Name_textbox"
-        Me.Name_textbox.ReadOnly = True
-        Me.Name_textbox.Size = New System.Drawing.Size(194, 29)
-        Me.Name_textbox.TabIndex = 5
-        '
-        'currency_rate
-        '
-        Me.currency_rate.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.currency_rate.Location = New System.Drawing.Point(117, 72)
-        Me.currency_rate.Name = "currency_rate"
-        Me.currency_rate.ReadOnly = True
-        Me.currency_rate.Size = New System.Drawing.Size(137, 29)
-        Me.currency_rate.TabIndex = 6
-        '
-        'the_symbol
-        '
-        Me.the_symbol.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.the_symbol.Location = New System.Drawing.Point(116, 127)
-        Me.the_symbol.Name = "the_symbol"
-        Me.the_symbol.ReadOnly = True
-        Me.the_symbol.Size = New System.Drawing.Size(137, 29)
-        Me.the_symbol.TabIndex = 7
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(187, 101)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(25, 19)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "1:"
         '
         'settings
         '
@@ -1162,12 +1128,10 @@ Partial Class settings
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents vat_number As TextBox
+    Friend WithEvents BASE_RT_RATE As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents vat_textbox As TextBox
     Friend WithEvents currency_symbol As TextBox
     Friend WithEvents currency_name As TextBox
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents clear_button As FontAwesome.Sharp.IconButton
@@ -1176,8 +1140,6 @@ Partial Class settings
     Friend WithEvents UPDATE_FOREX As FontAwesome.Sharp.IconButton
     Friend WithEvents FOREX_SYMBOL As TextBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents vatNotes_textbox As TextBox
-    Friend WithEvents Label13 As Label
     Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
     Friend WithEvents Panel6 As Panel
     Friend WithEvents GroupBox6 As GroupBox
@@ -1209,4 +1171,5 @@ Partial Class settings
     Friend WithEvents Label22 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents Label20 As Label
+    Friend WithEvents Label3 As Label
 End Class

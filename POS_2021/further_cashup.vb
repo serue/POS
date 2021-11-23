@@ -25,7 +25,7 @@ Public Class further_cashup
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS_SUMMARY WHERE TRANS_DATE BETWEEN @TRANS_DATE AND @TO AND USERNAME=@USERNAME OR METHOD=@CASH OR METHOD=@CARD OR METHOD=@ECOCASH OR METHOD=@FOREX ORDER BY ID DESC", connection)
+            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS_SUMMARY WHERE AMOUNT > 0 AND TRANS_DATE BETWEEN @TRANS_DATE AND @TO AND USERNAME=@USERNAME OR METHOD=@CASH OR METHOD=@CARD OR METHOD=@ECOCASH OR METHOD=@FOREX ORDER BY ID DESC", connection)
                 command.Parameters.Add("@TRANS_DATE", SqlDbType.VarChar).Value = current_date.Text
                 command.Parameters.Add("@TO", SqlDbType.VarChar).Value = TO_DATE.Text
                 command.Parameters.Add("@USERNAME", SqlDbType.VarChar).Value = username_text.Text
@@ -57,7 +57,7 @@ Public Class further_cashup
             End If
             connection.Open()
             Dim CoTable As New DataTable
-            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS_SUMMARY WHERE TRANS_DATE=@TRANS_DATE ORDER BY ID DESC", connection)
+            Using command As New SqlCommand("SELECT * FROM OTHER_METHODS_SUMMARY WHERE AMOUNT > 0 AND  TRANS_DATE=@TRANS_DATE ORDER BY ID DESC", connection)
                 command.Parameters.Add("@TRANS_DATE", SqlDbType.VarChar).Value = Now.ToShortDateString
                 Dim adapter As New SqlDataAdapter(command)
                 Dim DataSet1 As New DataSet

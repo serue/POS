@@ -106,8 +106,8 @@ Public Class settings
     Private Sub clear_button_Click(sender As Object, e As EventArgs) Handles clear_button.Click
         currency_name.Clear()
         currency_symbol.Clear()
-        vat_number.Clear()
-        vat_textbox.Clear()
+        BASE_RT_RATE.Clear()
+
         txtTillNumber.Clear()
         currency_name.Focus()
     End Sub
@@ -222,10 +222,11 @@ Public Class settings
                     MyID = TABLE(0)(0)
                     MessageBox.Show("CANNOT SAVE THE CURRENCY, SEEMS THERE IS ALREADY CURRENCY, YOU CAN UPDATE IT ONLY", "CURRENCY", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
-                    Using command As New SqlCommand("INSERT INTO BASE_CURRENCY(CURRENCY,SYMBOL) VALUES(@CURRENCY,@SYMBOL)", connection)
+                    Using command As New SqlCommand("INSERT INTO BASE_CURRENCY(CURRENCY,SYMBOL,RTGS_RATE) VALUES(@CURRENCY,@SYMBOL,@RATE)", connection)
                         With command.Parameters
                             .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_name.Text
                             .Add("@SYMBOL", SqlDbType.VarChar).Value = currency_symbol.Text
+                            .Add("@RATE", SqlDbType.Decimal).Value = BASE_RT_RATE.Text
                         End With
                         command.ExecuteNonQuery()
                     End Using
@@ -250,28 +251,6 @@ Public Class settings
                     MessageBox.Show("Till has been set successfully", "Setting Currency", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End Using
-            SelectCompany()
-            If company <> "" Then
-                Using CMD As New SqlCommand("SELECT ID FROM TAX", connection)
-                    Dim TABLE As New DataTable
-                    Dim ADAPTER As New SqlDataAdapter(CMD)
-                    ADAPTER.Fill(TABLE)
-                    If TABLE.Rows.Count > 0 Then
-                        MessageBox.Show("CANNOT SAVE THE TAX, SEEMS IT IS ALREADY SAVED, YOU CAN UPDATE IT ONLY", "TAX", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Else
-                        Using command As New SqlCommand("INSERT INTO TAX(COMPANY,VAT_NO,VAT,NOTES) VALUES(@COMPANY,@VAT_NO,@VAT,@NOTES)", connection)
-                            With command.Parameters
-                                .Add("@COMPANY", SqlDbType.VarChar).Value = company
-                                .Add("@VAT_NO", SqlDbType.VarChar).Value = vat_number.Text
-                                .Add("@VAT", SqlDbType.VarChar).Value = vat_textbox.Text
-                                .Add("@NOTES", SqlDbType.VarChar).Value = vatNotes_textbox.Text
-                            End With
-                            command.ExecuteNonQuery()
-                        End Using
-                        MessageBox.Show("Tax has been set successfully", "Setting Tax", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    End If
-                End Using
-            End If
 
 
             connection.Close()
@@ -281,16 +260,6 @@ Public Class settings
         End Try
     End Sub
 
-    Private Sub vat_textbox_LostFocus(sender As Object, e As EventArgs) Handles vat_textbox.LostFocus
-        If vat_textbox.Text <> "" Then
-            Try
-                Dim number As Decimal = vat_textbox.Text / 100
-                vat_textbox.Text = number
-            Catch ex As Exception
-                MessageBox.Show("Quantity is empty or in wrong format", "Quantity ", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End Try
-        End If
-    End Sub
 
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
         menu_form.ActiveUser = user
@@ -349,7 +318,7 @@ Public Class settings
             connection.Open()
 
             'load base currency
-            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL FROM BASE_CURRENCY", connection)
+            Using command As New SqlCommand("SELECT ID,CURRENCY,SYMBOL,RTGS_RATE FROM BASE_CURRENCY", connection)
                 Dim TABLE As New DataTable
                 Dim adapters As New SqlDataAdapter(command)
                 adapters.Fill(TABLE)
@@ -357,6 +326,7 @@ Public Class settings
                     currency_id = TABLE(0)(0)
                     currency_name.Text = TABLE(0)(1)
                     currency_symbol.Text = TABLE(0)(2)
+                    BASE_RT_RATE.Text = TABLE(0)(3)
 
                 End If
             End Using
@@ -367,18 +337,6 @@ Public Class settings
 
             'load tax
 
-            Using command As New SqlCommand("SELECT ID,VAT_NO,VAT,NOTES FROM TAX", connection)
-                Dim TABLE As New DataTable
-                Dim adapter As New SqlDataAdapter(command)
-                adapter.Fill(TABLE)
-                If TABLE.Rows.Count > 0 Then
-                    tax_id = TABLE(0)(0)
-                    vat_number.Text = TABLE(0)(1)
-                    vat_textbox.Text = TABLE(0)(2)
-                    vatNotes_textbox.Text = TABLE(0)(3)
-
-                End If
-            End Using
 
             'load forex
             GetCurrencyID()
@@ -440,12 +398,13 @@ Public Class settings
             connection.Open()
             GetDefaultForex
             If EditID > 0 Then
-                Using command As New SqlCommand("UPDATE CURRENCIES SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL,RATE=@RATE WHERE ID=@ID", connection)
+                Using command As New SqlCommand("UPDATE CURRENCIES SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL,RATE=@RATE,RTGS_RATE=@RRATE WHERE ID=@ID", connection)
                     With command.Parameters
                         .Add("@ID", SqlDbType.VarChar).Value = EditID
                         .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_combo.Text
                         .Add("@SYMBOL", SqlDbType.VarChar).Value = FOREX_SYMBOL.Text
                         .Add("@RATE", SqlDbType.Decimal).Value = rate_textbox.Text
+                        .Add("@RRATE", SqlDbType.Decimal).Value = rtgs_rate.Text
                     End With
                     command.ExecuteNonQuery()
                 End Using
@@ -470,11 +429,12 @@ Public Class settings
                 ADAPTER.Fill(TABLE)
                 If TABLE.Rows.Count > 0 Then
                     MyID = TABLE(0)(0)
-                    Using command As New SqlCommand("UPDATE BASE_CURRENCY SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL WHERE ID=@ID", connection)
+                    Using command As New SqlCommand("UPDATE BASE_CURRENCY SET CURRENCY=@CURRENCY,SYMBOL=@SYMBOL,RTGS_RATE=@RATE WHERE ID=@ID", connection)
                         With command.Parameters
                             .Add("@ID", SqlDbType.Int).Value = currency_id
                             .Add("@CURRENCY", SqlDbType.VarChar).Value = currency_name.Text
                             .Add("@SYMBOL", SqlDbType.VarChar).Value = currency_symbol.Text
+                            .Add("@RATE", SqlDbType.Decimal).Value = BASE_RT_RATE.Text
                         End With
                         command.ExecuteNonQuery()
                     End Using
@@ -503,29 +463,7 @@ Public Class settings
                     MessageBox.Show("CANNOT SAVE THE TILL, SEEMS IT IS ALREADY SAVED, YOU CAN UPDATE IT ONLY", "TILL", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End Using
-            SelectCompany()
-            If company <> "" Then
-                Using CMD As New SqlCommand("SELECT ID FROM TAX", connection)
-                    Dim TABLE As New DataTable
-                    Dim ADAPTER As New SqlDataAdapter(CMD)
-                    ADAPTER.Fill(TABLE)
-                    If TABLE.Rows.Count > 0 Then
-                        Using command As New SqlCommand("UPDATE TAX SET COMPANY=@COMPANY,VAT_NO=@VAT_NO,VAT=@VAT,NOTES=@NOTES WHERE ID=@ID", connection)
-                            With command.Parameters
-                                .Add("@ID", SqlDbType.Int).Value = tax_id
-                                .Add("@COMPANY", SqlDbType.VarChar).Value = company
-                                .Add("@VAT_NO", SqlDbType.VarChar).Value = vat_number.Text
-                                .Add("@VAT", SqlDbType.VarChar).Value = vat_textbox.Text
-                                .Add("@NOTES", SqlDbType.VarChar).Value = vatNotes_textbox.Text
-                            End With
-                            command.ExecuteNonQuery()
-                        End Using
-                        MessageBox.Show("Till has been set successfully", "Setting Currency", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Else
-                        MessageBox.Show("The item does not exist", "Updating Error")
-                    End If
-                End Using
-            End If
+
             connection.Close()
         Catch ex As Exception
             connection.Close()

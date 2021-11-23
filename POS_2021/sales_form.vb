@@ -926,12 +926,13 @@ Public Class sales_form
                 method_label.Text = Transaction_type
                 If Transaction_type = "FOREX" Then
                     'THIS IMPLEMENTS ONLY CASH RATE
-                    ForexPayments()
+                   CashPayments()
 
                     'implementing the cash payment method 
                 ElseIf Transaction_type = "CASH" Or Transaction_type = "MULTIPLE" Then
                     'converting from forex.to cash price
-                    CashPayments()
+
+                    ForexPayments()
 
                     'CHANGING  THE PRICE FROM FOREX TO ECOCASH OR CARD BY TAKING THE CASH PRICE AND ADD THE LOCAL RTGS RATE.
                 ElseIf Transaction_type = "ECOCASH" Or method_label.Text = "CARD" Then
@@ -1057,57 +1058,65 @@ Public Class sales_form
 
     Private Sub CashPayments()
         'converting from forex.to cash price
-        If localMethod = "FOREX" Then
+        If localMethod = "CASH" Or localMethod = "MULTIPLE" Or localMethod = "." Or localMethod = "" Or localMethod = "ECOCASH" Or localMethod = "CARD" Then
             Try
-                connection = myPermissions.getConnection
-                connection.Open()
-                totalsum = 0
-                For Each row As DataGridViewRow In list_grid.Rows
-                    Using command As New SqlCommand("SELECT PRICE FROM INVENTORY WHERE BARCODE=@BARCODE", connection)
-                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
-                        Dim currencyTable As New DataTable
-                        Dim adapter As New SqlDataAdapter(command)
-                        adapter.Fill(currencyTable)
-                        If currencyTable.Rows.Count > 0 Then
-                            CurrencyRate = currencyTable(0)(0)
-                            row.Cells(4).Value = CurrencyRate
-                            row.Cells(5).Value = Math.Round((row.Cells(4).Value * row.Cells(3).Value), 2)
-                            totalsum += row.Cells(5).Value
-                        Else
-                            MessageBox.Show("There was an error when trying to switch currency from forex to local currency")
-                        End If
-                    End Using
-                Next
-                total_label.Text = Math.Round(totalsum, 2)
+                Forex = GetForex()
+                If Forex.ToUpper = BaseCurrency.ToUpper Then
+                    totalsum = 0
+                    For row As Integer = 0 To list_grid.Rows.Count - 1
+                        totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                    Next
+                    total_label.Text = Math.Round(totalsum, 2)
+                Else
+                    'CHECKS IF THE LOCAL CURRENCY IS NOT EMPTY AND SELECT RATE EITHER  CASH
+                    If localMethod = "CASH" Or localMethod = "MULTIPLE" Or localMethod = "" Or localMethod = "." Then
+                        DailyCurrencyRate = GetForexRate("CASH")
+                        totalsum = 0
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value * DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value * DailyCurrencyRate, 2)
+                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                        Next
+                        total_label.Text = Math.Round(totalsum, 2)
+                    End If
+
+                    'checks if the local method is ecocash or card then first return the price   to a cash price before converting  the ecocash rate to forex
+                    If localMethod = "CARD" Or localMethod = "ECOCASH" Then
+                        'initially get the local rtgs rate for division and devide the current price with local rtgs rate to get cash price.
+                        Dim localRTGS As Decimal = LocalRTGSRate()
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value * localRTGS, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value * localRTGS, 2)
+                        Next
+                        DailyCurrencyRate = GetForexRate(localMethod)
+                        totalsum = 0
+                        For row As Integer = 0 To list_grid.Rows.Count - 1
+                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value / DailyCurrencyRate, 2)
+                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value / DailyCurrencyRate, 2)
+                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+                        Next
+                        total_label.Text = Math.Round(totalsum, 2)
+                    End If
+                End If
                 connection.Close()
             Catch ex As Exception
                 connection.Close()
-                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
             End Try
-
-            'convert from cash price to ecocash or card rate
-        ElseIf localMethod = "CARD" Or localMethod = "ECOCASH" Then
-            Dim localRTGS As Decimal = LocalRTGSRate()
-            totalsum = 0
-            For row As Integer = 0 To list_grid.Rows.Count - 1
-                list_grid.Rows(row).Cells(4).Value = CDec(Math.Round((list_grid.Rows(row).Cells(4).Value / localRTGS), 2))
-                list_grid.Rows(row).Cells(5).Value = CDec(Math.Round((list_grid.Rows(row).Cells(5).Value / localRTGS), 2))
-                totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-            Next
-            total_label.Text = Math.Round(totalsum, 2)
+            'implements the ecocash and swipe rate
+        Else
         End If
+
         AmtPanel.Visible = True
         qty_viewLabel.Visible = False
         quantity_textbox.Visible = False
         Accept_Quantity.Visible = False
         HideQuantityInputs()
         Me.AcceptButton = Me.FinaliseTransaction
-        AmtPanel.Visible = True
-        method_label.Text = Transaction_type
-        qty_paid_textbox.ReadOnly = False
-        qty_paid_textbox.Text = ""
-        qty_paid_textbox.Focus()
 
+        AmtPanel.Visible = True
+        qty_paid_textbox.ReadOnly = False
+        qty_paid_textbox.Focus()
     End Sub
     Private Sub MultiplePayments()
         If localMethod = "FOREX" Then
@@ -1217,64 +1226,60 @@ Public Class sales_form
 
     End Sub
     Private Sub ForexPayments()
-        If localMethod = "CASH" Or localMethod = "MULTIPLE" Or localMethod = "." Or localMethod = "" Or localMethod = "ECOCASH" Or localMethod = "CARD" Then
-            Try
-                Forex = GetForex()
-                If Forex.ToUpper = BaseCurrency.ToUpper Then
-                    totalsum = 0
-                    For row As Integer = 0 To list_grid.Rows.Count - 1
-                        totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-                    Next
-                    total_label.Text = Math.Round(totalsum, 2)
-                Else
-                    'CHECKS IF THE LOCAL CURRENCY IS NOT EMPTY AND SELECT RATE EITHER  CASH
-                    If localMethod = "CASH" Or localMethod = "MULTIPLE" Or localMethod = "" Or localMethod = "." Then
-                        DailyCurrencyRate = GetForexRate("CASH")
-                        totalsum = 0
-                        For row As Integer = 0 To list_grid.Rows.Count - 1
-                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value / DailyCurrencyRate, 2)
-                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value / DailyCurrencyRate, 2)
-                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-                        Next
-                        total_label.Text = Math.Round(totalsum, 2)
-                    End If
 
-                    'checks if the local method is ecocash or card then first return the price   to a cash price before converting  the ecocash rate to forex
-                    If localMethod = "CARD" Or localMethod = "ECOCASH" Then
-                        'initially get the local rtgs rate for division and devide the current price with local rtgs rate to get cash price.
-                        Dim localRTGS As Decimal = LocalRTGSRate()
-                        For row As Integer = 0 To list_grid.Rows.Count - 1
-                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value / localRTGS, 2)
-                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value / localRTGS, 2)
-                        Next
-                        DailyCurrencyRate = GetForexRate(localMethod)
-                        totalsum = 0
-                        For row As Integer = 0 To list_grid.Rows.Count - 1
-                            list_grid.Rows(row).Cells(4).Value = Math.Round(list_grid.Rows(row).Cells(4).Value / DailyCurrencyRate, 2)
-                            list_grid.Rows(row).Cells(5).Value = Math.Round(list_grid.Rows(row).Cells(5).Value / DailyCurrencyRate, 2)
-                            totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
-                        Next
-                        total_label.Text = Math.Round(totalsum, 2)
-                    End If
-                End If
+
+
+
+
+        If localMethod = "FOREX" Then
+            Try
+                connection = myPermissions.getConnection
+                connection.Open()
+                totalsum = 0
+                For Each row As DataGridViewRow In list_grid.Rows
+                    Using command As New SqlCommand("SELECT PRICE FROM INVENTORY WHERE BARCODE=@BARCODE", connection)
+                        command.Parameters.Add("@BARCODE", SqlDbType.VarChar).Value = row.Cells(1).Value
+                        Dim currencyTable As New DataTable
+                        Dim adapter As New SqlDataAdapter(command)
+                        adapter.Fill(currencyTable)
+                        If currencyTable.Rows.Count > 0 Then
+                            CurrencyRate = currencyTable(0)(0)
+                            row.Cells(4).Value = CurrencyRate
+                            row.Cells(5).Value = Math.Round((row.Cells(4).Value * row.Cells(3).Value), 2)
+                            totalsum += row.Cells(5).Value
+                        Else
+                            MessageBox.Show("There was an error when trying to switch currency from forex to local currency")
+                        End If
+                    End Using
+                Next
+                total_label.Text = Math.Round(totalsum, 2)
                 connection.Close()
             Catch ex As Exception
                 connection.Close()
-                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency to Forex")
+                MessageBox.Show(ex.Message, "The following error occured while trying to convert the currency from Forex")
             End Try
-            'implements the ecocash and swipe rate
-        Else
-        End If
 
+            'convert from cash price to ecocash or card rate
+        ElseIf localMethod = "CARD" Or localMethod = "ECOCASH" Then
+            Dim localRTGS As Decimal = LocalRTGSRate()
+            totalsum = 0
+            For row As Integer = 0 To list_grid.Rows.Count - 1
+                list_grid.Rows(row).Cells(4).Value = CDec(Math.Round((list_grid.Rows(row).Cells(4).Value / localRTGS), 2))
+                list_grid.Rows(row).Cells(5).Value = CDec(Math.Round((list_grid.Rows(row).Cells(5).Value / localRTGS), 2))
+                totalsum = totalsum + list_grid.Rows(row).Cells(5).Value
+            Next
+            total_label.Text = Math.Round(totalsum, 2)
+        End If
         AmtPanel.Visible = True
         qty_viewLabel.Visible = False
         quantity_textbox.Visible = False
         Accept_Quantity.Visible = False
         HideQuantityInputs()
         Me.AcceptButton = Me.FinaliseTransaction
-
         AmtPanel.Visible = True
+        method_label.Text = Transaction_type
         qty_paid_textbox.ReadOnly = False
+        qty_paid_textbox.Text = ""
         qty_paid_textbox.Focus()
 
     End Sub
